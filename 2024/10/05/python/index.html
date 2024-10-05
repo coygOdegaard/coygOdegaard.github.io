@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN" >
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<title>coygOdegaard</title>
+    <link rel="alternate" href="" type="application/atom+xml"/>
+	<link rel="shortcut icon" href=""/>
+	
+<link rel="stylesheet" href="/css/style.css">
+
+	
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+	<div class="main-con">
+
+        <div class="nav cl">
+    <ul class="cl nav-list">
+        
+            <li>
+                
+                    <a href="/" class="">
+                        <i class="fa fa-home"></i> 
+                        <span>主页</span>
+                    </a>
+                
+            </li>
+        
+            <li>
+                
+                    <a href="/archives/" class="">
+                        <i class=" fa-"></i> 
+                        <span>归档</span>
+                    </a>
+                
+            </li>
+        
+            <li>
+                
+                    
+                    <a href="javascript:void(0)" class="">
+                    
+                        <i class=" fa-"></i> 
+                        <span>关于</span>
+                        <span class="drop-flag fa fa-angle-down"></span>
+                    </a>
+                    <dl>
+                        
+                            <li>
+                                <a href="/about" class="">
+                                    <i class=" fa-"></i>
+                                    <span>关于本站</span>
+                                </a>
+                            </li>
+                        
+                    </dl>
+                
+            </li>
+        
+    </ul>
+    <ul class="cl nav-tool">
+        
+            <li>
+                <a href="/github">
+                    <i class="fa fa-github"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="/mail">
+                    <i class="fa fa-envelope"></i>
+                </a>
+            </li>
+        
+            <li>
+                <a href="/twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+        
+        
+        <li>
+            <a href="javascript:void(0)" class="nav-search-btn">
+                <i class="fa fa-search"></i>
+            </a>
+        </li>
+        
+    </ul>
+    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="nav-search"><input type="search" name="q" class="nav-search-input" placeholder="search..."><input type="hidden" name="sitesearch" value="http://example.com"></form>
+</div>
+
+        <header class="top" id="fallEle" style="background-image: url(/imgs/head.jpg)">
+    <i class="fa fa-bars" id="media-toggle" style="display: none"></i>
+    <div class="top-info cl fadeToBottom">
+        <h2 class="site-name"><a href="/">mokusei</a> <small id="type-data">This is a hexo theme</small></h2>
+    </div>
+</header>
+
+        <div class="con-wrap fadeToTop">
+    
+    <section class="article-area">
+    
+        <article class="article">
+    <div class="article-wrap">
+        
+            <h2 class="article-title cl">
+                空标题
+            </h2>
+        
+
+        <ul class="article-extra" style="margin-bottom: 20px">
+            
+            <li class="article-time">
+                2024-10-05
+            </li>
+            
+
+            
+                
+            
+
+
+        </ul>
+        <div class="article-description">
+            
+            <h1 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h1><p>同时输出字符和数字：将数字转化为字符处理。</p>
+<pre><code class="hljs python">x,y,z = <span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>
+<span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;三个数的和为：&quot;</span> + <span class="hljs-built_in">str</span>(x + y + z))</code></pre>
+
+<pre><code class="hljs plaintext">x,y,z = 1,2,3
+print(&quot;三个数的和为：&quot;,x + y + z)</code></pre>
+
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><pre><code class="hljs plaintext">文本类型： 
+     str
+数字类型： 
+     int, 
+     float, 
+     complex(复数)
+序列类型：
+	list,
+	tuple,
+	range
+映射类型：      
+     dict
+套装类型：      
+     set,      
+     frozenset
+布尔类型：      
+     bool
+二进制类型：      
+     bytes,      
+     bytearray,      
+     memoryview</code></pre>
+
+<p>可使用以下<strong>type()函数</strong>获取<strong>任何</strong>对象的数据类型。</p>
+<p>浮点数类型float：可以使用e(E)来表示科学计数法，x、y仍属于浮点数类型</p>
+<pre><code class="hljs plaintext">x = 1e2
+y = 2E3
+print(x)#100.0
+print(y)#2000.0</code></pre>
+
+<p>complex：</p>
+<p>复数写有“j”作为虚部。</p>
+<pre><code class="hljs plaintext">x = 3 + 5j
+y = 5j
+print(x)#(3+5j)
+print(y)#5j</code></pre>
+
+<p>强制转化：</p>
+<pre><code class="hljs plaintext">x = 1
+y = complex(x)
+print(x)#1
+print(y)#(1+0j)</code></pre>
+
+<h2 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h2><p>Python 有一个内置模块 random可以用来生成随机数，需要引入。</p>
+<pre><code class="hljs plaintext">import random</code></pre>
+
+<p><img src="E:\笔记备份\typora-user-images\image-20240827170632781.png" alt="image-20240827170632781"></p>
+<p>random.randrange(3,30,3)不是生成3到30之间的任何整数，因为width &#x3D; 3 ，所以生成的应该是3 + 3 * i 。</p>
+<p>该方法生成的都是<strong>整数</strong>，包括负整数。</p>
+<p>step步长的应用——生成n的随机整数范围(倍数)</p>
+<p>让我们生成 5 到 100 之间的随机整数，即 5 的倍数，例如 5, 10, 25, 90, 95等。</p>
+<pre><code class="hljs plaintext">import random
+number = random.randrange(5, 101, 5)
+print(&quot;Random number range (multiple) of 5 is &quot;, number)</code></pre>
+
+<h1 id="python字符串"><a href="#python字符串" class="headerlink" title="python字符串"></a>python字符串</h1><h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>可以使用三个引号将多行字符串分配给变量。<code>&quot;&quot;&quot;   &quot;&quot;&quot;</code></p>
+<pre><code class="hljs plaintext">x = &quot;&quot;&quot;gsgad asgsa
+   ags ilnk &quot;&quot;&quot;
+print(x)</code></pre>
+
+<p><img src="/typora-user-images/image-20240902144043495.png" alt="image-20240902144043495"></p>
+<p><strong>字符串是数组</strong>，Python <strong>没有字符</strong>数据类型，单个字符只是一个长度为 1 的字符串。方括号可用于访问字符串的元素。这里用到了切片，你可以不懂。<br>获取位置 1 处的字符（记住第一个字符的位置为 0）：</p>
+<pre><code class="hljs plaintext">a = &quot;Hello, World!&quot;
+print(a[1])</code></pre>
+
+<p><code>len()</code>函数返回字符串的长度，注意标点符号和空格也算一个长度：len(a)</p>
+<p>要检查字符串中是否存在某个短语或字符，我们可以使用关键字 in，返回值为布尔类型。</p>
+<pre><code class="hljs plaintext">txt =&quot;The best things in life are free!&quot;
+print(&quot;free&quot; in txt)</code></pre>
+
+<p>如果是要检查不存在某个短语或字符的话，除了使用 in 外，还可以使用 not in ：</p>
+<pre><code class="hljs plaintext">txt =&quot;The best things in life are free!&quot;
+print(&quot;free&quot; not in txt)</code></pre>
+
+<p>不存在就会输出true。</p>
+<h2 id="切片字符串"><a href="#切片字符串" class="headerlink" title="切片字符串"></a>切片字符串</h2><p><strong>1）切片</strong></p>
+<p>获取从位置 2 到位置 5 的字符（不包括在内）：</p>
+<pre><code class="hljs plaintext">txt = &quot;The best things in life are free!&quot;
+print(txt[2:5])</code></pre>
+
+<p>仍然是左闭右开的规律，且第一个字符索引为0。</p>
+<p><strong>2）从头开始切片</strong></p>
+<pre><code class="hljs plaintext">txt = &quot;The best things in life are free!&quot;
+print(txt[:5])</code></pre>
+
+<p><strong>3)切到最后</strong></p>
+<p>通过省略结束索引，范围将到最后。</p>
+<pre><code class="hljs plaintext">txt = &quot;The best things in life are free!&quot;
+print(txt[2:])</code></pre>
+
+<p><strong>4）负索引</strong></p>
+<p>使用负索引从字符串末尾开始切片，就是从右往左看，不再是从左往右看。</p>
+<pre><code class="hljs plaintext">txt = &quot;The best things in life are free!&quot;
+print(txt[-5:-2])</code></pre>
+
+<p>这个时候字符串的最后一个元素索引为 -1，往前递减。</p>
+<p>  f    r   e   e		这个时候要切片仍要按字符串顺序写入，不能写<code>[-1:-5]</code>，而使用负索引时由于四从后往前的，所以变成了<strong>左开右闭</strong>。</p>
+<p>-4  -3  -2  -1</p>
+<h2 id="修改字符串"><a href="#修改字符串" class="headerlink" title="修改字符串"></a>修改字符串</h2><p>1）upper()方法以大写形式返回字符串（不改变原字符串）：<code>txt.upper()</code>，txt内容直接全部转化为大写；也可以选择字符转大写，<code>txt[2].upper()</code>。</p>
+<p>2）lower()方法以小写形式返回字符串。</p>
+<p>3）strip()方法删除开头和结尾的任何空格（不改变原字符串）：</p>
+<pre><code class="hljs plaintext">txt = &quot;   The best things in life are free!&quot;
+print(txt.strip())
+print(txt)</code></pre>
+
+<p><img src="/typora-user-images/image-20240924164743183.png" alt="image-20240924164743183"></p>
+<p>4）replace()方法用另一个字符串替换一个字符串(不改变原字符串)：</p>
+<pre><code class="hljs plaintext">txt = &quot;The best things in life are free!&quot;
+print(txt.replace(&quot;e&quot;,&quot;E&quot;,4))
+print(txt)</code></pre>
+
+<p>replace(“要修改的”,”要修改成的”,要修改的数量)，没有规定数量则默认全部修改。</p>
+<p>5）拆分字符串</p>
+<p>split()方法返回一个列表，其中指定分隔符之间的文本成为列表项。split()如果找到分隔符的实例，该方法会将字符串拆分为子字符串。</p>
+<pre><code class="hljs plaintext">txt = &quot;The best things in life are free!&quot;
+print(txt.split(&quot; &quot;))</code></pre>
+
+<p>若要以多个字符作为分割符，那不像 java 中一样，python要用and</p>
+<pre><code class="hljs plaintext">txt = &quot;The best things in life are free!&quot;
+print(txt.split(&quot; &quot; and &quot;e&quot;))</code></pre>
+
+<pre><code class="hljs plaintext">my_list = txt.split(&quot; &quot;)</code></pre>
+
+<p>my_list的类型为list。</p>
+<h2 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h2><p>要连接或组合两个字符串，可以使用 + 运算符。</p>
+<h2 id="格式化字符串"><a href="#格式化字符串" class="headerlink" title="格式化字符串"></a>格式化字符串</h2><h3 id="对变量的格式化"><a href="#对变量的格式化" class="headerlink" title="对变量的格式化"></a>对变量的格式化</h3><h4 id="format"><a href="#format" class="headerlink" title="format"></a>format</h4><p>1）format<strong>单个</strong>传参</p>
+<p>通过使用<strong>format()</strong> 方法来组合字符串和数字！format()方法接受传递的参数，格式化它们，并将它们放在占位符所在的字符串中{}。</p>
+<pre><code class="hljs plaintext">age = 20
+txt = &quot;Tom今年&#123;&#125;&quot;
+print(txt.format(age))</code></pre>
+
+<p>age的值会出现在“{}”里。</p>
+<p>2）format<strong>多个</strong>传参</p>
+<p>不规定顺序，默认按输入顺序取值：</p>
+<pre><code class="hljs plaintext">quantity = 20
+itemno = 3000
+price = 49.95
+myorder = &quot;川川今年 &#123;&#125;岁 买了个华为手机 &#123;&#125; 每个月花费 &#123;&#125; 元.&quot;
+print(myorder.format(quantity, itemno, price))</code></pre>
+
+<p><img src="/typora-user-images/image-20240829104210335.png" alt="image-20240829104210335"></p>
+<p>规定顺序：按序列号取值</p>
+<pre><code class="hljs plaintext">quantity = 20
+itemno = 3000
+price = 49.95
+myorder = &quot;川川今年 &#123;2&#125;岁 买了个华为手机 &#123;0&#125; 每个月花费 &#123;1&#125; 元.&quot;
+print(myorder.format(quantity, itemno, price))</code></pre>
+
+<p><img src="/typora-user-images/image-20240829104100499.png" alt="image-20240829104100499"></p>
+<h4 id=""><a href="#" class="headerlink" title="%"></a>%</h4><p><strong>3）%</strong></p>
+<p><img src="/typora-user-images/image-20240902144652454.png" alt="image-20240902144652454"></p>
+<p><img src="/typora-user-images/image-20240902144757723.png" alt="image-20240902144757723"></p>
+<p>这个程序是将数字变为字符串后填入语句中的。</p>
+<p><img src="/typora-user-images/image-20240902145053559.png" alt="image-20240902145053559"></p>
+<p><img src="/typora-user-images/image-20240902145436277.png" alt="image-20240902145436277"></p>
+<h4 id="快速写法：f"><a href="#快速写法：f" class="headerlink" title="快速写法：f"></a>快速写法：f</h4><p>不限数据类型同时也不做精度控制，原来是什么样的就输出什么样的。</p>
+<p><img src="/typora-user-images/image-20240902145938978.png" alt="image-20240902145938978"></p>
+<h3 id="对表达式的格式化"><a href="#对表达式的格式化" class="headerlink" title="对表达式的格式化"></a>对表达式的格式化</h3><p><img src="/typora-user-images/image-20240902150303533.png" alt="image-20240902150303533"></p>
+<h2 id="其它方法"><a href="#其它方法" class="headerlink" title="其它方法"></a>其它方法</h2><p><img src="/typora-user-images/image-20240829104305991.png" alt="image-20240829104305991"></p>
+<h1 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h1><p><code>bool()</code>函数允许您评估任何值，并给您 True或False 作为返回。如果它具有某种内容，几乎任何值都会被评估。任何字符串都是True，空字符串除外。任何数字都是True，除了 0。任何列表、元组、集合和字典都是True，空的除外。</p>
+<p>例如()、 []、{}、 “”、 数字 0和 False、None值，计算值为False。</p>
+<p>Python 也有许多返回布尔值的内置函数，如 <code>isinstance()</code> 函数，可用于确定对象是否属于某种数据类型。</p>
+<pre><code class="hljs plaintext">x = 20
+print(isinstance(x,int))</code></pre>
+
+<h1 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h1><h2 id="基础-元组定义"><a href="#基础-元组定义" class="headerlink" title="基础+元组定义"></a>基础+元组定义</h2><p>列表是使用方括号创建的，可以直接输出，和java中的一样。</p>
+<pre><code class="hljs plaintext">mylist = [
+    &quot;川川一号&quot;,
+    &quot;川川二号&quot;,
+    &quot;川川三号&quot;,
+    &quot;川川四号&quot;]
+print(mylist)</code></pre>
+
+<p>创建新列表时也可以使用 <strong>list()</strong> 构造函数。</p>
+<pre><code class="hljs plaintext">mylist = list((
+    &quot;川川一号&quot;,
+    &quot;川川二号&quot;,
+    &quot;川川三号&quot;,
+    &quot;川川四号&quot;))
+print(mylist)</code></pre>
+
+<p>为什么list需要有两个括号？因为传递给<code>list()</code>函数的参数是一个<strong>元组</strong>，而不是普通的单个字符串或其他类型的单个对象。</p>
+<ol>
+<li><strong>外层括号</strong>：<code>list()</code>函数的外层括号用于调用该函数。</li>
+<li><strong>内层括号</strong>：<code>( ... )</code>内层括号用于定义一个元组。Python中的元组使用括号<code>()</code>定义。如果在调用<code>list()</code>时传递了一个元组（用括号括起来的多个元素），你就需要使用内层括号来创建这个元组。</li>
+</ol>
+<p>这个代码实际上是将一个元组传递给<code>list()</code>函数，并将这个元组转换成列表。</p>
+<p>元组（Tuple）是Python中的一种数据类型，用于存储多个值。它与列表（List）非常相似，但有几个关键区别：</p>
+<p>1）<strong>不可变性（Immutable）</strong>: 元组一旦创建，其元素不能修改（即不能增删改）。这与列表不同，列表是可变的（Mutable）。</p>
+<p>2）<strong>使用小括号定义</strong>: 元组使用小括号 <code>()</code> 定义，而列表使用方括号 <code>[]</code>。</p>
+<p>3）<strong>可以包含不同类型的数据</strong>: 元组可以包含不同类型的元素，例如整数、字符串、浮点数等：<code>mixed_tuple = (1, &quot;hello&quot;, 3.14)</code></p>
+<p>4）<strong>访问方式与列表相同</strong>: 元组的元素通过索引访问，索引从0开始。</p>
+<p>现在重新回到列表：</p>
+<p>由于列表已编入索引，因此列表可以包含具有相同值的项目。</p>
+<p>列表项可以是任何数据类型，同一列表中也可以包含不同类型的项。</p>
+<p><strong>总结：</strong></p>
+<ol>
+<li>List列表是一个有序且可变的集合。允许重复成员。</li>
+<li>turple元组是一个有序且不可更改的集合。允许重复成员。</li>
+<li>Set集合是一个无序且无索引的集合。没有重复的成员。</li>
+<li>dict字典是一个有序（从 Python 3.7 版开始）且可变的集合。没有重复的成员。</li>
+</ol>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p><strong>访问列表</strong></p>
+<p>1）正常索引</p>
+<p>2）负索引</p>
+<p>3）索引范围</p>
+<pre><code class="hljs plaintext">print(mylist[1:3])</code></pre>
+
+<pre><code class="hljs plaintext">print(mylist[-3:-1])</code></pre>
+
+<p>4）检查是否存在，和字符串一样</p>
+<p><strong>更改列表</strong></p>
+<p>更改一个范围内的元素：</p>
+<pre><code class="hljs plaintext">mylist = [
+    &quot;川川一号&quot;,
+    &quot;川川二号&quot;,
+    &quot;川川三号&quot;,
+    &quot;川川四号&quot;,
+    &quot;川川五号&quot;]
+mylist[1:3] = [&quot;哈皮川川&quot;,&quot;憨批川川&quot;]
+print(mylist)</code></pre>
+
+<p><strong>插入列表</strong></p>
+<p><code>insert()</code>方法在指定的索引处插入一个项目。</p>
+<pre><code class="hljs plaintext">mylist = [
+    &quot;川川一号&quot;,
+    &quot;川川二号&quot;,
+    &quot;川川三号&quot;,
+    &quot;川川四号&quot;,
+    &quot;川川五号&quot;]
+mylist.insert(2,&quot;帅哥呀&quot;)
+print(mylist)</code></pre>
+
+<p><strong>添加列表</strong></p>
+<p>1）末尾添加：要将值添加到列表的末尾，请使用append() 方法。</p>
+<p>2）指定位置添加：insert()函数。</p>
+<p>3）合并列表：要将另一个列表中的元素附加到当前列表，请使用extend()方法。</p>
+<pre><code class="hljs plaintext">mylist = [
+    &quot;川川一号&quot;,
+    &quot;川川二号&quot;,
+    &quot;川川三号&quot;,
+    &quot;川川四号&quot;,
+    &quot;川川五号&quot;]
+mylist1 = [
+    &quot;川川一号&quot;,
+    &quot;川川二号&quot;,
+    &quot;川川三号&quot;,
+    &quot;川川四号&quot;]
+mylist.extend(mylist1)
+print(mylist)</code></pre>
+
+<p>extend()方法不一定要 列表，您也可以添加任何可迭代对象（元组、集合、字典等）。</p>
+<pre><code class="hljs plaintext">mylist = [
+    &quot;川川一号&quot;,
+    &quot;川川二号&quot;,
+    &quot;川川三号&quot;,
+    &quot;川川四号&quot;,
+    &quot;川川五号&quot;]
+mylist1 = (&quot;川川&quot;,&quot;菜鸟&quot;)
+mylist.extend(mylist1)
+print(mylist)</code></pre>
+
+<p>使用 + 运算符</p>
+<pre><code class="hljs plaintext">mylist = [
+    &quot;川川一号&quot;,
+    &quot;川川二号&quot;,
+    &quot;川川三号&quot;,
+    &quot;川川四号&quot;,
+    &quot;川川五号&quot;]
+mylist1 = [&quot;川川&quot;,&quot;菜鸟&quot;]
+my = mylist1 + mylist
+print(my)</code></pre>
+
+<p><strong>删除列表</strong></p>
+<p>remove()方法删除指定的项目。</p>
+<pre><code class="hljs plaintext">mylist.remove(&#x27;川川二号&#x27;)</code></pre>
+
+<p>pop()方法删除指定的索引，如果不指定索引，该pop()方法将删除最后一项。</p>
+<pre><code class="hljs plaintext">mylist.pop(2)</code></pre>
+
+<p>del删除指定的索引,也可以完全删除列表。</p>
+<pre><code class="hljs plaintext">del mylist[0]</code></pre>
+
+<pre><code class="hljs plaintext">del mylist</code></pre>
+
+<p>clear()方法清空列表。该列表仍然存在，但没有内容。</p>
+<pre><code class="hljs plaintext">mylist.clear()</code></pre>
+
+<h2 id="循环列表"><a href="#循环列表" class="headerlink" title="循环列表"></a>循环列表</h2><h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><p>方法一：</p>
+<p><img src="/typora-user-images/image-20240909151648171.png" alt="image-20240909151648171">循环遍历列表您可以使用循环遍历列表项for 。</p>
+<pre><code class="hljs plaintext">mylist = [
+    &quot;川川一号&quot;,
+    &quot;川川二号&quot;,
+    &quot;川川三号&quot;,
+    &quot;川川四号&quot;]
+for i in mylist:
+    print(i)</code></pre>
+
+<p><img src="/typora-user-images/image-20240909150647167.png" alt="image-20240909150647167"></p>
+<p>方法二：遍历索引号</p>
+<p><img src="/typora-user-images/image-20240909152055723.png" alt="image-20240909152055723"></p>
+<pre><code class="hljs plaintext">mylist = [
+    &quot;川川一号&quot;,
+    &quot;川川二号&quot;,
+    &quot;川川三号&quot;,
+    &quot;川川四号&quot;]
+for i in range(len(mylist)):
+    print(mylist[i])</code></pre>
+
+<p>相当于以前的：</p>
+<pre><code class="hljs plaintext">for(int i = 0;i &lt; mylist.length;i ++)
+	print(mylist.charAt(i)</code></pre>
+
+<p><img src="/typora-user-images/image-20240909152204826.png" alt="image-20240909152204826"></p>
+<p><strong>变量作用域</strong></p>
+<p><img src="/typora-user-images/image-20240909152409235.png" alt="image-20240909152409235"></p>
+<h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><pre><code class="hljs plaintext">mylist = [
+    &quot;川川一号&quot;,
+    &quot;川川二号&quot;,
+    &quot;川川三号&quot;,
+    &quot;川川四号&quot;]
+i = 0
+while i &lt; len(mylist):
+    print(mylist[i])
+    i += 1</code></pre>
+
+<p><img src="/typora-user-images/image-20240828145231836.png" alt="image-20240828145231836"></p>
+<p>那如果我while循环下面还要写不属于循环体的内容要怎么办呢？下面写的内容与while对齐就行，就代表不是循环的内容了。</p>
+<pre><code class="hljs plaintext">mylist = [
+    &quot;川川一号&quot;,
+    &quot;川川二号&quot;,
+    &quot;川川三号&quot;,
+    &quot;川川四号&quot;]
+i = 0
+while i &lt; len(mylist):
+    print(mylist[i])
+    i += 1
+i = 1
+print(i)</code></pre>
+
+<h3 id="continue和break"><a href="#continue和break" class="headerlink" title="continue和break"></a>continue和break</h3><p>和以前的一样</p>
+<h2 id="列表推导式"><a href="#列表推导式" class="headerlink" title="列表推导式"></a>列表推导式</h2><p><img src="/typora-user-images/image-20240830101522063.png" alt="image-20240830101522063"></p>
+<p><img src="/typora-user-images/image-20240830101751077.png" alt="image-20240830101751077"></p>
+<p><img src="/typora-user-images/image-20240830101811824.png" alt="image-20240830101811824"></p>
+<p><img src="/typora-user-images/image-20240830101824157.png" alt="image-20240830101824157"></p>
+<p><strong>一个表达式，后面为一个 for 子句，然后，跟着 for 子句，if 语句</strong></p>
+<pre><code class="hljs plaintext">OldList = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+TestList = [j for i in OldList for j in i if j % 2 == 0]
+
+print(TestList)
+# [2, 4, 6, 8]</code></pre>
+
+<p><img src="/typora-user-images/image-20240830102029883.png" alt="image-20240830102029883"></p>
+<h2 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h2><p>sort()方法区分大小写，导致所有大写字母都排在小写字母之前，按自然顺序排序。<code>thislist.sort()</code></p>
+<p>不区分大小写的排序函数，则应使用<code>str.lower</code>作为键函数：<code>thislist.sort(key = str. lower)</code></p>
+<p>reverse()方法反转元素的当前排序顺序。</p>
+<h2 id="复制列表"><a href="#复制列表" class="headerlink" title="复制列表"></a>复制列表</h2><p>copy()方法制作列表的副本：</p>
+<pre><code class="hljs plaintext">fruits = [
+    &quot;apple&quot;,
+    &quot;banana&quot;,
+    &quot;cherry&quot;,
+    &quot;kiwi&quot;,
+    &quot;mango&quot;]
+f = fruits.copy()
+print(f)</code></pre>
+
+<p>list()方法制作列表的副本：</p>
+<pre><code class="hljs plaintext">fruits = [
+    &quot;apple&quot;,
+    &quot;banana&quot;,
+    &quot;cherry&quot;,
+    &quot;kiwi&quot;,
+    &quot;mango&quot;]
+f = list(fruits)
+print(f)</code></pre>
+
+<h2 id="操作合集"><a href="#操作合集" class="headerlink" title="操作合集"></a>操作合集</h2><p><img src="/typora-user-images/image-20240830103315208.png" alt="image-20240830103315208"></p>
+<h1 id="数据输入"><a href="#数据输入" class="headerlink" title="数据输入"></a>数据输入</h1><p><img src="/typora-user-images/image-20240902151833428.png" alt="image-20240902151833428"></p>
+<p><img src="/typora-user-images/image-20240902152020658.png" alt="image-20240902152020658"></p>
+<p>input默认<strong>接受</strong>的类型是<strong>字符串</strong>，所以你输入的数据是按照字符串去处理的，获取到的数据永远是字符串类型的。</p>
+<h1 id="判断语句"><a href="#判断语句" class="headerlink" title="判断语句"></a>判断语句</h1><h2 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h2><p><img src="/typora-user-images/image-20240904145056331.png" alt="image-20240904145056331"></p>
+<p><strong>注意：</strong>条件后面加<strong>冒号</strong>，结构体前面要<strong>留有空白</strong>（四个空格），就是要缩进；没有缩进代表和 if 是同级的，不受 if 控制。</p>
+<p><img src="/typora-user-images/image-20240904145619929.png" alt="image-20240904145619929"></p>
+<h2 id="if-else语句"><a href="#if-else语句" class="headerlink" title="if else语句"></a>if else语句</h2><p><img src="/typora-user-images/image-20240904145840332.png" alt="image-20240904145840332"></p>
+<h2 id="if-elif-else语句"><a href="#if-elif-else语句" class="headerlink" title="if elif else语句"></a>if elif else语句</h2><p><img src="/typora-user-images/image-20240904150121743.png" alt="image-20240904150121743"></p>
+<p>判断条件里可以是输入语句：</p>
+<p><img src="/typora-user-images/image-20240904150614390.png" alt="image-20240904150614390"></p>
+<p>该代码在节省代码量的同时还做到了不用一次性输入三个变量，而是等前面一个不满足条件后在输入下一个变量值。</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>和c语言大差不差的。</p>
+<p><img src="/typora-user-images/image-20240920162622191.png" alt="image-20240920162622191"></p>
+<p><img src="/typora-user-images/image-20240920162945376.png" alt="image-20240920162945376"></p>
+<p><img src="/typora-user-images/image-20240920163335654.png" alt="image-20240920163335654"></p>
+<p><img src="/typora-user-images/image-20240920163800172.png" alt="image-20240920163800172"></p>
+<p><img src="/typora-user-images/image-20240920163903857.png" alt="image-20240920163903857"></p>
+<p><img src="/typora-user-images/image-20240920164146996.png" alt="image-20240920164146996"></p>
+<p><img src="/typora-user-images/image-20240920164831520.png" alt="image-20240920164831520"></p>
+<p>调用函数时，鼠标停在函数上，会出现说明文档。</p>
+<h1 id="数据容器"><a href="#数据容器" class="headerlink" title="数据容器"></a>数据容器</h1><h2 id="列表-1"><a href="#列表-1" class="headerlink" title="列表"></a>列表</h2><p><img src="/typora-user-images/image-20240924161211649.png" alt="image-20240924161211649"></p>
+<p>列表中可以存储不同的数据类型。</p>
+<p><img src="/typora-user-images/image-20240924161704122.png" alt="image-20240924161704122"></p>
+<h2 id="tuple-元组"><a href="#tuple-元组" class="headerlink" title="tuple(元组)"></a>tuple(元组)</h2><p>元组一旦定义完成就不能被修改。但是如果元组中有元素list，可以修改list里的数据，list不变，变得是list里面的内容。</p>
+<p><img src="/typora-user-images/image-20240924162913949.png" alt="image-20240924162913949"></p>
+<p><img src="/typora-user-images/image-20240924163026626.png" alt="image-20240924163026626"></p>
+<p><img src="/typora-user-images/image-20240924163430828.png" alt="image-20240924163430828"></p>
+<h2 id="str-字符串"><a href="#str-字符串" class="headerlink" title="str(字符串)"></a>str(字符串)</h2><p>和元组一样，字符串时无法修改的，对它进行修改操作得到的是一个新的字符串，原字符串仍不变。</p>
+<h2 id="数据容器-序列-的切片操作"><a href="#数据容器-序列-的切片操作" class="headerlink" title="数据容器(序列)的切片操作"></a>数据容器(序列)的切片操作</h2><p><img src="/typora-user-images/image-20240925164714610.png" alt="image-20240925164714610"></p>
+<p><img src="/typora-user-images/image-20240925165222127.png" alt="image-20240925165222127"></p>
+<p>切片操作不会影响到序列本身，而是会产生一个新的序列。</p>
+<p>步长<strong>默认</strong>为1，所以可以不写。</p>
+<p>起始和结束都不写的话，表示从头到尾。</p>
+<p><img src="/typora-user-images/image-20240925165838825.png" alt="image-20240925165838825"></p>
+<h2 id="set-集合"><a href="#set-集合" class="headerlink" title="set(集合)"></a>set(集合)</h2><p>不重复，无序，不支持下标索引。</p>
+<p><img src="/typora-user-images/image-20240925170512617.png" alt="image-20240925170512617"></p>
+<p><img src="/typora-user-images/image-20240925170945186.png" alt="image-20240925170945186"></p>
+<p><img src="/typora-user-images/image-20240925171231409.png" alt="image-20240925171231409"></p>
+<p><img src="/typora-user-images/image-20240925171542869.png" alt="image-20240925171542869"></p>
+<p>73</p>
+
+        </div>
+        
+        
+        
+        <div class="article-tags">
+            <ul class="tags-list cl">
+                
+            </ul>
+        </div>
+        
+        <div class="article-pagination cl">
+        
+            <div class="pagination-prev">
+                <a href="/2024/10/05/%E4%B8%B4%E6%97%B6/">空标题</a>
+            </div>
+        
+        
+            <div class="pagination-next">
+                <a href="/2024/10/05/Kaggle/">空标题</a>
+            </div>
+        
+        </div>
+
+        
+    </div>
+</article>
+
+    </section>
+    
+<section class="tool-area">
+
+    <div class="toolbar">
+        
+
+        
+        <div class="widget-post widget" style="order: 1 ">
+            <h2 class="widget-title"><i class="fa fa-file-text"></i> 近期文章</h2>
+            <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E8%81%8C%E4%B8%9A/">职业</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E8%8B%B1%E8%AF%AD/">英语</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E8%81%8C%E8%A7%84/">职规</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E5%AD%A6%E4%B9%A0/">学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E9%97%AE%E9%A2%98/">问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%842/">数据结构2</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E4%B8%B4%E6%97%B6/">临时</a></li></ul>
+        </div>
+        
+
+        
+        <div class="widget-tags widget" style="order: 2 ">
+            <h2 class="widget-title"><i class="fa fa-tags"></i> 标签</h2>
+            
+        </div>
+        
+
+        
+        <div class="widget-categories widget" style="order: 3 ">
+            <h2 class="widget-title"><i class="fa fa-folder-open"></i> 分类</h2>
+            
+        </div>
+        
+
+    </div>
+</section>
+</div>
+
+    
+        <footer class="footer">
+	<p class="footer-intro">
+		
+		@2024 coygOdegaard.
+	</p>
+	<p class="footer-intro">
+			Powered By <a href="https://hexo.io/zh-cn/" target="_blank">hexo</a>
+			theme <a href="https://github.com/iengu/hexo-theme-mokusei" target="_blank">mokusei</a> by <a href="https://www.iengu.com" target="blank">iengu</a>
+	</p>
+</footer>
+
+
+
+
+        <div class="extend-tools" id="extend-tools" style="display: none;">
+    <ul>
+        <li class="tools-returnTop" title="返回顶部"><i class="fa fa-angle-double-up"></i></li>
+    </ul>
+</div>
+
+	</div>
+
+	
+<script src="/js/org/jquery.min.js"></script>
+
+    
+<script src="/js/extend.js"></script>
+
+</body>
+</html>
