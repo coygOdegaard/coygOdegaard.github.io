@@ -1,45 +1,254 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>coygOdegaard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="牛客网刷题  《深入浅出 MySQL》 前面的部分的“基础篇”可以快速略过，重点的就是后面的“开发篇和优化篇”。 尤其是后面的“优化篇”对我帮助很大，学习了一些常见的 MySQL 优化方式。 毕竟数据库性能优化是对我们来说很重要的一趴。 《MySQL 技术内幕：InnoDB存储引擎》 MySQL 中用的做多的就是 InnoDB 引擎，所以更进一步学习 InnoDB 存储引擎很有必要。 这本书反正">
+<meta property="og:type" content="article">
+<meta property="og:title" content="coygOdegaard">
+<meta property="og:url" content="http://example.com/2024/10/05/%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="coygOdegaard">
+<meta property="og:description" content="牛客网刷题  《深入浅出 MySQL》 前面的部分的“基础篇”可以快速略过，重点的就是后面的“开发篇和优化篇”。 尤其是后面的“优化篇”对我帮助很大，学习了一些常见的 MySQL 优化方式。 毕竟数据库性能优化是对我们来说很重要的一趴。 《MySQL 技术内幕：InnoDB存储引擎》 MySQL 中用的做多的就是 InnoDB 引擎，所以更进一步学习 InnoDB 存储引擎很有必要。 这本书反正">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240212220055545.png">
+<meta property="og:image" content="c:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240212220157525.png">
+<meta property="article:published_time" content="2024-10-05T03:42:59.447Z">
+<meta property="article:modified_time" content="2024-02-12T14:05:52.275Z">
+<meta property="article:author" content="Odegaard">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240212220055545.png">
+  
+    <link rel="alternate" href="/atom.xml" title="coygOdegaard" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-block content
-  #post
-    if top_img === false || page.bilibili_bg
-      include includes/header/post-info.pug
-    if theme.post_head_ai_description
-      include includes/anzhiyu/ai-info.pug
-    - let url = page.copyright_url || page.permalink
-    article#article-container.post-content(itemscope itemtype=url_for(url))
-      header
-        if (theme.post_meta.post.categories && page.categories && page.categories.data.length > 0)
-          each item, index in page.categories.data
-            a(href=url_for(item.path) itemprop="url").post-meta-categories #[=item.name]
-        if (theme.post_meta.page.tags)
-          each item, index in page.tags.data
-            a(href=url_for(item.path) tabindex="-1" itemprop="url")=item.name
-        h1#CrawlerTitle(itemprop="name headline")= page.title || _p('no_title')
-        - let author = page.copyright_author || config.author
-        span(itemprop="author" itemscope itemtype="http://schema.org/Person")=author
-        if (theme.post_meta.post.date_type)
-          if (theme.post_meta.post.date_type === 'both')
-            time(itemprop="dateCreated datePublished" datetime=date_xml(page.date) title=_p('post.created') + ' ' + full_date(page.date))=date(page.date, config.date_format)
-            time(itemprop="dateCreated datePublished" datetime=date_xml(page.updated) title=_p('post.updated') + ' ' + full_date(page.updated))=date(page.updated, config.date_format)
-          else
-            - let data_type_update = theme.post_meta.post.date_type === 'updated'
-            - let date_type = data_type_update ? 'updated' : 'date'
-            time(itemprop="dateCreated datePublished" datetime=date_xml(page[date_type]) title=date_title + ' ' + full_date(page[date_type]))=date(page[date_type], config.date_format)
-      !=page.content
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-    include includes/post/post-copyright.pug
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
-
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">coygOdegaard</a>
+      </h1>
       
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/10/05/%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2024-10-05T03:42:59.447Z" itemprop="datePublished">2024-10-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240212220055545.png" alt="image-20240212220055545"></p>
+<p>牛客网刷题</p>
+<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240212220157525.png" alt="image-20240212220157525"></p>
+<p><strong>《<a target="_blank" rel="noopener" href="https://www.zhihu.com/search?q=%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BA+MySQL&search_source=Entity&hybrid_search_source=Entity&hybrid_search_extra=%7B%22sourceType%22:%22answer%22,%22sourceId%22:2433597616%7D">深入浅出 MySQL</a>》</strong></p>
+<p>前面的部分的“基础篇”可以快速略过，重点的就是后面的“开发篇和优化篇”。</p>
+<p>尤其是后面的“优化篇”对我帮助很大，学习了一些常见的 MySQL 优化方式。</p>
+<p>毕竟数据库性能优化是对我们来说很重要的一趴。</p>
+<p><strong>《MySQL 技术内幕：InnoDB存储引擎》</strong></p>
+<p>MySQL 中用的做多的就是 InnoDB 引擎，所以更进一步学习 InnoDB 存储引擎很有必要。</p>
+<p>这本书反正就是 MySQL 中的经典书，解析了 InnoDB 的体系结构、实现原理、工作机制，里面呆了大量的实践内容。</p>
+<p><strong>《高性能 MySQL》</strong></p>
+<p>MySQL 不老的经典大部头，这个大家就放在最后看好了。</p>
+<p>这本书好的方面是，每一章都是相对独立的主题，大家可以根据目录选择性的阅读。</p>
+<p>我记得当时我主要就是看了创建高性能的索引、查询性能优化这几个章节，不得不说：Nice！</p>
+<p>作为数据分析师，日常使用 SQL，<strong>主要就是把自己想要的数据或者指标需求转化成 SQL 的语言逻辑去数据库等地方查询数据。</strong></p>
+<p>很多初学者会被网上的一些信息误导，以为 SQL 的学习要掌握到极精深的地步，恨不得深入内核嚼碎了来学。</p>
+<p>怎么说呢，没必要，数据分析师使用 SQL 的重点就是在【<strong>查询</strong>】两个字上。</p>
+<p>所以单纯对数据分析师来说，SQL 的掌握主要在基础语言的学习和性能优化上的学习上就好了。</p>
+<p>没必要深入内核去学习。</p>
+<p>其实大概分的话，由浅入深分成 3 个阶段吧：</p>
+<p><strong>（1）入门阶段</strong></p>
+<p><strong>入门阶段的话就是熟练的掌握增删改查语句、运算符以及函数。</strong></p>
+<p>增删改查语句主要就是 select、insert、update、delete。</p>
+<p>运算符主要就是算术运算符（+、-、*、&#x2F;、%）、赋值运算符（&#x3D;）、比较运算符（＞、≥、＜、≤）和逻辑运算符（AND、ANY、BETWEEN、IN）。</p>
+<p>函数主要就是算法函数和时间函数等。</p>
+<p><strong>（2）进阶阶段</strong></p>
+<p><strong>这一个阶段是重中之重</strong></p>
+<p><strong>进阶阶段主要是熟练掌握多表查询、分组查询、子查询、组合查询等。其中最重要的就是多表查询。</strong></p>
+<p>工作里往往数据不是放在一个表里，而是不同的数据放在不同的表里，这就需要会从不同的表中根据业务需求来获取数据，这就需要 SQL 进行多表查询。</p>
+<p><strong>（3）高级阶段</strong></p>
+<p><strong>高级阶段要是为了提高 SQL 的效率。都是写 SQL，怎么可以让 SQL 执行效率更快。</strong></p>
+<p>在这各阶段，主要要求你去学习约束、事务、锁、触发器、视图等内容。</p>
+<p><strong>虽然我希望大家都能掌握到第 3 阶段，但是我也知道，这对刚入行的数据分析师是有点难度的，因为这些是需要你在大量工作中积累经验。</strong></p>
+<p><strong>所以对于我希望你最好掌握到第二阶段【进阶】。</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/10/05/%E5%AD%A6%E4%B9%A0/" data-id="cm1vw1yai0004hkvjd12zcho9" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/10/05/%E8%8B%B1%E8%AF%AD/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/10/05/%E9%97%AE%E9%A2%98/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/10/05/%E8%81%8C%E4%B8%9A/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/05/%E8%81%8C%E8%A7%84/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/05/%E8%8B%B1%E8%AF%AD/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/05/%E5%AD%A6%E4%B9%A0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/05/%E9%97%AE%E9%A2%98/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 Odegaard<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,45 +1,245 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>coygOdegaard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Kaggle是什么Kaggle成立于2010年，是一个进行数据发掘和预测竞赛的在线平台。从公司的角度来讲，可以提供一些数据，进而提出一个实际需要解决的问题；从参赛者的角度来讲，他们将组队参与项目，针对其中一个问题提出解决方案，最终由公司选出的最佳方案可以获得5K-10K美金的奖金。 除此之外，Kaggle官方每年还会举办一次大规模的竞赛，奖金高达一百万美金，吸引了广大的数据科学爱好者参与其中。从某">
+<meta property="og:type" content="article">
+<meta property="og:title" content="coygOdegaard">
+<meta property="og:url" content="http://example.com/2024/10/05/Kaggle/index.html">
+<meta property="og:site_name" content="coygOdegaard">
+<meta property="og:description" content="Kaggle是什么Kaggle成立于2010年，是一个进行数据发掘和预测竞赛的在线平台。从公司的角度来讲，可以提供一些数据，进而提出一个实际需要解决的问题；从参赛者的角度来讲，他们将组队参与项目，针对其中一个问题提出解决方案，最终由公司选出的最佳方案可以获得5K-10K美金的奖金。 除此之外，Kaggle官方每年还会举办一次大规模的竞赛，奖金高达一百万美金，吸引了广大的数据科学爱好者参与其中。从某">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-05T03:42:59.425Z">
+<meta property="article:modified_time" content="2024-02-12T13:25:11.236Z">
+<meta property="article:author" content="Odegaard">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="coygOdegaard" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-block content
-  #post
-    if top_img === false || page.bilibili_bg
-      include includes/header/post-info.pug
-    if theme.post_head_ai_description
-      include includes/anzhiyu/ai-info.pug
-    - let url = page.copyright_url || page.permalink
-    article#article-container.post-content(itemscope itemtype=url_for(url))
-      header
-        if (theme.post_meta.post.categories && page.categories && page.categories.data.length > 0)
-          each item, index in page.categories.data
-            a(href=url_for(item.path) itemprop="url").post-meta-categories #[=item.name]
-        if (theme.post_meta.page.tags)
-          each item, index in page.tags.data
-            a(href=url_for(item.path) tabindex="-1" itemprop="url")=item.name
-        h1#CrawlerTitle(itemprop="name headline")= page.title || _p('no_title')
-        - let author = page.copyright_author || config.author
-        span(itemprop="author" itemscope itemtype="http://schema.org/Person")=author
-        if (theme.post_meta.post.date_type)
-          if (theme.post_meta.post.date_type === 'both')
-            time(itemprop="dateCreated datePublished" datetime=date_xml(page.date) title=_p('post.created') + ' ' + full_date(page.date))=date(page.date, config.date_format)
-            time(itemprop="dateCreated datePublished" datetime=date_xml(page.updated) title=_p('post.updated') + ' ' + full_date(page.updated))=date(page.updated, config.date_format)
-          else
-            - let data_type_update = theme.post_meta.post.date_type === 'updated'
-            - let date_type = data_type_update ? 'updated' : 'date'
-            time(itemprop="dateCreated datePublished" datetime=date_xml(page[date_type]) title=date_title + ' ' + full_date(page[date_type]))=date(page[date_type], config.date_format)
-      !=page.content
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-    include includes/post/post-copyright.pug
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
-
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">coygOdegaard</a>
+      </h1>
       
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Kaggle" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/10/05/Kaggle/" class="article-date">
+  <time class="dt-published" datetime="2024-10-05T03:42:59.425Z" itemprop="datePublished">2024-10-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Kaggle"><a href="#Kaggle" class="headerlink" title="Kaggle"></a>Kaggle</h1><h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>Kaggle成立于2010年，是一个进行数据发掘和预测竞赛的在线平台。从公司的角度来讲，可以提供一些数据，进而提出一个实际需要解决的问题；从参赛者的角度来讲，他们将组队参与项目，针对其中一个问题提出解决方案，最终由公司选出的最佳方案可以获得5K-10K美金的奖金。</p>
+<p>除此之外，Kaggle官方每年还会举办一次大规模的竞赛，奖金高达一百万美金，吸引了广大的数据科学爱好者参与其中。从某种角度来讲，大家可以把它理解为一个众包平台，类似国内的猪八戒。但是不同于传统的低层次劳动力需求，Kaggle一直致力于解决业界难题，因此也创造了一种全新的劳动力市场——不再以学历和工作经验作为唯一的人才评判标准，而是着眼于个人技能，为顶尖人才和公司之间搭建了一座桥梁。</p>
+<p>这里有一篇对Kaggle首席科学家Jeremy Howard的采访，介绍了Kaggle的创建初衷及运营模式，即任用最聪明的人解决世界上最棘手的问题；同时，任何公司和组织都可以受益于机器学习的发展进步，</p>
+<h2 id="Kaggle参赛者的背景大多是什么样的？"><a href="#Kaggle参赛者的背景大多是什么样的？" class="headerlink" title="Kaggle参赛者的背景大多是什么样的？"></a><strong>Kaggle参赛者的背景大多是什么样的？</strong></h2><p>从比赛目标出发，参赛者主要分为两种，一种是以奖金和排名为目的，包括靠奖金为生的职业Kaggler；另外一种就是以提升相关skills和背景为目的业余爱好者甚至在校学生了。</p>
+<p>从背景来看，前者的来源主要有丰富data science、data mining、machine learning工作经验的业内人士，或者是实力强劲的民间“技术宅”；而后者则往往是一些有一定技术能力，但经验欠缺，从中进行学习和锻炼的“长江后浪”。</p>
+<h2 id="0基础的人如何上手Kaggle？"><a href="#0基础的人如何上手Kaggle？" class="headerlink" title="0基础的人如何上手Kaggle？"></a><strong>0基础的人如何上手Kaggle？</strong></h2><p>理论上来讲，Kaggle欢迎任何数据科学的爱好者，不过实际上，要想真的参与其中，还是有一定门槛的。一般来讲，参赛者最好具有统计、计算机或数学相关背景，有一定的coding技能，对机器学习和深度学习有基本的了解。Kaggle任务虽然不限制编程语言，但绝大多数队伍会选用Python和R，所以你应该至少熟悉其中一种。</p>
+<p>此外，对于那些对成绩有追求的人，Feature Engineering也是必不可少的。</p>
+<p>当然，如果你从未独立做过一个项目，还是要从<strong>练习赛开始熟悉</strong>。因为竞赛模式中的任务是公司悬赏发布的实际案例，并没有标准的答案；而练习赛不仅项目难度低，而且是有官方给出的参考方案的，大家可以用来对比改善自己的测试结果，从中进行提高。</p>
+<p>所以呢，建议感兴趣的同学先去独立做一下101和playground的训练赛，至于做多少个案例才能上道，就要看个人素质啦。这里为大家推荐几篇非常好的文章，里面手把手的教了大家入门级的三个经典练习项目，供大家学习。</p>
+<ol>
+<li>Titanic（泰坦尼克之灾）</li>
+</ol>
+<p>中文教程： <a href="https://link.zhihu.com/?target=http://blog.csdn.net/han_xiaoyang/article/details/49797143">逻辑回归应用之Kaggle泰坦尼克之灾</a><br>英文教程：<a href="https://link.zhihu.com/?target=https://www.kaggle.com/helgejo/titanic/an-interactive-data-science-tutorial">An Interactive Data Science Tutorial</a></p>
+<ol start="2">
+<li>House Prices: Advanced Regression Techniques（房价预测）</li>
+</ol>
+<p>中文教程：<a href="https://link.zhihu.com/?target=https://www.cnblogs.com/irenelin/p/7400388.html">Kaggle竞赛 — 2017年房价预测</a><br>英文教程：<a href="https://link.zhihu.com/?target=https://www.kaggle.com/neviadomski/house-prices-advanced-regression-techniques/how-to-get-to-top-25-with-simple-model-sklearn">How to get to TOP 25% with Simple Model using sklearn</a></p>
+<ol start="3">
+<li>Digital Recognition（数字识别）</li>
+</ol>
+<p>中文教程：<a href="https://link.zhihu.com/?target=http://blog.csdn.net/u012162613/article/details/41929171">大数据竞赛平台—Kaggle 入门</a><br>英文教程：<a href="https://link.zhihu.com/?target=https://www.kaggle.com/arthurtok/digit-recognizer/interactive-intro-to-dimensionality-reduction">Interactive Intro to Dimensionality Reduction</a></p>
+<h2 id="Kaggle竞赛的认可度高么？"><a href="#Kaggle竞赛的认可度高么？" class="headerlink" title="Kaggle竞赛的认可度高么？"></a><strong>Kaggle竞赛的认可度高么？</strong></h2><p>Kaggle作为Data Science业内享有盛名的平台，在业界拥有极高的认可度。所以如果你是想寻找相关行业的工作，那一个漂亮的<strong>Kaggle profile将为你的简历增色不少</strong>。</p>
+<p>对于刚刚进入这个行业的菜鸟而言，参加Kaggle的项目是非常“长见识”的，可能初期的尝试会非常吃力，毕竟都是非常前沿的问题，但是如果能坚持完整的把一个项目做下来，且不说coding能力会有一个很大的提高，在实际案例中解决问题的能力也会得到极大的锻炼，为自己的职业生涯打下一个良好的基础。如果能在Kaggle这种高手云集的比赛中获得一个还不错的成绩，写在简历上足以打动你今后的Boss，跳槽就翻倍的高薪工作指日可待！值得一提的是，虽然是汇集精英的社区，Kaggle的论坛氛围很好，对新人非常友好，大家一定要多看Script多请教！</p>
+<p>首先，选择数据量小的项目，这样不管使用什么算法都不会耗时太久，对机器性能要求也不高，出结果也比较快；其次，选择难度低奖金少的项目，一方面竞争小，另一方面也适合新手；最后，选择参与人数多的项目，毕竟有那么多“僵尸号”撑着。这样下来，基本上认认真真做下来排名都不会太难看。</p>
+<ul>
+<li>选择恰当的工具：</li>
+</ul>
+<p>我们都知道循序渐进的道理，因此对于刚刚涉猎Kaggle，只是希望从中学习，而不追求高排名的同学，可以先从学习Machine Learning中常用的模型开始，比如Logistic Regression和Random Forest，这两个模型对于大部分问题就够了；基础好的还可以学习一下Gradient Boosting，虽然难度高一点，但是可视化效果会好很多。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/10/05/Kaggle/" data-id="cm1vw1yac0000hkvj6zr02mal" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/10/05/python/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/10/04/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/10/05/%E8%81%8C%E4%B8%9A/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/05/%E8%81%8C%E8%A7%84/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/05/%E8%8B%B1%E8%AF%AD/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/05/%E5%AD%A6%E4%B9%A0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/05/%E9%97%AE%E9%A2%98/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 Odegaard<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

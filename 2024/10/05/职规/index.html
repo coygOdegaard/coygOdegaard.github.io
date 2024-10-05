@@ -1,45 +1,230 @@
-extends includes/layout.pug
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>coygOdegaard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="个性化信息以一天为时间单位，反映访谈对象在一整天中的典型工作行为，200-300 字早上六点种起床，我洗漱完去学生宿舍催促、提醒学生们起床，若上午早些时候没有课就在早上监督，巡视完早读后回去吃早饭和买菜。在上完一二节课后监督学生大课间的跑操、做操情况。在此之后有课就上课，没有上课就批改学生作业。同时还要备课,以及与其它老师交流同学们的学习情况。傍晚有时间就和同事打打 网球，或者运动一下。晚上就是巡">
+<meta property="og:type" content="article">
+<meta property="og:title" content="coygOdegaard">
+<meta property="og:url" content="http://example.com/2024/10/05/%E8%81%8C%E8%A7%84/index.html">
+<meta property="og:site_name" content="coygOdegaard">
+<meta property="og:description" content="个性化信息以一天为时间单位，反映访谈对象在一整天中的典型工作行为，200-300 字早上六点种起床，我洗漱完去学生宿舍催促、提醒学生们起床，若上午早些时候没有课就在早上监督，巡视完早读后回去吃早饭和买菜。在上完一二节课后监督学生大课间的跑操、做操情况。在此之后有课就上课，没有上课就批改学生作业。同时还要备课,以及与其它老师交流同学们的学习情况。傍晚有时间就和同事打打 网球，或者运动一下。晚上就是巡">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-05T03:42:59.450Z">
+<meta property="article:modified_time" content="2024-05-10T11:12:16.697Z">
+<meta property="article:author" content="Odegaard">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="coygOdegaard" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-block content
-  #post
-    if top_img === false || page.bilibili_bg
-      include includes/header/post-info.pug
-    if theme.post_head_ai_description
-      include includes/anzhiyu/ai-info.pug
-    - let url = page.copyright_url || page.permalink
-    article#article-container.post-content(itemscope itemtype=url_for(url))
-      header
-        if (theme.post_meta.post.categories && page.categories && page.categories.data.length > 0)
-          each item, index in page.categories.data
-            a(href=url_for(item.path) itemprop="url").post-meta-categories #[=item.name]
-        if (theme.post_meta.page.tags)
-          each item, index in page.tags.data
-            a(href=url_for(item.path) tabindex="-1" itemprop="url")=item.name
-        h1#CrawlerTitle(itemprop="name headline")= page.title || _p('no_title')
-        - let author = page.copyright_author || config.author
-        span(itemprop="author" itemscope itemtype="http://schema.org/Person")=author
-        if (theme.post_meta.post.date_type)
-          if (theme.post_meta.post.date_type === 'both')
-            time(itemprop="dateCreated datePublished" datetime=date_xml(page.date) title=_p('post.created') + ' ' + full_date(page.date))=date(page.date, config.date_format)
-            time(itemprop="dateCreated datePublished" datetime=date_xml(page.updated) title=_p('post.updated') + ' ' + full_date(page.updated))=date(page.updated, config.date_format)
-          else
-            - let data_type_update = theme.post_meta.post.date_type === 'updated'
-            - let date_type = data_type_update ? 'updated' : 'date'
-            time(itemprop="dateCreated datePublished" datetime=date_xml(page[date_type]) title=date_title + ' ' + full_date(page[date_type]))=date(page[date_type], config.date_format)
-      !=page.content
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-    include includes/post/post-copyright.pug
+  
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
 
-    //- ad
-    if theme.ad && theme.ad.post
-      .ads-wrap!=theme.ad.post
-
-    if theme.post_pagination
-      include includes/pagination.pug
-    if theme.related_post && theme.related_post.enable
-      != related_posts(page,site.posts)
-
-    if page.comments !== false && theme.comments && theme.comments.use
-      - var commentsJsLoad = true
-      !=partial('includes/third-party/comments/index', {}, {cache: true})
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">coygOdegaard</a>
+      </h1>
       
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS 订阅"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="搜索"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-职规" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/10/05/%E8%81%8C%E8%A7%84/" class="article-date">
+  <time class="dt-published" datetime="2024-10-05T03:42:59.450Z" itemprop="datePublished">2024-10-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="个性化信息"><a href="#个性化信息" class="headerlink" title="个性化信息"></a><strong>个性化信息</strong></h1><h2 id="以一天为时间单位，反映访谈对象在一整天中的典型工作行为，200-300-字"><a href="#以一天为时间单位，反映访谈对象在一整天中的典型工作行为，200-300-字" class="headerlink" title="以一天为时间单位，反映访谈对象在一整天中的典型工作行为，200-300 字"></a><strong>以一天为时间单位，反映访谈对象在一整天中的典型工作行为，200-300 字</strong></h2><p>早上六点种起床，我洗漱完去学生宿舍催促、提醒学生们起床，若上午早些时候没有课就在早上监督，巡视完早读后回去吃早饭和买菜。在上完一二节课后监督学生大课间的跑操、做操情况。在此之后有课就上课，没有上课就批改学生作业。同时还要备课,以及与其它老师交流同学们的学习情况。傍晚有时间就和同事打打 网球，或者运动一下。晚上就是巡查和监督晚读和晚自修。</p>
+<h2 id="访谈对象对所从事职业的主观评价和工作体会，100-200字"><a href="#访谈对象对所从事职业的主观评价和工作体会，100-200字" class="headerlink" title="访谈对象对所从事职业的主观评价和工作体会，100-200字"></a><strong>访谈对象对所从事职业的主观评价和工作体会，100-200字</strong></h2><p>尽管工作上的事物业比较繁琐，工作也比较辛苦,但出于对孩子们的喜爱以及看到孩子们进步的成就感，使得其成为了我不断坚持从事这一行业的源源动力。这项工作出于为各种各样学生服务的性质，使得教师们还需调整自身的教学方法，使其适合大部分学生的需求。</p>
+<h2 id="访谈对象给大学生的建议"><a href="#访谈对象给大学生的建议" class="headerlink" title="访谈对象给大学生的建议"></a>访谈对象给大学生的建议</h2><p>大学只是起点起点需立大志，而不应把大学当做放松消遣之地。</p>
+<h2 id="访谈员访谈感受"><a href="#访谈员访谈感受" class="headerlink" title="访谈员访谈感受"></a>访谈员访谈感受</h2><p>深刻体悟到了教师行业的辛苦以及对学生的关心之切。即使在课余时间仍想着如何帮助学生取得进步，以及不仅要了解学生学业上的事情，同时也要了解学生生活上的事情。也理解了作为老师有着不能告诉学生的苦衷，这使得学生与老师产生了隔阂。就如老师因为某些学生生活上或心理上的问题，来对其有所偏担，这就造成了学生与学生或学生与老师之间的矛盾。</p>
+<h1 id="职业技能"><a href="#职业技能" class="headerlink" title="职业技能"></a>职业技能</h1><p>1、沟通能力:教师需要与学生家长和同事进行有效的沟通。包括清晰表达思想、倾听他人意见和解释复杂概念等，并且其沟通能力要能适应不同的教学环境和学生需求，并灵活运用不同的教学技术、利用教学资源和评估学生学习成果。</p>
+<p>2、教学方法:教师需要具备有效的教学方法和策略,包括灵活运用不同的教学方法，利用教学资源和评传学生学习成果等。</p>
+<p>3、学科知识：教师需要深入了解所教授学科的知识和理论，以便能够准确教授学生，并回答他们的问题。</p>
+<p>4、评估与反馈:教师需要具备评估学生学习成果的能力，并能够及时给予学生有针对性的反馈，帮助他们改变和进步。</p>
+<h1 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h1><p>视频会议工具:钉钉、腾讯会议等，以远程教学或线上会议形式与学生、同事或家长进行互动和沟通。</p>
+<p>办公软件:教师需熟练运用办公软件和Microsoft Office 套件用于制定课程计划、创建教学材料、记录学生成绩等.</p>
+<h1 id="薪酬待遇"><a href="#薪酬待遇" class="headerlink" title="薪酬待遇"></a>薪酬待遇</h1><p>1、薪酬结构：基本工资+教龄津贴+职务津贴+其它补贴</p>
+<p>2、福利：医疗保险、养老金和退休福利，假期和休假、住房津贴及子女教育福利、社会保障和福利</p>
+<p>3、本人薪酬满意度：3   (薪酬满意度评分: 1-5,分别代表“非常不满意”~“非常满意”)</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2024/10/05/%E8%81%8C%E8%A7%84/" data-id="cm1vw1yak0008hkvj5xnzcya3" data-title="" class="article-share-link"><span class="fa fa-share">分享</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2024/10/05/%E8%81%8C%E4%B8%9A/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/10/05/%E8%8B%B1%E8%AF%AD/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/10/">十月 2024</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/10/05/%E8%81%8C%E4%B8%9A/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/05/%E8%81%8C%E8%A7%84/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/05/%E8%8B%B1%E8%AF%AD/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/05/%E5%AD%A6%E4%B9%A0/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2024/10/05/%E9%97%AE%E9%A2%98/">(no title)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 Odegaard<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
