@@ -1,227 +1,45 @@
-<!DOCTYPE html>
-<html lang="zh-CN" >
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<title>coygOdegaard</title>
-    <link rel="alternate" href="" type="application/atom+xml"/>
-	<link rel="shortcut icon" href=""/>
-	
-<link rel="stylesheet" href="/css/style.css">
+extends includes/layout.pug
 
-	
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+block content
+  #post
+    if top_img === false || page.bilibili_bg
+      include includes/header/post-info.pug
+    if theme.post_head_ai_description
+      include includes/anzhiyu/ai-info.pug
+    - let url = page.copyright_url || page.permalink
+    article#article-container.post-content(itemscope itemtype=url_for(url))
+      header
+        if (theme.post_meta.post.categories && page.categories && page.categories.data.length > 0)
+          each item, index in page.categories.data
+            a(href=url_for(item.path) itemprop="url").post-meta-categories #[=item.name]
+        if (theme.post_meta.page.tags)
+          each item, index in page.tags.data
+            a(href=url_for(item.path) tabindex="-1" itemprop="url")=item.name
+        h1#CrawlerTitle(itemprop="name headline")= page.title || _p('no_title')
+        - let author = page.copyright_author || config.author
+        span(itemprop="author" itemscope itemtype="http://schema.org/Person")=author
+        if (theme.post_meta.post.date_type)
+          if (theme.post_meta.post.date_type === 'both')
+            time(itemprop="dateCreated datePublished" datetime=date_xml(page.date) title=_p('post.created') + ' ' + full_date(page.date))=date(page.date, config.date_format)
+            time(itemprop="dateCreated datePublished" datetime=date_xml(page.updated) title=_p('post.updated') + ' ' + full_date(page.updated))=date(page.updated, config.date_format)
+          else
+            - let data_type_update = theme.post_meta.post.date_type === 'updated'
+            - let date_type = data_type_update ? 'updated' : 'date'
+            time(itemprop="dateCreated datePublished" datetime=date_xml(page[date_type]) title=date_title + ' ' + full_date(page[date_type]))=date(page[date_type], config.date_format)
+      !=page.content
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+    include includes/post/post-copyright.pug
 
-<body>
-	<div class="main-con">
+    //- ad
+    if theme.ad && theme.ad.post
+      .ads-wrap!=theme.ad.post
 
-        <div class="nav cl">
-    <ul class="cl nav-list">
-        
-            <li>
-                
-                    <a href="/" class="">
-                        <i class="fa fa-home"></i> 
-                        <span>主页</span>
-                    </a>
-                
-            </li>
-        
-            <li>
-                
-                    <a href="/archives/" class="">
-                        <i class=" fa-"></i> 
-                        <span>归档</span>
-                    </a>
-                
-            </li>
-        
-            <li>
-                
-                    
-                    <a href="javascript:void(0)" class="">
-                    
-                        <i class=" fa-"></i> 
-                        <span>关于</span>
-                        <span class="drop-flag fa fa-angle-down"></span>
-                    </a>
-                    <dl>
-                        
-                            <li>
-                                <a href="/about" class="">
-                                    <i class=" fa-"></i>
-                                    <span>关于本站</span>
-                                </a>
-                            </li>
-                        
-                    </dl>
-                
-            </li>
-        
-    </ul>
-    <ul class="cl nav-tool">
-        
-            <li>
-                <a href="/github">
-                    <i class="fa fa-github"></i>
-                </a>
-            </li>
-        
-            <li>
-                <a href="/mail">
-                    <i class="fa fa-envelope"></i>
-                </a>
-            </li>
-        
-            <li>
-                <a href="/twitter">
-                    <i class="fa fa-twitter"></i>
-                </a>
-            </li>
-        
-        
-        <li>
-            <a href="javascript:void(0)" class="nav-search-btn">
-                <i class="fa fa-search"></i>
-            </a>
-        </li>
-        
-    </ul>
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="nav-search"><input type="search" name="q" class="nav-search-input" placeholder="search..."><input type="hidden" name="sitesearch" value="http://example.com"></form>
-</div>
+    if theme.post_pagination
+      include includes/pagination.pug
+    if theme.related_post && theme.related_post.enable
+      != related_posts(page,site.posts)
 
-        <header class="top" id="fallEle" style="background-image: url(/imgs/head.jpg)">
-    <i class="fa fa-bars" id="media-toggle" style="display: none"></i>
-    <div class="top-info cl fadeToBottom">
-        <h2 class="site-name"><a href="/">mokusei</a> <small id="type-data">This is a hexo theme</small></h2>
-    </div>
-</header>
-
-        <div class="con-wrap fadeToTop">
-    
-    <section class="article-area">
-    
-        <article class="article">
-    <div class="article-wrap">
-        
-            <h2 class="article-title cl">
-                空标题
-            </h2>
-        
-
-        <ul class="article-extra" style="margin-bottom: 20px">
-            
-            <li class="article-time">
-                2024-10-05
-            </li>
-            
-
-            
-                
-            
-
-
-        </ul>
-        <div class="article-description">
-            
-            <p>[TOC]</p>
-<h1 id="单词"><a href="#单词" class="headerlink" title="单词"></a>单词</h1><h2 id="不会"><a href="#不会" class="headerlink" title="不会"></a>不会</h2><p>rigor 严厉，严格；component 零件，组成部分；endurance 忍耐力；depression 抑郁；fulfilling 充实的；prioritize 把…..区分优先次序，优先考虑；overall 整体的；fatigue 疲劳；yield 产生；bold 大胆的，果敢的；rust 使生锈，铁锈；blade 刀刃；strip 剥去，除去，脱去衣服；craft 工艺；outline 纲要；lease 租用，租约；loaner借用物；gamble 打赌，赌博；gambler 赌徒；rational 合理的，有理智的；harsh 严厉的，残酷的，恶劣的；prominent 重要的，知名的；substantial 大量的，物质的；inherent 本质的，基本的；administration 管理，行政；<del>部门；</del>部门；    speculation 预测；decent 体面的；essence 本质；dispute 争端；collapse 倒塌，昏倒，崩溃；</p>
-<h2 id="不怎么熟"><a href="#不怎么熟" class="headerlink" title="不怎么熟"></a>不怎么熟</h2><p>adopt 采用；enhance 加强；exhausted 精疲力尽的；pledge v.发誓；enthusiasm 热爱，热情；virtually 实际上，几乎，虚拟地；barrel 桶；accessible 易得到的；易使用的；indispensable 不可缺少的；regulate 控制，管理，调整；meantime 与此同时；attribute(attribute sth.to sb.&#x2F;sth.)把…..归因于；contribute 有助于，贡献，捐赠；sustain 保持，维持；inherit 继承，继任，接受遗产；underline 强调，在什么下划线；outcome 结果；</p>
-<h2 id="替代词"><a href="#替代词" class="headerlink" title="替代词"></a>替代词</h2><p>重要的：essential,vital,crucial</p>
-<h1 id="词组"><a href="#词组" class="headerlink" title="词组"></a>词组</h1><p>in turn 依次，轮流，相应地，反过来；self-discipline 自律;coupled with+Ving&#x2F;n.  和；                        in conclusion 总之；inside and outside the classroom 课堂内外；prioritize…over… 把什么置于什么之上；lack of 缺少；over time 逐渐地，慢慢地；take delight&#x2F;pleasure in doing sth.  乐于做某事；give rise to sth. 引起；noting but 仅仅，不过；implementation of family planning 计划生育；</p>
-<h1 id="句子"><a href="#句子" class="headerlink" title="句子"></a>句子</h1><p>By prioritizing regular exercise, healthy eating, and sufficient sleep, we can improve our physical and mental health, enabling us to perform better in our academic pursuits.<br>通过优先考虑规律的运动、健康的饮食和充足的睡眠，我们可以改善身心健康，使我们在学业上表现更好。</p>
-
-        </div>
-        
-        
-        
-        <div class="article-tags">
-            <ul class="tags-list cl">
-                
-            </ul>
-        </div>
-        
-        <div class="article-pagination cl">
-        
-            <div class="pagination-prev">
-                <a href="/2024/10/05/%E8%81%8C%E8%A7%84/">空标题</a>
-            </div>
-        
-        
-            <div class="pagination-next">
-                <a href="/2024/10/05/%E5%AD%A6%E4%B9%A0/">空标题</a>
-            </div>
-        
-        </div>
-
-        
-    </div>
-</article>
-
-    </section>
-    
-<section class="tool-area">
-
-    <div class="toolbar">
-        
-
-        
-        <div class="widget-post widget" style="order: 1 ">
-            <h2 class="widget-title"><i class="fa fa-file-text"></i> 近期文章</h2>
-            <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E8%81%8C%E4%B8%9A/">职业</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E8%81%8C%E8%A7%84/">职规</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E8%8B%B1%E8%AF%AD/">英语</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E5%AD%A6%E4%B9%A0/">学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E9%97%AE%E9%A2%98/">问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%842/">数据结构2</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E4%B8%B4%E6%97%B6/">临时</a></li></ul>
-        </div>
-        
-
-        
-        <div class="widget-tags widget" style="order: 2 ">
-            <h2 class="widget-title"><i class="fa fa-tags"></i> 标签</h2>
-            
-        </div>
-        
-
-        
-        <div class="widget-categories widget" style="order: 3 ">
-            <h2 class="widget-title"><i class="fa fa-folder-open"></i> 分类</h2>
-            
-        </div>
-        
-
-    </div>
-</section>
-</div>
-
-    
-        <footer class="footer">
-	<p class="footer-intro">
-		
-		@2024 coygOdegaard.
-	</p>
-	<p class="footer-intro">
-			Powered By <a href="https://hexo.io/zh-cn/" target="_blank">hexo</a>
-			theme <a href="https://github.com/iengu/hexo-theme-mokusei" target="_blank">mokusei</a> by <a href="https://www.iengu.com" target="blank">iengu</a>
-	</p>
-</footer>
-
-
-
-
-        <div class="extend-tools" id="extend-tools" style="display: none;">
-    <ul>
-        <li class="tools-returnTop" title="返回顶部"><i class="fa fa-angle-double-up"></i></li>
-    </ul>
-</div>
-
-	</div>
-
-	
-<script src="/js/org/jquery.min.js"></script>
-
-    
-<script src="/js/extend.js"></script>
-
-</body>
-</html>
+    if page.comments !== false && theme.comments && theme.comments.use
+      - var commentsJsLoad = true
+      !=partial('includes/third-party/comments/index', {}, {cache: true})
+      

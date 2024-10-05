@@ -1,276 +1,45 @@
-<!DOCTYPE html>
-<html lang="zh-CN" >
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<title>coygOdegaard</title>
-    <link rel="alternate" href="" type="application/atom+xml"/>
-	<link rel="shortcut icon" href=""/>
-	
-<link rel="stylesheet" href="/css/style.css">
+extends includes/layout.pug
 
-	
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+block content
+  #post
+    if top_img === false || page.bilibili_bg
+      include includes/header/post-info.pug
+    if theme.post_head_ai_description
+      include includes/anzhiyu/ai-info.pug
+    - let url = page.copyright_url || page.permalink
+    article#article-container.post-content(itemscope itemtype=url_for(url))
+      header
+        if (theme.post_meta.post.categories && page.categories && page.categories.data.length > 0)
+          each item, index in page.categories.data
+            a(href=url_for(item.path) itemprop="url").post-meta-categories #[=item.name]
+        if (theme.post_meta.page.tags)
+          each item, index in page.tags.data
+            a(href=url_for(item.path) tabindex="-1" itemprop="url")=item.name
+        h1#CrawlerTitle(itemprop="name headline")= page.title || _p('no_title')
+        - let author = page.copyright_author || config.author
+        span(itemprop="author" itemscope itemtype="http://schema.org/Person")=author
+        if (theme.post_meta.post.date_type)
+          if (theme.post_meta.post.date_type === 'both')
+            time(itemprop="dateCreated datePublished" datetime=date_xml(page.date) title=_p('post.created') + ' ' + full_date(page.date))=date(page.date, config.date_format)
+            time(itemprop="dateCreated datePublished" datetime=date_xml(page.updated) title=_p('post.updated') + ' ' + full_date(page.updated))=date(page.updated, config.date_format)
+          else
+            - let data_type_update = theme.post_meta.post.date_type === 'updated'
+            - let date_type = data_type_update ? 'updated' : 'date'
+            time(itemprop="dateCreated datePublished" datetime=date_xml(page[date_type]) title=date_title + ' ' + full_date(page[date_type]))=date(page[date_type], config.date_format)
+      !=page.content
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+    include includes/post/post-copyright.pug
 
-<body>
-	<div class="main-con">
+    //- ad
+    if theme.ad && theme.ad.post
+      .ads-wrap!=theme.ad.post
 
-        <div class="nav cl">
-    <ul class="cl nav-list">
-        
-            <li>
-                
-                    <a href="/" class="">
-                        <i class="fa fa-home"></i> 
-                        <span>主页</span>
-                    </a>
-                
-            </li>
-        
-            <li>
-                
-                    <a href="/archives/" class="">
-                        <i class=" fa-"></i> 
-                        <span>归档</span>
-                    </a>
-                
-            </li>
-        
-            <li>
-                
-                    
-                    <a href="javascript:void(0)" class="">
-                    
-                        <i class=" fa-"></i> 
-                        <span>关于</span>
-                        <span class="drop-flag fa fa-angle-down"></span>
-                    </a>
-                    <dl>
-                        
-                            <li>
-                                <a href="/about" class="">
-                                    <i class=" fa-"></i>
-                                    <span>关于本站</span>
-                                </a>
-                            </li>
-                        
-                    </dl>
-                
-            </li>
-        
-    </ul>
-    <ul class="cl nav-tool">
-        
-            <li>
-                <a href="/github">
-                    <i class="fa fa-github"></i>
-                </a>
-            </li>
-        
-            <li>
-                <a href="/mail">
-                    <i class="fa fa-envelope"></i>
-                </a>
-            </li>
-        
-            <li>
-                <a href="/twitter">
-                    <i class="fa fa-twitter"></i>
-                </a>
-            </li>
-        
-        
-        <li>
-            <a href="javascript:void(0)" class="nav-search-btn">
-                <i class="fa fa-search"></i>
-            </a>
-        </li>
-        
-    </ul>
-    <form action="//google.com/search" method="get" accept-charset="UTF-8" class="nav-search"><input type="search" name="q" class="nav-search-input" placeholder="search..."><input type="hidden" name="sitesearch" value="http://example.com"></form>
-</div>
+    if theme.post_pagination
+      include includes/pagination.pug
+    if theme.related_post && theme.related_post.enable
+      != related_posts(page,site.posts)
 
-        <header class="top" id="fallEle" style="background-image: url(/imgs/head.jpg)">
-    <i class="fa fa-bars" id="media-toggle" style="display: none"></i>
-    <div class="top-info cl fadeToBottom">
-        <h2 class="site-name"><a href="/">mokusei</a> <small id="type-data">This is a hexo theme</small></h2>
-    </div>
-</header>
-
-        <div class="con-wrap fadeToTop">
-    
-    <section class="article-area">
-    
-        <article class="article">
-    <div class="article-wrap">
-        
-            <h2 class="article-title cl">
-                空标题
-            </h2>
-        
-
-        <ul class="article-extra" style="margin-bottom: 20px">
-            
-            <li class="article-time">
-                2024-10-05
-            </li>
-            
-
-            
-                
-            
-
-
-        </ul>
-        <div class="article-description">
-            
-            <h1 id="算法的时间复杂度和空间复杂度"><a href="#算法的时间复杂度和空间复杂度" class="headerlink" title="算法的时间复杂度和空间复杂度"></a>算法的时间复杂度和空间复杂度</h1><p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240120110452980.png" alt="image-20240120110452980"></p>
-<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>算法的时间复杂度是一个<strong>函数（数学里面带有未知数的函数表达式）</strong>，它定义了该算法的运行时间。一个算法所花费的时间于其中的语句的执行次数成正比例，<strong>算法中的基本操作的执行次数为算法的时间复杂度</strong>。</p>
-<h3 id="计算："><a href="#计算：" class="headerlink" title="计算："></a>计算：</h3><p>计算时间复杂度的时，不一定要计算精确的执行次数，而只要大概之小红次数，那么这里我们使用大O的渐近表示法。</p>
-<p>例子：<img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240120113537752.png" alt="image-20240120113537752"></p>
-<p>大O的渐近表示法：用于描述函数渐近行为的数学符号。</p>
-<p>推导大O阶的方法：</p>
-<p>1、用<strong>常数1</strong>取代运行时间中的所有加法<strong>常数</strong>。</p>
-<p>2、在修改后的运行次数函数中，<strong>只保留最高阶项</strong>。</p>
-<p>3、如果最高阶项存在且不是1，则<strong>去除于这个项目相乘的常数</strong>，得到的结果就是大O阶。</p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240120114417835.png" alt="image-20240120114417835"></p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240120114706253.png" alt="image-20240120114706253"><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240120114903048.png" alt="image-20240120114903048"></p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240120173940657.png" alt="image-20240120173940657"></p>
-<p>该实例的时间复杂度是O(N)；平均情况一般等于（最好+最坏）&#x2F;2；一般不看平均。</p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240120175817466.png" alt="image-20240120175817466"></p>
-<p>排序的表本身就是有序的，比较次数，可以判断出是n-1次的比较，没有数据交换，此时时间复杂度为O(n)。当最坏的情况，即待排序是逆序的情况。当初始序列从大到小逆序时，需要进行n-1趟排序，进行n(n-1)&#x2F;2次比较和交换。</p>
-<p>不要被题目的程序误导，实在想不出来就去看冒泡排序怎么写。</p>
-<p><strong>算时间复杂度不能只去看是几层循环，而要去看他的思想。</strong></p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240122220744357.png" alt="image-20240122220744357"></p>
-<p>设查找了X次</p>
-<p>反推：最后剩下一个，那上一次的数量就是1的两倍，再上一次就又是两倍。</p>
-<img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240122221014918.png" alt="image-20240122221014918" style="zoom:50%;" />
-
-<p>正推：总数一半一半减少，最后剩下一个。</p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240122221134443.png" alt="image-20240122221134443"></p>
-<p><strong>递归算法</strong>：递归次数*每次递归调用的次数</p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240122224853317.png" alt="image-20240122224853317"></p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240122225924168.png" alt="image-20240122225924168"></p>
-<p>虽然N&lt;3,但是右边那块空的相对于其他的来说很小，所以是O(2^N).</p>
-<p>那也不对啊，这个程序应该到N&lt;3的时候就直接输出1了，而不是会递归到0和1.</p>
-<p>下面这题是”真正的”O(2^N)。</p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240124215911307.png" alt="image-20240124215911307"></p>
-<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><h3 id="定义：-1"><a href="#定义：-1" class="headerlink" title="定义："></a>定义：</h3><p>要注意计算的是额外的空间</p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240124220104955.png" alt="image-20240124220104955"></p>
-<h3 id="计算：-1"><a href="#计算：-1" class="headerlink" title="计算："></a>计算：</h3><p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240124220351847.png" alt="image-20240124220351847"></p>
-<p>每一次循环结束后使用的空间都会被释放掉，所以从头到尾，i 所使用的应该都是同一个空间。</p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240124222449970.png" alt="image-20240124222449970"></p>
-<p>可直接看malloc</p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240124222818662.png" alt="image-20240124222818662"></p>
-<p>递归的空间复杂度要看它递归的深度（次数），这题一共有N次，每次都额外建立了都是常数个额外空间。</p>
-<p><strong>函数开辟的空间一次只能给一个用，不能同时开两个分别进行。</strong></p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240124224437868.png" alt="image-20240124224437868"></p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240124225028609.png" alt="image-20240124225028609"></p>
-<p>当你要算F(N)的时候要先算N-1，要算N-1要先算N-2，依次类推不断往下一直到1，那一共要建立n+1个空间，算完2的时候算3时可以重复利用之前使用的空间（此时已经被释放掉了），所以数量不变，以此类推，一直向上，数量始终不变，所以是O(N)。</p>
-<h1 id="顺序表和链表"><a href="#顺序表和链表" class="headerlink" title="顺序表和链表"></a>顺序表和链表</h1><h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240125163604905.png" alt="image-20240125163604905"></p>
-<p>线性表在逻辑上是线性的关系，不是线性的关系的话比如，树形结构。</p>
-<h3 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h3><p>顺序表其实就是数组。</p>
-<p>要从头连续存储。</p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240125163951122.png" alt="image-20240125163951122"></p>
-<p>1、静态顺序表</p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240125165658666.png" alt="image-20240125165658666"></p>
-<p>特点：如果满了的话就不让插入；</p>
-<p>缺点：不知道大小要定义多少，小了不够用，大了浪费。</p>
-<p>2、动态顺序表</p>
-<p><img src="C:\Users\BD\AppData\Roaming\Typora\typora-user-images\image-20240125172049350.png" alt="image-20240125172049350"></p>
-<p>空间容量指的不是字节数而是个数</p>
-
-        </div>
-        
-        
-        
-        <div class="article-tags">
-            <ul class="tags-list cl">
-                
-            </ul>
-        </div>
-        
-        <div class="article-pagination cl">
-        
-            <div class="pagination-prev">
-                <a href="/2024/10/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%842/">空标题</a>
-            </div>
-        
-        
-            <div class="pagination-next">
-                <a href="/2024/10/05/%E4%B8%B4%E6%97%B6/">空标题</a>
-            </div>
-        
-        </div>
-
-        
-    </div>
-</article>
-
-    </section>
-    
-<section class="tool-area">
-
-    <div class="toolbar">
-        
-
-        
-        <div class="widget-post widget" style="order: 1 ">
-            <h2 class="widget-title"><i class="fa fa-file-text"></i> 近期文章</h2>
-            <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E8%81%8C%E4%B8%9A/">职业</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E8%81%8C%E8%A7%84/">职规</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E8%8B%B1%E8%AF%AD/">英语</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E5%AD%A6%E4%B9%A0/">学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E9%97%AE%E9%A2%98/">问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%842/">数据结构2</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a></li><li class="post-list-item"><a class="post-list-link" href="/2024/10/05/%E4%B8%B4%E6%97%B6/">临时</a></li></ul>
-        </div>
-        
-
-        
-        <div class="widget-tags widget" style="order: 2 ">
-            <h2 class="widget-title"><i class="fa fa-tags"></i> 标签</h2>
-            
-        </div>
-        
-
-        
-        <div class="widget-categories widget" style="order: 3 ">
-            <h2 class="widget-title"><i class="fa fa-folder-open"></i> 分类</h2>
-            
-        </div>
-        
-
-    </div>
-</section>
-</div>
-
-    
-        <footer class="footer">
-	<p class="footer-intro">
-		
-		@2024 coygOdegaard.
-	</p>
-	<p class="footer-intro">
-			Powered By <a href="https://hexo.io/zh-cn/" target="_blank">hexo</a>
-			theme <a href="https://github.com/iengu/hexo-theme-mokusei" target="_blank">mokusei</a> by <a href="https://www.iengu.com" target="blank">iengu</a>
-	</p>
-</footer>
-
-
-
-
-        <div class="extend-tools" id="extend-tools" style="display: none;">
-    <ul>
-        <li class="tools-returnTop" title="返回顶部"><i class="fa fa-angle-double-up"></i></li>
-    </ul>
-</div>
-
-	</div>
-
-	
-<script src="/js/org/jquery.min.js"></script>
-
-    
-<script src="/js/extend.js"></script>
-
-</body>
-</html>
+    if page.comments !== false && theme.comments && theme.comments.use
+      - var commentsJsLoad = true
+      !=partial('includes/third-party/comments/index', {}, {cache: true})
+      
