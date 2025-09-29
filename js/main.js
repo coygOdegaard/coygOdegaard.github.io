@@ -1,232 +1,267 @@
-require([], function (){
+// utils
+const util = {
 
-	var isMobileInit = false;
-	var loadMobile = function(){
-		require(['/js/mobile.js'], function(mobile){
-			mobile.init();
-			isMobileInit = true;
-		});
-	}
-	var isPCInit = false;
-	var loadPC = function(){
-		require(['/js/pc.js'], function(pc){
-			pc.init();
-			isPCInit = true;
-		});
-	}
+  // https://github.com/jerryc127/hexo-theme-butterfly
+  diffDate: (d, more = false) => {
+    const dateNow = new Date()
+    const datePost = new Date(d)
+    const dateDiff = dateNow.getTime() - datePost.getTime()
+    const minute = 1000 * 60
+    const hour = minute * 60
+    const day = hour * 24
 
-	require(['/js/particles.js'], function(particlesJS) {
-		window.particlesJS('particles-js',
+    let result
+    if (more) {
+      const dayCount = dateDiff / day
+      const hourCount = dateDiff / hour
+      const minuteCount = dateDiff / minute
 
-		  {
-		    "particles": {
-		      "number": {
-		        "value": 80,
-		        "density": {
-		          "enable": true,
-		          "value_area": 800
-		        }
-		      },
-		      "color": {
-		        "value": ['#0fc', '#0ff', '#ccc', '#ffa500', '#7b5d5f', '#ff945c', '#cfb7c4']
-		      },
-		      "shape": {
-		        "type": "circle",
-		        "stroke": {
-		          "width": 0,
-		          "color": "#000000"
-		        },
-		        "polygon": {
-		          "nb_sides": 5
-		        },
-		        "image": {
-		          "src": "img/github.svg",
-		          "width": 100,
-		          "height": 100
-		        }
-		      },
-		      "opacity": {
-		        "value": 0.5,
-		        "random": false,
-		        "anim": {
-		          "enable": false,
-		          "speed": 1,
-		          "opacity_min": 0.1,
-		          "sync": false
-		        }
-		      },
-		      "size": {
-		        "value": 5,
-		        "random": true,
-		        "anim": {
-		          "enable": false,
-		          "speed": 40,
-		          "size_min": 0.1,
-		          "sync": false
-		        }
-		      },
-		      "line_linked": {
-		        "enable": true,
-		        "distance": 150,
-		        "color": "#ff945c",
-		        "opacity": 0.4,
-		        "width": 1
-		      },
-		      "move": {
-		        "enable": true,
-		        "speed": 6,
-		        "direction": "none",
-		        "random": false,
-		        "straight": false,
-		        "out_mode": "out",
-		        "attract": {
-		          "enable": false,
-		          "rotateX": 600,
-		          "rotateY": 1200
-		        }
-		      }
-		    },
-		    "interactivity": {
-		      "detect_on": "canvas",
-		      "events": {
-		        "onhover": {
-		          "enable": true,
-		          "mode": "repulse"
-		        },
-		        "onclick": {
-		          "enable": true,
-		          "mode": "push"
-		        },
-		        "resize": true
-		      },
-		      "modes": {
-		        "grab": {
-		          "distance": 400,
-		          "line_linked": {
-		            "opacity": 1
-		          }
-		        },
-		        "bubble": {
-		          "distance": 400,
-		          "size": 40,
-		          "duration": 2,
-		          "opacity": 8,
-		          "speed": 3
-		        },
-		        "repulse": {
-		          "distance": 200
-		        },
-		        "push": {
-		          "particles_nb": 4
-		        },
-		        "remove": {
-		          "particles_nb": 2
-		        }
-		      }
-		    },
-		    "retina_detect": true,
-		    "config_demo": {
-		      "hide_card": false,
-		      "background_color": "#b61924",
-		      "background_image": "",
-		      "background_position": "50% 50%",
-		      "background_repeat": "no-repeat",
-		      "background_size": "cover"
-		    }
-		  }
+      if (dayCount > 14) {
+        result = null
+      } else if (dayCount >= 1) {
+        result = parseInt(dayCount) + ' ' + ctx.date_suffix.day
+      } else if (hourCount >= 1) {
+        result = parseInt(hourCount) + ' ' + ctx.date_suffix.hour
+      } else if (minuteCount >= 1) {
+        result = parseInt(minuteCount) + ' ' + ctx.date_suffix.min
+      } else {
+        result = ctx.date_suffix.just
+      }
+    } else {
+      result = parseInt(dateDiff / day)
+    }
+    return result
+  },
 
-		);
-	});
-	var browser={
-	    versions:function(){
-	    var u = window.navigator.userAgent;
-	    return {
-	        trident: u.indexOf('Trident') > -1, //IE内核
-	        presto: u.indexOf('Presto') > -1, //opera内核
-	        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-	        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-	        mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
-	        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-	        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-	        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
-	        iPad: u.indexOf('iPad') > -1, //是否为iPad
-	        webApp: u.indexOf('Safari') == -1 ,//是否为web应用程序，没有头部与底部
-	        weixin: u.indexOf('MicroMessenger') == -1 //是否为微信浏览器
-	        };
-	    }()
-	}
+  copy: (id, msg) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.select();
+      document.execCommand("Copy");
+      if (msg && msg.length > 0) {
+        hud.toast(msg, 2500);
+      }
+    }
+  },
 
-	$(window).bind("resize", function(){
-		if(isMobileInit && isPCInit){
-			$(window).unbind("resize");
-			return;
-		}
-		var w = $(window).width();
-		if(w >= 700){
-			loadPC();
-		}else{
-			loadMobile();
-		}
-	});
+  toggle: (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.toggle("display");
+    }
+  },
 
-	if(browser.versions.mobile === true || $(window).width() < 700){
-		loadMobile();
-	}else{
-		loadPC();
-	}
+  scrollTop: () => {
+    window.scrollTo({top: 0, behavior: "smooth"});
+  },
 
-	//是否使用fancybox
-	if(yiliaConfig.fancybox === true){
-		require(['/fancybox/jquery.fancybox.js'], function(pc){
-			var isFancy = $(".isFancy");
-			if(isFancy.length != 0){
-				var imgArr = $(".article-inner img");
-				for(var i=0,len=imgArr.length;i<len;i++){
-					var src = imgArr.eq(i).attr("src");
-					var title = imgArr.eq(i).attr("alt");
-					imgArr.eq(i).replaceWith("<a href='"+src+"' title='"+title+"' rel='fancy-group' class='fancy-ctn fancybox'><img src='"+src+"' title='"+title+"'></a>");
-				}
-				$(".article-inner .fancy-ctn").fancybox();
-			}
-		});
+  scrollComment: () => {
+    document.getElementById('comments').scrollIntoView({behavior: "smooth"});
+  },
 
-	}
-	//是否开启动画
-	if(yiliaConfig.animate === true){
+  viewportLazyload: (target, func, enabled = true) => {
+    if (!enabled || !("IntersectionObserver" in window)) {
+      func();
+      return;
+    }
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].intersectionRatio > 0) {
+        func();
+        observer.disconnect();
+      }
+    });
+    observer.observe(target);
+  }
+}
 
-		require(['/js/jquery.lazyload.js'], function(){
-			//avatar
-			$(".js-avatar").attr("src", $(".js-avatar").attr("lazy-src"));
-			$(".js-avatar")[0].onload = function(){
-				$(".profilepic").addClass("show");
-			}
-		});
+const hud = {
+  toast: (msg, duration) => {
+    const d = Number(isNaN(duration) ? 2000 : duration);
+    var el = document.createElement('div');
+    el.classList.add('toast');
+    el.classList.add('show');
+    el.innerHTML = msg;
+    document.body.appendChild(el);
 
-		if(yiliaConfig.isHome === true){
-			//content
-			function showArticle(){
-				$(".article").each(function(){
-					if( $(this).offset().top <= $(window).scrollTop()+$(window).height() && !($(this).hasClass('show')) ) {
-						$(this).removeClass("hidden").addClass("show");
-						$(this).addClass("is-hiddened");
-					}else{
-						if(!$(this).hasClass("is-hiddened")){
-							$(this).addClass("hidden");
-						}
-					}
-				});
-			}
-			$(window).on('scroll', function(){
-				showArticle();
-			});
-			showArticle();
-		}
+    setTimeout(function(){ document.body.removeChild(el) }, d);
+    
+  },
 
-	}
+}
 
-	//是否新窗口打开链接
-	if(yiliaConfig.open_in_new == true){
-		$(".article a[href]").attr("target", "_blank")
-	}
+// defines
 
-});
+const l_body = document.querySelector('.l_body');
+
+
+const init = {
+  toc: () => {
+    utils.jq(() => {
+      const scrollOffset = 32;
+      var segs = [];
+      $("article.md-text :header").each(function (idx, node) {
+        segs.push(node);
+      });
+      function activeTOC() {
+        var scrollTop = $(this).scrollTop();
+        var topSeg = null;
+        for (var idx in segs) {
+          var seg = $(segs[idx]);
+          if (seg.offset().top > scrollTop + scrollOffset) {
+            continue;
+          }
+          if (!topSeg) {
+            topSeg = seg;
+          } else if (seg.offset().top >= topSeg.offset().top) {
+            topSeg = seg;
+          }
+        }
+        if (topSeg) {
+          $("#data-toc a.toc-link").removeClass("active");
+          var link = "#" + topSeg.attr("id");
+          if (link != '#undefined') {
+            const highlightItem = $('#data-toc a.toc-link[href="' + encodeURI(link) + '"]');
+            if (highlightItem.length > 0) {
+              highlightItem.addClass("active");
+            }
+          } else {
+            $('#data-toc a.toc-link:first').addClass("active");
+          }
+        }
+      }
+      function scrollTOC() {
+        const e0 = document.querySelector('#data-toc .toc');
+        const e1 = document.querySelector('#data-toc .toc a.toc-link.active');
+        if (e0 == null || e1 == null) {
+          return;
+        }
+        const offsetBottom = e1.getBoundingClientRect().bottom - e0.getBoundingClientRect().bottom + 100;
+        const offsetTop = e1.getBoundingClientRect().top - e0.getBoundingClientRect().top - 64;
+        if (offsetTop < 0) {
+          e0.scrollBy({top: offsetTop, behavior: "smooth"});
+        } else if (offsetBottom > 0) {
+          e0.scrollBy({top: offsetBottom, behavior: "smooth"});
+        }
+      }
+      
+      var timeout = null;
+      window.addEventListener('scroll', function() {
+        activeTOC();
+        if(timeout !== null) clearTimeout(timeout);
+        timeout = setTimeout(function() {
+          scrollTOC();
+        }.bind(this), 50);
+      });      
+    })
+  },
+  sidebar: () => {
+    utils.jq(() => {
+      $("#data-toc a.toc-link").click(function (e) {
+        sidebar.dismiss();
+      });
+    })
+  },
+  relativeDate: (selector) => {
+    selector.forEach(item => {
+      const $this = item
+      const timeVal = $this.getAttribute('datetime')
+      let relativeValue = util.diffDate(timeVal, true)
+      if (relativeValue) {
+        $this.innerText = relativeValue
+      }
+    })
+  },
+  /**
+   * Tabs tag listener (without twitter bootstrap).
+   */
+  registerTabsTag: function () {
+    // Binding `nav-tabs` & `tab-content` by real time permalink changing.
+    document.querySelectorAll('.tabs .nav-tabs .tab').forEach(element => {
+      element.addEventListener('click', event => {
+        event.preventDefault();
+        // Prevent selected tab to select again.
+        if (element.classList.contains('active')) return;
+        // Add & Remove active class on `nav-tabs` & `tab-content`.
+        [...element.parentNode.children].forEach(target => {
+          target.classList.toggle('active', target === element);
+        });
+        // https://stackoverflow.com/questions/20306204/using-queryselector-with-ids-that-are-numbers
+        const tActive = document.getElementById(element.querySelector('a').getAttribute('href').replace('#', ''));
+        [...tActive.parentNode.children].forEach(target => {
+          target.classList.toggle('active', target === tActive);
+        });
+        // Trigger event
+        tActive.dispatchEvent(new Event('tabs:click', {
+          bubbles: true
+        }));
+      });
+    });
+
+    window.dispatchEvent(new Event('tabs:register'));
+  },
+
+  canonicalCheck: () => {
+    const canonical = window.canonical;
+    function showTip(isOfficial = false) {
+      const meta = document.createElement('meta');
+      meta.name = 'robots';
+      meta.content = 'noindex, nofollow';
+      document.head.appendChild(meta);
+      const notice = document.createElement('div');
+      const originalURL = `https://${canonical.originalHost}`;
+      if (isOfficial) {
+        notice.className = 'canonical-tip official';
+        notice.innerHTML = `
+        <a href="${originalURL}" target="_self" rel="noopener noreferrer">
+        本站为官方备用站，仅供应急。主站：${originalURL}
+        </a>
+        `;
+      } else {
+        notice.className = 'canonical-tip unofficial';
+        notice.innerHTML = `
+        <a href="${originalURL}" target="_self" rel="noopener noreferrer">
+        <div class="headline icon">☠️</div>
+        本站为非法克隆站，请前往官方源站访问。<br>
+        源站：${originalURL}
+        </a>
+        `;
+      }
+      document.body.appendChild(notice);
+    }
+    if (!canonical.originalHost) return;
+    const currentURL = new URL(window.location.href);
+    const currentHost = currentURL.hostname.replace(/^www\./, '');
+    if (currentHost == 'localhost') return;
+    const encodedCurrentHost = window.btoa(currentHost);
+    const isCurrentHostValid = canonical.encoded === encodedCurrentHost;
+    const canonicalTag = document.querySelector('link[rel="canonical"]');
+    if (!canonicalTag) {
+      if (isCurrentHostValid) {
+        return;
+      }
+      if (canonical.officialHosts?.includes(currentHost)) {
+        showTip(true);
+        return;
+      }
+      showTip(false);
+      return;
+    }
+    const canonicalURL = new URL(canonicalTag.href);
+    const canonicalHost = canonicalURL.hostname.replace(/^www\./, '');
+    const encodedCanonicalHost = window.btoa(canonicalHost);
+    const isCanonicalHostValid = canonical.encoded === encodedCanonicalHost;
+    if (isCanonicalHostValid && isCurrentHostValid) {
+      return;
+    }
+    showTip(canonical.officialHosts?.includes(currentHost));
+  }
+
+}
+
+
+// init
+init.toc()
+init.sidebar()
+init.relativeDate(document.querySelectorAll('#post-meta time'))
+init.registerTabsTag()
+init.canonicalCheck()
