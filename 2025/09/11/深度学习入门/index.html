@@ -1,222 +1,287 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>深度学习入门 | coygOdegaard</title><meta name="author" content="Odegaard"><meta name="copyright" content="Odegaard"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="深度学习入门"><meta name="application-name" content="深度学习入门"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="深度学习入门"><meta property="og:url" content="http://example.com/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/index.html"><meta property="og:site_name" content="coygOdegaard"><meta property="og:description" content="神经网络激活函数在神经网络发展的历史上， sigmoid函数很早就开始被使用了，而最近则主要使用ReLU（Rectified Linear Unit）函数。 ReLU函数在输入大于0时，直接输出该值；在输入小于等于0时，输出0。 ReLU函数可以表示为下面的式。   def relu(x): 	re"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta property="article:author" content="Odegaard"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg"><meta name="description" content="神经网络激活函数在神经网络发展的历史上， sigmoid函数很早就开始被使用了，而最近则主要使用ReLU（Rectified Linear Unit）函数。 ReLU函数在输入大于0时，直接输出该值；在输入小于等于0时，输出0。 ReLU函数可以表示为下面的式。   def relu(x): 	re"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="http://example.com/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
-  linkPageTop: undefined,
-  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2023/09/03/125766904/ee23df8517f3c3e3efc4145658269c06_5714860933110284659.png"},
-  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
-  diytitle: {"enable":true,"leaveTitle":"w(ﾟДﾟ)w 不要走！再看看嘛！","backTitle":"♪(^∇^*)欢迎肥来！"},
-  LA51: undefined,
-  greetingBox: undefined,
-  twikooEnvId: '',
-  commentBarrageConfig:undefined,
-  music_page_default: "nav_music",
-  root: '/',
-  preloader: {"source":3},
-  friends_vue_info: undefined,
-  navMusic: true,
-  mainTone: undefined,
-  authorStatus: undefined,
-  algolia: undefined,
-  localSearch: undefined,
-  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    simplehomepage: true,
-    post: false
-  },
-  runtime: '天',
-  date_suffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: Odegaard","link":"链接: ","source":"来源: coygOdegaard","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
-  lightbox: 'fancybox',
-  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
-      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: true,
-  isAnchor: false,
-  shortcutKey: undefined,
-  autoDarkmode: true
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  configTitle: 'coygOdegaard',
-  title: '深度学习入门',
-  postAI: '',
-  pageFillDescription: '神经网络, 激活函数, 手写数字识别, 神经网络的学习, 损失函数, 误差反向传播法, 激活函数层的实现, Affinex2FSoftmax层的实现, 与学习相关的技巧, 参数的更新, 随机梯度下降法, Momentum, AdaGrad, Adam, 权重的初始值, 隐藏层的激活值分布, ReLU的权重初始值, Batch Normalization, Batch Normalization 的算法, 正则化, 权值衰减, Dropout, 超参数的验证, 验证数据, 超参数的最优化, 卷积神经网络 CNN, 整体结构, 卷积层, 全连接层的问题, 卷积运算, 填充, 步幅, 3维数据的卷积运算, 批处理, 池化层, 卷积层和池化层的实现, 4维数组, 基于 im2col的展开, 卷积层的实现, 池化层的实现, CNN的实现, CNN的可视化, 第1层权重的可视化, 基于分层结构的信息提取, 具有代表性的CNN, 深度学习, 加深网络, 深度学习的高速化神经网络激活函数在神经网络发展的历史上函数很早就开始被使用了而最近则主要使用函数函数在输入大于时直接输出该值在输入小于等于时输出函数可以表示为下面的式输出层的激活函数用表示不同于隐藏层的激活函数读作输出层所用的激活函数要根据求解问题的性质决定一般地回归问题可以使用恒等函数二元分类问题可以使用函数多元分类问题可以使用函数恒等函数会将输入按原样输出对于输入的信息不加以任何改动地直接输出因此在输出层使用恒等函数时输入信号会原封不动地被输出分类问题中使用的函数可以用下面的式表示上面的函数的实现虽然正确描述了式但在计算机的运算上有一定的缺陷这个缺陷就是溢出问题函数的实现中要进行指数函数的运算但是此时指数函数的值很容易变得非常大函数的实现可以像式这样进行改进首先在分子和分母上都乘上这个任意的常数因为同时对分母和分子乘以相同的常数所以计算结果不变然后把这个移动到指数函数中记为最后把替换为另一个符号说明在进行的指数函数的运算时加上或者减去某个常数并不会改变运算的结果这里的可以使用任何值但是为了防止溢出一般会使用输入信号中的最大值溢出对策函数的输出是到之间的实数并且函数的输出值的总和是输出总和为是函数的一个重要性质正因为有了这个性质我们才可以把函数的输出解释为概率比如上面的例子可以解释成的概率是的概率是的概率是即便使用了函数各个元素之间的大小关系也不会改变这是因为指数函数是单调递增函数实际上上例中的各元素的大小关系和的各元素的大小关系并没有改变比如的最大值是第个元素的最大值也仍是第个元素一般而言神经网络只把输出值最大的神经元所对应的类别作为识别结果并且即便使用函数输出值最大的神经元的位置也不会变因此神经网络在进行分类时输出层的函数可以省略手写数字识别这里使用的数据集是手写数字图像集是机器学习领域最有名的数据集之一被应用于从简单的实验到发表的论文研究等各种场合实际上在阅读图像识别或机器学习的论文时数据集经常作为实验用的数据出现数据集是由到的数字图像构成的的图像数据是像素像素的灰度图像通道各个像素的取值在到之间每个图像数据都相应地标有等标签神经网络的学习损失函数这个损失函数可以使用任意函数但一般用均方误差和交叉熵误差等可以用作损失函数的函数有很多其中最有名的是均方误差这里是表示神经网络的输出表示监督数据表示数据的维数在节手写数字识别的例子中是由如下个元素构成的数据是监督数据将正确解标签设为其他均设为这里标签为表示正确解是将正确解标签表示为其他标签表示为的表示方法称为表示除了均方误差之外交叉熵误差也经常被用作损失函数这里表示以为底数的自然对数是神经网络的输出是正确解标签并且中只有正确解标签的索引为其他均为表示因此式实际上只计算对应正确解标签的输出的自然对数比如假设正确解标签的索引是与之对应的神经网络的输出是则交叉熵误差是若对应的输出是则交叉熵误差为也就是说交叉熵误差的值是由正确解标签所对应的输出结果决定的这里参数和是数组函数内部在计算时加上了一个微小值这是因为当出现时会变为负无限大的这样一来就会导致后续计算无法进行作为保护性对策添加一个微小值可以防止负无限大的发生此外当监督数据是标签形式非表示而是像这样的标签时交叉熵误差可通过如下代码实现需要求是因为此时的不是一个数据作为参考简单介绍一下会生成一个从到的数组比如当为时会生成一个数组因为中标签是以的形式存储的所以能抽出各个数据的正确解标签对应的神经网络的输出在这个例子中会生成数组是一个单位一个表示学习中所有训练数据均被使用过一次时的更新次数比如对于笔训练数据用大小为笔数据的进行学习时重复随机梯度下降法次所有的训练数据就都被看过了此时次就是一个实际上一般做法是事先将所有训练数据随机打乱然后按指定的批次大小按序生成这样每个均有一个索引号比如此例可以是然后用索引号可以遍历所有的遍历一次所有数据就称为一个误差反向传播法激活函数层的实现层激活函数它的导数是层函数它的导数是这个实现中正向传播时将输出保存在了实例变量中然后反向传播时使用该变量进行计算层的实现层神经网络的正向传播中进行的矩阵的乘积运算在几何学领域被称为仿射变换因此这里将进行仿射变换的处理实现为层层最后介绍一下输出层的函数前面我们提到过函数会将输入值正规化之后再输出比如手写数字识别时层的输出如因为手写数字识别要进行类分类所以向层的输入也有个神经网络中进行的处理有推理和学习两个阶段神经网络的推理通常不使用层比如用图的网络进行推理时会将最后一个层的输出作为识别结果神经网络中未被正规化的输出结果图中层前面的层的输出有时被称为得分也就是说当神经网络的推理只需要给出一个答案的情况下因为此时只对得分最大值感兴趣所以不需要层不过神经网络的学习阶段则需要层函数记为层交叉熵误差记为层这里假设要进行类分类从前面的层接收个输入得分如图所示层将输入正规化输出层接收的输出和教师标签从这些数据中输出损失层的反向传播得到了这样漂亮的结果由于是层的输出是监督数据所以是层的输出和教师标签的差分神经网络的反向传播会把这个差分表示的误差传递给前面的层与学习相关的技巧参数的更新随机梯度下降法随机梯度下降法在解决某些问题的时候没有效率因为梯度的方向没有指向最小值表示的函数是向轴方向延伸的碗状函数应用呈之字形移动这是一个相当低效的路径也就是说的缺点是如果函数的形状非均向比如呈延伸状搜索的路径就会非常低效是动量的意思和物理有关用数学式表示方法和前面的一样表示要更新的权重参数表示损失函数关于的梯度表示学习率这里新出现了一个变量对应物理上的速度第一个式子表示了物体在梯度方向上受力在这个力的作用下物体的速度增加这一物理法则用于创建一个与给定数组形状和数据类型相同的新数组但所有元素都被初始化为与的对比及其优势普通随机梯度下降在梯度为零的区域更新量直接为零优化过程会立刻停止这很容易陷入一些平坦的局部最优点或鞍点这些点的梯度也是零但不是最优解方法即使在梯度为零的点由于项的存在速度不会立刻为零之前积累的动量会推动参数继续向前移动一段距离这带来了两大好处有助于逃离局部最优点和鞍点如果小球有足够的动量它就可以滚过一个平坦的局部极小点或鞍点而不是陷在里面抑制震荡加速收敛在沟壑类似峡谷地形中梯度方向在沟壁间剧烈摇摆普通的会剧烈震荡收敛缓慢而方法中的项相当于一个迟滞系统会将速度平均化使更新方向更加一致地沿着沟壑的中心线下降的主方向从而大大减少震荡并加快收敛速度在优化过程中速度是一个矢量它同时记录了方向和大小项代表的是历史移动趋势当上一时刻的速度为负值且当前梯度也是负值时两者方向相同项负值与梯度力负值叠加确实起到了加速的作用这会使得本次更新沿着负方向走得更远更快当上一时刻的速度为负值但当前梯度为正值时这通常发生在参数即将越过最低点谷底时此时梯度方向改变了从向右下变为向左下但历史动量仍然试图将它往原来的方向右下推这时负值和梯度力正值方向相反会相互抵消一部分这起到了刹车或缓冲的作用防止参数更新在最低点附近发生过于剧烈的震荡和摇摆结论项并不总是起到减速作用它的角色是保持历史运动趋势这个趋势既可能加速当与梯度同向时也可能减速当与梯度反向时这种机制使得优化过程在正确的方向上更快同时能平滑掉一些错误方向的震荡但是如果梯度为的地方就是最低点相比于没有动量的梯度为就立刻停止方法可能需要更多的迭代步骤来让这种振荡停止下来最终精确收敛到最低点在关于学习率的有效技巧中有一种被称为学习率衰减的方法即随着学习的进行使学习率逐渐减小实际上一开始多学然后逐渐少学的方法在神经网络的学习中经常被使用逐渐减小学习率的想法相当于将全体参数的学习率值一起降低而进一步发展了这个想法针对一个一个的参数赋予其定制的值会为参数的每个元素适当地调整学习率与此同时进行学习和前面的一样表示要更新的权重参数表示损失函数关于的梯度表示学习率这里新出现了变量如式所示它保存了以前的所有梯度值的平方和式中的表示矩阵中对应元素的乘法然后在更新参数时通过乘以就可以调整学习的尺度这意味着参数的元素中变动较大被大幅更新的元素的学习率将变小也就是说可以按参数的元素进行学习率衰减使变动大的参数的学习率逐渐减小会记录过去所有梯度的平方和因此学习越深入更新的幅度就越小实际上如果无止境地学习更新量就会变为完全不再更新为了改善这个问题可以使用方法方法并不是将过去所有的梯度一视同仁地相加而是逐渐地遗忘过去的梯度在做加法运算时将新梯度的信息更多地反映出来这种操作从专业上讲称为指数移动平均呈指数函数式地减小过去的梯度的尺度由于轴方向上的梯度较大因此刚开始变动较大但是后面会根据这个较大的变动按比例进行调整减小更新的步伐因此轴方向上的更新程度被减弱之字形的变动程度有所衰减参照小球在碗中滚动的物理规则进行移动为参数的每个元素适当地调整更新步伐就是融合了这两个方法具体的想看去看论文虽然也有类似的移动但是相比之下的小球左右摇晃的程度有所减轻这得益于学习的更新程度被适当地调整了权重的初始值隐藏层的激活值分布做一个简单的实验观察权重初始值是如何影响隐藏层的激活值的分布的这里要做的实验是向一个层神经网络激活函数使用函数传入随机生成的输入数据用直方图绘制各层激活值的数据分布个数据各隐藏层的节点神经元数隐藏层有层激活值的结果保存在这里函数各层的激活值呈偏向和的分布这里使用的函数是型函数随着输出不断地靠近或者靠近它的导数的值逐渐接近因此偏向和的数据分布会造成反向传播中梯度的值不断变小最后消失这个问题称为梯度消失层次加深的深度学习中梯度消失的问题可能会更加严重下面将权重的标准差设为进行相同的实验这次呈集中在附近的分布因为不像刚才的例子那样偏向和所以不会发生梯度消失的问题但是激活值的分布有所偏向说明在表现力上会有很大问题为什么这么说呢因为如果有多个神经元都输出几乎相同的值那它们就没有存在的意义了比如如果个神经元都输出几乎相同的值那么也可以由个神经元来表达基本相同的事情因此激活值在分布上有所偏向会出现表现力受限的问题各层的激活值的分布都要求有适当的广度为什么呢因为通过在各层间传递多样性的数据神经网络可以进行高效的学习反过来如果传递的是有所偏向的数据就会出现梯度消失或者表现力受限的问题导致学习可能无法顺利进行接着我们尝试使用等人的论文中推荐的权重初始值俗称初始值现在在一般的深度学习框架中初始值已被作为标准使用如果前一层的节点数为则初始值使用标准差为的分布初始值与前一层有个节点连接时初始值使用标准差为的分布使用初始值后前一层的节点数越多要设定为目标节点的初始值的权重尺度就越小现在我们使用初始值进行实验前一层的节点数后面的层的分布呈稍微歪斜的形状如果用函数双曲线函数代替函数这个稍微歪斜的问题就能得到改善实际上使用函数后会呈漂亮的吊钟型分布函数和函数同是型曲线函数但函数是关于原点对称的型曲线而函数是关于对称的型曲线众所周知用作激活函数的函数最好具有关于原点对称的性质的权重初始值初始值是以激活函数是线性函数为前提而推导出来的因为函数和函数左右对称且中央附近可以视作线性函数所以适合使用初始值但当激活函数使用时一般推荐使用专用的初始值也就是等人推荐的初始值也称为初始值当前一层的节点数为时初始值使用标准差为的高斯分布当时各层的激活值非常小神经网络上传递的是非常小的值说明逆向传播时权重的梯度也同样很小这是很严重的问题实际上学习基本上没有进展接下来是初始值为初始值时的结果在这种情况下随着层的加深偏向一点点变大实际上层加深后激活值的偏向变大学习时会出现梯度消失的问题而当初始值为初始值时各层中分布的广度相同由于即便层加深数据的广度也能保持不变因此逆向传播时也会传递合适的值当激活函数使用时权重初始值使用初始值当激活函数为或等型曲线函数时初始值使用初始值如果设定了合适的权重初始值则各层的激活值分布会有适当的广度从而可以顺利地进行学习那么为了使各层拥有适当的广度强制性地调整激活值的分布会怎样呢实际上方法就是基于这个想法而产生的的算法优点可以使学习快速进行可以增大学习率不那么依赖初始值对于初始值不用那么神经质抑制过拟合降低等的必要性的思路是调整各层的激活值分布使其拥有适当的广度为此要向神经网络中插入对数据分布进行正规化的层即层下文简称层如图所示顾名思义以进行学习时的为单位按进行正规化具体而言就是进行使数据分布的均值为方差为的正规化式中的是一个微小值比如等它是为了防止出现除以的情况通过将这个处理插入到激活函数的前面或者后面可以减小数据分布的偏向接着层会对正规化后的数据进行缩放和平移的变换和是参数一开始然后再通过学习调整到合适的值的反向传播在的博客里有详细说明几乎所有的情况下都是使用时学习进行得更快同时也可以发现实际上在不使用的情况下如果不赋予一个尺度好的初始值学习将完全无法进行正则化权值衰减该方法通过在学习的过程中对大的权重进行惩罚来抑制过拟合很多过拟合原本就是因为权重参数取值过大才发生的对于所有权重权值衰减方法都会为损失函数加上因此在求权重梯度的计算中要为之前的误差反向传播法的结果加上正则化项的导数如果网络的模型变得很复杂只用权值衰减就难以应对了在这种情况下我们经常会使用方法是一种在学习的过程中随机删除神经元的方法训练时随机选出隐藏层的神经元然后将其删除被删除的神经元不再进行信号的传递如图所示训练时每传递一次数据就会随机选择要删除的神经元然后测试时虽然会传递所有的神经元信号但是对于各个神经元的输出要乘上训练时的删除比例后再输出下面的实现重视易理解性不过因为训练时如果进行恰当的计算的话正向传播时单纯地传递数据就可以了不用乘以删除比例所以深度学习的框架中进行了这样的实现机器学习中经常使用集成学习所谓集成学习就是让多个模型单独进行学习推理时再取多个模型的输出的平均值用神经网络的语境来说比如准备个结构相同或者类似的网络分别进行学习测试时以这个网络的输出的平均值作为答案实验告诉我们通过进行集成学习神经网络的识别精度可以提高好几个百分点这个集成学习与有密切的关系这是因为可以将理解为通过在学习过程中随机删除神经元从而每一次都让不同的模型进行学习并且推理时通过对神经元的输出乘以删除比例比如等可以取得模型的平均值也就是说可以理解成将集成学习的效果模拟地通过一个网络实现了超参数的验证超参数是指比如各层的神经元数量大小参数更新时的学习率或权值衰减等如果这些超参数没有设置合适的值模型的性能就会很差虽然超参数的取值非常重要但是在决定超参数的过程中一般会伴随很多的试错验证数据不能使用测试数据评估超参数的性能为什么不能用测试数据评估超参数的性能呢这是因为如果使用测试数据调整超参数超参数的值会对测试数据发生过拟合换句话说用测试数据确认超参数的值的好坏就会导致超参数的值被调整为只拟合测试数据这样的话可能就会得到不能拟合其他数据泛化能力低的模型因此调整超参数时必须使用超参数专用的确认数据用于调整超参数的数据一般称为验证数据我们使用这个验证数据来评估超参数的好坏训练数据用于参数权重和偏置的学习验证数据用于超参数的性能评估为了确认泛化能力要在最后使用比较理想的是只用一次测试数据超参数的最优化进行超参数的最优化时逐渐缩小超参数的好值的存在范围非常重要所谓逐渐缩小范围是指一开始先大致设定一个范围从这个范围中随机选出一个超参数采样用这个采样到的值进行识别精度的评估然后多次重复该操作观察识别精度的结果根据这个结果缩小超参数的好值的范围通过重复这一操作就可以逐渐确定超参数的合适范围在进行神经网络的超参数的最优化时与网格搜索等有规律的搜索相比随机采样的搜索方式效果更好超参数的范围只要大致地指定就可以了所谓大致地指定是指像到这样以的阶乘的尺度指定范围也表述为用对数尺度指定这在中可以写成在超参数的最优化中要注意的是深度学习需要很长时间比如几天或几周因此在超参数的搜索中需要尽早放弃那些不符合逻辑的超参数于是在超参数的最优化中减少学习的缩短一次评估所需的时间是一个不错的办法步骤设定超参数的范围步骤从设定的超参数范围中随机采样步骤使用步骤中采样到的超参数的值进行学习通过验证数据评估识别精度但是要将设置得很小步骤重复步骤和步骤次等根据它们的识别精度的结果缩小超参数的范围反复进行上述操作不断缩小超参数的范围在缩小到一定程度时从该范围中选出一个超参数的值在超参数的最优化中如果需要更精炼的方法可以使用贝叶斯最优化贝叶斯最优化运用以贝叶斯定理为中心的数学理论能够更加严密高效地进行最优化卷积神经网络整体结构中新出现了卷积层层和池化层层之前介绍的神经网络中相邻层的所有神经元之间都有连接这称为全连接另外我们用层实现了全连接层如果使用这个层一个层的全连接的神经网络就可以通过图所示的网络结构来实现如图所示全连接的神经网络中层后面跟着激活函数层或者层这里堆叠了层组合然后第层是层最后由层输出最终结果概率的一个例子中新增了层和层的层的连接顺序是层有时会被省略这可以理解为之前的连接被替换成了连接还需要注意的是在图的中靠近输出的层中使用了之前的组合此外最后的输出层中使用了之前的组合这些都是一般的中比较常见的结构卷积层全连接层的问题之前介绍的全连接的神经网络中使用了全连接层层在全连接层中相邻层的神经元全部连接在一起输出的数量可以任意决定全连接层存在什么问题呢那就是数据的形状被忽视了比如输入数据是图像时图像通常是高长通道方向上的维形状但是向全连接层输入时需要将维数据拉平为维数据实际上前面提到的使用了数据集的例子中输入图像就是通道高像素长像素的形状但却被排成列以个数据的形式输入到最开始的层图像是维形状这个形状中应该含有重要的空间信息比如空间上邻近的像素为相似的值的各个通道之间分别有密切的关联性相距较远的像素之间没有什么关联等维形状中可能隐藏有值得提取的本质模式但是因为全连接层会忽视形状将全部的输入数据作为相同的神经元同一维度的神经元处理所以无法利用与形状相关的信息而卷积层可以保持形状不变当输入数据是图像时卷积层会以维数据的形式接收输入数据并同样以维数据的形式输出至下一层因此在中可以有可能正确理解图像等具有形状的数据另外中有时将卷积层的输入输出数据称为特征图其中卷积层的输入数据称为输入特征图输出数据称为输出特征图卷积运算卷积层进行的处理就是卷积运算卷积运算相当于图像处理中的滤波器运算滤波器运算可以把它理解为给图像戴上一副特殊的眼镜或使用一个修图工具来达到某种特定的效果在图像处理中滤波器有时也称为内核或掩模是一个小的数字矩阵滤波器运算就是将这个小的矩阵滤波器在大的数字矩阵原始图像上滑动并在每个位置进行一系列数学计算从而生成一幅新图像的过程这个过程在数学上称为卷积因此也常被称为卷积运算有的文献中也会用核这个词来表示这里所说的滤波器如何计算对于输入数据卷积运算以一定间隔滑动滤波器的窗口并应用这里所说的窗口是指图中灰色的的部分如图所示将各个位置上滤波器的元素和输入的对应元素相乘然后再求和有时将这个计算称为乘积累加运算然后将这个结果保存到输出的对应位置将这个过程在所有位置都进行一遍就可以得到卷积运算的输出在全连接的神经网络中除了权重参数还存在偏置中滤波器的参数就对应之前的权重并且中也存在偏置图的卷积运算的例子一直展示到了应用滤波器的阶段包含偏置的卷积运算的处理流如图所示如图所示向应用了滤波器的数据加上了偏置偏置通常只有个本例中相对于应用了滤波器的个数据偏置只有个这个值会被加到应用了滤波器的所有元素上填充在进行卷积层的处理之前有时要向输入数据的周围填入固定的数据比如等这称为填充是卷积运算中经常会用到的处理比如在图的例子中对大小为的输入数据应用了幅度为的填充幅度为的填充是指用幅度为像素的填充周围使用填充主要是为了调整输出的大小比如对大小为的输入数据应用的滤波器时输出大小变为相当于输出大小比输入大小缩小了个元素这在反复进行多次卷积运算的深度网络中会成为问题为什么呢因为如果每次进行卷积运算都会缩小空间那么在某个时刻输出大小就有可能变为导致无法再应用卷积运算为了避免出现这样的情况就要使用填充在刚才的例子中将填充的幅度设为那么相对于输入大小输出大小也保持为原来的因此卷积运算就可以在保持空间大小不变的情况下将数据传给下一层步幅应用滤波器的位置间隔称为步幅之前的例子中步幅都是如果将步幅设为则如图所示应用滤波器的窗口的间隔变为个元素步幅可以指定应用滤波器的间隔综上增大步幅后输出大小会变小而增大填充后输出大小会变大如果将这样的关系写成算式会如何呢接下来我们看一下对于填充和步幅如何计算输出大小这里假设输入大小为滤波器大小为输出大小为填充为步幅为这里需要注意的是虽然只要代入值就可以计算输出大小但是所设定的值必须使分别可以除尽当输出大小无法除尽时结果是小数时需要采取报错等对策顺便说一下根据深度学习的框架的不同当值无法除尽时有时会向最接近的整数四舍五入不进行报错而继续运行维数据的卷积运算图像是维数据除了高长方向之外还需要处理通道方向这里我们按照与之前相同的顺序看一下对加上了通道方向的维数据进行卷积运算的例子图是卷积运算的例子图是计算顺序这里以通道的数据为例展示了卷积运算的结果和维数据时图的例子相比可以发现纵深方向通道方向上特征图增加了通道方向上有多个特征图时会按通道进行输入数据和滤波器的卷积运算并将结果相加从而得到输出在维数据的卷积运算中输入数据和滤波器的通道数要设为相同的值在这个例子中输入数据和滤波器的通道数一致均为滤波器大小可以设定为任意值不过每个通道的滤波器大小要全部相同这个例子中滤波器大小为但也可以设定为等任意值再强调一下通道数只能设定为和输入数据的通道数相同的值本例中为通道数为高度为长度为的数据的形状可以写成滤波器也一样要按的顺序书写比如通道数为滤波器高度为长度为时可以写成如果要在通道方向上也拥有多个卷积运算的输出该怎么做呢为此就需要用到多个滤波器权重用图表示的话如图所示通过应用个滤波器输出特征图也生成了个如果将这个特征图汇集在一起就得到了形状为的方块将这个方块传给下一层就是的处理流关于卷积运算的滤波器也必须考虑滤波器的数量因此作为维数据滤波器的权重数据要按的顺序书写比如通道数为大小为的滤波器有个时可以写成卷积运算中和全连接层一样存在偏置在图的例子中如果进一步追加偏置的加法运算处理则结果如下面的图所示图中每个通道只有一个偏置这里偏置的形状是滤波器的输出结果的形状是这两个方块相加时要对滤波器的输出结果按通道加上相同的偏置值另外不同形状的方块相加时可以基于的广播功能轻松实现节批处理需要将在各层间传递的数据保存为维数据具体地讲就是按的顺序保存数据比如将图中的处理改成对个数据进行批处理时数据的形状如图所示图的批处理版的数据流中在各个数据的开头添加了批用的维度像这样数据作为维的形状在各层间传递这里需要注意的是网络间传递的是维数据对这个数据进行了卷积运算也就是说批处理将次的处理汇总成了次进行池化层池化是缩小高长方向上的空间的运算比如如图所示进行将的区域集约成个元素的处理缩小空间大小图的例子是按步幅进行的池化时的处理顺序池化是获取最大值的运算表示目标区域的大小一般来说池化的窗口大小会和步幅设定成相同的值比如的窗口的步幅会设为的窗口的步幅会设为等除了池化之外还有池化等相对于池化是从目标区域中取出最大值池化则是计算目标区域的平均值在图像识别领域主要使用池化因此本书中说到池化层时指的是池化池化层有以下特征没有要学习的参数池化层和卷积层不同没有要学习的参数池化只是从目标区域中取最大值或者平均值所以不存在要学习的参数通道数不发生变化经过池化运算输入数据和输出数据的通道数不会发生变化如图所示计算是按通道独立进行的对微小的位置变化具有鲁棒性健壮输入数据发生微小偏差时池化仍会返回相同的结果因此池化对输入数据的微小偏差具有鲁棒性比如的池化的情况下如图所示池化会吸收输入数据的偏差根据数据的不同结果有可能不一致卷积层和池化层的实现维数组中各层间传递的数据是维数据所谓维数据比如数据的形状是则它对应个高为长为通道为的数据用来实现的话如下所示随机生成数据如果要访问第个数据只要写就可以了如果要访问第个数据的第个通道的空间数据或者基于的展开如果老老实实地实现卷积运算估计要重复好几层的语句这样的实现有点麻烦而且中存在使用语句后处理变慢的缺点中访问元素时最好不要用语句这里我们不使用语句而是使用这个便利的函数进行简单的实现是一个函数将输入数据展开以适合滤波器权重如图所示对维的输入数据应用后数据转换为维矩阵正确地讲是把包含批数量的维数据转换成了维数据会把输入数据展开以适合滤波器权重具体地说如图所示对于输入数据将应用滤波器的区域维方块横向展开为列会在所有应用滤波器的地方进行这个展开处理在图中为了便于观察将步幅设置得很大以使滤波器的应用区域不重叠而在实际的卷积运算中滤波器的应用区域几乎都是重叠的在滤波器的应用区域重叠的情况下使用展开后展开后的元素个数会多于原方块的元素个数因此使用的实现存在比普通的实现消耗更多内存的缺点但是汇总成一个大的矩阵进行计算对计算机的计算颇有益处使用展开输入数据后之后就只需将卷积层的滤波器权重纵向展开为列并计算个矩阵的乘积即可参照图这和全连接层的层进行的处理基本相同如图所示基于方式的输出结果是维矩阵因为中数据会保存为维数组所以要将维输出数据转换为合适的形状以上就是卷积层的实现流程卷积层的实现由数据量通道高长的维数组构成的输入数据滤波器的高滤波器的长步幅填充维数组重塑为矩阵行数所有输出位置列数每个位置的滤波器窗口现在使用来实现卷积层这里我们将卷积层实现为名为的类滤波器的展开卷积层的初始化方法将滤波器权重偏置步幅填充作为参数接收滤波器是的维形状另外分别是滤波器数量的缩写这里通过将参数指定为这是的一个便利的功能通过在时指定为函数会自动计算维度上的元素个数以使多维数组的元素个数前后一致比如形状的数组的元素个数共有个指定后就会转换成形状的数组的实现中最后会将输出大小转换为合适的形状转换时使用了的函数会更改多维数组的轴的顺序以上就是卷积层的处理的实现通过使用进行展开基本上可以像实现全连接层的层一样来实现接下来是卷积层的反向传播的实现因为和层的实现有很多共通的地方所以就不再介绍了但有一点需要注意在进行卷积层的反向传播时必须进行的逆处理必须进行的逆处理指的是将梯度信息从展开的矩阵形式转换回原始图像格式的关键步骤反向传播过程计算输出梯度损失函数对输出的导数关键步骤将梯度转换回格式计算滤波器梯度滤波器梯度输出梯度关键步骤计算输入梯度需要的逆操作前向传播通过改变了数据表示形式反向传播必须沿相同路径反向传播梯度需要将梯度从矩阵形式映射回原始图像格式输入数据的形状例池化层的实现池化层的实现和卷积层相同都使用展开输入数据不过池化的情况下在通道方向上是独立的这一点和卷积层不同具体地讲如图所示池化的应用区域按通道单独展开像这样展开之后只需对展开的矩阵求各行的最大值并转换为合适的形状即可图的实现示例展开最大值转换池化层的实现按下面个阶段进行展开输入数据求各行的最大值转换为合适的输出大小的实现要实现如图所示的自己去看的可视化第层权重的可视化第层的卷积层的权重的形状是即个大小为通道为的滤波器滤波器大小是通道数是意味着滤波器可以可视化为通道的灰度图像现在我们将卷积层第层的滤波器显示为图像这里我们来比较一下学习前和学习后的权重结果如图所示图中学习前的滤波器是随机进行初始化的所以在黑白的浓淡上没有规律可循但学习后的滤波器变成了有规律的图像我们发现通过学习滤波器被更新成了有规律的滤波器比如从白到黑渐变的滤波器含有块状区域称为的滤波器等右边的有规律的滤波器在观察什么答案就是它在观察边缘颜色变化的分界线和斑块局部的块状区域等比如左半部分为白色右半部分为黑色的滤波器的情况下如图所示会对垂直方向上的边缘有响应图中显示了选择两个学习完的滤波器对输入图像进行卷积处理时的结果我们发现滤波器对垂直方向上的边缘有响应滤波器对水平方向上的边缘有响应由此可知卷积层的滤波器会提取边缘或斑块等原始信息而刚才实现的会将这些原始信息传递给后面的层基于分层结构的信息提取第层的卷积层中提取了边缘或斑块等低级信息那么在堆叠了多层的中各层中又会提取什么样的信息呢图中展示了进行一般物体识别车或狗等的层这个网络结构的名称是下一节要介绍的网络结构堆叠了多层卷积层和池化层最后经过全连接层输出结果图的方块表示的是中间数据对于这些中间数据会连续应用卷积运算如图所示如果堆叠了多层卷积层则随着层次加深提取的信息也愈加复杂抽象这是深度学习中很有意思的一个地方最开始的层对简单的边缘有响应接下来的层对纹理有响应再后面的层对更加复杂的物体部件有响应也就是说随着层次加深神经元从简单的形状向高级信息变化换句话说就像我们理解东西的含义一样响应的对象在逐渐变化具有代表性的在年被提出是进行手写数字识别的网络如图所示它有连续的卷积层和池化层正确地讲是只抽选元素的子采样层最后经全连接层输出结果和现在的相比有几个不同点第一个不同点在于激活函数中使用函数而现在的中主要使用函数此外原始的中使用子采样缩小中间数据的大小而现在的中池化是主流叠有多个卷积层和池化层最后经由全连接层输出结果虽然结构上和没有大的不同但有以下几点差异激活函数使用使用进行局部正规化的层使用深度学习深度学习是加深了层的深度神经网络基于之前介绍的网络只需通过叠加层就可以创建深度网络加深网络创建一个如图所示的网络结构的一个比之前的网络都深的网络这里使用的卷积层全都是的小型滤波器特点是随着层的加深通道数变大卷积层的通道数从前面的层开始按顺序以的方式增加此外如图所示插入了池化层以逐渐减小中间数据的空间大小并且后面的全连接层中使用了层这个网络使用初始值作为权重的初始值使用更新权重参数把上述内容总结起来这个网络有如下特点基于的小型滤波器的卷积层激活函数是全连接层的后面使用层基于的最优化使用初始值作为权重初始值对于手写数字识别这样一个比较简单的任务没有必要将网络的表现力提高到那么高的程度因此可以说加深层的好处并不大而之后要介绍的大规模的一般物体识别的情况因为问题复杂所以加深层对提高识别精度大有裨益集成学习学习率衰减数据扩充等都有助于提高识别精度尤其是虽然方法很简单但在提高识别精度上效果显著基于算法人为地扩充输入图像训练图像具体地说如图所示对于输入图像通过施加旋转垂直或水平方向上的移动等微小变化增加图像的数量这在数据集的图像数量有限时尤其有效除了如图所示的变形之外还可以通过其他各种方法扩充图像比如裁剪图像的处理将图像左右翻转的处理处理只在不需要考虑图像对称性的情况下有效等对于一般的图像施加亮度等外观上的变化放大缩小等尺度上的变化也是有效的加深层的好处可以减少网络的参数数量说得详细一点就是与没有加深层的网络相比加深了层的网络可以用更少的参数达到同等水平或者更强的表现力这一点结合卷积运算中的滤波器大小来思考就好理解了比如图展示了由的滤波器构成的卷积层一次的卷积运算的区域可以由两次的卷积运算抵充并且相对于前者的参数数量后者一共是通过叠加卷积层参数数量减少了而且这个参数数量之差会随着层的加深而变大比如重复三次的卷积运算时参数的数量总共是而为了用一次卷积运算观察与之相同的区域需要一个的滤波器此时的参数数量是叠加小型滤波器来加深网络的好处是可以减少参数的数量扩大感受野给神经元施加变化的某个局部空间区域并且通过叠加层将等激活函数夹在卷积层的中间进一步提高了网络的表现力这是因为向网络添加了基于激活函数的非线性表现力通过非线性函数的叠加可以表现更加复杂的东西加深层的另一个好处就是使学习更加高效与没有加深层的网络相比通过加深层可以减少学习数据从而高效地进行学习为了直观地理解这一点的卷积层会分层次地提取信息具体地说在前面的卷积层中神经元会对边缘等简单的形状有响应随着层的加深开始对纹理物体部件等更加复杂的东西有响应我们先牢记这个网络的分层结构然后考虑一下狗的识别问题要用浅层网络解决这个问题的话卷积层需要一下子理解很多狗的特征狗有各种各样的种类根据拍摄环境的不同外观变化也很大因此要理解狗的特征需要大量富有差异性的学习数据而这会导致学习需要花费很多时间不过通过加深网络就可以分层次地分解需要学习的问题因此各层需要学习的问题就变成了更简单的问题比如最开始的层只要专注于学习边缘就好这样一来只需用较少的学习数据就可以高效地进行学习这是为什么呢因为和印有狗的照片相比包含边缘的图像数量众多并且边缘的模式比狗的模式结构更简单通过加深层可以分层次地传递信息比如因为提取了边缘的层的下一层能够使用边缘的信息所以应该能够高效地学习更加高级的模式也就是说通过加深层可以将各层要学习的问题分解成容易解决的简单问题从而可以进行高效的学习深度学习的高速化深度学习中什么样的处理比较耗时图中以的处理为对象用饼图展示了各层所耗费的时间从图中可知中大多数时间都被耗费在卷积层上实际上卷积层的处理时间加起来占整体的占整体的因此如何高速高效地进行卷积层中的运算是深度学习的一大课题虽然图是推理时的结果不过学习时也一样卷积层中会耗费大量时间卷积层中进行的运算可以追溯至乘积累加运算因此深度学习的高速化的主要课题就变成了如何高速高效地进行大量的乘积累加运算计算是指基于进行通用的数值计算的操作深度学习中需要进行大量的乘积累加运算或者大型矩阵的乘积运算这种大量的并行运算正是所擅长的反过来说比较擅长连续的复杂的计算因此与使用单个相比使用进行深度学习的运算可以达到惊人的高速化下面我们就来看一下基于可以实现多大程度的高速化图是基于和进行的学习时分别所需的时间从图中可知使用要花天以上的时间而使用则可以将时间缩短至天此外还可以看出通过使用这个最优化的库可以进一步实现高速化大多数深度学习框架只受益于的这是因为深度学习的框架中使用了提供的这个面向计算的综合开发环境通过可以将卷积层进行的运算转换为大型矩阵的乘积相比按小规模的单位进行计算更擅长计算大规模的汇总好的数据也就是说通过基于以大型矩阵的乘积的方式汇总计算更容易发挥出的能力为了进一步提高深度学习所需的计算的速度可以考虑在多个或者多台机器上进行分布式计算现在的深度学习框架中出现了好几个支持多或者多机器的分布式学习的框架其中的微软的在开发过程中高度重视分布式学习以大型数据中心的低延迟高吞吐网络作为支撑基于这些框架的分布式学习呈现出惊人的效果基于分布式学习可以达到何种程度的高速化呢图中显示了基于的分布式学习的效果如图所示随着个数的增加学习速度也在提高实际上与使用个时相比使用个设置在多台机器上共个似乎可以实现倍的高速化关于分布式学习如何进行分布式计算是一个非常难的课题它包含了机器间的通信数据的同步等多个无法轻易解决的问题可以将这些难题都交给等优秀的框架在深度学习的高速化中除了计算量之外内存容量总线带宽等也有可能成为瓶颈关于内存容量需要考虑将大量的权重参数或中间数据放在内存中关于总线带宽当流经或者总线的数据超过某个限制时就会成为瓶颈考虑到这些情况我们希望尽可能减少流经网络的数据的位数计算机中为了表示实数主要使用位或者位的浮点数通过使用较多的位来表示数字虽然数值计算时的误差造成的影响变小了但计算的处理成本内存使用量却相应地增加了还给总线带宽带来了负荷关于数值精度用几位数据表示数值我们已经知道深度学习并不那么需要数值精度的位数这是神经网络的一个重要性质这个性质是基于神经网络的健壮性而产生的这里所说的健壮性是指比如即便输入图像附有一些小的噪声输出结果也仍然保持不变可以认为正是因为有了这个健壮性流经网络的数据即便有所劣化对输出结果的影响也较小计算机中表示小数时有位的单精度浮点数和位的双精度浮点数等格式根据以往的实验结果在深度学习中即便是位的半精度浮点数也可以顺利地进行学习以往的深度学习的实现中并没有注意数值的精度不过中一般使用位的浮点数中提供了位的半精度浮点数类型不过只有位类型的存储运算本身不用位进行即便使用的半精度浮点数识别精度也不会下降',
-  isPost: true,
-  isHome: false,
-  isHighlightShrink: false,
-  isToc: true,
-  postUpdate: '2025-09-16 17:18:46',
-  postMainColor: '',
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>深度学习入门 | coygOdegaard</title>
 
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
-    
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
+  <!-- keywords -->
+  
 
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="神经网络激活函数在神经网络发展的历史上， sigmoid函数很早就开始被使用了，而最近则主要使用ReLU（Rectified Linear Unit）函数。 ReLU函数在输入大于0时，直接输出该值；在输入小于等于0时，输出0。 ReLU函数可以表示为下面的式。   def relu(x): 	return np.maximum(0, x)   输出层的激活函数用σ()表示，不同于隐藏层的激活函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习入门">
+<meta property="og:url" content="http://example.com/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="coygOdegaard">
+<meta property="og:description" content="神经网络激活函数在神经网络发展的历史上， sigmoid函数很早就开始被使用了，而最近则主要使用ReLU（Rectified Linear Unit）函数。 ReLU函数在输入大于0时，直接输出该值；在输入小于等于0时，输出0。 ReLU函数可以表示为下面的式。   def relu(x): 	return np.maximum(0, x)   输出层的激活函数用σ()表示，不同于隐藏层的激活函数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250911110202414.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250911110300246.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250911154019871.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250911154756373.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250911155201797.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250911195950571.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250911200008808.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250911202019486.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913095941450.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913100104125.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913100143104.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913101100478.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913101122323.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913101457738.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913101724780.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250913102830344.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913103053341.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915200803430.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915194354567.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915194431174.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915194538985.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915194751261.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915194807290.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915194942860.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915203234346.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915201507943.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915202216158.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915202243610.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915202334230.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915203148184.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915203909822.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915203954895.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915213751053.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915213919994.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915214127994.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915214229318.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915214401550.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915214753398.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250915214852076.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916094735875.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916095036960.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916095355658.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916095541658.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916100018954.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916100528410.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913105112819.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913105141247.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913110528152.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913111620630.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913111730093.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913111919701.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913112226658.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913220538308.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913220620533.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913220655204.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913220857845.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913220924250.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913221152636.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913221249515.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913221526687.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913221932677.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913222046256.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250913222423357.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250914191528335.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250914191948788.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250914192306122.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250914202637781.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250914205228236.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250914205402764.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250914210146223.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250914210654169.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250914210719918.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250914210954006.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250914211135593.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250914211227133.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916111157835.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916152546197.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916153339950.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916153356093.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916155041776.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916160121430.png">
+<meta property="og:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250916160828227.png">
+<meta property="article:published_time" content="2025-09-11T02:01:58.000Z">
+<meta property="article:modified_time" content="2025-09-16T09:18:46.833Z">
+<meta property="article:author" content="Odegaard">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2025/09/11/source/imgs/$%7Bfiilname%7D/image-20250911110202414.png">
+  
+    <link rel="alternative" href="/atom.xml" title="coygOdegaard" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-        document.head.appendChild(script)
-      })
-    
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
-    
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
-          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
-          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
-          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+  
+  
 
-          if (t === undefined) {
-            if (isLightMode) activateLightMode()
-            else if (isDarkMode) activateDarkMode()
-            else if (isNotSpecified || hasNoSupport) {
-              const now = new Date()
-              const hour = now.getHours()
-              const isNight = hour <= 6 || hour >= 18
-              isNight ? activateDarkMode() : activateLightMode()
-            }
-            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
-              if (saveToLocal.get('theme') === undefined) {
-                e.matches ? activateDarkMode() : activateLightMode()
-              }
-            })
-          } else if (t === 'light') activateLightMode()
-          else activateDarkMode()
+  
+<script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+
+  
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+				<img lazy-src="" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+			<h1 class="header-author"><a href="/">Odegaard</a></h1>
+		</hgroup>
+
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="half-header-menu">
+						<a class="hide">Home</a>
+						<a>Tags</a>
+						<a>Links</a>
+						<a>About</a>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+						<!-- music -->
+						
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 10px;">大数据</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 20px;">算法</a> <a href="/tags/%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">语言</a>
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://github.com/">github</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">I&#39;m a developer.</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide"></h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author"></h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-深度学习入门" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/" class="article-date">
+  	<time datetime="2025-09-11T02:01:58.000Z" itemprop="datePublished">2025-09-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><meta name="generator" content="Hexo 7.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
-  endLoading: () => {
-    document.getElementById('loading-box').classList.add("loaded");
-  },
-  initLoading: () => {
-    document.getElementById('loading-box').classList.remove("loaded")
-  }
-}
-window.addEventListener('load',()=> { preloader.endLoading() })
-setTimeout(function(){preloader.endLoading();},10000)
+  
+    <h1 class="article-title" itemprop="name">
+      深度学习入门
+      
+    </h1>
+  
 
-if (true) {
-  document.addEventListener('pjax:send', () => { preloader.initLoading() })
-  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
-}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><a id="site-name" href="/" accesskey="h"><div class="title">coygOdegaard</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 1.05rem;">大数据<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.05rem;">算法<sup>4</sup></a><a href="/tags/%E8%AF%AD%E8%A8%80/" style="font-size: 1.05rem;">语言<sup>3</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/09/"><span class="card-archive-list-date">九月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/07/"><span class="card-archive-list-date">七月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/01/"><span class="card-archive-list-date">一月 2025</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">4</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">11</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"></span></div></div><h1 class="post-title" itemprop="name headline">深度学习入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2025-09-11T02:01:58.000Z" title="发表于 2025-09-11 10:01:58">2025-09-11</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2025-09-16T09:18:46.833Z" title="更新于 2025-09-16 17:18:46">2025-09-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="http://example.com/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/"><header><h1 id="CrawlerTitle" itemprop="name headline">深度学习入门</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">Odegaard</span><time itemprop="dateCreated datePublished" datetime="2025-09-11T02:01:58.000Z" title="发表于 2025-09-11 10:01:58">2025-09-11</time><time itemprop="dateCreated datePublished" datetime="2025-09-16T09:18:46.833Z" title="更新于 2025-09-16 17:18:46">2025-09-16</time></header><h1 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h1><h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><p>在神经网络发展的历史上， sigmoid函数很早就开始被使用了，而最近则主要使用ReLU（Rectified Linear Unit）函数。</p>
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="神经网络"><a href="#神经网络" class="headerlink" title="神经网络"></a>神经网络</h1><h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><p>在神经网络发展的历史上， sigmoid函数很早就开始被使用了，而最近则主要使用ReLU（Rectified Linear Unit）函数。</p>
 <p>ReLU函数在输入大于0时，直接输出该值；在输入小于等于0时，输出0。</p>
 <p>ReLU函数可以表示为下面的式。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250911110202414.png" alt="image-20250911110202414" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250911110202414.png" alt="image-20250911110202414" style="zoom:50%;" />
 
 <pre><code class="hljs plaintext">def relu(x):
 	return np.maximum(0, x)</code></pre>
 
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../source/imgs/$%7Bfiilname%7D/image-20250911110300246.png" alt="image-20250911110300246"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250911110300246.png" alt="image-20250911110300246"></p>
 <p>输出层的激活函数用σ()表示，不同于隐藏层的激活函数h()（σ读作sigma）。</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../source/imgs/$%7Bfiilname%7D/image-20250911154019871.png" alt="image-20250911154019871"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250911154019871.png" alt="image-20250911154019871"></p>
 <p>输出层所用的激活函数，要根据求解问题的性质决定。一般地，回归问题可以使用恒等函数，二元分类问题可以使用 sigmoid函数，多元分类问题可以使用 softmax函数。</p>
 <p><strong>恒等函数</strong>会将输入按原样输出，对于输入的信息，不加以任何改动地直接输出。因此，在输出层使用恒等函数时，输入信号会原封不动地被输出。</p>
-<p>分类问题中使用的<strong>softmax函数</strong>可以用下面的式表示。<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250911154756373.png" alt="image-20250911154756373" style="zoom:50%;" /></p>
+<p>分类问题中使用的<strong>softmax函数</strong>可以用下面的式表示。<img src="../source/imgs/${fiilname}/image-20250911154756373.png" alt="image-20250911154756373" style="zoom:50%;" /></p>
 <pre><code class="hljs plaintext">def softmax(a):
     exp_a = np.exp(a)
     sum_exp_a = np.sum(exp_a)
@@ -225,9 +290,9 @@ if (true) {
 
 <p>上面的softmax函数的实现虽然正确描述了式，但在计算机的运算上有一定的缺陷。这个缺陷就是溢出问题。 softmax函数的实现中要进行指数函数的运算，但是此时指数函数的值很容易变得非常大。</p>
 <p>softmax函数的实现可以像式这样进行改进。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250911155201797.png" alt="image-20250911155201797" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250911155201797.png" alt="image-20250911155201797" style="zoom:50%;" />
 
-<p>首先，在分子和分母上都乘上C这个任意的常数（因为同时对分母和分子乘以相同的常数，所以计算结果不变）。然后，把这个C移动到指数函数（exp）中，记为log C。最后，把log C替换为另一个符号<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250911195950571.png" alt="image-20250911195950571" style="zoom:50%;" />。说明，在进行softmax的指数函数的运算时，加上（或者减去)某个常数并不会改变运算的结果。这里的<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250911200008808.png" alt="image-20250911200008808" style="zoom:50%;" />可以使用任何值，但是为了防止溢出，一般会使用输入信号中的最大值。</p>
+<p>首先，在分子和分母上都乘上C这个任意的常数（因为同时对分母和分子乘以相同的常数，所以计算结果不变）。然后，把这个C移动到指数函数（exp）中，记为log C。最后，把log C替换为另一个符号<img src="../source/imgs/${fiilname}/image-20250911195950571.png" alt="image-20250911195950571" style="zoom:50%;" />。说明，在进行softmax的指数函数的运算时，加上（或者减去)某个常数并不会改变运算的结果。这里的<img src="../source/imgs/${fiilname}/image-20250911200008808.png" alt="image-20250911200008808" style="zoom:50%;" />可以使用任何值，但是为了防止溢出，一般会使用输入信号中的最大值。</p>
 <pre><code class="hljs plaintext">def softmax(a):
     c = np.max(a)
     exp_a = np.exp(a - c) # 溢出对策
@@ -240,16 +305,16 @@ if (true) {
 <p>即便使用了softmax函数，<strong>各个元素之间的大小关系也不会改变</strong>。这是因为指数函数（y &#x3D; exp(x)）是单调递增函数。实际上，上例中a的各元素的大小关系和y的各元素的大小关系并没有改变。比如， a的最大值是第2个元素， y的最大值也仍是第2个元素。</p>
 <p>一般而言，神经网络只把输出值最大的神经元所对应的类别作为识别结果。并且，即便使用softmax函数，输出值最大的神经元的位置也不会变。因此，神经网络在进行分类时，<strong>输出层的softmax函数可以省略</strong>。</p>
 <h2 id="手写数字识别"><a href="#手写数字识别" class="headerlink" title="手写数字识别"></a>手写数字识别</h2><p>这里使用的数据集是MNIST手写数字图像集。 MNIST是机器学习领域最有名的数据集之一，被应用于从简单的实验到发表的论文研究等各种场合。实际上，在阅读图像识别或机器学习的论文时， MNIST数据集经常作为实验用的数据出现。MNIST数据集是由0到9的数字图像构成的.</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../source/imgs/$%7Bfiilname%7D/image-20250911202019486.png" alt="image-20250911202019486"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250911202019486.png" alt="image-20250911202019486"></p>
 <p>MNIST的图像数据是28像素 × 28像素的灰度图像（1通道），各个像素的取值在0到255之间。每个图像数据都相应地标有“7”“2”“1”等标签。</p>
 <h1 id="神经网络的学习"><a href="#神经网络的学习" class="headerlink" title="神经网络的学习"></a>神经网络的学习</h1><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>这个损失函数可以使用任意函数，但一般用均方误差和交叉熵误差等。</p>
-<p>可以用作损失函数的函数有很多，其中最有名的是<strong>均方误差</strong><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913095941450.png" alt="image-20250913095941450" style="zoom:50%;" /></p>
+<p>可以用作损失函数的函数有很多，其中最有名的是<strong>均方误差</strong><img src="../source/imgs/${fiilname}/image-20250913095941450.png" alt="image-20250913095941450" style="zoom:50%;" /></p>
 <p>这里， yk是表示神经网络的输出， tk表示监督数据， k表示数据的维数。</p>
 <p>在3.6节手写数字识别的例子中， yk、 tk是由如下10个元素构成的数据。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913100104125.png" alt="image-20250913100104125" style="zoom:70%;" />
+<img src="../source/imgs/${fiilname}/image-20250913100104125.png" alt="image-20250913100104125" style="zoom:70%;" />
 
 <p>t是监督数据，将正确解标签设为1，其他均设为0。这里，标签“2”为1，表示正确解是“2”。将正确解标签表示为1，其他标签表示为0的表示方法称为<strong>one-hot</strong>表示。</p>
-<p>除了均方误差之外， <strong>交叉熵误差</strong>（cross entropy error）也经常被用作损失函数<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913100143104.png" alt="image-20250913100143104" style="zoom:50%;" /></p>
+<p>除了均方误差之外， <strong>交叉熵误差</strong>（cross entropy error）也经常被用作损失函数<img src="../source/imgs/${fiilname}/image-20250913100143104.png" alt="image-20250913100143104" style="zoom:50%;" /></p>
 <p>这里， log表示以e为底数的自然对数（log e）。 yk是神经网络的输出， tk是正确解标签。并且， tk中只有正确解标签的索引为1，其他均为0（one-hot表示）。因此，式（4.2）实际上只计算<strong>对应正确解标签的输出的自然对数</strong>。比如，假设正确解标签的索引是“2”，与之对应的神经网络的输出是0.6，则交叉熵误差是-log 0.6 &#x3D; 0.51；若“2”对应的输出是0.1，则交叉熵误差为-log 0.1 &#x3D; 2.30。也就是说，交叉熵误差的值是由正确解标签所对应的输出结果决定的。</p>
 <pre><code class="hljs plaintext">def cross_entropy_error(y, t):
     delta = 1e-7
@@ -269,7 +334,7 @@ if (true) {
 <p><strong>epoch</strong>是一个单位。一个epoch表示学习中所有训练数据均被使用过一次时的更新次数。比如，对于 10000笔训练数据，用大小为 100笔数据的mini-batch进行学习时，重复随机梯度下降法100次，所有的训练数据就都被“看过”了 A。此时，100次就是一个epoch。</p>
 <p>实际上，一般做法是事先将所有训练数据随机打乱，然后按指定的批次大小，按序生成mini-batch。这样每个mini-batch均有一个索引号，比如此例可以是0, 1, 2, . . . , 99，然后用索引号可以遍历所有的mini-batch。遍历一次所有数据，就称为一个epoch。</p>
 <h1 id="误差反向传播法"><a href="#误差反向传播法" class="headerlink" title="误差反向传播法"></a>误差反向传播法</h1><h2 id="激活函数层的实现"><a href="#激活函数层的实现" class="headerlink" title="激活函数层的实现"></a>激活函数层的实现</h2><p><strong>ReLU层</strong></p>
-<p>激活函数ReLU（Rectified Linear Unit）<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913101100478.png" alt="image-20250913101100478" style="zoom:50%;" />，它的导数是<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913101122323.png" alt="image-20250913101122323" style="zoom:50%;" /></p>
+<p>激活函数ReLU（Rectified Linear Unit）<img src="../source/imgs/${fiilname}/image-20250913101100478.png" alt="image-20250913101100478" style="zoom:50%;" />，它的导数是<img src="../source/imgs/${fiilname}/image-20250913101122323.png" alt="image-20250913101122323" style="zoom:50%;" /></p>
 <pre><code class="hljs plaintext">class Relu:
     def __init__(self):
         self.mask = None
@@ -284,7 +349,7 @@ if (true) {
         return dx</code></pre>
 
 <p><strong>Sigmoid层</strong></p>
-<p>sigmoid函数<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913101457738.png" alt="image-20250913101457738" style="zoom:50%;" />，它的导数是<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913101724780.png" alt="image-20250913101724780" style="zoom:50%;" /></p>
+<p>sigmoid函数<img src="../source/imgs/${fiilname}/image-20250913101457738.png" alt="image-20250913101457738" style="zoom:50%;" />，它的导数是<img src="../source/imgs/${fiilname}/image-20250913101724780.png" alt="image-20250913101724780" style="zoom:50%;" /></p>
 <pre><code class="hljs plaintext">class Sigmoid:
     def __init__(self):
         self.out = None
@@ -301,22 +366,22 @@ if (true) {
 <p>神经网络的<strong>正向传播</strong>中进行的<strong>矩阵的乘积运算</strong>在几何学领域被称为“仿射变换” 。因此，这里将进行仿射变换的处理实现为“Affine层”。</p>
 <p><strong>Softmax-with-Loss 层</strong></p>
 <p>最后介绍一下输出层的softmax函数。前面我们提到过， softmax函数会将输入值正规化之后再输出。比如手写数字识别时， Softmax层的输出如：</p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/../source/imgs/$%7Bfiilname%7D/image-20250913102830344.png" alt="image-20250913102830344"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250913102830344.png" alt="image-20250913102830344"></p>
 <p>因为手写数字识别要进行10类分类，所以向Softmax层的输入也有10个。</p>
 <p>神经网络中进行的处理有<strong>推理</strong>（inference）和<strong>学习</strong>两个阶段。神经网络的<strong>推理通常不使用Softmax层</strong>。比如，用图5-28的网络进行推理时，会将最后一个 Affine层的输出作为识别结果。神经网络中未被正规化的输出结果（图 5-28中 Softmax层前面的 Affine层的输出）有时被称为“得分”。也就是说，当神经网络的推理只需要给出一个答案的情况下，因为此时只对得分最大值感兴趣，所以不需要Softmax层。不过，神经网络的<strong>学习阶段则需要Softmax层</strong>。</p>
 <p>softmax函数记为Softmax层，交叉熵误差记为Cross Entropy Error层。这里假设要进行3类分类，从前面的层接收3个输入（得分）。如图5-30所示， Softmax层将输入（a1, a2, a3）正规化，输出（y1, y2, y3）。 Cross Entropy Error层接收Softmax的输出（y1, y2, y3）和教师标签（t1, t2, t3），从这些数据中输出损失L。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913103053341.png" alt="image-20250913103053341" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913103053341.png" alt="image-20250913103053341" style="zoom:50%;" />
 
 <p>Softmax层的反向传播得到了（y1 - t1, y2 - t2, y3 - t3）这样“漂亮”的结果。由于（y1, y2, y3）是Softmax层的输出，（t1, t2, t3）是监督数据，所以（y1 - t1, y2 - t2, y3 - t3）是Softmax层的输出和教师标签的差分。神经网络的反向传播会把这个差分表示的误差传递给前面的层。</p>
-<h1 id="与学习相关的技巧"><a href="#与学习相关的技巧" class="headerlink" title="与学习相关的技巧"></a>与学习相关的技巧</h1><h2 id="参数的更新"><a href="#参数的更新" class="headerlink" title="参数的更新"></a>参数的更新</h2><h3 id="随机梯度下降法"><a href="#随机梯度下降法" class="headerlink" title="随机梯度下降法"></a>随机梯度下降法</h3><p><strong>随机梯度下降法</strong>（SGD），在解决某些问题的时候没有效率，因为梯度的方向没有指向最小值。<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915200803430.png" alt="image-20250915200803430" style="zoom:40%;" /></p>
-<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915194354567.png" alt="image-20250915194354567" style="zoom:40%;" />，表示的函数是向x轴方向延伸的“碗”状函数。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915194431174.png" alt="image-20250915194431174" style="zoom:50%;" />
+<h1 id="与学习相关的技巧"><a href="#与学习相关的技巧" class="headerlink" title="与学习相关的技巧"></a>与学习相关的技巧</h1><h2 id="参数的更新"><a href="#参数的更新" class="headerlink" title="参数的更新"></a>参数的更新</h2><h3 id="随机梯度下降法"><a href="#随机梯度下降法" class="headerlink" title="随机梯度下降法"></a>随机梯度下降法</h3><p><strong>随机梯度下降法</strong>（SGD），在解决某些问题的时候没有效率，因为梯度的方向没有指向最小值。<img src="../source/imgs/${fiilname}/image-20250915200803430.png" alt="image-20250915200803430" style="zoom:40%;" /></p>
+<p><img src="../source/imgs/${fiilname}/image-20250915194354567.png" alt="image-20250915194354567" style="zoom:40%;" />，表示的函数是向x轴方向延伸的“碗”状函数。</p>
+<img src="../source/imgs/${fiilname}/image-20250915194431174.png" alt="image-20250915194431174" style="zoom:50%;" />
 
 <p>应用SGD，SGD呈“之”字形移动。这是一个相当低效的路径。也就是说， SGD的缺点是，如果函数的形状非均向，比如呈延伸状，搜索的路径就会非常低效。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915194538985.png" alt="image-20250915194538985" style="zoom:40%;" />
+<img src="../source/imgs/${fiilname}/image-20250915194538985.png" alt="image-20250915194538985" style="zoom:40%;" />
 
-<h3 id="Momentum"><a href="#Momentum" class="headerlink" title="Momentum"></a>Momentum</h3><p>Momentum是“动量”的意思，和物理有关。用数学式表示Momentum方法，<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915194751261.png" alt="image-20250915194751261" style="zoom:40%;" />，<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915194807290.png" alt="image-20250915194807290" style="zoom:40%;" /></p>
-<p>和前面的SGD一样， W表示要更新的权重参数，<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915194942860.png" alt="image-20250915194942860" style="zoom:50%;" />表示损失函数关于W的梯度， η表示学习率。这里新出现了一个变量v，对应物理上的速度。第一个式子表示了物体在梯度方向上受力，在这个力的作用下，物体的速度增加这一物理法则。</p>
+<h3 id="Momentum"><a href="#Momentum" class="headerlink" title="Momentum"></a>Momentum</h3><p>Momentum是“动量”的意思，和物理有关。用数学式表示Momentum方法，<img src="../source/imgs/${fiilname}/image-20250915194751261.png" alt="image-20250915194751261" style="zoom:40%;" />，<img src="../source/imgs/${fiilname}/image-20250915194807290.png" alt="image-20250915194807290" style="zoom:40%;" /></p>
+<p>和前面的SGD一样， W表示要更新的权重参数，<img src="../source/imgs/${fiilname}/image-20250915194942860.png" alt="image-20250915194942860" style="zoom:50%;" />表示损失函数关于W的梯度， η表示学习率。这里新出现了一个变量v，对应物理上的速度。第一个式子表示了物体在梯度方向上受力，在这个力的作用下，物体的速度增加这一物理法则。</p>
 <pre><code class="hljs plaintext">class Momentum:
     def __init__(self, lr=0.01, momentum=0.9):
         self.lr = lr
@@ -332,9 +397,9 @@ if (true) {
         params[key] += self.v[key]</code></pre>
 
 <p><code>numpy.zeros_like()</code> ，用于创建一个与给定数组<strong>形状和数据类型相同</strong>的新数组，但所有元素都被初始化为 <strong>0</strong>。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915203234346.png" alt="image-20250915203234346" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250915203234346.png" alt="image-20250915203234346" style="zoom:50%;" />
 
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915201507943.png" alt="image-20250915201507943" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250915201507943.png" alt="image-20250915201507943" style="zoom:50%;" />
 
 <p><strong>与SGD的对比及其优势</strong></p>
 <ul>
@@ -361,9 +426,9 @@ if (true) {
 <p>但是，如果梯度为0的地方就是最低点，<strong>相比于没有动量的SGD（梯度为0就立刻停止），Momentum方法可能需要更多的迭代步骤来让这种振荡停止下来，最终精确收敛到最低点。</strong></p>
 <h3 id="AdaGrad"><a href="#AdaGrad" class="headerlink" title="AdaGrad"></a>AdaGrad</h3><p>在关于学习率的有效技巧中，有一种被称为<strong>学习率衰减</strong>的方法，即随着学习的进行，使学习率逐渐减小。实际上，一开始“多”学，然后逐渐“少”学的方法，在神经网络的学习中经常被使用。</p>
 <p>逐渐减小学习率的想法，相当于将“全体”参数的学习率值一起降低。而AdaGrad进一步发展了这个想法，针对“<strong>一个一个</strong>”的参数，赋予其“定制”的值。AdaGrad会为参数的<strong>每个元素</strong>适当地调整学习率，与此同时进行学习。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915202216158.png" alt="image-20250915202216158" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250915202216158.png" alt="image-20250915202216158" style="zoom:50%;" />
 
-<p>和前面的SGD一样， W表示要更新的权重参数， 表示损失函数关于W的梯度， η表示学习率。这里新出现了变量h，如式(6.5)所示，它保存了以前的所有梯度值的<strong>平方和</strong>（式（6.5）中的<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915202243610.png" alt="image-20250915202243610" style="zoom:50%;" />表示矩阵中对应元素的乘法）。然后，在更新参数时，通过乘以<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915202334230.png" alt="image-20250915202334230" style="zoom:50%;" />，就可以调整学习的尺度。这意味着，参数的<strong>元素中变动较大</strong>（被大幅更新)的元素的<strong>学习率将变小</strong>。也就是说，可以按参数的元素进行学习率衰减，使变动大的参数的学习率逐渐减小。</p>
+<p>和前面的SGD一样， W表示要更新的权重参数， 表示损失函数关于W的梯度， η表示学习率。这里新出现了变量h，如式(6.5)所示，它保存了以前的所有梯度值的<strong>平方和</strong>（式（6.5）中的<img src="../source/imgs/${fiilname}/image-20250915202243610.png" alt="image-20250915202243610" style="zoom:50%;" />表示矩阵中对应元素的乘法）。然后，在更新参数时，通过乘以<img src="../source/imgs/${fiilname}/image-20250915202334230.png" alt="image-20250915202334230" style="zoom:50%;" />，就可以调整学习的尺度。这意味着，参数的<strong>元素中变动较大</strong>（被大幅更新)的元素的<strong>学习率将变小</strong>。也就是说，可以按参数的元素进行学习率衰减，使变动大的参数的学习率逐渐减小。</p>
 <p>AdaGrad会记录<strong>过去所有梯度</strong>的平方和。因此，学习<strong>越深入</strong>，更新的<strong>幅度就越小</strong>。实际上，如果无止境地学习，更新量就会变为 0，完全不再更新。为了改善这个问题，可以使用 <strong>RMSProp</strong>方法。RMSProp方法并不是将过去所有的梯度一视同仁地相加，而是逐渐地遗忘过去的梯度，在做加法运算时将新梯度的信息更多地反映出来。这种操作从专业上讲，称为“指数移动平均”，呈指数函数式地减小过去的梯度的尺度。</p>
 <pre><code class="hljs plaintext">class AdaGrad:
     def __init__(self, lr=0.01):
@@ -379,14 +444,14 @@ if (true) {
             self.h[key] += grads[key] * grads[key]
             params[key] -= self.lr * grads[key] / (np.sqrt(self.h[key]) + 1e-7)</code></pre>
 
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915203148184.png" alt="image-20250915203148184" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250915203148184.png" alt="image-20250915203148184" style="zoom:50%;" />
 
 <p>由于y轴方向上的梯度较大，因此刚开始变动较大，但是后面会根据这个较大的变动按比例进行调整，减小更新的步伐。因此， y轴方向上的更新程度被减弱，“之”字形的变动程度有所衰减。</p>
 <h3 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h3><p>Momentum参照小球在碗中滚动的物理规则进行移动， AdaGrad为参数的每个元素适当地调整更新步伐。Adam就是融合了这两个方法。具体的想看去看论文。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915203909822.png" alt="image-20250915203909822" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250915203909822.png" alt="image-20250915203909822" style="zoom:50%;" />
 
 <p>虽然Momentun也有类似的移动，但是相比之下， Adam的小球左右摇晃的程度有所减轻。这得益于学习的更新程度被适当地调整了。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915203954895.png" alt="image-20250915203954895" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250915203954895.png" alt="image-20250915203954895" style="zoom:50%;" />
 
 <pre><code class="hljs plaintext">class Adam:
 
@@ -446,26 +511,26 @@ for i, a in activations.items():
     plt.hist(a.flatten(), 30, range=(0,1))
 plt.show()</code></pre>
 
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915213751053.png" alt="image-20250915213751053" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250915213751053.png" alt="image-20250915213751053" style="zoom:50%;" />
 
 <p>各层的激活值呈偏向0和1的分布。这里使用的sigmoid函数是S型函数，随着输出不断地靠近0（或者靠近1），它的导数的值逐渐接近0。因此，偏向0和1的数据分布会造成反向传播中梯度的值不断变小，最后消失。这个问题称为<strong>梯度消失</strong>。层次加深的深度学习中，梯度消失的问题可能会更加严重。</p>
 <p>下面，将权重的标准差设为0.01，进行相同的实验。<code>w = np.random.randn(node_num, node_num) * 0.01</code></p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915213919994.png" alt="image-20250915213919994" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250915213919994.png" alt="image-20250915213919994" style="zoom:50%;" />
 
 <p>这次呈集中在0.5附近的分布。因为不像刚才的例子那样偏向0和1，所以不会发生梯度消失的问题。但是，激活值的分布有所<strong>偏向</strong>，说明在表现力上会有很大问题。为什么这么说呢？因为如果有多个神经元都输出几乎相同的值，那它们就没有存在的意义了。比如，如果100个神经元都输出几乎相同的值，那么也可以由1个神经元来表达基本相同的事情。因此，激活值在分布上有所偏向会出现“<strong>表现力受限</strong>”的问题。</p>
 <p><strong>各层的激活值的分布都要求有适当的广度。为什么呢？因为通过在各层间传递多样性的数据，神经网络可以进行高效的学习。反过来，如果传递的是有所偏向的数据，就会出现梯度消失或者“表现力受限”的问题，导致学习可能无法顺利进行。</strong></p>
 <p>接着，我们尝试使用Xavier Glorot等人的论文中推荐的权重初始值（俗称“Xavier初始值”）。现在，在一般的深度学习框架中， Xavier初始值已被作为标准使用。</p>
-<p>如果前一层的节点数为n，则初始值使用标准差为<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915214127994.png" alt="image-20250915214127994" style="zoom:50%;" />的分布。</p>
-<p><strong>Xavier初始值：与前一层有n个节点连接时，初始值使用标准差为<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915214229318.png" alt="image-20250915214229318" style="zoom:50%;" />的分布。</strong></p>
+<p>如果前一层的节点数为n，则初始值使用标准差为<img src="../source/imgs/${fiilname}/image-20250915214127994.png" alt="image-20250915214127994" style="zoom:50%;" />的分布。</p>
+<p><strong>Xavier初始值：与前一层有n个节点连接时，初始值使用标准差为<img src="../source/imgs/${fiilname}/image-20250915214229318.png" alt="image-20250915214229318" style="zoom:50%;" />的分布。</strong></p>
 <p>使用Xavier初始值后，前一层的节点数<strong>越多</strong>，要设定为目标节点的初始值的权重尺度就<strong>越小</strong>。现在，我们使用Xavier初始值进行实验。</p>
 <pre><code class="hljs plaintext">node_num = 100 # 前一层的节点数
 w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
 
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915214401550.png" alt="image-20250915214401550" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250915214401550.png" alt="image-20250915214401550" style="zoom:50%;" />
 
 <p>后面的层的分布呈稍微歪斜的形状。如果用<strong>tanh函数</strong>（双曲线函数）代替 sigmoid函数，这个稍微歪斜的问题就能得到改善。实际上，使用 tanh函数后，会呈漂亮的吊钟型分布。 tanh函数和sigmoid函数同是S型曲线函数，但tanh函数是<strong>关于原点(0, 0)对称</strong>的S型曲线，而 sigmoid函数是关于(x, y)&#x3D;(0, 0.5)对称的S型曲线。众所周知，<strong>用作激活函数的函数最好具有关于原点对称的性质</strong>。</p>
-<h3 id="ReLU的权重初始值"><a href="#ReLU的权重初始值" class="headerlink" title="ReLU的权重初始值"></a>ReLU的权重初始值</h3><p>Xavier初始值是以激活函数是<strong>线性函数</strong>为前提而推导出来的。因为sigmoid函数和 tanh函数左右对称，且中央附近可以视作线性函数，所以适合使用Xavier初始值。但当激活函数<strong>使用ReLU</strong>时，一般推荐使用ReLU专用的初始值，也就是Kaiming He等人推荐的初始值，也称为“<strong>He初始值</strong>” 。当前一层的节点数为n时， He初始值使用标准差为<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915214753398.png" alt="image-20250915214753398" style="zoom:50%;" />的高斯分布。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250915214852076.png" alt="image-20250915214852076" style="zoom:50%;" />
+<h3 id="ReLU的权重初始值"><a href="#ReLU的权重初始值" class="headerlink" title="ReLU的权重初始值"></a>ReLU的权重初始值</h3><p>Xavier初始值是以激活函数是<strong>线性函数</strong>为前提而推导出来的。因为sigmoid函数和 tanh函数左右对称，且中央附近可以视作线性函数，所以适合使用Xavier初始值。但当激活函数<strong>使用ReLU</strong>时，一般推荐使用ReLU专用的初始值，也就是Kaiming He等人推荐的初始值，也称为“<strong>He初始值</strong>” 。当前一层的节点数为n时， He初始值使用标准差为<img src="../source/imgs/${fiilname}/image-20250915214753398.png" alt="image-20250915214753398" style="zoom:50%;" />的高斯分布。</p>
+<img src="../source/imgs/${fiilname}/image-20250915214852076.png" alt="image-20250915214852076" style="zoom:50%;" />
 
 <p>当“std &#x3D; 0.01”时，各层的激活值非常小 。神经网络上传递的是非常小的值，说明逆向传播时权重的梯度也同样很小。这是很严重的问题，实际上学习基本上没有进展。</p>
 <p>接下来是初始值为<strong>Xavier初始值</strong>时的结果。在这种情况下，随着层的<strong>加深</strong>，<strong>偏向</strong>一点点<strong>变大</strong>。实际上，层加深后，激活值的偏向变大，学习时会出现<strong>梯度消失</strong>的问题。而当初始值为<strong>He初始值</strong>时，各层中<strong>分布的广度相同</strong>。由于即便层加深，数据的广度也能保持不变，因此逆向传播时，也会传递合适的值。</p>
@@ -476,23 +541,23 @@ w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
 <p>• 不那么依赖初始值（对于初始值不用那么神经质）。</p>
 <p>• 抑制过拟合（降低Dropout等的必要性）。</p>
 <p>Batch Norm的思路是<strong>调整各层的激活值分布</strong>使其拥有适当的广度。为此，要向神经网络中插入对数据分布进行<strong>正规化</strong>的层，即Batch Normalization层（下文简称Batch Norm层），如图6-16所示。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916094735875.png" alt="image-20250916094735875" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250916094735875.png" alt="image-20250916094735875" style="zoom:50%;" />
 
 <p>Batch Norm，顾名思义，以进行学习时的mini-batch为单位，按minibatch进行正规化。具体而言，就是进行使数据分布的均值为0、方差为1的<strong>正规化</strong>。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916095036960.png" alt="image-20250916095036960" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250916095036960.png" alt="image-20250916095036960" style="zoom:50%;" />
 
 <p>式（6.7）中的ε是一个微小值（比如， 10e-7等），它是为了防止出现除以0的情况。</p>
 <p>通过将这个处理插入到激活函数的前面（或者后面） ，可以减小数据分布的偏向。</p>
-<p>接着， Batch Norm层会对正规化后的数据进行缩放和平移的变换，<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916095355658.png" alt="image-20250916095355658" style="zoom:50%;" />，γ和β是参数。一开始γ &#x3D; 1， β &#x3D; 0，然后再通过学习调整到合适的值。</p>
+<p>接着， Batch Norm层会对正规化后的数据进行缩放和平移的变换，<img src="../source/imgs/${fiilname}/image-20250916095355658.png" alt="image-20250916095355658" style="zoom:50%;" />，γ和β是参数。一开始γ &#x3D; 1， β &#x3D; 0，然后再通过学习调整到合适的值。</p>
 <p>Batch Norm的反向传播在Frederik Kratzert 的博客“Understanding the backward pass through Batch Normalization Layer”里有详细说明。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916095541658.png" alt="image-20250916095541658" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250916095541658.png" alt="image-20250916095541658" style="zoom:50%;" />
 
 <p>几乎所有的情况下都是使用Batch Norm时学习进行得更快。同时也可以发现，实际上，在不使用Batch Norm的情况下，如果不赋予一个尺度好的初始值，学习将完全无法进行。</p>
 <h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><h3 id="权值衰减"><a href="#权值衰减" class="headerlink" title="权值衰减"></a>权值衰减</h3><p>该方法通过在学习的过程中对大的权重进行惩罚，来抑制过拟合。很多过拟合原本就是因为权重参数取值过大才发生的。</p>
-<p>对于所有权重，权值衰减方法都会为损失函数加上<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916100018954.png" alt="image-20250916100018954" style="zoom:50%;" />，因此，在求权重梯度的计算中，要为之前的误差反向传播法的结果加上正则化项的导数λW。</p>
+<p>对于所有权重，权值衰减方法都会为损失函数加上<img src="../source/imgs/${fiilname}/image-20250916100018954.png" alt="image-20250916100018954" style="zoom:50%;" />，因此，在求权重梯度的计算中，要为之前的误差反向传播法的结果加上正则化项的导数λW。</p>
 <h3 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h3><p>如果网络的模型变得很复杂，只用权值衰减就难以应对了。在这种情况下，我们经常会使用Dropout方法。</p>
 <p>Dropout是一种在学习的过程中<strong>随机删除神经元</strong>的方法。训练时，随机选出隐藏层的神经元，然后将其删除。<strong>被删除的神经元不再进行信号的传递</strong>，如图6-22所示。训练时，<strong>每传递一次</strong>数据，就会随机选择要删除的神经元。然后，测试时，虽然会传递所有的神经元信号，但是对于各个神经元的输出，要乘上训练时的删除比例后再输出。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916100528410.png" alt="image-20250916100528410" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250916100528410.png" alt="image-20250916100528410" style="zoom:50%;" />
 
 <p>下面的实现重视易理解性。不过，因为训练时如果进行恰当的计算的话，正向传播时单纯地传递数据就可以了（不用乘以删除比例），所以深度学习的框架中进行了这样的实现。  </p>
 <pre><code class="hljs plaintext">class Dropout:
@@ -531,9 +596,9 @@ w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
 <h1 id="卷积神经网络-CNN"><a href="#卷积神经网络-CNN" class="headerlink" title="卷积神经网络 CNN"></a>卷积神经网络 CNN</h1><h2 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h2><p>CNN中新出现了卷积层（Convolution层）和池化层（Pooling层）。</p>
 <p>之前介绍的神经网络中，相邻层的所有神经元之间都有连接，这称为<strong>全连接</strong>（fully-connected）。另外，我们用Affine层实现了全连接层。如果使用这个Affine层，一个5层的全连接的神经网络就可以通过图7-1所示的网络结构来实现。</p>
 <p>如图7-1所示，全连接的神经网络中， Affine层后面跟着激活函数ReLU层（或者Sigmoid层）。这里堆叠了4层“Affine-ReLU”组合，然后第5层是Affine层，最后由Softmax层输出最终结果（概率）。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913105112819.png" alt="image-20250913105112819" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913105112819.png" alt="image-20250913105112819" style="zoom:50%;" />
 
-<p>CNN的一个例子：<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913105141247.png" alt="image-20250913105141247" style="zoom:50%;" /></p>
+<p>CNN的一个例子：<img src="../source/imgs/${fiilname}/image-20250913105141247.png" alt="image-20250913105141247" style="zoom:50%;" /></p>
 <p>CNN 中 新 增 了 Convolution 层 和 Pooling 层。 CNN 的层的连接顺序是“Convolution - ReLU -（Pooling）”（Pooling层有时会被省略）。这可以理解为之前的“Affi ne - ReLU”连接被替换成了“Convolution - ReLU -（Pooling）”连接。</p>
 <p>还需要注意的是，在图7-2的CNN中，靠近输出的层中使用了之前的“Affine - ReLU”组合。此外，最后的输出层中使用了之前的“Affine - Softmax”组合。这些都是一般的CNN中比较常见的结构。</p>
 <h2 id="卷积层"><a href="#卷积层" class="headerlink" title="卷积层"></a>卷积层</h2><h3 id="全连接层的问题"><a href="#全连接层的问题" class="headerlink" title="全连接层的问题"></a>全连接层的问题</h3><p>之前介绍的全连接的神经网络中使用了全连接层（Affine层）。在全连接层中，相邻层的神经元全部连接在一起，输出的数量可以任意决定。</p>
@@ -545,57 +610,57 @@ w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
 <p>滤波器运算，可以把它理解为给图像“戴上一副特殊的眼镜”或“使用一个修图工具”，来达到某种特定的效果。</p>
 <p>在图像处理中，<strong>滤波器（Filter）</strong>，有时也称为<strong>内核（Kernel）</strong>或<strong>掩模（Mask）</strong>，是一个小的数字矩阵。滤波器运算就是<strong>将这个小的矩阵（滤波器）在大的数字矩阵（原始图像）上滑动，并在每个位置进行一系列数学计算，从而生成一幅新图像的过程</strong>。</p>
 <p>这个过程在数学上称为<strong>卷积（Convolution）</strong>，因此也常被称为<strong>卷积运算</strong>。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913110528152.png" alt="image-20250913110528152" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913110528152.png" alt="image-20250913110528152" style="zoom:50%;" />
 
 <p>有的文献中也会用“核”这个词来表示这里所说的“滤波器”。</p>
 <p>如何计算：</p>
 <p>对于输入数据，卷积运算以一定间隔滑动滤波器的窗口并应用。这里所说的窗口是指图7-4中灰色的3 × 3的部分。如图7-4所示，将各个位置上滤波器的元素和输入的对应元素相乘，然后再求和（有时将这个计算称为<strong>乘积累加运算</strong>）。然后，将这个结果保存到输出的对应位置。将这个过程在所有位置都进行一遍，就可以得到卷积运算的输出。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913111620630.png" alt="image-20250913111620630" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913111620630.png" alt="image-20250913111620630" style="zoom:50%;" />
 
 <p>在全连接的神经网络中，除了权重参数，还存在偏置。 CNN中，滤波器的参数就对应之前的权重。并且， CNN中也存在偏置。图7-3的卷积运算的例子一直展示到了应用滤波器的阶段。包含偏置的卷积运算的处理流如图7-5所示。</p>
 <p>如图7-5所示，向应用了滤波器的数据加上了<strong>偏置</strong>。偏置通常只有1个（1 × 1）（本例中，相对于应用了滤波器的4个数据，偏置只有1个），这个值会被<strong>加到应用了滤波器的所有元素上</strong>。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913111730093.png" alt="image-20250913111730093" style="zoom:67%;" />
+<img src="../source/imgs/${fiilname}/image-20250913111730093.png" alt="image-20250913111730093" style="zoom:67%;" />
 
 <h3 id="填充"><a href="#填充" class="headerlink" title="填充"></a>填充</h3><p>在进行卷积层的处理之前，有时要<strong>向输入数据的周围填入固定的数据</strong>（比如0等），这称为<strong>填充</strong>（padding），是卷积运算中经常会用到的处理。比如，在图7-6的例子中，对大小为(4, 4)的输入数据应用了幅度为1的填充。“<strong>幅度为1的填充</strong>”是指用幅度为1像素的0填充周围。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913111919701.png" alt="image-20250913111919701" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913111919701.png" alt="image-20250913111919701" style="zoom:50%;" />
 
 <p>使用填充主要是为了<strong>调整输出的大小</strong>。比如，对大小为(4, 4)的输入数据应用(3, 3)的滤波器时，输出大小变为(2, 2)，相当于输出大小比输入大小缩小了2个元素。这在反复进行多次卷积运算的深度网络中会成为问题。为什么呢？因为如果每次进行卷积运算都会缩小空间，那么在某个时刻输出大小就有可能变为 1，导致无法再应用卷积运算。为了避免出现这样的情况，就要使用填充。在刚才的例子中，将填充的幅度设为1，那么相对于输入大小(4, 4)，输出大小也保持为原来的(4, 4)。因此，卷积运算就可以在保持空间大小不变的情况下将数据传给下一层。</p>
 <h3 id="步幅"><a href="#步幅" class="headerlink" title="步幅"></a>步幅</h3><p>应用滤波器的位置间隔称为<strong>步幅</strong>（stride）。之前的例子中步幅都是1，如果将步幅设为2，则如图7-7所示，应用滤波器的窗口的间隔变为2个元素。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913112226658.png" alt="image-20250913112226658" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913112226658.png" alt="image-20250913112226658" style="zoom:50%;" />
 
 <p>步幅可以指定应用滤波器的间隔。</p>
 <p>综上，增大步幅后，输出大小会变小。而增大填充后，输出大小会变大。如果将这样的关系写成算式，会如何呢？接下来，我们看一下对于填充和步幅，如何计算输出大小。</p>
 <p>这里，假设输入大小为(H, W)，滤波器大小为(FH, FW)，输出大小为(OH, OW)，填充为P，步幅为S。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913220538308.png" alt="image-20250913220538308" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913220538308.png" alt="image-20250913220538308" style="zoom:50%;" />
 
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913220620533.png" alt="image-20250913220620533" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913220620533.png" alt="image-20250913220620533" style="zoom:50%;" />
 
-<p>这里需要注意的是，虽然只要代入值就可以计算输出大小，但是所设定的值必须使<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913220655204.png" alt="image-20250913220655204" style="zoom:50%;" />分别可以除尽。当输出大小无法除尽时（结果是小数时），需要采取报错等对策。顺便说一下，根据<strong>深度学习的框架的不同</strong>，当值无法除尽时，有时会向最接近的整数四舍五入，不进行报错而继续运行。</p>
+<p>这里需要注意的是，虽然只要代入值就可以计算输出大小，但是所设定的值必须使<img src="../source/imgs/${fiilname}/image-20250913220655204.png" alt="image-20250913220655204" style="zoom:50%;" />分别可以除尽。当输出大小无法除尽时（结果是小数时），需要采取报错等对策。顺便说一下，根据<strong>深度学习的框架的不同</strong>，当值无法除尽时，有时会向最接近的整数四舍五入，不进行报错而继续运行。</p>
 <h3 id="3维数据的卷积运算"><a href="#3维数据的卷积运算" class="headerlink" title="3维数据的卷积运算"></a>3维数据的卷积运算</h3><p>图像是3维数据，除了高、长方向之外，还需要处理通道方向。这里，我们按照与之前相同的顺序，看一下对加上了通道方向的3维数据进行卷积运算的例子。</p>
 <p>图7-8是卷积运算的例子，图7-9是计算顺序。这里以3通道的数据为例，展示了卷积运算的结果。和2维数据时（图7-3的例子）相比，可以发现纵深方向（通道方向）上特征图增加了。通道方向上有多个特征图时，会按通道进行输入数据和滤波器的卷积运算，并<strong>将结果相加</strong>，从而得到输出。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913220857845.png" alt="image-20250913220857845" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913220857845.png" alt="image-20250913220857845" style="zoom:50%;" />
 
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913220924250.png" alt="image-20250913220924250" style="zoom:60%;" />
+<img src="../source/imgs/${fiilname}/image-20250913220924250.png" alt="image-20250913220924250" style="zoom:60%;" />
 
 <p>在3维数据的卷积运算中，<strong>输入数据和滤波器的通道数要设为相同的值</strong>。在这个例子中，输入数据和滤波器的通道数一致，均为3。滤波器大小可以设定为任意值（不过，<strong>每个通道的滤波器大小要全部相同</strong>）。这个例子中滤波器大小为(3, 3)，但也可以设定为(2, 2)、 (1, 1)、 (5, 5)等任意值。再强调一下，通道数只能设定为和输入数据的通道数相同的值（本例中为3）。</p>
 <p>通道数为 C、高度为H、长度为W的数据的形状可以写成（C, H, W）。滤波器也一样，要按（channel, height, width）的顺序书写。比如，通道数为C、滤波器高度为FH（Filter Height）、长度为FW（Filter Width）时，可以写成（C, FH, FW）。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913221152636.png" alt="image-20250913221152636" style="zoom:67%;" />
+<img src="../source/imgs/${fiilname}/image-20250913221152636.png" alt="image-20250913221152636" style="zoom:67%;" />
 
 <p>如果要在通道方向上也拥有多个卷积运算的输出，该怎么做呢？为此，就需要用到<strong>多个滤波器</strong>（权重）。用图表示的话，如图7-11所示。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913221249515.png" alt="image-20250913221249515" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913221249515.png" alt="image-20250913221249515" style="zoom:50%;" />
 
 <p>通过应用FN个滤波器，输出特征图也生成了FN个。如果将这FN个特征图汇集在一起，就得到了形状为(FN, OH, OW)的方块。将这个方块传给下一层，就是CNN的处理流。</p>
 <p>关于卷积运算的滤波器，也必须考虑滤波器的数量。因此，作为4维数据，滤波器的权重数据要按(output_channel, input_ channel , height, width)的顺序书写。比如，通道数为3、大小为5 × 5的滤波器有20个时，可以写成(20, 3, 5, 5)。</p>
 <p>卷积运算中（和全连接层一样）<strong>存在偏置</strong>。在图7-11的例子中，如果进一步追加偏置的加法运算处理，则结果如下面的图7-12所示。</p>
 <p>图7-12中，每个通道只有一个偏置。这里，偏置的形状是(FN, 1, 1)，滤波器的输出结果的形状是(FN, OH, OW)。这两个方块相加时，要对滤波器的输出结果(FN, OH, OW)<strong>按通道加上相同的偏置值</strong>。另外，不同形状的方块相加时，可以基于NumPy的广播功能轻松实现（1.5.5节）。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913221526687.png" alt="image-20250913221526687" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913221526687.png" alt="image-20250913221526687" style="zoom:50%;" />
 
 <h3 id="批处理"><a href="#批处理" class="headerlink" title="批处理"></a>批处理</h3><p>需要将在各层间传递的数据保存为4维数据。具体地讲，就是按(batch_num, channel, height, width)的顺序保存数据。比如，将图7-12中的处理改成对N个数据进行批处理时，数据的形状如图7-13所示。</p>
 <p>图7-13的批处理版的数据流中，在各个数据的开头添加了批用的维度。像这样，数据作为4维的形状在各层间传递。这里需要注意的是，网络间传递的是4维数据，对这N个数据进行了卷积运算。也就是说，批处理将N次的处理汇总成了1次进行。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913221932677.png" alt="image-20250913221932677" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913221932677.png" alt="image-20250913221932677" style="zoom:50%;" />
 
 <h2 id="池化层"><a href="#池化层" class="headerlink" title="池化层"></a>池化层</h2><p>池化是<strong>缩小高、长方向上的空间</strong>的运算。比如，如图7-14所示，进行将2 × 2的区域集约成1个元素的处理，缩小空间大小。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913222046256.png" alt="image-20250913222046256" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913222046256.png" alt="image-20250913222046256" style="zoom:50%;" />
 
 <p>图7-14的例子是按步幅2进行2 × 2的Max池化时的处理顺序。“Max池化”是获取最大值的运算，“2 × 2”表示目标区域的大小。一般来说，<strong>池化的窗口大小会和步幅设定成相同的值</strong>。比如， 3 × 3的窗口的步幅会设为3， 4 × 4的窗口的步幅会设为4等。</p>
 <p>除了Max池化之外，还有Average池化等。相对于Max池化是从目标区域中取出最大值，<strong>Average池化</strong>则是计算目标区域的平均值。在图像识别领域，主要使用Max池化。因此，本书中说到“池化层”时，指的是Max池化。</p>
@@ -606,7 +671,7 @@ w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
 <p>经过池化运算，输入数据和输出数据的通道数不会发生变化。如图7-15所示，计算是按通道独立进行的。</p>
 <p><strong>对微小的位置变化具有鲁棒性（健壮）</strong></p>
 <p>输入数据发生微小偏差时，池化仍会返回相同的结果。因此，池化对输入数据的微小偏差具有鲁棒性。比如， 3 × 3的池化的情况下，如图7-16所示，池化会吸收输入数据的偏差（根据数据的不同，结果有可能不一致）。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250913222423357.png" alt="image-20250913222423357" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250913222423357.png" alt="image-20250913222423357" style="zoom:50%;" />
 
 <h2 id="卷积层和池化层的实现"><a href="#卷积层和池化层的实现" class="headerlink" title="卷积层和池化层的实现"></a>卷积层和池化层的实现</h2><h3 id="4维数组"><a href="#4维数组" class="headerlink" title="4维数组"></a>4维数组</h3><p>CNN中各层间传递的数据是4维数据。所谓4维数据，比如数据的形状是(10, 1, 28, 28)，则它对应10个高为28、长为28、通道为1的数据。用Python来实现的话，如下所示。</p>
 <pre><code class="hljs plaintext">&gt;&gt;&gt; x = np.random.rand(10, 1, 28, 28) # 随机生成数据
@@ -617,15 +682,15 @@ w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
 <p>如果要访问第1个数据的第1个通道的空间数据：<code>&gt;&gt;&gt; x[0, 0] # 或者x[0][0]</code>  </p>
 <h3 id="基于-im2col的展开"><a href="#基于-im2col的展开" class="headerlink" title="基于 im2col的展开"></a>基于 im2col的展开</h3><p>如果老老实实地实现卷积运算，估计要重复好几层的 for语句。这样的实现有点麻烦，而且， NumPy中存在使用for语句后处理变慢的缺点（NumPy中，访问元素时最好不要用 for语句）。这里，我们不使用 for语句，而是使用im2col这个便利的函数进行简单的实现。</p>
 <p>im2col是一个函数，将输入数据展开以适合滤波器（权重）。如图7-17所示，对3维的输入数据<strong>应用im2col</strong>后，<strong>数据转换为2维矩阵</strong>（正确地讲，是把包含批数量的4维数据转换成了2维数据）。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250914191528335.png" alt="image-20250914191528335" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250914191528335.png" alt="image-20250914191528335" style="zoom:50%;" />
 
 <p>im2col会把输入数据展开以适合滤波器（权重）。具体地说，如图7-18所示，对于输入数据，<strong>将应用滤波器的区域（3维方块）横向展开为1列</strong>。 im2col会在所有应用滤波器的地方进行这个展开处理。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250914191948788.png" alt="image-20250914191948788" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250914191948788.png" alt="image-20250914191948788" style="zoom:50%;" />
 
 <p>在图7-18中，为了便于观察，将步幅设置得很大，以使滤波器的应用区域不重叠。而在实际的卷积运算中，滤波器的应用区域几乎都是重叠的。在滤波器的应用区域重叠的情况下，使用im2col展开后，展开后的元素个数会多于原方块的元素个数。因此，使用im2col的实现存在比普通的实现<strong>消耗更多内存</strong>的缺点。但是，汇总成一个大的矩阵进行计算，对计算机的计算颇有益处。</p>
 <p>使用 im2col展开输入数据后，之后就只需将卷积层的滤波器（权重）纵向展开为1列，并计算2个矩阵的乘积即可（参照图7-19）。这和全连接层的Affi ne层进行的处理基本相同。</p>
 <p>如图7-19所示，基于 im2col方式的<strong>输出结果是2维矩阵</strong>。因为CNN中数据会保存为4维数组，所以要将2维输出数据<strong>转换</strong>为合适的形状。以上就是卷积层的实现流程。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250914192306122.png" alt="image-20250914192306122" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250914192306122.png" alt="image-20250914192306122" style="zoom:50%;" />
 
 <h3 id="卷积层的实现"><a href="#卷积层的实现" class="headerlink" title="卷积层的实现"></a>卷积层的实现</h3><pre><code class="hljs plaintext">def im2col(input_data, filter_h, filter_w, stride=1, pad=0):
     &quot;&quot;&quot;
@@ -683,7 +748,7 @@ w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
 
 <p>卷积层的初始化方法将滤波器（权重）、偏置、步幅、填充作为参数接收。滤波器是 (FN, C, FH, FW)的 4 维形状。另外， FN、 C、 FH、 FW分别是 Filter Number（滤波器数量）、 Channel、 Filter Height、 Filter Width的缩写。</p>
 <p>这里通过 reshape(FN,-1)将参数指定为 -1，这是reshape的一个便利的功能。通过在 reshape时指定为 -1， reshape函数会自动计算 -1维度上的元素个数，以使多维数组的元素个数前后一致。比如， (10, 3, 5, 5)形状的数组的元素个数共有750个，指定 reshape(10,-1)后，就会转换成(10, 75)形状的数组。forward的实现中，最后会将输出大小转换为合适的形状。转换时使用了NumPy的transpose函数。 transpose会更改多维数组的轴的顺序。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250914202637781.png" alt="image-20250914202637781" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250914202637781.png" alt="image-20250914202637781" style="zoom:50%;" />
 
 <p>以上就是卷积层的 forward处理的实现。通过使用 im2col进行展开，基本上可以像实现全连接层的Affine层一样来实现。接下来是卷积层的反向传播的实现，因为和Affine层的实现有很多共通的地方，所以就不再介绍了。但有一点需要注意，在<strong>进行卷积层的反向传播时，必须进行im2col的逆处理</strong>。</p>
 <p>“必须进行 im2col 的逆处理” 指的是将梯度信息从展开的矩阵形式转换回原始图像格式的关键步骤。</p>
@@ -730,10 +795,10 @@ w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
     return img[:, :, pad:H + pad, pad:W + pad]</code></pre>
 
 <h3 id="池化层的实现"><a href="#池化层的实现" class="headerlink" title="池化层的实现"></a>池化层的实现</h3><p>池化层的实现和卷积层相同，都使用im2col展开输入数据。不过，池化的情况下，在通道方向上是独立的，这一点和卷积层不同。具体地讲，如图7-21所示，<strong>池化的应用区域按通道单独展开</strong>。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250914205228236.png" alt="image-20250914205228236" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250914205228236.png" alt="image-20250914205228236" style="zoom:50%;" />
 
 <p>像这样展开之后，只需对展开的矩阵求各行的最大值，并转换为合适的形状即可（图7-22）。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250914205402764.png" alt="image-20250914205402764" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250914205402764.png" alt="image-20250914205402764" style="zoom:50%;" />
 
 <p>Python的实现示例：</p>
 <pre><code class="hljs plaintext">class Pooling:
@@ -758,31 +823,31 @@ w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
 <p>池化层的实现按下面3个阶段进行：</p>
 <p>1.展开输入数据。2.求各行的最大值。3.转换为合适的输出大小。</p>
 <h2 id="CNN的实现"><a href="#CNN的实现" class="headerlink" title="CNN的实现"></a>CNN的实现</h2><p>要实现如图7-23所示的CNN。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250914210146223.png" alt="image-20250914210146223" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250914210146223.png" alt="image-20250914210146223" style="zoom:50%;" />
 
 <p>自己去看</p>
 <h2 id="CNN的可视化"><a href="#CNN的可视化" class="headerlink" title="CNN的可视化"></a>CNN的可视化</h2><h3 id="第1层权重的可视化"><a href="#第1层权重的可视化" class="headerlink" title="第1层权重的可视化"></a>第1层权重的可视化</h3><p>第1层的卷积层的权重的形状是(30, 1, 5, 5)，即30个大小为5 × 5、通道为1的滤波器。滤波器大小是5 × 5、通道数是1，意味着滤波器可以可视化为1通道的灰度图像。现在，我们将卷积层（第1层）的滤波器显示为图像。这里，我们来比较一下学习前和学习后的权重，结果如图7-24所示。</p>
 <p>图7-24中，学习前的滤波器是随机进行初始化的，所以在黑白的浓淡上没有规律可循，但学习后的滤波器变成了有规律的图像。我们发现，通过学习，滤波器被更新成了有规律的滤波器，比如从白到黑渐变的滤波器、含有块状区域（称为blob）的滤波器等。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250914210654169.png" alt="image-20250914210654169" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250914210654169.png" alt="image-20250914210654169" style="zoom:50%;" />
 
 <p>右边的有规律的滤波器在“观察”什么，答案就是它在观察边缘（颜色变化的分界线）和斑块（局部的块状区域）等。比如，左半部分为白色、右半部分为黑色的滤波器的情况下，如图7-25所示，会对垂直方向上的边缘有响应。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250914210719918.png" alt="image-20250914210719918" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250914210719918.png" alt="image-20250914210719918" style="zoom:50%;" />
 
 <p>图7-25中显示了选择两个学习完的滤波器对输入图像进行卷积处理时的结果。我们发现“滤波器1”对垂直方向上的边缘有响应，“滤波器2</p>
 <p>”对水平方向上的边缘有响应。</p>
 <p>由此可知，卷积层的滤波器会提取边缘或斑块等原始信息。而刚才实现的CNN会将这些原始信息传递给后面的层。</p>
 <h3 id="基于分层结构的信息提取"><a href="#基于分层结构的信息提取" class="headerlink" title="基于分层结构的信息提取"></a>基于分层结构的信息提取</h3><p>第1层的卷积层中提取了边缘或斑块等“低级”信息，那么在堆叠了多层的CNN中，各层中又会提取什么样的信息呢？</p>
 <p>图7-26中展示了进行一般物体识别（车或狗等）的8层CNN。这个网络结构的名称是下一节要介绍的AlexNet。 AlexNet网络结构堆叠了多层卷积层和池化层，最后经过全连接层输出结果。图7-26的方块表示的是中间数据，对于这些中间数据，会连续应用卷积运算。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250914210954006.png" alt="image-20250914210954006" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250914210954006.png" alt="image-20250914210954006" style="zoom:50%;" />
 
 <p>如图7-26所示，如果堆叠了多层卷积层，则随着<strong>层次加深</strong>，<strong>提取的信息也愈加复杂、抽象</strong>，这是深度学习中很有意思的一个地方。最开始的层对简单的边缘有响应，接下来的层对纹理有响应，再后面的层对更加复杂的物体部件有响应。也就是说，随着层次加深，神经元从简单的形状向“高级”信息变化。换句话说，就像我们理解东西的“含义”一样，响应的对象在逐渐变化。</p>
 <h2 id="具有代表性的CNN"><a href="#具有代表性的CNN" class="headerlink" title="具有代表性的CNN"></a>具有代表性的CNN</h2><p><strong>LeNet</strong></p>
 <p>LeNet在1998年被提出，是进行手写数字识别的网络。如图7-27所示，它有连续的卷积层和池化层（正确地讲，是只“抽选元素”的子采样层），最后经全连接层输出结果。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250914211135593.png" alt="image-20250914211135593" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250914211135593.png" alt="image-20250914211135593" style="zoom:50%;" />
 
 <p>和“现在的CNN”相比， LeNet有几个不同点。第一个不同点在于激活函数。 LeNet中使用sigmoid函数，而现在的CNN中主要使用ReLU函数。此外，原始的LeNet中使用子采样（subsampling）缩小中间数据的大小，而现在的CNN中Max池化是主流。</p>
 <p><strong>AlexNet</strong></p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250914211227133.png" alt="image-20250914211227133" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250914211227133.png" alt="image-20250914211227133" style="zoom:50%;" />
 
 <p>AlexNet叠有多个卷积层和池化层，最后经由全连接层输出结果。虽然结构上AlexNet和LeNet没有大的不同，但有以下几点差异。</p>
 <p>• 激活函数使用ReLU。</p>
@@ -790,7 +855,7 @@ w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
 <p>• 使用Dropout。</p>
 <h1 id="深度学习"><a href="#深度学习" class="headerlink" title="深度学习"></a>深度学习</h1><p>深度学习是加深了层的深度神经网络。基于之前介绍的网络，只需通过叠加层，就可以创建深度网络。</p>
 <h2 id="加深网络"><a href="#加深网络" class="headerlink" title="加深网络"></a>加深网络</h2><p>创建一个如图8-1所示的网络结构的CNN（一个比之前的网络都深的网络）。这里使用的卷积层全都是3 × 3的小型滤波器，特点是随着层的加深，通道数变大（卷积层的通道数从前面的层开始按顺序以16、 16、 32、 32、 64、 64的方式增加）。此外，如图8-1所示，插入了池化层，以逐渐减小中间数据的空间大小；并且，后面的全连接层中使用了Dropout层。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916111157835.png" alt="image-20250916111157835" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250916111157835.png" alt="image-20250916111157835" style="zoom:50%;" />
 
 <p>这个网络使用He初始值作为权重的初始值，使用Adam</p>
 <p>更新权重参数。把上述内容总结起来，这个网络有如下特点。</p>
@@ -802,14 +867,14 @@ w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
 <p>对于手写数字识别这样一个比较简单的任务，没有必要将网络的表现力提高到那么高的程度。因此，可以说加深层的好处并不大。而之后要介绍的大规模的一般物体识别的情况，因为问题复杂，所以加深层对提高识别精度大有裨益。</p>
 <p>集成学习、学习率衰减、 Data Augmentation（数据扩充）等都有助于提高识别精度。尤其是Data Augmentation，虽然方法很简单，但在提高识别精度上效果显著。</p>
 <p>Data Augmentation基于算法“人为地”扩充输入图像（训练图像）。具体地说，如图8-4所示，对于输入图像，通过施加旋转、垂直或水平方向上的移动等微小变化，增加图像的数量。这在数据集的图像数量有限时尤其有效。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916152546197.png" alt="image-20250916152546197" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250916152546197.png" alt="image-20250916152546197" style="zoom:50%;" />
 
 <p>除了如图8-4所示的变形之外， Data Augmentation还可以通过其他各种方法扩充图像，比如裁剪图像的“crop处理”、将图像左右翻转的“flip处理”（flip处理只在不需要考虑图像对称性的情况下有效。）等。对于一般的图像，施加亮度等外观上的变化、放大缩小等尺度上的变化也是有效的。</p>
 <p><strong>加深层的好处</strong>：</p>
 <p><strong>可以减少网络的参数数量</strong>。说得详细一点，就是与没有加深层的网络相比，加深了层的网络可以用更少的参数达到同等水平（或者更强）的表现力。这一点结合卷积运算中的滤波器大小来思考就好理解了。比如，图8-5展示了由5 × 5的滤波器构成的卷积层。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916153339950.png" alt="image-20250916153339950" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250916153339950.png" alt="image-20250916153339950" style="zoom:50%;" />
 
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916153356093.png" alt="image-20250916153356093" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250916153356093.png" alt="image-20250916153356093" style="zoom:50%;" />
 
 <p>一次5 × 5的卷积运算的区域可以由两次3 × 3的卷积运算抵充。并且，相对于前者的参数数量25（5 × 5），后者一共是18（2 × 3 × 3），通过叠加卷积层，参数数量减少了。而且，这个参数数量之差会随着层的加深而变大。比如，重复三次3 × 3的卷积运算时，参数的数量总共是27。而为了用一次卷积运算“观察”与之相同的区域，需要一个7 × 7的滤波器，此时的参数数量是49。</p>
 <p><strong>叠加小型滤波器</strong>来加深网络的好处是<strong>可以减少参数的数量，扩大感受野</strong>（receptive field，给神经元施加变化的某个局部空间区域）。并且，通过叠加层，将 <strong>ReLU等</strong>激活函数夹在卷积层的中间，进一步提高了网络的表现力。这是因为向网络添加了基于激活函数的“非线性”表现力，通过<strong>非线性函数</strong>的叠加，可以表现更加复杂的东西。  </p>
@@ -819,19 +884,19 @@ w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
 <p>通过加深层，<strong>可以分层次地传递信息</strong>。比如，因为提取了边缘的层的下一层能够使用边缘的信息，所以应该能够高效地学习更加高级的模式。也就是说，通过加深层，可以<strong>将各层要学习的问题分解成容易解决的简单问题</strong>，从而可以进行高效的学习。</p>
 <h2 id="深度学习的高速化"><a href="#深度学习的高速化" class="headerlink" title="深度学习的高速化"></a>深度学习的高速化</h2><p>深度学习中什么样的处理比较耗时。图8-14中以AlexNet的 forward处理为对象，用饼图展示了各层所耗费的时间。</p>
 <p>从图中可知， AlexNex中，<strong>大多数时间都被耗费在卷积层上</strong>。实际上，卷积层的处理时间加起来占GPU整体的95%，占CPU整体的89%！因此，如何高速、高效地进行卷积层中的运算是深度学习的一大课题。虽然图8-14是推理时的结果，不过学习时也一样，卷积层中会耗费大量时间。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916155041776.png" alt="image-20250916155041776" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250916155041776.png" alt="image-20250916155041776" style="zoom:50%;" />
 
 <p>卷积层中进行的运算可以追溯至乘积累加运算。因此，深度学习的高速化的主要课题就变成了如何高速、高效地进行大量的乘积累加运算。</p>
 <p>GPU计算，是指基于GPU进行通用的数值计算的操作。</p>
 <p>深度学习中需要进行大量的<strong>乘积累加运算</strong>（或者<strong>大型矩阵的乘积运算</strong>）。这种大量的<strong>并行运算</strong>正是GPU所擅长的（反过来说， CPU比较擅长连续的、复杂的计算）。因此，与使用单个CPU相比，使用GPU进行深度学习的运算可以达到惊人的高速化。下面我们就来看一下基于GPU可以实现多大程度的高速化。图8-15是基于CPU和GPU进行AlexNet的学习时分别所需的时间。</p>
 <p>从图中可知，使用CPU要花40天以上的时间，而使用GPU则可以将时间缩短至6天。此外，还可以看出，通过<strong>使用cuDNN</strong>这个最优化的库，可以进一步实现高速化。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916160121430.png" alt="image-20250916160121430" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250916160121430.png" alt="image-20250916160121430" style="zoom:50%;" />
 
 <p>大多数深度学习框架只受益于NVIDIA的GPU。这是因为深度学习的框架中使用了NVIDIA提供的CUDA这个面向GPU计算的综合开发环境。</p>
 <p>通过 im2col可以将卷积层进行的运算转换为大型矩阵的乘积。相比按小规模的单位进行计算，GPU更擅长计算大规模的汇总好的数据。也就是说，通过基于 im2col以大型矩阵的乘积的方式汇总计算，更容易发挥出GPU的能力。</p>
 <p>为了进一步提高深度学习所需的计算的速度，可以考虑在<strong>多个GPU或者多台机器</strong>上进行分布式计算。现在的深度学习框架中，出现了好几个支持多GPU或者多机器的分布式学习的框架。其中， Google的TensorFlow、微软的CNTK（Computational Network Toolki）在开发过程中高度重视分布式学习。以大型数据中心的低延迟· 高吞吐网络作为支撑，基于这些框架的分布式学习呈现出惊人的效果。</p>
 <p>基于分布式学习，可以达到何种程度的高速化呢？图8-16中显示了基于TensorFlow的分布式学习的效果。</p>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="../source/imgs/${fiilname}/image-20250916160828227.png" alt="image-20250916160828227" style="zoom:50%;" />
+<img src="../source/imgs/${fiilname}/image-20250916160828227.png" alt="image-20250916160828227" style="zoom:50%;" />
 
 <p>如图8-16所示，随着GPU个数的增加，学习速度也在提高。实际上，与使用1个GPU时相比，使用100个GPU（设置在多台机器上，共100个）似乎可以实现56倍的高速化。</p>
 <p>关于分布式学习，“如何进行分布式计算”是一个非常难的课题。它包含了机器间的通信、数据的同步等多个无法轻易解决的问题。可以将这些难题都交给TensorFlow等优秀的框架。</p>
@@ -840,148 +905,70 @@ w = np.random.randn(node_num, node_num) / np.sqrt(node_num)</code></pre>
 <p>关于数值精度（用几位数据表示数值），我们已经知道<strong>深度学习并不那么需要数值精度的位数</strong>。这是神经网络的一个重要性质。这个性质是基于神经网络的健壮性而产生的。这里所说的健壮性是指，比如，即便输入图像附有一些小的噪声，输出结果也仍然保持不变。可以认为，正是因为有了这个健壮性，流经网络的数据即便有所“劣化”，对输出结果的影响也较小。</p>
 <p>计算机中表示小数时，有32位的单精度浮点数和64位的双精度浮点数等格式。根据以往的实验结果，在深度学习中，即便是<strong>16位的半精度浮点数</strong>（half float），也可以顺利地进行学习。</p>
 <p>以往的深度学习的实现中并没有注意数值的精度，不过Python中一般使用64位的浮点数。 NumPy中提供了16位的半精度浮点数类型（不过，只有16位类型的存储，运算本身不用16位进行），即便使用NumPy的半精度浮点数，识别精度也不会下降。</p>
-</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">Odegaard</div><div class="post-copyright__author_desc"></div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="http://example.com/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('http://example.com/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/')">深度学习入门</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="http://example.com/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=深度学习入门&amp;url=http://example.com/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
-  var currentPageUrl = window.location.href;
-  var input = document.createElement("input");
-  input.setAttribute("value", currentPageUrl);
-  document.body.appendChild(input);
-  input.select();
-  input.setSelectionRange(0, 99999);
-  document.execCommand("copy");
-  document.body.removeChild(input);
-}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">coygOdegaard</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"></div></div></div><div class="post_share"><div class="social-share" data-image="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2025/07/08/python%E6%9A%91%E5%81%87/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">python暑假</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/04/27/64496e511b09c.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__description"></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(https://bu.dusays.com/2023/05/13/645fa415e8694.png) center center / 100% no-repeat"></div></div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C"><span class="toc-number">1.</span> <span class="toc-text">神经网络</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">激活函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB"><span class="toc-number">1.2.</span> <span class="toc-text">手写数字识别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.</span> <span class="toc-text">神经网络的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="toc-number">2.1.</span> <span class="toc-text">损失函数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E6%B3%95"><span class="toc-number">3.</span> <span class="toc-text">误差反向传播法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E5%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.1.</span> <span class="toc-text">激活函数层的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Affine-Softmax%E5%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.2.</span> <span class="toc-text">Affine&#x2F;Softmax层的实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8E%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="toc-number">4.</span> <span class="toc-text">与学习相关的技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E7%9A%84%E6%9B%B4%E6%96%B0"><span class="toc-number">4.1.</span> <span class="toc-text">参数的更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="toc-number">4.1.1.</span> <span class="toc-text">随机梯度下降法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Momentum"><span class="toc-number">4.1.2.</span> <span class="toc-text">Momentum</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AdaGrad"><span class="toc-number">4.1.3.</span> <span class="toc-text">AdaGrad</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adam"><span class="toc-number">4.1.4.</span> <span class="toc-text">Adam</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%87%8D%E7%9A%84%E5%88%9D%E5%A7%8B%E5%80%BC"><span class="toc-number">4.2.</span> <span class="toc-text">权重的初始值</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E8%97%8F%E5%B1%82%E7%9A%84%E6%BF%80%E6%B4%BB%E5%80%BC%E5%88%86%E5%B8%83"><span class="toc-number">4.2.1.</span> <span class="toc-text">隐藏层的激活值分布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ReLU%E7%9A%84%E6%9D%83%E9%87%8D%E5%88%9D%E5%A7%8B%E5%80%BC"><span class="toc-number">4.2.2.</span> <span class="toc-text">ReLU的权重初始值</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Batch-Normalization"><span class="toc-number">4.3.</span> <span class="toc-text">Batch Normalization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Batch-Normalization-%E7%9A%84%E7%AE%97%E6%B3%95"><span class="toc-number">4.3.1.</span> <span class="toc-text">Batch Normalization 的算法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96"><span class="toc-number">4.4.</span> <span class="toc-text">正则化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E5%80%BC%E8%A1%B0%E5%87%8F"><span class="toc-number">4.4.1.</span> <span class="toc-text">权值衰减</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dropout"><span class="toc-number">4.4.2.</span> <span class="toc-text">Dropout</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B6%85%E5%8F%82%E6%95%B0%E7%9A%84%E9%AA%8C%E8%AF%81"><span class="toc-number">4.5.</span> <span class="toc-text">超参数的验证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E6%95%B0%E6%8D%AE"><span class="toc-number">4.5.1.</span> <span class="toc-text">验证数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B6%85%E5%8F%82%E6%95%B0%E7%9A%84%E6%9C%80%E4%BC%98%E5%8C%96"><span class="toc-number">4.5.2.</span> <span class="toc-text">超参数的最优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-CNN"><span class="toc-number">5.</span> <span class="toc-text">卷积神经网络 CNN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84"><span class="toc-number">5.1.</span> <span class="toc-text">整体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E5%B1%82"><span class="toc-number">5.2.</span> <span class="toc-text">卷积层</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E8%BF%9E%E6%8E%A5%E5%B1%82%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">5.2.1.</span> <span class="toc-text">全连接层的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E8%BF%90%E7%AE%97"><span class="toc-number">5.2.2.</span> <span class="toc-text">卷积运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A1%AB%E5%85%85"><span class="toc-number">5.2.3.</span> <span class="toc-text">填充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%AD%A5%E5%B9%85"><span class="toc-number">5.2.4.</span> <span class="toc-text">步幅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E7%BB%B4%E6%95%B0%E6%8D%AE%E7%9A%84%E5%8D%B7%E7%A7%AF%E8%BF%90%E7%AE%97"><span class="toc-number">5.2.5.</span> <span class="toc-text">3维数据的卷积运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E5%A4%84%E7%90%86"><span class="toc-number">5.2.6.</span> <span class="toc-text">批处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B1%A0%E5%8C%96%E5%B1%82"><span class="toc-number">5.3.</span> <span class="toc-text">池化层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E5%B1%82%E5%92%8C%E6%B1%A0%E5%8C%96%E5%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.4.</span> <span class="toc-text">卷积层和池化层的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="toc-number">5.4.1.</span> <span class="toc-text">4维数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E-im2col%E7%9A%84%E5%B1%95%E5%BC%80"><span class="toc-number">5.4.2.</span> <span class="toc-text">基于 im2col的展开</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%B7%E7%A7%AF%E5%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.4.3.</span> <span class="toc-text">卷积层的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%A0%E5%8C%96%E5%B1%82%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.4.4.</span> <span class="toc-text">池化层的实现</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CNN%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">5.5.</span> <span class="toc-text">CNN的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CNN%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">5.6.</span> <span class="toc-text">CNN的可视化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC1%E5%B1%82%E6%9D%83%E9%87%8D%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-number">5.6.1.</span> <span class="toc-text">第1层权重的可视化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84%E7%9A%84%E4%BF%A1%E6%81%AF%E6%8F%90%E5%8F%96"><span class="toc-number">5.6.2.</span> <span class="toc-text">基于分层结构的信息提取</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B7%E6%9C%89%E4%BB%A3%E8%A1%A8%E6%80%A7%E7%9A%84CNN"><span class="toc-number">5.7.</span> <span class="toc-text">具有代表性的CNN</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0"><span class="toc-number">6.</span> <span class="toc-text">深度学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E6%B7%B1%E7%BD%91%E7%BB%9C"><span class="toc-number">6.1.</span> <span class="toc-text">加深网络</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E9%AB%98%E9%80%9F%E5%8C%96"><span class="toc-number">6.2.</span> <span class="toc-text">深度学习的高速化</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/" title="深度学习入门">深度学习入门</a><time datetime="2025-09-11T02:01:58.000Z" title="发表于 2025-09-11 10:01:58">2025-09-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/07/08/python%E6%9A%91%E5%81%87/" title="python暑假">python暑假</a><time datetime="2025-07-08T01:52:38.000Z" title="发表于 2025-07-08 09:52:38">2025-07-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习">机器学习</a><time datetime="2025-05-08T12:23:38.000Z" title="发表于 2025-05-08 20:23:38">2025-05-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/05/05/%E7%9C%9F%E9%A2%98%E6%8A%80%E5%B7%A7/" title="真题技巧">真题技巧</a><time datetime="2025-05-05T11:30:32.000Z" title="发表于 2025-05-05 19:30:32">2025-05-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/21/%E7%AE%97%E6%B3%95/" title="算法">算法</a><time datetime="2025-01-21T02:01:50.000Z" title="发表于 2025-01-21 10:01:50">2025-01-21</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2025 By <a class="footer-bar-link" href="/" title="Odegaard" target="_blank">Odegaard</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">19</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.anheyu.com/" title="博客"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/favicon.ico" alt="博客"/><span class="back-menu-item-text">博客</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://image.anheyu.com/" title="安知鱼图床"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://image.anheyu.com/favicon.ico" alt="安知鱼图床"/><span class="back-menu-item-text">安知鱼图床</span></a></div></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" style="font-size: 0.88rem;">大数据<sup>1</sup></a><a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 0.88rem;">算法<sup>4</sup></a><a href="/tags/%E8%AF%AD%E8%A8%80/" style="font-size: 0.88rem;">语言<sup>3</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
-var HoldLog = console.log;
-console.log = function () {};
-let now1 = new Date();
-queueMicrotask(() => {
-  const Log = function () {
-    HoldLog.apply(console, arguments);
-  }; //在恢复前输出日志
-  const grt = new Date("04/01/2021 00:00:00"); //此处修改你的建站时间或者网站上线时间
-  now1.setTime(now1.getTime() + 250);
-  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
-  const dnum = Math.floor(days);
-  const ascll = [
-    `欢迎使用安知鱼!`,
-    `生活明朗, 万物可爱`,
-    `
-        
-       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
-      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
-      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
-      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
-      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
-      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
-        
-        `,
-    "已上线",
-    dnum,
-    "天",
-    "©2020 By 安知鱼 V1.6.12",
-  ];
-  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
 
-  setTimeout(
-    Log.bind(
-      console,
-      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
-      "color:#425AEF",
-      "",
-      "color:#425AEF",
-      "color:#425AEF",
-      "",
-      "color:#425AEF",
-      ""
-    )
-  );
-  setTimeout(
-    Log.bind(
-      console,
-      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
-      "color:white; background-color:#4fd953",
-      "",
-      "",
-      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
-    )
-  );
-
-  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
-
-  setTimeout(
-    console.warn.bind(
-      console,
-      "%c ⚡ Powered by 安知鱼 %c 你正在访问 Odegaard 的博客.",
-      "color:white; background-color:#f0ad4e",
-      ""
-    )
-  );
-
-  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
-
-  setTimeout(
-    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
-  );
-});</script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script>var visitorMail = "";
-</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:send', function () {
-  // removeEventListener scroll 
-  anzhiyu.removeGlobalFnEvent('pjax')
-  anzhiyu.removeGlobalFnEvent('themeChange')
-
-  document.getElementById('rightside').classList.remove('rightside-show')
+      
+    </div>
+    
+  </div>
   
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
-      }
-    }
-  }
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/07/08/python%E6%9A%91%E5%81%87/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python暑假</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
 
-  typeof typed === 'object' && typed.destroy()
+  
+</article>
 
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
-})
 
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
 
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
-  })
 
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
 
-  typeof panguInit === 'function' && panguInit()
 
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2025 Odegaard
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/preccrep/hexo-theme-jelly" target="_blank">Jelly</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
 
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
 
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
-})
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
 
-document.addEventListener('pjax:error', e => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
-  }
-})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
+<script src="/js/main.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
