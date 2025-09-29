@@ -1,0 +1,1956 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>机器学习 - coygOdegaard</title>
+
+  
+    <meta name="description" content="引言机器学习是什么 目前存在几种不同类型的学习算法。主要的两种类型被我们称之为监督学习和无监督学习。监督学习这个想法是指，我们将教计算机如何去完成任务，而在无监督学习中，我们打算让它自己进行学习。 监督学习监督学习指的就是我们给学习算法一个数据集，这个数据集由“正确答案”组成。在房价的例子中，我们给了一系列房子的数据，我们给定数据集中每个样本的正确价格，即它们实际的售价然后运用学习算法，算出更多的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习">
+<meta property="og:url" content="http://example.com/2025/05/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+<meta property="og:site_name" content="coygOdegaard">
+<meta property="og:description" content="引言机器学习是什么 目前存在几种不同类型的学习算法。主要的两种类型被我们称之为监督学习和无监督学习。监督学习这个想法是指，我们将教计算机如何去完成任务，而在无监督学习中，我们打算让它自己进行学习。 监督学习监督学习指的就是我们给学习算法一个数据集，这个数据集由“正确答案”组成。在房价的例子中，我们给了一系列房子的数据，我们给定数据集中每个样本的正确价格，即它们实际的售价然后运用学习算法，算出更多的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/3de7ec9ae75d52a8b074555bcefbc9fe_.jpg">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/67f278633b69c123d1c93d555408016.jpg">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/d7af2031bf79a5b02eeedb033358c4d.jpg">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/a4588fb01a01f7e1fb17e6c89241650.jpg">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/46a41b85419ef28ecb55b469f6c7c89.jpg">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250508215836945.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250508215909094.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520100402742.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520101109903.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250520101757329.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250520101905831.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520102928659.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520103215675.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520104130361.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520104249847.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520104644091.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250520110754153.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520145329030.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250520150117798.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520150210495.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520151937828.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520152054863.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520152212561.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520152415146.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250520152728280.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250705112627927.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250705112649877.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250705145029436.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250705145632954.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250705145701988.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250705145729471.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250705151217067.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/3f7dac1d8c77ee704aca91562a78b88.jpg">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250706210423707.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250706211418121.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250706212254715.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250706214657023.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250706214739079.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250706214804481.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250706214841139.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250707095415565.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250707095442011.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250707100936257.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250707102404958.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250707102617314.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250707102727734.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250707103625333.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250707104627579.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250707111211261.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250709171344091.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250710155849606.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250709173446894.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250709175113715.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250709175233890.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250709201037517.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250709201149549.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250709202809943.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250709210159349.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250709211926347.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250709213440950.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250710173745443.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250710175318298.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250710213148069.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250710213208144.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250710213756450.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250710215327579.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250710220504253.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250710215557120.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250710215730645.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250710221653096.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250711153715449.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250711153927581.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250711154030163.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250711154327345.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250711154521895.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250711155524524.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250711155624715.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250711160844709.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250711165618966.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250711171756403.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250713205157804.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250714102913373.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250711173149157.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250714102913373.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250714103257364.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250714103443302.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250714103857506.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250714103924438.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250714104343510.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250714114449182.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250714110943856.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250714110323781.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250714152302979.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250819215309138.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250714152538713.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250714153307330.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250714153726453.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250714155124333.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250721163110688.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250721163448041.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250721165003029.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250721165252491.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250721165312076.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250721165430462.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250721165724178.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250721170136816.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250721173115254.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250721173448391.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250721174433396.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250721174644797.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250721175546856.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250721214238005.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250723154655767.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250723154803433.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250723155621382.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250723155656291.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250723155830604.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250723160141378.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250723160335561.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250723160432705.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250723161453967.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250723161626830.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250723161853417.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250723173243880.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250723174423968.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250723174612817.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250723175052807.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250723175151165.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724201740274.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724201902313.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724202521124.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724202737933.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724203531832.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724204552407.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724204757937.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724210137118.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724205949128.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250724211020353.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250724211042793.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250724211153497.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724214443211.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724214955023.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724215029521.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724215112385.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250724215153621.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724220214226.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724220321510.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724220419238.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250724220439325.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250804205845167.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250804211343346.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250804211403431.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250804211438583.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250804211755437.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250804213232602.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250804213840471.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250804215200845.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250804215306763.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805153425546.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805155521913.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250805160659551.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250805161345527.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250805162016564.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250805162213089-1754382134100-1.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250805162458273.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805162911167.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805164427640.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805165259994.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805170349704.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805170413323.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805170433913.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805203858727.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805201849380.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805204038114.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805201918176.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250805203105783-1754397066593-3.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805210049481.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805210124059.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805210529939.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805211027964.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250805211643733.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250805211847056.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250805212102691.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250809154247719.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250809154602440.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250809154629373.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250809155851001.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250814163934252.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250809160601061.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250809160636306.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811162044495.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811162757802.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811164443660.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811165630148.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811180052523.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811180203188.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811180219413.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811180235353.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811180843788.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250811203319599.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250811203855955.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811204416647.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811204452265.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811205604710.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250812103124335.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250812103222594.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250812103502485.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250812103714953.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811210654760.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811211112036.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811210947397.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811211208218.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250812111555349.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250812111608091.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250812111631498.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250811211208218.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250812112457099.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250812112606974.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250812112840919.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250812113044662.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250812113732314.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250812113801950.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250815205718086.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250815211106705.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250815212032789.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250815212348946.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250815212819097.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250815213532214.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250817105612582.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250817110333378.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250817111412597.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250817105700648.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250817110406871.png">
+<meta property="og:image" content="http://example.com/2025/05/08/source/imgs/$%7Bfiilname%7D/image-20250817112216119.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250817112430003.png">
+<meta property="article:published_time" content="2025-05-08T12:23:38.000Z">
+<meta property="article:modified_time" content="2025-08-28T12:53:51.520Z">
+<meta property="article:author" content="Odegaard">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/3de7ec9ae75d52a8b074555bcefbc9fe_.jpg">
+  
+  
+  
+  
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Odegaard","sameAs":[]},"dateCreated":"2025-05-08T20:23:38+08:00","dateModified":"2025-08-28T20:53:51+08:00","datePublished":"2025-05-08T20:23:38+08:00","description":"","headline":"机器学习","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/05/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"},"publisher":{"@type":"Organization","name":"Odegaard","sameAs":[]},"url":"http://example.com/2025/05/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/","image":[]}</script>
+  
+</head>
+<body>
+
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">coygOdegaard</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/09/29/test-p/"><span class="title">test p</span></a><a class="item title" href="/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/"><span class="title">深度学习入门</span></a><a class="item title" href="/2025/01/21/%E7%AE%97%E6%B3%95/"><span class="title">算法</span></a><a class="item title" href="/2024/10/05/%E5%AE%9E%E6%88%98%E9%A2%98%E7%9B%AE/"><span class="title">实战题目</span></a><a class="item title" href="/2025/05/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="title">机器学习</span></a><a class="item title" href="/2025/07/08/python%E6%9A%91%E5%81%87/"><span class="title">python暑假</span></a><a class="item title" href="/2025/05/05/%E7%9C%9F%E9%A2%98%E6%8A%80%E5%B7%A7/"><span class="title">真题技巧</span></a><a class="item title" href="/2024/10/05/python2/"><span class="title">python2</span></a><a class="item title" href="/2024/10/08/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/"><span class="title">数据清洗</span></a><a class="item title" href="/2024/10/05/Java-1/"><span class="title">Java</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-05-08T12:23:38.000Z">2025-05-08</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-08-28T12:53:51.520Z">2025-08-28</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>机器学习</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="机器学习是什么"><a href="#机器学习是什么" class="headerlink" title="机器学习是什么"></a>机器学习是什么</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/3de7ec9ae75d52a8b074555bcefbc9fe_.jpg" alt="3de7ec9ae75d52a8b074555bcefbc9fe_"></p>
+<p>目前存在几种不同类型的学习算法。主要的两种类型被我们称之为监督学习和无监督学习。监督学习这个想法是指，我们将教计算机如何去完成任务，而在无监督学习中，我们打算让它自己进行学习。</p>
+<h2 id="监督学习"><a href="#监督学习" class="headerlink" title="监督学习"></a>监督学习</h2><p>监督学习指的就是我们给学习算法一个数据集，这个数据集由“正确答案”组成。在房价的例子中，我们给了一系列房子的数据，我们给定数据集中每个样本的正确价格，即它们实际的售价然后运用学习算法，算出更多的正确答案。</p>
+<p><strong>回归问题</strong>：试着推测出一个连续值的结果。下面的房子例子就是回归问题，要推测的结果就是房子的价格。</p>
+<img src="../source/imgs/${fiilname}/67f278633b69c123d1c93d555408016.jpg" alt="67f278633b69c123d1c93d555408016" style="zoom:67%;" />
+
+<p>回归这个词的意思是，我们在试着推测出这一系列连续值属性。</p>
+<p><strong>分类问题</strong>，分类指的是，我们试着推测出<strong>离散的输出值</strong>：0或1，良性或恶性。感觉就是判断给出的数据属于哪一类。</p>
+<img src="../source/imgs/${fiilname}/d7af2031bf79a5b02eeedb033358c4d.jpg" alt="d7af2031bf79a5b02eeedb033358c4d" style="zoom:67%;" />
+
+<p>在这个例子中只有一个特征，就是肿瘤的尺寸，在其它一些机器学习问题中，可能会遇到不止一种特征。举个例子，我们不仅知道肿瘤的尺寸，还知道对应患者的年龄。在其他机器学习问题中，通常有更多的特征，比如肿块密度，肿瘤细胞尺寸的一致性和形状的一致性等等，还有一些其他的特征。之后会讲一个算法，叫支持向量机，里面有一个巧妙的数学技巧，能让计算机处理无限多个特征。</p>
+<p>回归问题和分类问题都属于监督学习，其基本思想是，数据集中的每个样本都有相应的“正确答案”，再根据这些样本作出预测，就像房子和肿瘤的例子中做的那样。回归问题，即通过回归来推出一个连续的输出；分类问题，其目标是推出一组离散的结果。</p>
+<h2 id="无监督学习"><a href="#无监督学习" class="headerlink" title="无监督学习"></a>无监督学习</h2><p>不同于监督学习的数据的样子，即无监督学习中没有任何的标签或者是有相同的标签或者就是没标签。所以我们已知数据集，却不知如何处理，也未告知每个数据点是什么，任何信息都不知道，只知道是一个数据集。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/a4588fb01a01f7e1fb17e6c89241650.jpg" alt="a4588fb01a01f7e1fb17e6c89241650"></p>
+<p>这个图是上面肿瘤的例子，⭕代表良性，❌代表恶性，在监督学习中有这种标志说明是什么情况，但在无监督学习中没有标志，只是数据。</p>
+<p>针对数据集，无监督学习能判断出数据有两个不同的聚集簇。这是一个，那是另一个，二者不同。是的，无监督学习算法可能会把这些数据分成两个不同的簇，这个就叫做聚类算法。</p>
+<img src="../source/imgs/${fiilname}/46a41b85419ef28ecb55b469f6c7c89.jpg" alt="46a41b85419ef28ecb55b469f6c7c89" style="zoom:67%;" />
+
+<p>无监督学习就是我们没法提前告知算法一些信息。</p>
+<p>就是这里是有一堆数据，我不知道数据里面有什么，我不知道谁是什么类型，我甚至不知道人们有哪些不同的类型，这些类型又是什么。但你能自动地找到数据中的结构吗？就是说你要自动地聚类那些个体到各个类，我没法提前知道哪些是哪些。因为我们没有给算法正确答案来回应数据集中的数据，所以这就是无监督学习。</p>
+<p>上面的都是<strong>聚类</strong>的例子，聚类只是无监督学习的一种。</p>
+<p>接下来介绍的鸡尾酒宴问题属于无监督学习中的<strong>盲源分离</strong>问题。</p>
+<p>可能在一个这样的鸡尾酒宴中的两个人，他俩同时都在说话，假设现在是在个有些小的鸡尾酒宴中。我们放两个麦克风在房间中，因为这些麦克风在两个地方，离说话人的距离不同每个麦克风记录下不同的声音，虽然是同样的两个说话人。听起来像是两份录音被叠加到一起，或是被归结到一起，产生了我们现在的这些录音。另外，这个算法还会区分出两个音频资源，这两个可以合成或合并成之前的录音，实际上，鸡尾酒算法的第一个输出结果是：</p>
+<p>1，2，3，4，5，6，7，8，9，10,</p>
+<p>第二个输出是这样：</p>
+<p>1，2，3，4，5，6，7，8，9，10。</p>
+<p>第一个输出代表分离出的第一个声源，第二个输出代表分离出的第二个声源。</p>
+<p>这里的数字序列可能是对分离后信号的简化表示。实际应用中，输出是时间序列信号（如音频波形），每个数字可能代表某个时间点的信号强度或特征。无需去深度思考。</p>
+<h1 id="单变量线性回归"><a href="#单变量线性回归" class="headerlink" title="单变量线性回归"></a>单变量线性回归</h1><h2 id="模型表示"><a href="#模型表示" class="headerlink" title="模型表示"></a>模型表示</h2><p>监督学习的第一个例子。预测住房价格的，我们要使用一个数据集，数据集包含俄勒冈州波特兰市的住房价格。在这里，我要根据不同房屋尺寸所售出的价格，画出我的数据集。比方说，如果你朋友的房子是1250平方尺大小，你要告诉他们这房子能卖多少钱。	</p>
+<p>它被称作监督学习是因为对于每个数据来说，我们给出了“正确的答案”，即告诉我们：根据我们的数据来说，房子实际的价格是多少，而且，更具体来说，这是一个回归问题。回归一词指的是，我们根据之前的数据预测出一个准确的输出值，对于这个例子就是价格。</p>
+<p><strong>在监督学习中我们有一个数据集，这个数据集被称训练集。</strong></p>
+<p><strong>在整个课程中用小写的m来表示训练样本的数目。</strong></p>
+<p>假如上面房子的回归问题的训练集（<strong>Training Set</strong>）如下表所示：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250508215836945.png" alt="image-20250508215836945"></p>
+<img src="../source/imgs/${fiilname}/image-20250508215909094.png" alt="image-20250508215909094" style="zoom:40%;" />
+
+<p>将训练集“喂”给我们的学习算法，进而学习得到一个假设h，然后将我们要预测的房屋的尺寸作为输入变量输入给h，预测出该房屋的交易价格作为输出变量输出为结果。</p>
+<p>h表示的是一个函数，由学习算法根据训练集输出，输入是房屋尺寸大小，输出的是房子价格。</p>
+<p>h的一种可能表达方式为：<br>$$<br>h_θ (x)&#x3D;θ_0+θ_1 x<br>$$<br>因为只含有<strong>一个特征&#x2F;输入变量</strong>，因此这样的问题叫作单变量线性回归问题。</p>
+<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250520100402742.png" alt="image-20250520100402742"></p>
+<p>有一个像这样的训练集， 𝑚代表了训练样本的数量，比如 𝑚 &#x3D; 47。而我们的假设函数，也就是用来进行预测的函数，是这样的线性函数形式<br>$$<br>h_θ (x)&#x3D;θ_0+θ_1 x<br>$$<br>接下来为我们的模型选择合适的<strong>参数</strong>（ parameters） 𝜃0 和 𝜃1，在房价问题这个例子中便是直线的斜率和在𝑦 轴上的截距。  我们选择的参数决定了我们得到的直线相对于我们的训练集的准确程度，模型所预测的值与训练集中实际值之间的<strong>差距</strong>（下图中蓝线所指）就是<strong>建模误差</strong>（ modeling error）。  <img src="/../source/imgs/$%7Bfiilname%7D/image-20250520101109903.png" alt="image-20250520101109903">目标便是选择出可以使得建模误差的平方和能够最小的模型参数， 即使得代价函数<img src="../source/imgs/${fiilname}/image-20250520101757329.png" alt="image-20250520101757329" style="zoom:50%;" />最小。</p>
+<p>绘制一个等高线图，三个坐标分别为𝜃0和𝜃1 和𝐽(𝜃0, 𝜃1)：  <img src="../source/imgs/${fiilname}/image-20250520101905831.png" alt="image-20250520101905831" style="zoom:33%;" />可以看出在三维空间中存在一个使得𝐽(𝜃0, 𝜃1)最小的点。  </p>
+<p>代价函数也被称作平方误差函数，有时也被称为平方误差代价函数，代价函数是解决回归问题最常用的手段。</p>
+<h2 id="代价函数的直观理解"><a href="#代价函数的直观理解" class="headerlink" title="代价函数的直观理解"></a>代价函数的直观理解</h2><p>代价函数是用来干嘛的，我们为什么要用它。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250520102928659.png" alt="image-20250520102928659"></p>
+<p>为了便于理解，使𝜃0&#x3D;0。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250520103215675.png" alt="image-20250520103215675"></p>
+<p>yi代表的是训练集中的数据。h𝜃的参数是x，J的参数是𝜃1。上图可以看出当𝜃1&#x3D;1时，代价函数J&#x3D;0。</p>
+<p>接下来时当𝜃1&#x3D;0.5时：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250520104130361.png" alt="image-20250520104130361"></p>
+<p>等于1时：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250520104249847.png" alt="image-20250520104249847"></p>
+<p>对于每个𝜃1的值，都对应着一个假设函数的值或者一条直线，并且根据每个不同的𝜃1，我们都可以得到一个不同的J(𝜃1)的值。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250520104644091.png" alt="image-20250520104644091"></p>
+<h2 id="梯度下降"><a href="#梯度下降" class="headerlink" title="梯度下降"></a>梯度下降</h2><p>梯度下降是一个用来求函数最小值的算法，我们将使用梯度下降算法来求出代价函数𝐽(𝜃0, 𝜃1) 的最小值。  </p>
+<p>梯度下降背后的思想是：开始时我们随机选择一个参数的组合(𝜃0, 𝜃1, . . . . . . , 𝜃𝑛)，计算代价函数，然后我们寻找下一个能让代价函数值下降最多的参数组合。我们持续这么做直到到到一个局部最小值，因为我们并没有尝试完所有的参数组合，所以不能确定我们得到的局部最小值是否便是全局最小值，选择不同的初始参数组合，可能会找到不同的局部最小值。  </p>
+<p>这个算法是怎么工作的，可以这样想：想象一下你正站立在山的一点上，  在梯度下降算法中，我们要做的就是旋转 360 度，看看我们的周围哪个方向可以最快下山。来到山坡上，我们站在山坡上的一点，你看一下周围，你会发现最佳的下山方向，你再看看周围，然后再一次想想，我应该从什么方向下山？然后你按照自己的判断又迈出一步，重复上面的步骤，从这个新的点，你环顾四周，并决定从什么方向将会最快下山，然后又迈进了一小步，并依此类推，直到你接近局部最低点的位置。</p>
+<p>批量梯度下降算法的公式为：  <img src="../source/imgs/${fiilname}/image-20250520110754153.png" alt="image-20250520110754153" style="zoom:50%;" /></p>
+<p>上面那行英语的意思是，反复用这个公式直到收敛。其中𝑎是学习率，它决定了我们沿着能让代价函数下降程度最大的方向向下迈出的步子有多大，在批量梯度下降中，我们每一次都同时让所有的参数减去学习速率乘以代价函数的导数。  </p>
+<p>符号<code>:=</code>的意思是赋值，这是一个赋值运算符。单独的<code>=</code>代表的是比较运算符。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250520145329030.png" alt="image-20250520145329030"></p>
+<p>梯度下降中，我们要同时更新𝜃0和𝜃1，当 𝑗 &#x3D; 0 和𝑗 &#x3D; 1时，会产生更新，所以你将更新𝐽(𝜃0)和𝐽(𝜃1)。  记住，要<strong>同时更新</strong>，不能先更新一个再更新另一个，先更新其中一个的话会导致接下来算出的微分项的值出现变换，因为其中一个值变了。</p>
+<h2 id="梯度下降的直观理解"><a href="#梯度下降的直观理解" class="headerlink" title="梯度下降的直观理解"></a>梯度下降的直观理解</h2><p>梯度下降算法：<img src="../source/imgs/${fiilname}/image-20250520150117798.png" alt="image-20250520150117798" style="zoom:50%;" />，描述：对𝜃赋值，使得𝐽(𝜃)按梯度下降最快方向进行，一直迭代下去，最终得到局部最小值。其中𝑎是学习率，它决定了我们沿着能让代价函数下降程度最大的方向向下迈出的步子有多大。  </p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250520150210495.png" alt="image-20250520150210495"></p>
+<p>求导的目的，基本上可以说取这个红点的切线，  现在，这条线有一个正斜率，也就是说它有正导数，因此，我得到的新的𝜃1， 𝜃1更新后等于𝜃1减去一个正数乘以𝑎。  </p>
+<p>如果𝑎太小或𝑎太大会出现什么情况：  </p>
+<p>如果𝑎太小了，即我的学习速率太小，结果就是只能这样像小宝宝一样一点点地挪动，去努力接近最低点，这样就需要很多步才能到达最低点，所以如果𝑎太小的话，可能会很慢，因为它会一点点挪动，它会需要很多步才能到达全局最低点。</p>
+<p>如果𝑎太大，那么梯度下降法可能会越过最低点，甚至可能无法收敛，下一次迭代又移动了一大步，越过一次，又越过一次，一次次越过最低点，直到你发现实际上离最低点越来越远，所以，如果𝑎太大，它会导致无法收敛，甚至发散。  </p>
+<p>假设将𝜃1初始化在局部最低点，因为它已经在一个局部的最优处或局部最低点，结果是局部最优点的导数将等于零，使得𝜃1不再改变，因此，如果你的参数已经处于局部最低点，那么梯度下降法更新其实什么都没做，它不会改变参数的值。这也解释了为什么即使学习速率𝑎保持不变时，梯度下降也可以收敛到局部最低点。  </p>
+<p>在梯度下降法中，当我们接近局部最低点时，梯度下降法会自动采取更小的幅度，这是因为当我们接近局部最低点时，很显然在局部最低时导数等于零，所以当我们接近局部最低时，导数值会自动变得越来越小，所以梯度下降将自动采取较小的幅度，这就是梯度下降的做法。所以实际上没有必要再另外减小𝑎。  </p>
+<p>可以用梯度下降算法来最小化任何代价函数𝐽，不只是线性回归中的代价函数𝐽。  </p>
+<h2 id="梯度下降的线性回归"><a href="#梯度下降的线性回归" class="headerlink" title="梯度下降的线性回归"></a>梯度下降的线性回归</h2><p>用梯度下降算法，并将其应用于具体的拟合直线的线性回归算法里。  </p>
+<p>先计算微分项：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250520151937828.png" alt="image-20250520151937828"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250520152054863.png" alt="image-20250520152054863"></p>
+<p>所以，算法会被改写为：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250520152212561.png" alt="image-20250520152212561"></p>
+<p>不断重复，直到收敛。记住，𝜃0和𝜃1要同时更新。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250520152415146.png" alt="image-20250520152415146"></p>
+<p>使用梯度下降算法是因为它更容易到达局部最小值，而根据初始化的不同，会得到不同的局部最优解。但是，事实证明，用于线性回归的代价函数总是一个弓形样子的函数，叫作凸函数，这种函数没有局部最优解，只有一个全局最优解。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250520152728280.png" alt="image-20250520152728280"></p>
+<p>一般来说初始化参数的时候都设为0。</p>
+<p>刚刚使用的算法，有时也称为批量梯度下降。  ”批量梯度下降”，指的是在梯度下降的每一步中，我们都用到了所有的训练样本，在梯度下降中，在计算微分求导项时，我们需要进行求和运算，所以，在每一个单独的梯度下降中，我们最终都要计算这样一个东西，这个项需要对所有𝑚个训练样本求和。  </p>
+<h1 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h1><h2 id="多维特征"><a href="#多维特征" class="headerlink" title="多维特征"></a>多维特征</h2><p>对房价模型增加更多的特征，例如房间数楼层等，构成一个含有多个变量的模型，模型中的特征为(𝑥1, 𝑥1, . . . , 𝑥𝑛)。  </p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250705112627927.png" alt="image-20250705112627927"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250705112649877.png" alt="image-20250705112649877"></p>
+<p>这上面的公式是𝜃TX的原因是上面的X(2)是一列，形状是[4,1]，jupyter里面的数据的形状是[1,4]，所以里面的公式是X𝜃T，具体的情况要具体分析，记住基本公式，参数乘以变量。</p>
+<h2 id="多变量梯度下降"><a href="#多变量梯度下降" class="headerlink" title="多变量梯度下降"></a>多变量梯度下降</h2><p>在多变量线性回归中的代价函数，这个代价函数是所有建模误差的平方和，即： <img src="../source/imgs/${fiilname}/image-20250705145029436.png" alt="image-20250705145029436" style="zoom:50%;" />，其中<br>$$<br>h_θ (x)&#x3D;θ^T X&#x3D;θ_0+θ_1 x_1+θ_2 x_2+…+θ_n x_n<br>$$<br>多变量线性回归的批量梯度下降算法为：<img src="../source/imgs/${fiilname}/image-20250705145632954.png" alt="image-20250705145632954" style="zoom:80%;" /></p>
+<p>即<img src="../source/imgs/${fiilname}/image-20250705145701988.png" alt="image-20250705145701988" style="zoom:80%;" />，求导得：<img src="../source/imgs/${fiilname}/image-20250705145729471.png" alt="image-20250705145729471" style="zoom:80%;" /></p>
+<p>跟前面单变量的公式没有什么大变化，就是求导后需要计算的变多了。</p>
+<p>计算代价函数的代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def computeCost(X, y, theta):</span><br><span class="line">    inner = np.power(((X * theta.T) - y), 2)</span><br><span class="line">    return np.sum(inner) / (2 * len(X))</span><br></pre></td></tr></table></figure>
+
+<h2 id="梯度下降法实践-1-特征缩放"><a href="#梯度下降法实践-1-特征缩放" class="headerlink" title="梯度下降法实践 1-特征缩放"></a>梯度下降法实践 1-特征缩放</h2><p>在我们面对多维特征问题的时候，我们要保证这些特征都具有<strong>相近的尺度</strong>，这将帮助梯度下降算法更快地收敛。</p>
+<p>以房价问题为例，假设我们使用两个特征，房屋的尺寸和房间的数量，尺寸的值为 0- 2000 平方英尺，而房间数量的值则是 0-5，以两个参数分别为横纵坐标，绘制<strong>代价函数</strong>的等高线图（在这里先忽略𝜃0），<img src="../source/imgs/${fiilname}/image-20250705151217067.png" alt="image-20250705151217067" style="zoom:50%;" /></p>
+<p>能看出图像会显得很扁，梯度下降算法需要非常多次的迭代才能收敛。</p>
+<p>解决的方法是尝试将所有特征的尺度都尽量缩放到**-1 到 1** 之间。 ，这也是在做特征缩放时的通常目的，但其实并不严格要求必须是-1到1，在这些附近都可以，重点是将范围靠近-1到1。所以，如果有一个特征也就是变量的范围是-0.0001到0.0001的话，得对其进行扩展。一般在-3到3，-1&#x2F;3到1&#x2F;3都是可以的。</p>
+<p>除了将特征除以它的最大值外，还可以进行一种叫作均值归一化的工作，包括：</p>
+<p>1、将原来的变量值减去平均值除以（最大值-最小值），一般用这个就足够了</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/3f7dac1d8c77ee704aca91562a78b88.jpg" alt="3f7dac1d8c77ee704aca91562a78b88"></p>
+<p>2、<br>$$<br>x_n&#x3D;(x_n-μ_n)&#x2F;s_n，其中 μ_n是平均值，s_n是标准差。<br>$$</p>
+<h2 id="梯度下降法实践-2-学习率"><a href="#梯度下降法实践-2-学习率" class="headerlink" title="梯度下降法实践 2-学习率"></a>梯度下降法实践 2-学习率</h2><p>如何确定梯度下降算法在正常工作，画图表：</p>
+<img src="../source/imgs/${fiilname}/image-20250706210423707.png" alt="image-20250706210423707" style="zoom:80%;" />
+
+<p>梯度下降算法的每次迭代受到学习率的影响，如果学习率𝑎过小，则达到收敛所需的迭代次数会非常高；如果学习率𝑎过大，每次迭代可能不会减小代价函数，可能会越过局部最小值导致无法收敛。</p>
+<p>通常可以考虑尝试些学习率：𝛼 &#x3D; 0.01， 0.03， 0.1， 0.3， 1， 3， 10</p>
+<h2 id="特征和多项式回归"><a href="#特征和多项式回归" class="headerlink" title="特征和多项式回归"></a>特征和多项式回归</h2><p>多项式回归，可以使用线性回归的方式来拟合非常复杂的函数，或者是非线性函数。</p>
+<p>以预测房价模型为例（在线性回归模型中你可以选择提供的特征作为特征，也可以选择自己创建一个新的特征，哎下面的例子中，题目给了临街宽度和纵深两个特征，我们也可以自己创建一个特征——面积，这样子可以简化线性回归模型，得到一个更好的模型）：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250706211418121.png" alt="image-20250706211418121"></p>
+<p>线性回归并不适用于所有数据，有时我们需要曲线来适应我们的数据，二次方或者三次方模型：<br>$$<br>h_θ (x)&#x3D;θ_0+θ_1 x_1+θ_2 x_2^2，h_θ (x)&#x3D;θ_0+θ_1 x_1+θ_2 x_2^2+θ_3 x_3^3<br>$$<br>另外，我们可以令<br>$$<br>𝑥_2 &#x3D; 𝑥_2^2, 𝑥_3 &#x3D; 𝑥_3^3<br>$$<br>，从而将模型转化为线性回归模型，由于次方的存在导致参数范围被扩大了很多，所以在运行梯度下降算法前，必须进行<strong>特征缩放</strong>。除了上面给出的这一种，还有一种是开平方：<br>$$<br>h_θ (x)&#x3D;θ_0+θ_1 (size)+θ_2 \sqrt{size}<br>$$<br>通过不同的参数形式，最后的曲线也会有所不同。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250706212254715.png" alt="image-20250706212254715"></p>
+<h2 id="正规方程"><a href="#正规方程" class="headerlink" title="正规方程"></a>正规方程</h2><p>到目前为止，我们都在使用梯度下降算法，但是对于某些线性回归问题，正规方程方法是更好的解决方案。如：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250706214657023.png" alt="image-20250706214657023"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250706214739079.png" alt="image-20250706214739079"></p>
+<p>运用正规方程方法求解参数：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250706214804481.png" alt="image-20250706214804481"></p>
+<p>对于那些<strong>不可逆的矩阵</strong>（通常是因为特征之间不独立，如同时包含英尺为单位的尺寸和米为单位的尺寸两个特征，也有可能是特征数量大于训练集的数量），正规方程方法是<strong>不能用</strong>的。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250706214841139.png" alt="image-20250706214841139"></p>
+<p>只要特征变量的数目并不大，标准方程是一个很好的计算参数𝜃的替代方法。具体地说，只要特征变量数量小于一万，通常使用标准方程法，而不使用梯度下降法。  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">def normalEqn(X, y):</span><br><span class="line">	theta = np.linalg.inv(X.T@X)@X.T@y # X.T@X 等价于 X.T.dot(X)，X是ndarray数组</span><br><span class="line">	return theta</span><br></pre></td></tr></table></figure>
+
+<p>注意，这里返回的theta不是一个数，而是一个元组。</p>
+<h1 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h1><h2 id="分类问题"><a href="#分类问题" class="headerlink" title="分类问题"></a>分类问题</h2><p>在分类问题中，要预测的变量y是离散的值。  </p>
+<p>在分类问题中，我们尝试预测的是结果是否属于某一个类（例如正确或错误），从二元的分类问题开始。</p>
+<p>我们将因变量可能属于的两个类分别称为负向类和正向类，则因变量 y&#x3D;0或1 ，其中 0 表示负向类，1 表示正向类。</p>
+<p>逻辑回归算法的性质是：它的输出值永远在 0 到 1 之间。  逻辑回归算法是一个分类算法，适用于y取离散的值的情况下。</p>
+<h2 id="假说表示"><a href="#假说表示" class="headerlink" title="假说表示"></a>假说表示</h2><p>为什么线性回归算法不适用于分类问题？</p>
+<p>根据线性回归模型我们只能预测连续的值，然而对于分类问题（例子是肿瘤分类），我们需要输出0或1，我们可以预测：<br>$$<br>当h_θ (x)&gt;&#x3D;0.5时，预测 y&#x3D;1。<br>当h_θ (x)&lt;0.5时，预测 y&#x3D;0 。<br>$$<br>没有极端数据出现的时候使用线性回归算法看着也可以，但一旦极端数据出现，整体的判断标准就会被破坏。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250707095415565.png" alt="image-20250707095415565"></p>
+<p>有极端数据出现：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250707095442011.png" alt="image-20250707095442011"></p>
+<p>所以线性回归模型并不适用于分类问题。</p>
+<p>逻辑回归模型的假设是：<br>$$<br>h_θ(x)&#x3D;g(θ^T X)其中：X 代表特征向量，g代表逻辑函数是一个常用的逻辑函数，S形函数，公式为： g(z)&#x3D;\frac{1}{1+e^{-z} }。<br>$$<br>θT*X，这个就是<strong>线性回归模型的结果</strong>（这里的参数向量θ是n行1列的，X的数据是一列一列的），所以逻辑回归模型是对线性回归模型的值进行处理。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250707100936257.png" alt="image-20250707100936257"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">def sigmoid(z):</span><br><span class="line">	return 1 / (1 + np.exp(-z))	</span><br></pre></td></tr></table></figure>
+
+<p>ℎ𝜃(𝑥)的意思是，对于给定的输入变量，根据选择的参数计算输出变量&#x3D;1 的可能性。如果对于给定的𝑥，通过已经确定的参数计算得出ℎ𝜃(𝑥) &#x3D; 0.7，则表示有 70%的几率𝑦为正向类，相应地𝑦为负向类的几率为 1-0.7&#x3D;0.3。</p>
+<p><strong>逻辑回归的本质</strong>：逻辑回归是一种<strong>线性分类模型</strong>。它通过一个<strong>线性方程</strong>（例如，<em>z</em>&#x3D;<em>θ</em>0+<em>θ</em>1<em>x</em>1+<em>θ</em>2<em>x</em>2）将输入特征（如测试1和测试2的结果）<strong>映射</strong>到一个<strong>概率值</strong>（通过sigmoid函数）。决策边界（即区分接受&#x2F;抛弃的阈值）是线性的，比如一条直线（在二维特征空间中）。</p>
+<h2 id="判定边界"><a href="#判定边界" class="headerlink" title="判定边界"></a>判定边界</h2><img src="../source/imgs/${fiilname}/image-20250707102404958.png" alt="image-20250707102404958" style="zoom:67%;" />
+
+<p>根据逻辑回归模型的这个图，我们知道当𝑧 &#x3D; 0 时，𝑔(𝑧) &#x3D; 0.5；𝑧 &gt; 0 时，𝑔(𝑧) &gt; 0.5；𝑧 &lt; 0 时，𝑔(𝑧) &lt; 0.5；</p>
+<p>又 𝑧 &#x3D; 𝜃𝑇𝑥 ，即：</p>
+<p>𝜃𝑇𝑥 &gt;&#x3D; 0 时，预测 𝑦 &#x3D; 1；𝜃𝑇𝑥 &lt; 0 时，预测 𝑦 &#x3D; 0。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250707102617314.png" alt="image-20250707102617314"></p>
+<p>对于上面那个模型，我们可以很明显地看出是一条直线将预测结果分成两部分。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250707102727734.png" alt="image-20250707102727734"></p>
+<p>又两个例子可以看出，我们要根据分界线的形状来判断我们应该使用的分界线函数是什么。</p>
+<h2 id="代价函数-1"><a href="#代价函数-1" class="headerlink" title="代价函数"></a>代价函数</h2><p>对于线性回归模型，定义的代价函数是所有模型误差的平方和。要是将逻辑回归模型的函数代入到这个代价函数中，得到的代价函数将是一个非凸函数，这意味着代价函数会有许多局部最小值，这将影响梯度下降算法寻找全局最小值。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250707103625333.png" alt="image-20250707103625333"></p>
+<p>定义代价函数为：<br>$$<br>J(θ)&#x3D;\frac{1}{m} ∑_{i&#x3D;1}^mCost(h_θ (x^i ),y^i )<br>$$<br><img src="/../source/imgs/$%7Bfiilname%7D/image-20250707104627579.png" alt="image-20250707104627579"></p>
+<p>h𝜃x的取值范围在0~1。</p>
+<p>这样构建的Cost函数的特点是：当实际的 𝑦 &#x3D; 1 且ℎ𝜃(𝑥)也为 1 时误差为 0，当 𝑦 &#x3D; 1 但ℎ𝜃(𝑥)不为 1 时误差随着ℎ𝜃(𝑥)变小而变大；当实际的 𝑦 &#x3D; 0 且ℎ𝜃(𝑥)也为 0 时代价为 0，当𝑦 &#x3D; 0 但ℎ𝜃(𝑥)不为 0 时误差随着 ℎ𝜃(𝑥)的变大而变大。</p>
+<p>将Cost函数进行简化，就是用一个表达式表达出来，如下：<br>$$<br>Cost(h_θ (x),y)&#x3D;-y×log(h_θ (x))-(1-y)×log(1-h_θ (x))<br>$$<br>代入代价函数为：<br>$$<br>J(θ)&#x3D;-\frac{1}{m}∑_{i&#x3D;1}^m[y^{(i)} log(h_θ (x^{(i)} ))+(1-y^{(i)})log(1-h_θ (x^{(i)} ))]<br>$$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">def cost(theta, X, y):</span><br><span class="line">  theta = np.matrix(theta)</span><br><span class="line">  X = np.matrix(X)</span><br><span class="line">  y = np.matrix(y)</span><br><span class="line">  first = np.multiply(-y, np.log(sigmoid(X* theta.T)))</span><br><span class="line">  second = np.multiply((1 - y), np.log(1 - sigmoid(X* theta.T)))</span><br><span class="line">  return np.sum(first - second) / (len(X))</span><br></pre></td></tr></table></figure>
+
+<p>sigmoid函数在上面定义了。</p>
+<p>梯度下降算法的公式和前面的一样，记住，<strong>同时更新</strong>所有参数。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250707111211261.png" alt="image-20250707111211261"></p>
+<p>通过观察梯度下降算法的式子可以发现，这个式子和之前线性回归的梯度下降算法的式子是一样的，但<strong>ℎ𝜃(𝑥)的式子是不同的</strong>。</p>
+<p>特征缩放的技巧也适用于逻辑回归。</p>
+<h2 id="高级优化"><a href="#高级优化" class="headerlink" title="高级优化"></a>高级优化</h2><p>共轭梯度法，BFGS (变尺度法) 和 L-BFGS (限制变尺度法) 就是一些更高级的优化算法，它们需要有一种方法来计算 𝐽(𝜃)，以及需要一种方法计算导数项，然后使用比梯度下降更复杂的算法来最小化代价函数。  </p>
+<p>这三种算法的具体细节可以不用取探究，因为过于复杂。</p>
+<p>使用这其中任何一个算法，通常不需要手动选择学习率 𝛼，所以对于这些算法的一种思路是，给出计算导数项和代价函数的方法，你可以认为算法有一个智能的内部循环，而且，事实上，他们确实有一个智能的内部循环，称为线性搜索算法，它可以自动尝试不同的学习速率 𝛼，并自动选择一个好的学习速率 𝛼，因此它甚至可以为每次迭代选择不同的学习速率。  </p>
+<p>最好不要使用 L-BGFS、 BFGS 这些算法，除非你是数值计算方面的专家。</p>
+<p>如何使用这些算法，这些算法适合在很大的机器学习问题中使用。</p>
+<p>在jupyter中利用的是python中的<code>scipy.optimize.fmin_tnc()</code>函数，这是一个使用截断牛顿法（TNC）寻找局部最小值的优化函数，特别适用于有界约束的优化问题。</p>
+<h2 id="寻找决策边界"><a href="#寻找决策边界" class="headerlink" title="寻找决策边界"></a>寻找决策边界</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250709171344091.png" alt="image-20250709171344091"></p>
+<p>所以jupyter中的寻找决策边界会除以第三个参数值。</p>
+<h2 id="构造多项式特征"><a href="#构造多项式特征" class="headerlink" title="构造多项式特征"></a>构造多项式特征</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250710155849606.png" alt="image-20250710155849606"></p>
+<p>由上图可知其中没有线性决策界限，来良好的分开两类数据，原数据有两个特征，x1和x2，可以明显看出就这两个特征无法较好拟合这些数据，所以要构造从原始特征的多项式中得到的特征，即通过数学变换，将原始特征（ <em>x</em>1 和 <em>x</em>2）扩展为一组新特征，这些新特征是原始特征的高阶多项式组合（例如，<em>x</em>1平方、<em>x</em>2平方、<em>x</em>1×<em>x</em>2、<em>x</em>1立方 等）。然后，在这些新特征上训练逻辑回归模型。</p>
+<p><strong>为什么能解决非线性问题</strong>：尽管逻辑回归本身是线性的，但通过添加非线性特征（如平方项或交互项），模型在扩展后的高维特征空间中学习到的决策边界仍然是线性的，但这个边界在原始特征空间中会呈现为曲线、椭圆或其他非线性形状。这相当于给模型“添加了非线性能力”，而不改变其核心算法。</p>
+<p>首先要选择<strong>阶数</strong>，阶数决定了多项式的复杂性。从二阶开始（通常足够处理大多数非线性问题），然后根据模型性能调整。</p>
+<p>平方项：捕捉单个测试的非线性效应。</p>
+<p>交互项（<em>x</em>1×<em>x</em>2）：捕捉两个测试的联合效应。</p>
+<p>由于选择了高阶数的模型，为了避免过拟合，通常还要进行正则化操作。</p>
+<h2 id="多类别分类：一对多"><a href="#多类别分类：一对多" class="headerlink" title="多类别分类：一对多"></a>多类别分类：一对多</h2><p>如何使用逻辑回归来解决多类别分类问题。</p>
+<p>之前的二元分类问题的图，和现在的多类分类问题的图：<img src="../source/imgs/${fiilname}/image-20250709173446894.png" alt="image-20250709173446894" style="zoom:80%;" /></p>
+<p>用 3 种不同的符号来代表 3 个类别，问题就是给出 3 个类型的数据集，如何得到一个学习算法来进行分类呢？</p>
+<p>面对二元分类问题可以使用逻辑回归，也可以将数据集一分为二为正类和负类，而一对多的分类思想，我们可以将其用在多类分类问题上，这个方法也被称为”一对余”方法。</p>
+<p>现在我们有一个训练集，好比上图表示的有 3 个类别，我们用三角形表示 𝑦 &#x3D; 1，方框表示𝑦 &#x3D; 2，叉叉表示 𝑦 &#x3D; 3。使用一个训练集将三元分类问题转化为<strong>三个二元分类问题</strong>，先从用三角形代表的类别 1 开始，实际上我们可以创建一个，新的”伪”训练集，类型 2 和类型 3 定为负类，类型 1 设定为正类，我们创建一个新的训练集，如下图所示的那样，我们要拟合出一个合适的分类器。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250709175113715.png" alt="image-20250709175113715"></p>
+<p>这里的三角形是正样本，而圆形代表负样本。可以这样想，设置三角形的值为 1，圆形的值为 0，下面可以训练一个标准的逻辑回归分类器，这样就得到一个边界。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250709175233890.png" alt="image-20250709175233890"></p>
+<p>选择出哪一个分类器是可信度最高效果最好的，那么就可认为得到一个正确的分类，无论𝑖值是多少，我们都有最高的概率值，我们预测𝑦就是那个值。<br>$$<br>最后我们得到一系列的模型简记为： h_θ^{(i) } (x)&#x3D;p(y&#x3D;i|x;θ)其中：i&#x3D;(1,2,3….k)<br>$$</p>
+<h1 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h1><h2 id="过拟合的问题"><a href="#过拟合的问题" class="headerlink" title="过拟合的问题"></a>过拟合的问题</h2><p>就是过于强调拟合原始数据。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250709201037517.png" alt="image-20250709201037517"></p>
+<p>第一个模型是一个线性模型，欠拟合，不能很好地适应训练集；第三个模型是一个四次方的模型，过于强调拟合原始数据，而丢失了算法的本质：预测新数据。可以看出，若给出一个新的值使之预测，它将表现的很差，是过拟合，虽然能非常好地适应我们的训练集但在新输入变量进行预测时可能会效果不好。</p>
+<p>分类问题中也存在这样的问题：<img src="../source/imgs/${fiilname}/image-20250709201149549.png" alt="image-20250709201149549" style="zoom:80%;" /></p>
+<p>以多项式理解， 𝑥 的次数越高，拟合的越好，但相应的预测的能力就可能变差。</p>
+<p>如何处理过拟合问题：</p>
+<p>1.丢弃一些不能帮助我们正确预测的特征。可以是手工选择保留哪些特征，或者使用一些模型选择的算法来帮忙，例如 PCA</p>
+<p>2.正则化。 保留所有的特征，但是减少参数的大小。</p>
+<h2 id="代价函数-2"><a href="#代价函数-2" class="headerlink" title="代价函数"></a>代价函数</h2><p>在上面过拟合的回归问题中有以下模型：<br>$$<br>h_θ (x)&#x3D;θ_0+θ_1 x_1+θ_2 x_2^2+θ_3 x_3^3+θ_4 x_4^4<br>$$<br>正是高次项导致了过拟合的产生，所以如果能让这些高次项的系数接近于0的话，那就能很好的拟合了。</p>
+<p>所以我们要做的就是在一定程度上<strong>减小</strong>这些参数𝜃的值，这就是<strong>正则化的基本方法</strong>。我们决定要减少𝜃3和𝜃4的大小，我们要做的便是修改代价函数，在其中𝜃3和𝜃4设置一点惩罚。这样做的话，在尝试最小化代价时也会将这个惩罚纳入考虑中，并最终导致选择较小一些的𝜃3和𝜃4。惩罚就是在代价函数中使𝜃3和𝜃4的占比变高，使得在最小化代价函数时，也会更多地考虑这两个参数。<br>$$<br>修改后的代价函数：min\frac{1}{2m}[∑_{i&#x3D;1}^m[(h_θ (x^{(i)} )-y^{(i)} )^2+1000θ_3^2+10000θ_4^2]]<br>$$<br>假如有非常多的特征，我们并不知道其中哪些特征要惩罚，那么就对所有的特征进行惩罚，并且让代价函数最优化的软件来选择这些惩罚的程度。这样的结果是得到了一个较为简单的能防止过拟合问题的假设：<br>$$<br>J(θ)&#x3D;\frac{1}{2m}[∑_{i&#x3D;1}^m(h_θ (x^{(i)})-y^{(i)})^2+λ∑_{j&#x3D;1}^nθ_j^2 ]<br>$$<br>其中𝜆又称为正则化参数，根据惯例，我们<strong>不对𝜃0 进行惩罚</strong>。经过正则化处理的模型与原模型的可能对比如下图所示：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250709202809943.png" alt="image-20250709202809943"></p>
+<p>如果选择的正则化参数λ<strong>过大</strong>，则会把所有的参数<strong>都最小化</strong>了，导致模型变成 ℎ𝜃(𝑥) &#x3D; 𝜃0，也就是上图中红色直线所示的情况，造成<strong>欠拟合</strong>。  </p>
+<h2 id="正则化线性回归"><a href="#正则化线性回归" class="headerlink" title="正则化线性回归"></a>正则化线性回归</h2><p>正则化<strong>线性回归</strong>的代价函数是：<br>$$<br>J(θ)&#x3D;\frac{1}{2m}[∑_{i&#x3D;1}^m(h_θ (x^{(i)})-y^{(i)})^2+λ∑_{j&#x3D;1}^nθ_j^2 ]<br>$$<br>由于𝜃0没有进行正则化，所以梯度下降算法将会分成两种情况：<img src="../source/imgs/${fiilname}/image-20250709210159349.png" alt="image-20250709210159349" style="zoom:50%;" /></p>
+<p>对第二个式子（𝑗 &#x3D; 1,2, . . . , 𝑛 ）进行调整可以得到：<br>$$<br>θ_j:&#x3D;θ_j (1-a \frac{λ}{m})-a \frac{1}{m} ∑_{i&#x3D;1}^m(h_θ (x^{(i)})-y^{(i)})x_j^{(i)}<br>$$<br>可以看出，正则化线性回归的梯度下降算法的变化在于，每次都在原有算法更新规则的基础上令𝜃值减少了一个额外的值。</p>
+<p>利用正规方程来求解正则化线性回归模型：<img src="../source/imgs/${fiilname}/image-20250709211926347.png" alt="image-20250709211926347" style="zoom:50%;" />，图中的矩阵尺寸为 (𝑛 + 1) ∗ (𝑛 + 1)，因为不算𝜃0还有n个特征。</p>
+<h2 id="正则化的逻辑回归模型"><a href="#正则化的逻辑回归模型" class="headerlink" title="正则化的逻辑回归模型"></a>正则化的逻辑回归模型</h2><p>这是正则化的<strong>逻辑回归</strong>的代价函数。</p>
+<p>给代价函数增加一个正则化的表达式，得到代价函数：<br>$$<br>J(θ)&#x3D;\frac{1}{m} ∑_{i&#x3D;1}^m[-y^{(i)} log(h_θ (x^{(i)} ))-(1-y^{(i)} )log(1-h_θ (x^{(i)} ))]+\frac{λ}{2m} ∑_{j&#x3D;1}^nθ_j^2<br>$$</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">def costReg(theta, X, y, learningRate):</span><br><span class="line">    theta = np.matrix(theta)</span><br><span class="line">    X = np.matrix(X)</span><br><span class="line">    y = np.matrix(y)</span><br><span class="line">    first = np.multiply(-y, np.log(sigmoid(X*theta.T)))</span><br><span class="line">    second = np.multiply((1 - y), np.log(1 - sigmoid(X*theta.T)))</span><br><span class="line">    reg = (learningRate / (2 * len(X))* np.sum(np.power(theta[:,1:theta.shape[1]],2))</span><br><span class="line">    return np.sum(first - second) / (len(X)) + reg</span><br></pre></td></tr></table></figure>
+
+<img src="../source/imgs/${fiilname}/image-20250709213440950.png" alt="image-20250709213440950" style="zoom:67%;" />
+
+<p>这边的 h 函数是sigmoid函数。</p>
+<p><strong>𝜃0不参与其中的任何一个正则化</strong>。</p>
+<p>接下来的课程中，我们将学习一个非常强大的非线性分类器，无论是<strong>线性回归</strong>问题，还是<strong>逻辑回归</strong>问题，都可以<strong>构造多项式</strong>来解决。你将逐渐发现还有更强大的非线性分类器，可以用来解决多项式回归问题。  </p>
+<h1 id="神经网络：表述"><a href="#神经网络：表述" class="headerlink" title="神经网络：表述"></a>神经网络：表述</h1><h2 id="非线性假设"><a href="#非线性假设" class="headerlink" title="非线性假设"></a>非线性假设</h2><p>无论是线性回归还是逻辑回归都有这样一个缺点，即：当特征太多时，计算的负荷会非常大。</p>
+<p>使用非线性的多项式项，能够帮助我们建立更好的分类模型，但相应的我们要计算的特征数会大大增多，普通的逻辑回归模型，不能有效地处理这么多的特征，这时候就需要神经网络。</p>
+<h2 id="模型表示-1"><a href="#模型表示-1" class="headerlink" title="模型表示"></a>模型表示</h2><p>神经网络模型建立在很多神经元之上，每一个神经元又是一个个学习模型。这些神经元（也叫激活单元）采纳一些特征作为输出，并且根据本身的模型提供一个输出。</p>
+<p>以逻辑回归模型作为学习模型的神经元示例：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250710173745443.png" alt="image-20250710173745443"></p>
+<p>解读：上面的黄圈看作是神经元，左边的蓝圈和黄圈的连线看作是输入&#x2F;树突，黄圈右边的线看作是输出&#x2F;轴突。通过树突传递一些信息，然后神经元做一些计算，然后通过轴突输出计算结果。这个图表表示的是对h的计算，而h是sigmoid函数。x1、x2、x3是输入结点，额外的结点x0被称为<strong>偏置单位</strong>，因为x0总是等于1。x0可画可不画，根据具体情况来。</p>
+<p>在神经网络中，参数𝜃又可被称为权重。</p>
+<p>上面的一个小黄圈代表一个单一的神经元，而神经网络是不同的神经元组合在一起的集合。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250710175318298.png" alt="image-20250710175318298"></p>
+<p>第一层叫作输入层，在这一层输入特征项x1、x2、x3；最后一层（第3层）叫作输出层，因为这一层的神经元输出假设的最终计算结果；中间的一层称作隐藏层，神经网络中可以有不止一个隐藏层，非输出层和输入层的都叫做隐藏层。</p>
+<p>在隐藏层出现的蓝色圈被称作偏置单位，它的值永远是1。</p>
+<p>下面的图有3个输入单元和3个隐藏单元。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250710213148069.png" alt="image-20250710213148069"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250710213208144.png" alt="image-20250710213208144"></p>
+<p>每一个𝑎都是由上一层所有的𝑥和每一个𝑥所对应的参数决定的，这样从左到右的算法称为前向传播算法。</p>
+<img src="../source/imgs/${fiilname}/image-20250710213756450.png" alt="image-20250710213756450" style="zoom:67%;" />  
+
+<p><code>𝜃*X</code>不会等于a，因为g(𝜃*X)&#x3D;a</p>
+<img src="../source/imgs/${fiilname}/image-20250710215327579.png" alt="image-20250710215327579" style="zoom:70%;" />
+
+<p>这边要转置应该是因为是一行一行地输入数据的。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250710220504253.png" alt="image-20250710220504253"></p>
+<p><strong>要注意偏置单位的添加。</strong></p>
+<p>如果我们暂时只看第二层和第三层的话：<img src="../source/imgs/${fiilname}/image-20250710215557120.png" alt="image-20250710215557120" style="zoom:33%;" /></p>
+<p>可以发现，其实神经网络就像是 logistic regression，只不过我们把 logistic regression 中的输入向量[𝑥1 ∼ 𝑥3] 变成了中间层的[𝑎1(2) ∼ 𝑎3(2)], 即:<img src="../source/imgs/${fiilname}/image-20250710215730645.png" alt="image-20250710215730645" style="zoom:50%;" /></p>
+<p>特征项a1、a2、a3是作为输入的函数来学习的，所以在神经网络中，它没有使用输入特征x1、x2、x3来训练逻辑回归，而是自己根据a1、a2、a3来训练逻辑回归，所以如果在𝜃1中选择了不同的参数，那就可以学习到比较复杂的特征，就可以得到一个更好的假设，比使用原始输入时得到的假设更好（构造多项式特征？这里的特征也是通过学习模型得出来的）</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250710221653096.png" alt="image-20250710221653096"></p>
+<p>神经网络中神经元相互连接的方式称为神经网络的架构。</p>
+<h2 id="特征和直观理解"><a href="#特征和直观理解" class="headerlink" title="特征和直观理解"></a>特征和直观理解</h2><p>从本质上讲，神经网络能够通过<strong>学习</strong>得出其自身的一系列特征（在预设的<strong>网络架构</strong>和<strong>激活函数</strong>框架下，通过训练数据<strong>动态调整权重参数</strong>，使用梯度下降等优化算法调整，使模型逼近目标函数。）。在普通的逻辑回归中，我们被限制为使用数据中的原始特征𝑥1, 𝑥2, . . . , 𝑥𝑛，我们虽然可以使用一些二项式项来组合这些特征，但是我们仍然受到这些原始特征的限制。在神经网络中，原始特征只是输入层，在我们上面三层的神经网络例子中，第三层也就是输出层做出的预测利用的是第二层的特征，而非输入层中的原始特征，我们可以认为第二层中的特征是神经网络通过学习后自己得出的一系列用于预测输出变量的新特征。  </p>
+<p>神经网络中，单层神经元（无中间层）的计算可用来表示逻辑运算，比如逻辑与(AND)、逻辑或(OR)。  </p>
+<p>逻辑与，用下面的这样一个神经网络表示AND函数：<img src="../source/imgs/${fiilname}/image-20250711153715449.png" alt="image-20250711153715449" style="zoom:50%;" /></p>
+<p>$$<br>其中θ_0&#x3D;-30,θ_1&#x3D;20,θ_2&#x3D;20 我们的输出函数h_θ (x)即为：h_Θ (x)&#x3D;g(-30+20x_1+20x_2 )<br>$$<br>为什么要这样设置参数？根据g(x)的图像和真值表得出。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250711153927581.png" alt="image-20250711153927581"></p>
+<p>再根据同样的步骤设计OR函数（三个权重分别为-10， 20， 20），它与AND函数的区别就是参数的取值不同。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250711154030163.png" alt="image-20250711154030163"></p>
+<p>当输入特征为布尔值（ 0 或 1）时，我们可以用一个单一的激活层可以作为二元逻辑运算符，为了表示不同的运算符，我们只需要选择不同的权重即可。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250711154327345.png" alt="image-20250711154327345"></p>
+<img src="../source/imgs/${fiilname}/image-20250711154521895.png" alt="image-20250711154521895" style="zoom:67%;" />
+
+<p>我们可以利用神经元来<strong>组合</strong>成更为复杂的神经网络以实现更复杂的运算。  </p>
+<p>实现 XNOR 功能（输入的两个值必须一样，均为 1 或均为 0），即：XNOR &#x3D; (x1 AND x2) OR((NOT x1)AND(NOT x2))</p>
+<p>首先构造一个能表达(NOT x1)AND(NOT x2)部分的神经元：(!x1)交(!x2) &#x3D; !(x1并x2) &#x3D; 非AND<img src="../source/imgs/${fiilname}/image-20250711155524524.png" alt="image-20250711155524524" style="zoom:36%;" /></p>
+<p>然后将表示 AND 的神经元和表示(NOT x1)AND(NOT x2)的神经元以及表示 OR 的神经元进行组合：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250711155624715.png" alt="image-20250711155624715"></p>
+<h2 id="多类分类"><a href="#多类分类" class="headerlink" title="多类分类"></a>多类分类</h2><p>如果我们要训练一个神经网络算法来识别路人、汽车、摩托车和卡车，在输出层我们应该有 4 个值。例如，第一个值为 1 或 0 用于预测是否是行人，第二个值用于判断是否为汽车。</p>
+<p>输入向量𝑥有三个维度，两个中间层，输出层 4 个神经元分别用来表示 4 类，也就是每一个数据在输出层都会出现[𝑎 𝑏 𝑐 𝑑]𝑇，且𝑎, 𝑏, 𝑐, 𝑑中仅有一个为 1，表示当前类。下面是该神经网络的可能结构示例：  </p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250711160844709.png" alt="image-20250711160844709"></p>
+<p>我们不用1代表行人，2代表车这种形式，而是构造四个分类器，输出1或0，根据哪个位置是1来判断是什么。</p>
+<h1 id="神经网络的学习"><a href="#神经网络的学习" class="headerlink" title="神经网络的学习"></a>神经网络的学习</h1><h2 id="代价函数-3"><a href="#代价函数-3" class="headerlink" title="代价函数"></a>代价函数</h2><p>假设神经网络的训练样本有𝑚个，每个包含一组输入𝑥和一组输出信号𝑦。L：神经网络结构的总层数；Sl（这是小L）：第 l 层的单元个数也就是神经元的数量，不包括 l 层的偏差单元。𝑆𝐿代表最后一层中处理单元的个数。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250711165618966.png" alt="image-20250711165618966"></p>
+<p>二元分类问题只有一个输出单元，所以只有一个输出结果。</p>
+<p>多元分类问题，也就是K类分类问题，会有K个输出单元，输出是一个K维向量。</p>
+<p>先来看一下逻辑回归问题中的代价函数：<br>$$<br>J(θ)&#x3D;\frac{1}{m} ∑_{i&#x3D;1}^m[-y^{(i)} log(h_θ (x^{(i)} ))-(1-y^{(i)} )log(1-h_θ (x^{(i)} ))]+\frac{λ}{2m} ∑_{j&#x3D;1}^nθ_j^2<br>$$<br>在逻辑回归中，我们只有一个输出变量，又称标量，也就是只有一个逻辑输出单元，也只有一个因变量y，但在神经网络中会有K个逻辑输出单元。<br>$$<br>h_θ (x)∈R^K，(h_θ (x))_i&#x3D;i^th output<br>$$<br>h(x)是一个K维向量；h(x)i 代表的是第 i 个输出，也就是它选择了输出向量中的第 i 个元素。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250711171756403.png" alt="image-20250711171756403"></p>
+<p>首先要计算从1到K的每一个逻辑回归算法的代价函数的和。最后的那个正则化的求和项，它是将所有的参数（除了i &#x3D; 0的，也就是偏差单位）都加起来。最后正则项的 j 的范围的s l+1 的l+1应该是下标，可以看下面那个图。</p>
+<p><strong>上面θ的 j 和 i 应该反了</strong><img src="../source/imgs/${fiilname}/image-20250713205157804.png" alt="image-20250713205157804" style="zoom:33%;" />应该是这样的<img src="../source/imgs/${fiilname}/image-20250714102913373.png" alt="image-20250714102913373" style="zoom:33%;" /></p>
+<p><img src="../source/imgs/${fiilname}/image-20250711173149157.png" alt="image-20250711173149157" style="zoom:33%;" />根据这个图可以知道，参数的行号是从1开始计数的，所以上面的 i 是从1开始的。</p>
+<p>正则化的那一项只是排除了每一层 θ0后，每一层的θ矩阵的和。最里层的循环 j 循环所有的行（由 Sl +1 层的激活单元数决定），循环 i 则循环所有的列，由该层（ Sl 层）的激活单元数所决定。</p>
+<p>上面那个公式的意思就是：h(θ）与真实值之间的距离为每个样本-每个类输出的加和，对参数进行<strong>regularization</strong>的<strong>bias</strong>项处理所有参数的平方和。</p>
+<h2 id="反向传播算法"><a href="#反向传播算法" class="headerlink" title="反向传播算法"></a>反向传播算法</h2><p>就是让代价函数最小化的算法，因为是从最后往前算误差的，所以叫作反向传播算法，之前的是从第一层开始正向一层一层进行计算，直到最后一层的ℎ𝜃(𝑥)，所以是正向传播算法。<br>$$<br>为了计算偏导数项\frac{∂}{∂Θ_{ij}^{(l)} } J(Θ)，我们需要采用一种反向传播算法，也就是首先计算最后一层的误差，然后再一层一层反向求出各层的误差，<br>$$<br>直到倒数第二层。 以一个例子来说明反向传播算法，参数是这样的<img src="../source/imgs/${fiilname}/image-20250714102913373.png" alt="image-20250714102913373" style="zoom:33%;" /></p>
+<p>假设我们的训练集只有一个实例(𝑥, 𝑦），我们的神经网络是一个四层的神经网络，其中𝐾 &#x3D; 4， 𝑆𝐿 &#x3D; 4， 𝐿 &#x3D; 4：先利用前向传播算法计算一下输出结果。<img src="../source/imgs/${fiilname}/image-20250714103257364.png" alt="image-20250714103257364" style="zoom:50%;" /></p>
+<p>接下来计算导数项。</p>
+<p><img src="../source/imgs/${fiilname}/image-20250714103443302.png" alt="image-20250714103443302" style="zoom:33%;" />代表第 l 层的第 j 个结点的误差。</p>
+<p>由于现在用来举例的只有一个样本，所以误差可以写为<img src="../source/imgs/${fiilname}/image-20250714103857506.png" alt="image-20250714103857506" style="zoom:33%;" />，向量形式是<img src="../source/imgs/${fiilname}/image-20250714103924438.png" alt="image-20250714103924438" style="zoom:33%;" /></p>
+<p>当算出最后一层的误差后，就向前计算前面几层的误差。</p>
+<p><code>·*</code>代表的是两个向量的对应元素相乘。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250714104343510.png" alt="image-20250714104343510"></p>
+<p>没有𝛿(1)，因为第一层是输入层，所以不会存在误差。</p>
+<p>一个单元造成的误差是这个单元对下一层的每一个单元造成的误差的总和，所以参数矩阵要转置求这个单元造成的误差和。可以求出偏差单位的误差，但在计算的时候可以不加，造成的影响不大。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250714114449182.png" alt="image-20250714114449182"><br>$$<br>假设λ&#x3D;0，即我们不做任何正则化处理时有：\frac{∂}{∂Θ_{ij}^{(l)} } J(Θ)&#x3D;a_j^{(l)} δ_i^{l+1}<br>$$<br>上面式子中上下标的含义： </p>
+<p>𝑙 代表目前所计算的是第几层。</p>
+<p>𝑗 代表目前计算层中的激活单元的下标。</p>
+<p>𝑖 代表下一层(l+1层)中误差单元的下标，是受到权重矩阵中第𝑖行影响的下一层中的误差单元的下标。</p>
+<p>假设有m个训练样本，用<img src="../source/imgs/${fiilname}/image-20250714110943856.png" alt="image-20250714110943856" style="zoom:50%;" />表示误差矩阵，第 𝑙+1 层的第 𝑖 个激活单元受到第 𝑗个参数影响而导致的误差。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250714110323781.png" alt="image-20250714110323781"></p>
+<p>上面的 l 的范围感觉应该是1~l-1，因为误差矩阵是关于参数矩阵，而参数矩阵没有 L。</p>
+<p>公式里的那个1&#x2F;m是乘以后面的和的。</p>
+<h2 id="梯度检验"><a href="#梯度检验" class="headerlink" title="梯度检验"></a>梯度检验</h2><p>当我们对一个较为复杂的模型（例如神经网络）使用梯度下降算法时，可能会存在一些不容易察觉的错误，意味着，虽然代价看上去在不断减小，但最终的结果可能并不是最优解。</p>
+<p>为了避免这样的问题，我们采取一种叫做<strong>梯度的数值检验方法</strong>。这种方法的思想是通过<strong>估计梯度值</strong>来检验我们计算的导数值是否真的是我们要求的。</p>
+<p>对梯度的估计采用的方法是在代价函数上沿着切线的方向选择离两个非常近的点然后计算两个点的平均值用以估计梯度。即对于某个特定的 𝜃，我们计算出在 𝜃-𝜀 处和 𝜃+𝜀 的代价值（ 𝜀是一个非常小的值，通常选取 0.001，𝜀不要取太小，不然会出现数值问题），然后求两个代价的平均，用以估计在 𝜃处的代价值（用数值的方法计算近似的导数）。下面那张图的𝜃是一个实数。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250714152302979.png" alt="image-20250714152302979"></p>
+<p>更普遍的情况，𝜃是一个n维向量，它可能是神经网络参数<img src="../source/imgs/${fiilname}/image-20250819215309138.png" alt="image-20250819215309138" style="zoom:33%;" />等的展开形式。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250714152538713.png" alt="image-20250714152538713"></p>
+<p>最后我们还需要对通过反向传播方法计算出的偏导数进行检验。根据反向传播算法计算出来的偏导数存储在矩阵<img src="../source/imgs/${fiilname}/image-20250714153307330.png" alt="image-20250714153307330" style="zoom:50%;" />中，然后将其与上面的数值计算的方法计算出来的近似的梯度值进行比较，如果误差在几位小数之内就认为反向传播算法的实现是<strong>正确</strong>的，然后在接下来的训练过程中都<strong>不再使用</strong>这个验证程序，因为它的计算量很大，而反向传播是一种更为简单的计算方法。</p>
+<p>步骤：DVec就是反向传播算出来的导数值，gradApprox是数值计算算出来的近似梯度值。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250714153726453.png" alt="image-20250714153726453"></p>
+<p><strong>用数值方法计算导数是用来确定反向传播实现是否正确的方法，但是不止可以用来验证反向传播，也可以用来验证类似的复杂模型的梯度下降算法。</strong></p>
+<h2 id="随机初始化"><a href="#随机初始化" class="headerlink" title="随机初始化"></a>随机初始化</h2><p>任何优化算法都需要一些初始的参数。到目前为止我们都是初始所有参数为 0，这样的初始方法对于逻辑回归来说是可行的，但是对于神经网络来说是不可行的。如果我们令所有的初始参数都为 0，这将意味着我们第二层的所有激活单元都会有相同的值，算出来的误差值也都是相同的值，之后进行梯度下降后的值也都相同。同理，如果我们初始所有的参数都为一个非 0 的数，结果也是一样的。</p>
+<p>为了解决这个问题，神经网络变量的初始化方式采用随机初始化，通常初始参数为正负𝜀之间接近于0的随机值，然后进行反向传播，执行梯度检查，使用梯度下降或者其它优化算法。</p>
+<h2 id="综合"><a href="#综合" class="headerlink" title="综合"></a>综合</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250714155124333.png" alt="image-20250714155124333"></p>
+<h1 id="应用机器学习的建议"><a href="#应用机器学习的建议" class="headerlink" title="应用机器学习的建议"></a>应用机器学习的建议</h1><h2 id="决定下一步做什么"><a href="#决定下一步做什么" class="headerlink" title="决定下一步做什么"></a>决定下一步做什么</h2><p>当我们运用训练好了的模型来预测未知数据的时候发现有较大的误差，我们下一步可以做什么？</p>
+<p>获得更多的训练实例通常是有效的，但代价较大，下面的方法也可能有效，可考虑先采用下面的几种方法。</p>
+<p>1.尝试减少特征的数量；2.尝试获得更多的特征；3.尝试增加多项式特征；4.尝试减少正则化程度λ； 5.尝试增加正则化程度λ</p>
+<p>我们不应该随机选择上面的某种方法来改进我们的算法，而是运用一些机器学习诊断法来帮助我们知道上面哪些方法对我们的算法是有效的。“诊断法”的意思是：这是一种测试法，你通过执行这种测试，能够深入了解某种算法到底是否有用。这通常也能够告诉你，要想改进一种算法的效果，什么样的尝试，才是有意义的。</p>
+<h2 id="评估一个假设"><a href="#评估一个假设" class="headerlink" title="评估一个假设"></a>评估一个假设</h2><p>如何判断一个假设函数是过拟合的呢？</p>
+<p>对于特征变量只有一个的简单例子，可以直接对假设函数h(x)进行画图，但对于特征变量不止一个的这种一般情况，还有像有很多特征变量的问题，想要通过画出假设函数来进行观察，就会变得很难甚至是不可能实现。</p>
+<p>为了检验算法是否过拟合，我们将数据分成<strong>训练集</strong>和<strong>测试集</strong>，通常用 70%的数据作为训练集，用剩下 30%的数据作为测试集。很重要的一点是训练集和测试集均<strong>要含有各种类型</strong>的数据，通常我们要对数据进行“<strong>洗牌</strong>”，然后再分成训练集和测试集。</p>
+<p>在通过训练集让我们的模型学习得出其参数后，对测试集运用该模型，我们有两种方式计算误差：</p>
+<p> 1.对于线性回归模型，我们利用测试集数据计算代价函数 J</p>
+<p>2.对于逻辑回归模型，我们除了可以利用测试数据集来计算代价函数外，还可以计算误分类的比率（感觉就是准确率），也就是对每一个测试集实例计算<img src="../source/imgs/${fiilname}/image-20250721163110688.png" alt="image-20250721163110688" style="zoom:50%;" />，然后对结果求平均。</p>
+<h2 id="模型选择和交叉验证集"><a href="#模型选择和交叉验证集" class="headerlink" title="模型选择和交叉验证集"></a>模型选择和交叉验证集</h2><p>假设我们要在 10 个不同次数的二项式模型之间进行选择：<img src="../source/imgs/${fiilname}/image-20250721163448041.png" alt="image-20250721163448041" style="zoom:50%;" /></p>
+<p>虽然越高次数的多项式模型越能够适应我们的训练数据集，但是适应训练数据集并不代表着能推广至一般情况，我们应该选择一个更能适应一般情况的模型。我们需要使用交叉验证集来帮助选择模型。</p>
+<p>即：使用 60%的数据作为训练集，使用 20%的数据作为交叉验证集，使用 20%的数据作为测试集。</p>
+<p>模型选择的方法为：</p>
+<ol>
+<li><p>使用训练集训练出 10 个模型</p>
+</li>
+<li><p>用 10 个模型分别对<strong>交叉验证集</strong>计算得出交叉验证误差（代价函数的值）</p>
+</li>
+<li><p>选取代价函数值最小的模型</p>
+</li>
+<li><p>用步骤 3 中选出的模型对测试集计算得出推广误差（代价函数的值）</p>
+</li>
+</ol>
+<h2 id="诊断偏差和方差"><a href="#诊断偏差和方差" class="headerlink" title="诊断偏差和方差"></a>诊断偏差和方差</h2><p>当一个学习算法的表现不理想时，多半是出现两种情况：要么是偏差比较大，要么是方差比较大。换句话说，出现的情况要么是欠拟合，要么是过拟合问题。</p>
+<p>高偏差和高方差的问题基本上来说是欠拟合和过拟合的问题。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250721165003029.png" alt="image-20250721165003029"></p>
+<p>通常会通过将训练集和交叉验证集的代价函数误差与多项式的次数绘制在同一张图表上来帮助分析：</p>
+<p><img src="../source/imgs/${fiilname}/image-20250721165252491.png" alt="image-20250721165252491" style="zoom:50%;" /><img src="../source/imgs/${fiilname}/image-20250721165312076.png" alt="image-20250721165312076" style="zoom:50%;" /></p>
+<p>对于训练集，当多项式次数 𝑑 较小时，模型拟合程度更低，误差较大；随着 𝑑 的增长，拟合程度提高，误差减小。</p>
+<p>对于交叉验证集，当 𝑑 较小时，模型拟合程度低，误差较大；但是随着 𝑑 的增长，误差呈现先减小后增大的趋势，<strong>转折点</strong>是我们的模型开始<strong>过拟合训练数据集</strong>的时候。</p>
+<p>交叉验证集误差较大，如何判断是方差还是偏差呢？  根据上面的图表可以知道：</p>
+<p>训练集误差和交叉验证集<strong>误差近似</strong>时：偏差&#x2F;欠拟合</p>
+<p>交叉验证集误差<strong>远大于</strong>训练集误差时：方差&#x2F;过拟合  </p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250721165430462.png" alt="image-20250721165430462"></p>
+<h2 id="正则化和偏差-方差"><a href="#正则化和偏差-方差" class="headerlink" title="正则化和偏差&#x2F;方差"></a>正则化和偏差&#x2F;方差</h2><p>在训练模型的过程中，一般会使用一些正则化方法来防止过拟合。但是正则化的程度可能会太高或太小了，即我们在选择 λ 的值时也需要思考与刚才选择多项式模型次数类似的问题。  <img src="/../source/imgs/$%7Bfiilname%7D/image-20250721165724178.png" alt="image-20250721165724178"></p>
+<p>选择一系列的想要测试的 𝜆 值，通常是 0-10 之间的呈现 2 倍关系的值（如： 0,0.01,0.02,0.04,0.08,0.15,0.32,0.64,1.28,2.56,5.12,10共 12 个），同样把数据分为训练集、交叉验证集和测试集。  </p>
+<p>选择𝜆的方法为：</p>
+<p>1.使用训练集训练出 12 个不同程度正则化的模型</p>
+<p>2.用 12 个模型分别对交叉验证集计算的出交叉验证误差</p>
+<p>3.选择得出交叉验证误差最小的模型</p>
+<p>4.运用步骤 3 中选出模型对测试集计算得出推广误差，我们也可以同时将训练集和交叉验证集模型的代价函数误差与 λ 的值绘制在一张图表上：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250721170136816.png" alt="image-20250721170136816"></p>
+<p>在训练时，代价函数是有加上正则项的，而在后面计算训练集和交叉验证集的误差时是没有加上正则项的，因为λ越大，会导致正则项在训练时的代价函数中的比例越大，导致theta变小，拟合效果变差，所以训练集和交叉验证集的误差就会变大。</p>
+<p>当 𝜆 较小时，训练集误差较小（过拟合）而交叉验证集误差较大，这对应着高方差问题。</p>
+<p>随着 𝜆 的增加，训练集误差不断增加（欠拟合），而交叉验证集误差则是先减小后增加，这对应着高偏差问题。</p>
+<h2 id="学习曲线"><a href="#学习曲线" class="headerlink" title="学习曲线"></a>学习曲线</h2><p>可以使用学习曲线来判断某一个学习算法是否处于偏差、方差问题，学习曲线是将训练集误差和交叉验证集误差作为<strong>训练集实例数量（ 𝑚）</strong>的函数绘制的图表，所以m一般都是一个常数，但我们需要自行对m进行取值，比如说取10，20，30等，然后绘制出曲线。即，如果我们有 100 行数据，我们从 1 行数据开始，逐渐学习更多行的数据。</p>
+<p>绘制学习曲线，先绘制出 J(train)，然后再画出 J(cv)。</p>
+<p>当训练较少行数据的时候，训练的模型将能够非常完美地适应较少的训练数据，但是训练出来的模型却不能很好地适应交叉验证集数据或测试集数据。在训练数据很少的情况下，即使使用了正则化，拟合的效果仍然会很好。随着训练集样本的增加，平均训练误差是逐渐增大的。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250721173115254.png" alt="image-20250721173115254"></p>
+<p>当学习算法处于高偏差&#x2F;欠拟合情形时，学习曲线如下，作为例子，用一条直线来适应下面的数据，可以看出，无论训练集有多么大，误差都不会有太大改观：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250721173448391.png" alt="image-20250721173448391"></p>
+<p><strong>也就是说在高偏差&#x2F;欠拟合的情况下，增加数据到训练集不一定能有帮助。</strong></p>
+<p>当学习算法处于高方差情形时，假设使用一个非常高次的多项式模型，并且<strong>正则化非常小</strong>，可以看出，当交叉验证集误差远大于训练集误差时，往训练集增加更多数据可以提高模型的效果。虽然随着训练样本的增多， J(train)会越来越大，因为训练样本越多时，就越难与训练数据拟合得很好，但总体来说训练集误差还是很小。</p>
+<p>因为函数对数据过拟合，所以交叉验证集误差会一直都很大，即便选择了一个比较合适得训练集样本数，所以交叉验证集和训练集误差之间始终会有一段很大的差距。但如果继续增大样本数的话，可以发现这两条线在相互靠近。</p>
+<p><img src="../source/imgs/${fiilname}/image-20250721174433396.png" alt="image-20250721174433396" style="zoom:40%;" />增大样本数<img src="../source/imgs/${fiilname}/image-20250721174644797.png" alt="image-20250721174644797" style="zoom:60%;" /></p>
+<p><strong>也就是说在高方差&#x2F;过拟合的情况下，增加更多数据到训练集可能可以提高算法效果。</strong>  </p>
+<h2 id="决定下一步做什么-1"><a href="#决定下一步做什么-1" class="headerlink" title="决定下一步做什么"></a>决定下一步做什么</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. 获得更多的训练实例——解决高方差</span><br><span class="line">2. 尝试减少特征的数量——解决高方差</span><br><span class="line">3. 尝试获得更多的特征——解决高偏差</span><br><span class="line">4. 尝试增加多项式特征——解决高偏差</span><br><span class="line">5. 尝试减少正则化程度 λ——解决高偏差</span><br><span class="line">6. 尝试增加正则化程度 λ——解决高方差</span><br></pre></td></tr></table></figure>
+
+<p><strong>神经网络</strong>的方差和偏差：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250721175546856.png" alt="image-20250721175546856"></p>
+<p>使用较小的神经网络，类似于参数较少的情况，容易导致高偏差和欠拟合，但计算代价较小。使用较大的神经网络，类似于参数较多的情况，容易导致高方差和过拟合，虽然计算代价比较大，但是可以通过正则化手段来调整而更加适应数据。</p>
+<p>通常选择较大的神经网络并采用正则化处理会比采用较小的神经网络效果要好。</p>
+<p>对于神经网络中的隐藏层的层数的选择，通常从一层开始逐渐增加层数，为了更好地作选择，可以把数据分为训练集、交叉验证集和测试集，针对不同隐藏层层数的神经网络训练神经网络， 然后选择交叉验证集代价最小的神经网络。</p>
+<h1 id="机器学习系统的设计"><a href="#机器学习系统的设计" class="headerlink" title="机器学习系统的设计"></a>机器学习系统的设计</h1><p>以一个垃圾邮件分类器算法为例进行讨论。</p>
+<p>为了解决这样一个问题，我们首先要做的决定是如何选择并表达特征向量𝑥。我们可以选择一个由 100 个最常出现在垃圾邮件中的词所构成的列表，根据这些词是否有在邮件中出现，来获得我们的特征向量（出现为 1，不出现为 0），尺寸为 100×1。</p>
+<p>为了构建这个分类器算法，我们可以做很多事，例如：</p>
+<ol>
+<li><p>收集更多的数据，让我们有更多的垃圾邮件和非垃圾邮件的样本</p>
+</li>
+<li><p>基于邮件的路由信息开发一系列复杂的特征</p>
+</li>
+<li><p>基于邮件的正文信息开发一系列复杂的特征，包括考虑截词的处理</p>
+</li>
+<li><p>为探测刻意的拼写错误（把 watch 写成 w4tch）开发复杂的算法</p>
+</li>
+</ol>
+<p>在上面这些选项中，非常难决定应该在哪一项上花费时间和精力，作出明智的选择，比随着感觉走要更好。当我们使用机器学习时，总是可以“头脑风暴”一下，想出一堆方法来试试。</p>
+<h2 id="误差分析"><a href="#误差分析" class="headerlink" title="误差分析"></a>误差分析</h2><p>如果你准备研究机器学习的东西，或者构造机器学习应用程序，最好的实践方法不是建立一个非常复杂的系统，拥有多么复杂的变量；而是<strong>构建一个简单的算法</strong>，这样你可以很快地实现它。</p>
+<p>研究机器学习的问题时，先很快地把结果搞出来，即便运行得不完美，但是也把它运行一遍，最后通过<strong>交叉验证</strong>来检验数据。一旦做完，你可以画出<strong>学习曲线</strong>，通过画出学习曲线，以及<strong>检验误差</strong>，来找出你的算法是否有<strong>高偏差和高方差</strong>的问题，或者别的问题。在这样分析之后，再来决定用<strong>更多的数据</strong>训练，或者加入<strong>更多的特征变量</strong>是否有用。</p>
+<p>因为我们并不能提前知道是否需要复杂的特征变量，或者是否需要更多的数据，还是别的什么。提前知道应该做什么，是非常难的，因为缺少证据，缺少学习曲线。因此，很难知道应该把时间花在什么地方来提高算法的表现。但是当实践一个非常简单即便不完美的方法时，就可以通过画出学习曲线来做出进一步的选择。</p>
+<p>除了画学习曲线外还有一个方法就是进行误差分析，例如当我们在构造垃圾邮件分类器时，我会看一看我的交叉验证数据集，然后亲自看一看哪些邮件被算法错误地分类。因此，通过这些被算法错误分类的垃圾邮件与非垃圾邮件，你可以发现某些系统性的规律：什么类型的邮件总是被错误分类。经常地这样做之后，这个过程能启发你构造新的特征变量，或者告诉你：现在这个系统的短处，然后启发你如何去提高它。</p>
+<p>具体一点就是，检验交叉验证集中我们的算法产生错误预测的所有邮件，看：是否能将这些邮件按照类分组。例如医药品垃圾邮件，仿冒品垃圾邮件或者密码窃取邮件等。然后看分类器对哪一组邮件的预测误差最大，并着手优化。思考怎样能改进分类器。例如，发现是否缺少某些特征，记下这些特征出现的次数。</p>
+<p>误差分析并不总能帮助我们判断应该采取怎样的行动。有时我们需要<strong>尝试不同的模型</strong>，然后进行比较，在模型比较时，用数值来判断哪一个模型更好更有效，通常我们是<strong>看交叉验证集的误差</strong>。</p>
+<p>因此，在构造学习算法的时候，总是会去尝试很多新的想法，实现出很多版本的学习算法，如果每一次实践新想法的时候，都要手动地检测这些例子，去看看是表现差还是表现好，那么这很难让你做出决定。但是通过一个<strong>量化的数值评估</strong>（那些代码里自己计算的准确度？），你可以看看这个数字，误差是变大还是变小了。你可以通过它更快地实践你的新想法，它基本上非常直观地告诉你：你的想法是提高了算法表现，还是让它变得更坏，这会大大提高你实践算法时的速度。</p>
+<p><strong>在交叉验证集上来实施误差分析</strong></p>
+<h2 id="类偏斜的误差度量"><a href="#类偏斜的误差度量" class="headerlink" title="类偏斜的误差度量"></a>类偏斜的误差度量</h2><p>误差度量值：设定某个实数来评估你的学习算法，并衡量它的表现。</p>
+<p>类偏斜情况表现为我们的训练集中有非常多的同一种类的实例，只有很少或没有其他类的实例。</p>
+<p>例如我们希望用算法来预测癌症是否是恶性的，在我们的训练集中，只有 0.5%的实例是恶性肿瘤。假设我们编写一个非学习而来的算法，在所有情况下都预测肿瘤是良性的，那么误差只有 0.5%。然而我们通过训练而得到的神经网络算法却有 1%的误差。这时，误差的大小是不能视为评判算法效果的依据的。</p>
+<p>我们将算法预测的结果分成四种情况：</p>
+<ol>
+<li><p>正确肯定（ True Positive,TP）：预测为真，实际为真</p>
+</li>
+<li><p>正确否定（ True Negative,TN）：预测为假，实际为假</p>
+</li>
+<li><p>错误肯定（ False Positive,FP）：预测为真，实际为假</p>
+</li>
+<li><p>错误否定（ False Negative,FN）：预测为假，实际为真</p>
+</li>
+</ol>
+<p>查准率（Precision）&#x3D;TP&#x2F;(TP+FP)。例，在所有我们预测有恶性肿瘤的病人中，实际上有恶性肿瘤的病人的百分比，越高越好。</p>
+<p>查全率（Recall）&#x3D;TP&#x2F;(TP+FN)。例，在所有实际上有恶性肿瘤的病人中，成功预测有恶性肿瘤的病人的百分比，越高越好。</p>
+<p>对于刚才那个总是预测病人肿瘤为良性的算法，其查全率是 0。</p>
+<h2 id="查准率和查全率之间的权衡"><a href="#查准率和查全率之间的权衡" class="headerlink" title="查准率和查全率之间的权衡"></a>查准率和查全率之间的权衡</h2><p>假设，我们的算法输出的结果在 0-1 之间，我们使用阀值 0.5 来预测真和假。</p>
+<p>如果我们希望只在非常确信的情况下预测为真（肿瘤为恶性），即我们希望更高的查准率，我们可以使用比 0.5 更大的阀值，如 0.7， 0.9。这样做我们会减少错误预测病人为恶性肿瘤的情况，同时却会增加未能成功预测肿瘤为恶性的情况。</p>
+<p>如果我们希望提高查全率，尽可能地让所有有可能是恶性肿瘤的病人都得到进一步地检查、诊断，我们可以使用比 0.5 更小的阀值，如 0.3。</p>
+<p>可以将不同阀值情况下，查全率与查准率的关系绘制成图表，曲线的形状根据数据的不同而不同：threshould是临界值的意思</p>
+<img src="../source/imgs/${fiilname}/image-20250721214238005.png" alt="image-20250721214238005" style="zoom:50%;" />
+
+<p>查准率-召回率曲线会有多种形状</p>
+<p>有一个帮助我们选择这个阀值的方法。一种方法是计算 F1 值（ F1 Score），其计算公式为：<br>$$<br>F_1 Score:2 \frac{PR}{P+R}<br>$$<br>我们选择使得 F1 值最高的阀值。</p>
+<h1 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h1><h2 id="优化目标"><a href="#优化目标" class="headerlink" title="优化目标"></a>优化目标</h2><p>在监督学习中，许多学习算法的性能都非常类似，因此，重要的不是该选择使用学习算法 A 还是学习算法 B，而更重要的是，应用这些算法时，表现情况通常依赖于你的水平。比如：你为学习算法所设计的特征量的选择，以及如何选择正则化参数，诸如此类的事。</p>
+<p>与逻辑回归和神经网络相比，支持向量机，或者简称 SVM，在学习复杂的非线性方程时提供了一种更为清晰，更加强大的方式。</p>
+<p>从逻辑回归开始来展示如何一点一点修改来得到本质上的支持向量机。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250723154655767.png" alt="image-20250723154655767"></p>
+<p>逻辑回归中一个训练样本所对应代价函数表达式：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250723154803433.png" alt="image-20250723154803433"></p>
+<p>当y&#x3D;1时，只有第一项起了作用。对第一项进行修改，得出SVM中将要使用的代价函数（粉色线），由两段直线组成，暂时不用考虑左侧直线的斜率，因为那个不重要，这个将要使用的代价函数是在y&#x3D;1的前提条件下的。新的代价函数叫作cost1(z)</p>
+<img src="../source/imgs/${fiilname}/image-20250723155621382.png" alt="image-20250723155621382" style="zoom:50%;" />
+
+<p>当y&#x3D;0时，新的代价函数叫作cost0(z)</p>
+<img src="../source/imgs/${fiilname}/image-20250723155656291.png" alt="image-20250723155656291" style="zoom:50%;" />
+
+<p>然后接下来开始构造支持向量机。</p>
+<p>这是逻辑回归中所用到的代价函数<img src="../source/imgs/${fiilname}/image-20250723155830604.png" alt="image-20250723155830604" style="zoom:35%;" /></p>
+<p>对于支持向量机来说，要将里面的两项进行替换：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250723160141378.png" alt="image-20250723160141378"></p>
+<p>但实际上，对于支持向量机来说，代价函数的书写会有所不同。首先要去掉1&#x2F;m这一项，去掉之后也会得出同样的theta最优值。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250723160335561.png" alt="image-20250723160335561"></p>
+<p>因为1&#x2F;𝑚 仅是个常量，因此，你知道在这个最小化问题中，无论前面是否有1&#x2F;𝑚 这一项，最终我所得到的最优值𝜃都是一样的。这里我的意思是，先给你举一个实例，假定有一最小化问题：即要求当<img src="../source/imgs/${fiilname}/image-20250723160432705.png" alt="image-20250723160432705" style="zoom:40%;" />取得最小值时的𝑢值，这时最小值为：当𝑢 &#x3D; 5时取得最小值。  </p>
+<p>现在，如果我们想要将这个目标函数乘上常数 10，这里我的最小化问题就变成了：求使得10 × (𝑢 - 5)2 + 10最小的值𝑢，然而，使得这里最小的𝑢值仍为 5。因此将一些常数乘以你的最小化项，这并不会改变最小化该方程时得到𝑢值。因此，这里我所做的是删去常量𝑚。也相同的，我将目标函数乘上一个常量𝑚，并不会改变取得最小值时的𝜃值。  </p>
+<p>用A来表示不包括正则项的部分，也就是训练样本的代价，用B来表示不包括lamda的正则项。这就相当于我们想要最小化𝐴加上正则化参数𝜆乘以𝐵，𝐴 + 𝜆 × 𝐵  ，我们所做的是通过设置不同正则参数𝜆达到优化目的。这样，我们就能够权衡对应的项，即最小化𝐴，是使得训练样本拟合的更好。还是保证正则参数足够小，也即是对于 B 项而言。  </p>
+<p>但对于支持向量机，按照惯例，我们将使用一个不同的参数替换这里使用的𝜆来权衡这两项。就是第一项和第二项我们依照惯例使用一个不同的参数称为𝐶，同时改为优化目标， 𝐶 × 𝐴 + 𝐵因此，在逻辑回归中，如果给定𝜆，一个非常大的值，意味着给予 B 更大的权重。而这里，就对应于将𝐶 设定为非常小的值，那么，相应的将会给𝐵比给𝐴更大的权重。因此，这只是一种不同的方式来控制这种权衡或者一种不同的方法，即用参数来决定是更关心第一项的优化，还是更关心第二项的优化。当然你也可以把这里的参数𝐶 考虑成1&#x2F;𝜆，同 1&#x2F;𝜆所扮演的角色相同，并且这两个方程或这两个表达式并不相同，因为𝐶 &#x3D; 1&#x2F;𝜆，但是也并不全是这样，如果当𝐶 &#x3D; 1&#x2F;𝜆时，这两个优化目标应当得到相同的值，相同的最优值 𝜃。<img src="../source/imgs/${fiilname}/image-20250723161453967.png" alt="image-20250723161453967" style="zoom:50%;" /></p>
+<p>因此，这就得到了在支持向量机中我们的整个优化目标函数。然后最小化这个目标函数，得到 SVM 学习到的参数𝐶。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250723161626830.png" alt="image-20250723161626830"></p>
+<p>有别于逻辑回归输出的概率，在这里，当最小化代价函数得到参数𝜃时，支持向量机会直接预测y的值等于1还是等于0</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250723161853417.png" alt="image-20250723161853417"></p>
+<h2 id="大边界的直观理解"><a href="#大边界的直观理解" class="headerlink" title="大边界的直观理解"></a>大边界的直观理解</h2><p>人们有时将支持向量机看作是大间距分类器。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250723173243880.png" alt="image-20250723173243880"></p>
+<p>这是支持向量机模型的代价函数，左边是关于𝑧的代价函数cos𝑡1(𝑧)，此函数用于正样本，而右边是关于𝑧的代价函数cos𝑡0(𝑧)，横轴表示𝑧，现在让我们考虑一下，最小化这些代价函数的必要条件是什么。如果你有一个正样本， 𝑦 &#x3D; 1，则只有在𝑧 &gt;&#x3D; 1时，代价函数cos𝑡1(𝑧)才等于 0。</p>
+<p>换句话说，如果你有一个正样本，我们会希望𝜃𝑇𝑥&gt;&#x3D;1，反之，如果𝑦 &#x3D; 0，它只有在𝑧 &lt;&#x3D; -1的区间里函数值为 0。</p>
+<p>事实上，（可以放入逻辑回归问题中理解）如果有一个正样本𝑦 &#x3D; 1，则其实我们仅仅要求𝜃𝑇𝑥大于等于 0，就能将该样本恰当分出，这是因为如果𝜃𝑇𝑥&gt;0 大的话，我们的模型代价函数值为 0，类似地，如果有一个负样本，则仅需要𝜃𝑇𝑥&lt;&#x3D;0 就会将负例正确分离，但是，支持向量机的要求更高，不仅仅要能正确分开输入的样本，即不仅仅要求𝜃𝑇𝑥&gt;0，我们需要的是比 0 值大很多，比如大于等于 1，我也想分离负例时比 0 小很多，比如我希望它小于等于-1，这就相当于在支持向量机中嵌入了一个额外的安全因子，或者说<strong>安全的间距因子</strong>。</p>
+<p>在支持向量机中，这个因子会导致什么结果。接下来考虑一个特例，将这个常数𝐶设置成一个非常大的值。比如假设𝐶的值为 100000 或者其它非常大的数，然后来观察支持向量机会给出什么结果？</p>
+<p>如果 𝐶非常大，则最小化代价函数的时候，我们将会很希望找到一个使第一项为 0 的最优解，因为cost&#x3D;𝐶 × 𝐴 + 𝐵。因此，让我们尝试在代价项的第一项为 0 的情形下理解该优化问题。</p>
+<p>输入一个训练样本标签为𝑦 &#x3D; 1，想令第一项为 0，需要做的是找到一个𝜃，使得𝜃𝑇𝑥 &gt;&#x3D; 1，类似地，对于一个训练样本，标签为𝑦 &#x3D; 0，为了使cos𝑡0(𝑧) 函数的值为 0，我们需要𝜃𝑇𝑥 &lt;&#x3D; -1。因此，现在考虑优化问题。选择参数，使得第一项等于 0，因此这个函数的第一项为 0，因此是𝐶乘以 0 加上二分之一乘以第二项。这里第一项是𝐶乘以 0，因此可以将其删去。</p>
+<p>这将遵从以下的约束：<br>$$<br>θ^T x^{(i)}&gt;&#x3D;1，如果 y^{(i)}是等于1 的;θ^T x^{(i)}&lt;&#x3D;-1，如果样本i是一个负样本<br>$$<br>具体而言，如果你考察这样一个数据集，其中有正样本，也有负样本，可以看到这个数据集是线性可分的。</p>
+<img src="../source/imgs/${fiilname}/image-20250723174423968.png" alt="image-20250723174423968" style="zoom:50%;" />
+
+<p>粉色和绿色的决策边界仅仅是勉强分开，这些决策边界看起来都不是特别好的选择，支持向量机将会选择这个黑色的决策边界。</p>
+<p>黑线看起来是更稳健的决策界。在分离正样本和负样本上它显得的更好。数学上来讲，这条黑线有更大的距离，这个距离叫做<strong>间距</strong>。</p>
+<img src="../source/imgs/${fiilname}/image-20250723174612817.png" alt="image-20250723174612817" style="zoom:50%;" />
+
+<p>当画出这两条额外的蓝线，我们看到黑色的决策界和训练样本之间有更大的最短距离。然而粉线和蓝线离训练样本就非常近，在分离样本的时候就会比黑线表现差。因此，这个距离叫做<strong>支持向量机的间距</strong>，而这是支持向量机具有鲁棒性的原因，因为它努力用一个最大间距来分离样本。因此支持向量机有时被称为<strong>大间距分类器</strong>。</p>
+<p>鲁棒性：指模型在面对数据中的噪声、异常值、干扰或环境变化时，仍能保持稳定预测性能的能力。也就是模型的“抗干扰”和“抗压”能力。</p>
+<p>支持向量机模型的做法，即努力将正样本和负样本用<strong>最大的间距</strong>分开。</p>
+<p>在上面将这个大间距分类器中的正则化因子常数𝐶设置的非常大，因此对这样的一个数据集，也许我们将选择这样的决策界，从而最大间距地分离开正样本和负样本。那么在让代价函数最小化的过程中，我们希望找出在𝑦 &#x3D; 1和𝑦 &#x3D; 0两种情况下都使得代价函数中左边的这一项尽量为零的参数。如果我们找到了这样的参数，则我们的最小化问题便转变成：<img src="../source/imgs/${fiilname}/image-20250723175052807.png" alt="image-20250723175052807" style="zoom:67%;" /></p>
+<p>但是，当你使用大间距分类器的时候，你的学习算法会受异常点的影响。比如我们加入一个额外的正样本。</p>
+<img src="../source/imgs/${fiilname}/image-20250723175151165.png" alt="image-20250723175151165" style="zoom:50%;" />
+
+<p>在这里，如果加了这个样本，为了将样本用最大间距分开，也许最终会得到一条类似粉色这样的决策界，仅仅基于一个异常值，仅仅基于一个样本，就将我的决策界从这条黑线变到这条粉线，这实在是不明智的。而如果正则化参数𝐶，设置的非常大，这事实上正是支持向量机将会做的。</p>
+<p>**但如果将 C 设置的不要太大，则最终会得到这条黑线。当𝐶不是非常非常大的时候，它可以忽略掉一些异常点的影响，得到更好的决策界。 **</p>
+<p>数据如果不是线性可分的，支持向量机也会将它们恰当分开。</p>
+<p>因此，大间距分类器的描述，仅仅是从直观上给出了<strong>正则化参数𝐶非常大</strong>的情形，同时，要提醒你𝐶的作用类似于1&#x2F;𝜆， 𝜆是我们之前使用过的正则化参数，因此：</p>
+<p><strong>𝐶 较大时，相当于 𝜆 较小，可能会导致过拟合，高方差。</strong></p>
+<p><strong>𝐶 较小时，相当于 𝜆 较大，可能会导致低拟合，高偏差。</strong></p>
+<h2 id="大边界分类背后的数学（-选修）"><a href="#大边界分类背后的数学（-选修）" class="headerlink" title="大边界分类背后的数学（ 选修）"></a>大边界分类背后的数学（ 选修）</h2><p>向量内积：有两个向量u和v，两个都是二维向量<img src="../source/imgs/${fiilname}/image-20250724201740274.png" alt="image-20250724201740274" style="zoom:40%;" />，<img src="../source/imgs/${fiilname}/image-20250724201902313.png" alt="image-20250724201902313" style="zoom:50%;" />也叫做向量𝑢和𝑣之间的内积。</p>
+<p>除了这种计算方式外还有一种计算方式。</p>
+<p>先把这两个向量画出来，向量𝑢即在横轴上，取值为某个𝑢1，而在纵轴上，高度是某个𝑢2作为𝑢的第二个分量。向量v也按同样的步骤画出来。 ∥𝑢∥表示𝑢的范数，即𝑢的长度，即向量𝑢的欧几里得长度。<br>$$<br>∥u∥&#x3D;\sqrt{(u_1^2+u_2^2 )},这是向量𝑢的长度，它是一个实数。<br>$$<br>计算内积：将向量𝑣投影到向量𝑢上，做一个直角投影，或者说一个 90 度投影将其投影到𝑢上，接下来度量这条红线的长度。称这条红线的长度为𝑝，因此𝑝就是长度，或者说是向量𝑣投影到向量𝑢上的量。<img src="../source/imgs/${fiilname}/image-20250724202521124.png" alt="image-20250724202521124" style="zoom:50%;" /><br>$$<br>公式是u^T v&#x3D;p⬝∥u∥<br>$$<br>因为𝑢𝑇𝑣 &#x3D; 𝑣𝑇𝑢。因此如果你将𝑢和𝑣交换位置，将𝑢投影到𝑣上，而不是将𝑣投影到𝑢上，然后做同样的计算，只是把𝑢和𝑣的位置交换一下，你事实上可以得到同样的结果。申明一点，在这个等式中𝑢的范数是一个实数， 𝑝也是一个实数，因此𝑢𝑇𝑣就是两个实数正常相乘。</p>
+<p><strong>𝑝事实上是有符号的，即它可能是正值，也可能是负值。</strong></p>
+<p>这种情况下的p就是负值<img src="../source/imgs/${fiilname}/image-20250724202737933.png" alt="image-20250724202737933" style="zoom:50%;" /></p>
+<img src="../source/imgs/${fiilname}/image-20250724203531832.png" alt="image-20250724203531832" style="zoom:67%;" />
+
+<p>这是支持向量机模型中的目标函数，为了让它更容易分析，忽略掉截距，令𝜃0 &#x3D; 0，将特征数𝑛置为 2，因此仅有两个特征𝑥1, 𝑥2，现在来看一下支持向量机的优化目标函数，这个式子可以写作：<br>$$<br>\frac{1}{2} (θ_1^2+θ_2^2 )&#x3D;\frac{1}{2} {(\sqrt{θ_1^2+θ_2^2 })}^2<br>$$<br>后面括号里面的那一项是向量𝜃的范数，或者说是向量𝜃的长度,因此支持向量机做的全部事情，就是<strong>极小化参数向量𝜃范数的平方，或者说长度的平方</strong>。</p>
+<p>深入理解𝜃Tx的含义，𝜃和𝑥(𝑖)就类似于𝑢和𝑣 。<img src="../source/imgs/${fiilname}/image-20250724204552407.png" alt="image-20250724204552407" style="zoom:67%;" /></p>
+<p>看这个图，考察一个单一的训练样本，我有一个正样本在这里，用一个叉来表示这个样本𝑥(𝑖)，意思是在水平轴上取值为𝑥1(𝑖)，在竖直轴上取值为𝑥2(𝑖)，然后将参数向量也画上去，那么内积<img src="../source/imgs/${fiilname}/image-20250724204757937.png" alt="image-20250724204757937" style="zoom:50%;" />将会是什么？</p>
+<p>使用之前的计算方式就是将训练样本投影到参数向量𝜃，然后将投影的长度画成红色。𝑝(𝑖)用来表示这是第 𝑖个训练样本在参数向量𝜃上的投影。根据我们之前的内容，𝜃𝑇𝑥(𝑖)将会等于𝑝 乘以向量 𝜃 的长度或范数。这就等于𝜃1 ⋅ 𝑥1(𝑖) + 𝜃2 ⋅ 𝑥2(𝑖)。这两种方式是等价的，都可以用来计算𝜃和𝑥(𝑖)之间的内积。</p>
+<p>这里表达的意思是：这个𝜃𝑇𝑥(𝑖) &gt;&#x3D; 1的约束是可以被𝑝(𝑖) ⋅ ∥𝜃∥ &gt;&#x3D; 1这个约束所代替的。因为𝜃𝑇𝑥(𝑖) &#x3D; 𝑝(𝑖) ⋅ ∥𝜃∥ ，将其写入我们的优化目标。前面说过优化函数可以写为<img src="../source/imgs/${fiilname}/image-20250724210137118.png" alt="image-20250724210137118" style="zoom:50%;" /></p>
+<img src="../source/imgs/${fiilname}/image-20250724205949128.png" alt="image-20250724205949128" style="zoom:67%;" />
+
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250724211020353.png" alt="image-20250724211020353"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250724211042793.png" alt="image-20250724211042793"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250724211153497.png" alt="image-20250724211153497"></p>
+<p>以上就是为什么支持向量机最终会找到大间距分类器的原因。因为它试图<strong>极大化这些𝑝(𝑖)的范数</strong>，它们是训练样本到决策边界的距离。最后一点，我们的推导自始至终使用了这个简化<strong>假设</strong>，就是<strong>参数𝜃0 &#x3D; 0</strong>。</p>
+<p>𝜃0 &#x3D; 0的意思是我们让决策界通过原点。如果你令𝜃0不是 0 的话，含义就是你希望决策界不通过原点。即便𝜃0不等于 0，支持向量机仍然会找到正样本和负样本之间的大间距分隔。</p>
+<h2 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h2><p>给 定 一 个 训 练 实 例 𝑥 ， 我 们 利 用 𝑥 的 各 个 特 征 与 我 们 预 先 选 定 的 地 标(landmarks)𝑙(1), 𝑙(2), 𝑙(3)的近似程度来选取新的特征𝑓1, 𝑓2, 𝑓3。<img src="../source/imgs/${fiilname}/image-20250724214443211.png" alt="image-20250724214443211" style="zoom:67%;" /><br>$$<br>例如：f_1&#x3D;similarity(x,l^{(1)})&#x3D;e^{(-\frac{∥x-l^{(1)} ∥^2}{2σ^2 })}<br>$$</p>
+<p>$$<br>其中∥x-l^{(1)} ∥^2&#x3D;∑_{j&#x3D;1}^n(x_j-l_j^{(1)})^2，为实例𝑥中所有特征与地标𝑙(1)之间的距离的平方的和。<br>$$</p>
+<p>上例中的𝑠𝑖𝑚𝑖𝑙𝑎𝑟𝑖𝑡𝑦(𝑥, 𝑙(1))就是核函数，具体而言，这里是一个高斯核函数。这个函数与正态分布没什么实际上的关系，只是看上去像而已。</p>
+<p>这些地标的作用是什么？如果一个训练实例𝑥与地标𝐿之间的距离近似于 0，则新特征 𝑓近似于<img src="../source/imgs/${fiilname}/image-20250724214955023.png" alt="image-20250724214955023" style="zoom:50%;" />，如果训练实例𝑥与地标𝐿之间距离较远，则𝑓近似于<img src="../source/imgs/${fiilname}/image-20250724215029521.png" alt="image-20250724215029521" style="zoom:50%;" />。</p>
+<p>假设我们的训练实例含有两个特征[𝑥1 𝑥2]，给定地标𝑙(1)与不同的𝜎值，见下图：<img src="../source/imgs/${fiilname}/image-20250724215112385.png" alt="image-20250724215112385" style="zoom:60%;" /></p>
+<p>图中水平面的坐标为 𝑥1， 𝑥2而垂直坐标轴代表𝑓。可以看出，只有当𝑥与𝑙(1)重合时𝑓才具有最大值。随着𝑥的改变𝑓值改变的速率受到𝜎2的控制。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250724215153621.png" alt="image-20250724215153621"></p>
+<p><strong>如何选择地标？</strong></p>
+<p>通常是根据训练集的数量选择地标的数量，即如果训练集中有𝑚个实例，则选取𝑚个地标，并且令:𝑙(1) &#x3D; 𝑥(1), 𝑙(2) &#x3D; 𝑥(2), . . . . . , 𝑙(𝑚) &#x3D; 𝑥(𝑚)。这样做的好处在于：现在得到的新特征是建立在原有特征与训练集中所有其他特征之间距离的基础之上的，即：</p>
+<img src="../source/imgs/${fiilname}/image-20250724220214226.png" alt="image-20250724220214226" style="zoom:50%;" />
+
+<p>下面我们将核函数运用到支持向量机中，修改我们的支持向量机假设为：</p>
+<p>给定𝑥，计算新特征𝑓，当𝜃𝑇𝑓 &gt;&#x3D; 0 时，预测 𝑦 &#x3D; 1，否则反之。</p>
+<p>相应地修改代价函数为：<img src="../source/imgs/${fiilname}/image-20250724220321510.png" alt="image-20250724220321510" style="zoom:67%;" />，在计算这个的时候还需要做一些调整，用<img src="../source/imgs/${fiilname}/image-20250724220419238.png" alt="image-20250724220419238" style="zoom:50%;" />代替<img src="../source/imgs/${fiilname}/image-20250724220439325.png" alt="image-20250724220439325" style="zoom:50%;" />，其中𝑀是根据我们选择的核函数而不同的一个矩阵。这样做的原因是为了简化计算。</p>
+<p>理论上讲，我们也可以在逻辑回归中使用核函数，但是上面使用 𝑀来简化计算的方法不适用于逻辑回归，因此计算将非常耗费时间。</p>
+<p>逻辑回归的核心是建模样本术语某个类别的概率，输出是一个概率值（0到1之间），它本质上是概率模型。SVM的目标是找到一个几何间隔最大的超平面进行硬分类（每个样本只能被明确划分到一个类别，逻辑回归是软分类，最终分类取概率最高的类别），输出的是确定的类别标签（如+1&#x2F;-1），本质上是几何间隔最大化模型。</p>
+<p>可以直接使用现有的软件包来最小化支持向量机的代价函数，但在使用这些软件包最小化我们的代价函数之前，我们通常需要<strong>编写核函数</strong>，并且如果我们使用高斯核函数，那么在使用之前进行<strong>特征缩放</strong>是非常必要的。</p>
+<p>另外，支持向量机也可以不使用核函数，不使用核函数又称为线性核函数，当我们不采用非常复杂的函数，或者我们的训练集特征非常多而实例非常少的时候，可以采用这种不带核函数的支持向量机。</p>
+<h2 id="使用支持向量机"><a href="#使用支持向量机" class="headerlink" title="使用支持向量机"></a>使用支持向量机</h2><p>在高斯核函数之外我们还有其他一些选择，如：</p>
+<p>多项式核函数（ Polynomial Kernel）</p>
+<p>字符串核函数（ String kernel）</p>
+<p>卡方核函数（ chi-square kernel）</p>
+<p>直方图交集核函数（ histogram intersection kernel）等等…</p>
+<p>这些核函数的目标也都是根据训练集和地标之间的距离来构建新特征，这些核函数需要满足 Mercer’s 定理，才能被支持向量机的优化软件正确处理。</p>
+<p><strong>多类分类问题</strong></p>
+<p>假设我们利用之前介绍的一对多方法来解决一个多类分类问题。如果一共有𝑘个类，则我们需要𝑘个模型，以及𝑘个参数向量𝜃。我们同样也可以训练𝑘个支持向量机来解决多类分类问题。但是大多数支持向量机软件包都有内置的多类分类功能，我们只要直接使用即可。</p>
+<p>尽管不写自己的 SVM 的优化软件，但是也需要做几件事：</p>
+<p>1、是提出参数𝐶的选择。因为偏差&#x2F;方差在这方面的性质。</p>
+<p>2、也需要选择内核参数或你想要使用的相似函数，其中一个选择是：选择不需要任何内核参数，没有内核参数的理念，也叫线性核函数。因此，如果有人说他使用了线性核的 SVM（支持向量机），这就意味这他使用了不带有核函数的 SVM（支持向量机）。</p>
+<p><strong>如何选择逻辑回归模型和支持向量机模型</strong></p>
+<p>𝑛为特征数， 𝑚为训练样本数。</p>
+<p>(1)如果相较于𝑚而言， 𝑛要大许多，即训练集数据量不够支持我们训练一个复杂的非线性模型，我们选用逻辑回归模型（模型相对简单，可以通过正则化来强制减少有效特征数量或参数大小，进一步抵抗过拟合）或者不带核函数的支持向量机（本质上是找一个最大化边距的线性分割超平面）。</p>
+<p>放弃学习复杂的非线性关系，专注于找到一个稳健的线性决策边界，首要目标是防止过拟合。</p>
+<p>(2)如果𝑛较小，而且𝑚大小中等，例如𝑛在 1-1000 之间，而𝑚在 10-10000之间，使用高斯核函数的支持向量机。</p>
+<p>(3)如果𝑛较小，而𝑚较大，例如𝑛在 1-1000 之间，而𝑚大于 50000，则使用支持向量机会非常慢（计算成本爆炸），解决方案是创造、增加更多的特征（生成原始特征的多项式组合），然后使用逻辑回归或不带核函数的支持向量机。</p>
+<p><strong>核心原则：</strong></p>
+<ul>
+<li>**特征少 (n 小)**：更容易构建复杂的非线性模型而不过拟合（数据相对充足）。</li>
+<li>**特征多 (n 大)**：使用复杂模型非常容易过拟合，需要简化模型或更多数据。</li>
+<li>**样本少 (m 小)**：不足以支撑复杂模型训练，需要使用简单模型防止过拟合。</li>
+<li>**样本多 (m 大)**：能支撑更复杂模型的训练，但有些复杂模型（如带核函数的SVM）会变得非常慢。</li>
+</ul>
+<p>值得一提的是，神经网络在以上三种情况下都可能会有较好的表现，但是训练神经网络可能非常慢，选择支持向量机的原因主要在于它的代价函数是凸函数，不存在局部最小值。</p>
+<p>当有非常非常大的训练集，且用高斯核函数的情况下，经常会做的是尝试手动地创建，拥有更多的特征变量，然后用逻辑回归或者不带核函数的支持向量机。</p>
+<p>逻辑回归和不带核函数的支持向量机它们都是非常相似的算法，不管是逻辑回归还是不带核函数的 SVM，通常都会做相似的事情，并给出相似的结果。但是根据实现的情况，其中一个可能会比另一个更加有效。</p>
+<p><strong>神经网络使用于什么时候呢？</strong></p>
+<p>对于所有的这些问题，对于所有的这些不同体系一个设计得很好的神经网络也很有可能会非常有效。有一个缺点是，或者说是有时可能不会使用神经网络的原因是：对于许多这样的问题，神经网络训练起来可能会特别慢。</p>
+<p>SVM 是一种<strong>凸优化问题</strong>。因此，好的 SVM优化软件包总是会找到全局最小值，或者接近它的值。对于 SVM 你<strong>不需要担心局部最优</strong>。</p>
+<p>不能确定需要使用哪种算法没关系，算法确实很重要。但是通常更加重要的是：你有多少数据，你有多熟练是否擅长做误差分析和排除学习算法，指出如何设定新的特征变量和找出其他能决定你学习算法的变量等方面。</p>
+<h1 id="聚类"><a href="#聚类" class="headerlink" title="聚类"></a>聚类</h1><h2 id="无监督学习：简介"><a href="#无监督学习：简介" class="headerlink" title="无监督学习：简介"></a>无监督学习：简介</h2><p>在非监督学习中，我们的数据没有附带任何标签，我们拿到的数据就是这样的：<img src="../source/imgs/${fiilname}/image-20250804205845167.png" alt="image-20250804205845167" style="zoom:40%;" /></p>
+<p>在这里有一系列点，却没有标签。因此，训练集可以写成只有𝑥(1),𝑥(2)…..一直到𝑥(𝑚)，没有任何标签𝑦。</p>
+<p>在非监督学习中，我们需要将一系列无标签的训练数据，输入到一个算法中，然后我们告诉这个算法，快去为我们找找这个数据的<strong>内在结构</strong>。图上的数据看起来可以分成两个分开的点集（称为<strong>簇</strong>），一个能够<strong>找到这些点集</strong>的算法（不只是找到簇，也可以是找到其他类型的结构或者其他的一些模式），就被称为聚类算法。</p>
+<h2 id="K-均值算法"><a href="#K-均值算法" class="headerlink" title="K-均值算法"></a>K-均值算法</h2><p>K-均值是最普及的聚类算法，算法接受一个未标记的数据集，然后将数据聚类成不同的组。</p>
+<p>也可以使用这个算法进行图像压缩。</p>
+<p>K-均值是一个<strong>迭代算法</strong>，假设我们想要将数据聚类成 n 个组，其方法为:</p>
+<ol>
+<li>首先选择𝐾个随机的点，称为聚类中心；</li>
+<li>对于数据集中的每一个数据，按照距离𝐾个中心点的距离，将其与距离最近的中心点关联起来，与同一个中心点关联的所有点聚成一类。</li>
+<li>计算每一个组的平均值，将该组所关联的中心点移动到平均值的位置。</li>
+<li>重复步骤 2-4 直至中心点不再变化。</li>
+</ol>
+<p>下面是一个聚类示例：</p>
+<p><img src="../source/imgs/${fiilname}/image-20250804211343346.png" alt="image-20250804211343346" style="zoom:33%;" /><img src="../source/imgs/${fiilname}/image-20250804211403431.png" alt="image-20250804211403431" style="zoom:33%;" /><img src="../source/imgs/${fiilname}/image-20250804211438583.png" alt="image-20250804211438583" style="zoom:33%;" /></p>
+<p>用𝜇1,𝜇2,…,𝜇𝑘 来表示聚类中心，用𝑐(1),𝑐(2),…,𝑐(𝑚)来存储与第𝑖个实例数据最近的聚类中心的索引， K-均值算法的伪代码如下：  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Repeat &#123;</span><br><span class="line">for i = 1 to m</span><br><span class="line">c(i) := index (form 1 to K) of cluster centroid closest to x(i)</span><br><span class="line">for k = 1 to K</span><br><span class="line">μk := average (mean) of points assigned to cluster k</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>算法分为两个步骤，第一个 for 循环是赋值步骤，即：对于每一个样例𝑖，计算其应该属于的类。第二个 for 循环是聚类中心的移动，即：对于每一个类𝐾，重新计算该类的质心。</p>
+<p>K-均值算法也可以很便利地用于将数据分为许多不同组，即使在没有非常明显区分的组群的情况下也可以。下图所示的数据集包含身高和体重两项特征构成的，利用 K-均值算法将数据分为三类，用于帮助确定将要生产的 T-恤衫的三种尺寸。（感觉是你想分成几类就选择几个随机点）</p>
+<img src="../source/imgs/${fiilname}/image-20250804211755437.png" alt="image-20250804211755437" style="zoom:67%;" />
+
+<h2 id="优化目标-1"><a href="#优化目标-1" class="headerlink" title="优化目标"></a>优化目标</h2><p>K-均值最小化问题，是要最小化所有的数据点与其所关联的聚类中心点之间的距离之和，因此 K-均值的代价函数（又称畸变函数 ）为：<br>$$<br>J(c^{(1)},…,c^{(m)},μ_1,…,μ_K)&#x3D;\frac{1}{m} ∑_{i&#x3D;1}^m∥X^{(i)}-μ_{c^{(i)} } ∥^2,其中μ_{c^{(i)} }代表与x^{(i)}最近的聚类中心点。<br>$$<br>我们的的优化目标便是找出使得代价函数最小的 𝑐(1),𝑐(2),…,𝑐(𝑚)和𝜇1,𝜇2,…,𝜇𝑘：<img src="../source/imgs/${fiilname}/image-20250804213232602.png" alt="image-20250804213232602" style="zoom:33%;" /></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Repeat &#123;</span><br><span class="line">for i = 1 to m</span><br><span class="line">c(i) := index (form 1 to K) of cluster centroid closest to x(i)</span><br><span class="line">for k = 1 to K</span><br><span class="line">μk := average (mean) of points assigned to cluster k</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据这个代码可以看出，第一个循环是用于减小𝑐(𝑖)引起的代价，而第二个循环则是用于减小𝜇𝑖引起的代价。迭代的过程一定会是每一次迭代都在减小代价函数。</p>
+<h2 id="随机初始化-1"><a href="#随机初始化-1" class="headerlink" title="随机初始化"></a>随机初始化</h2><p>在运行 K-均值算法的之前，我们首先要<strong>随机初始化</strong>所有的聚类中心点，下面介绍怎样做：</p>
+<ol>
+<li><p>我们应该选择𝐾 &lt; 𝑚，即聚类中心点的个数要小于所有训练集实例的数量</p>
+</li>
+<li><p>随机选择𝐾个训练实例，然后令𝐾个聚类中心分别与这𝐾个训练实例相等</p>
+</li>
+</ol>
+<p>K-均值的一个问题在于，它有可能会停留在一个局部最小值处，而这取决于初始化的情况。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250804213840471.png" alt="image-20250804213840471"></p>
+<p>为了解决这个问题，我们通常需要<strong>多次运行</strong> K-均值算法，每一次都重新进行随机初始化，最后再比较多次运行 K-均值的结果，选择<strong>代价函数最小</strong>的结果。这种方法在<strong>𝐾较小</strong>的时候（ 2–10）还是可行的，但是如果𝐾较大，这么做也可能不会有明显地改善。</p>
+<h2 id="选择聚类数"><a href="#选择聚类数" class="headerlink" title="选择聚类数"></a>选择聚类数</h2><p>通常是需要根据不同的问题，人工进行选择的。选择的时候思考我们运用 K-均值算法聚类的动机是什么，然后选择能最好服务于该目的标聚类数。</p>
+<p>“肘部法则”  ：我们所需要做的是改变𝐾值，也就是聚类类别数目的总数。我们先用一个聚类来运行 K 均值聚类方法。这就意味着，所有的数据都会分到一个聚类里，然后计算成本函数或者计算畸变函数𝐽。 𝐾代表聚类数。</p>
+<p>这是比较清晰的图：<img src="../source/imgs/${fiilname}/image-20250804215200845.png" alt="image-20250804215200845" style="zoom:67%;" /></p>
+<p>这种模式，它的畸变值会迅速下降，从 1 到 2，从 2 到 3 之后，你会在 3 的时候达到一个肘点。在此之后，畸变值就下降的非常慢，看起来就像使用 3 个聚类来进行聚类是正确的，这是因为那个点是曲线的肘点，畸变值下降得很快， 𝐾 &#x3D; 3之后就下降得很慢，那么我们就选𝐾 &#x3D; 3。当你应用“肘部法则”的时候，如果你得到了一个像上面这样的图，那么这将是一种用来选择聚类个数的合理方法。</p>
+<p>这是不明显的图，模拟两可：<img src="../source/imgs/${fiilname}/image-20250804215306763.png" alt="image-20250804215306763" style="zoom:67%;" /></p>
+<h2 id="参考资料：相似度-距离计算，衡量指标"><a href="#参考资料：相似度-距离计算，衡量指标" class="headerlink" title="参考资料：相似度&#x2F;距离计算，衡量指标"></a>参考资料：相似度&#x2F;距离计算，衡量指标</h2><p>1.相似度&#x2F;距离计算方法总结</p>
+<p>(1). 闵可夫斯基距离 Minkowski&#x2F;（其中欧式距离： 𝑝 &#x3D; 2)<br>$$<br>dist(X,Y)&#x3D;(∑_{i&#x3D;1}^n|x_i-y_i | ^p )^{\frac{1}{p} }<br>$$<br>(2). 杰卡德相似系数(Jaccard<br>$$<br>J(A,B)&#x3D;\frac{|A∩B|}{|A∪B|}<br>$$<br>(3). 余弦相似度(cosine similarity</p>
+<p>𝑛维向量𝑥和𝑦的夹角记做𝜃，根据余弦定理，其余弦值为：<br>$$<br>cos(θ)&#x3D;\frac{x^T y}{|x|⋅|y|}&#x3D;\frac{∑_{i&#x3D;1}^n x_i y_i }{\sqrt{∑_{i&#x3D;1}^n x_i^2 } \sqrt{∑_{i&#x3D;1}^n y_i^2 } }<br>$$<br><img src="../source/imgs/${fiilname}/image-20250805153425546.png" alt="image-20250805153425546" style="zoom:50%;" /></p>
+<p>没看懂这个</p>
+<p>2.聚类的衡量指标</p>
+<p>(1). 均一性： 𝑝</p>
+<p>类似于精确率，一个簇中只包含一个类别的样本，则满足均一性。其实也可以认为就是正确率(每个聚簇中正确分类的样本数占该聚簇总样本数的比例和)</p>
+<p>(2). 完整性：𝑟</p>
+<p>类似于召回率，同类别样本被归类到相同簇中，则满足完整性;(每个聚簇中正确分类的样本数占该类型的总样本数比例的和)</p>
+<p>(3). V-measure:</p>
+<p>均一性和完整性的加权平均（这里的β是自己定义的吗？）<br>$$<br>V&#x3D;\frac{(1+β^2)<em>pr}{β^2</em>p+r}<br>$$<br>(4). 轮廓系数</p>
+<p>样本𝑖的轮廓系数： 𝑠(𝑖)</p>
+<p>簇内不相似度:计算样本𝑖到同簇其它样本的平均距离为𝑎(𝑖)，应尽可能小。</p>
+<p>簇间不相似度:计算样本𝑖到其它簇𝐶𝑗的所有样本的平均距离𝑏𝑖𝑗，应尽可能大。</p>
+<p>轮廓系数𝑠(𝑖)值越接近 1 表示样本𝑖聚类越合理，越接近-1，表示样本𝑖应该分类到另外的簇中，近似为 0，表示样本𝑖应该在边界上;所有样本的𝑠(𝑖)的均值被成为聚类结果的轮廓系数<br>$$<br>s(i)&#x3D;\frac{b(i)-a(i)}{\max{a(i),b(i)} }<br>$$</p>
+<h1 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h1><h2 id="动机一：数据压缩"><a href="#动机一：数据压缩" class="headerlink" title="动机一：数据压缩"></a>动机一：数据压缩</h2><p>进行降维的原因之一是数据压缩。</p>
+<p>数据压缩不仅允许我们压缩数据，因而使用较少的计算机内存或磁盘空间，它也让我们加快我们的学习算法。</p>
+<p>降维是什么，举个例子，我们收集的数据集，有许多，许多特征，绘制两个在这里。</p>
+<img src="../source/imgs/${fiilname}/image-20250805155521913.png" alt="image-20250805155521913" style="zoom:50%;" />
+
+<p>假设我们未知两个的特征： 𝑥1:长度：用厘米表示； 𝑥2：是用英寸表示同一物体的长度。</p>
+<p>这个例子的意思是：假使我们要采用两种不同的仪器来测量一些东西的尺寸，其中一个仪器测量结果的单位是英寸，另一个仪器测量的结果是厘米，我们希望将测量的结果作为我们机器学习的特征。现在的问题的是，两种仪器对同一个东西测量的结果不完全相等（由于误差、精度等），而将两者都作为特征有些重复，因而，我们希望将这个二维的数据降至一维。</p>
+<p>我们不想有<strong>高度冗余</strong>的特征。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250805160659551.png" alt="image-20250805160659551"></p>
+<p>像上面的图，画一条绿色的线，接下来测量各个点在这条绿色的线上的位置作为新的特征 z ，这样就将原来x的二位特征转化为了只需要用一个实数就能表示的特征。</p>
+<p>接下来是将3D的特征转化维2D的，下图看不出来但途中的所有特征大致都在同一个平面上。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250805161345527.png" alt="image-20250805161345527"></p>
+<p>这样的处理过程可以被用于把任何维度的数据降到任何想要的维度，例如将 1000 维的特征降至 100 维。</p>
+<h2 id="动机二：数据可视化"><a href="#动机二：数据可视化" class="headerlink" title="动机二：数据可视化"></a>动机二：数据可视化</h2><p>在许多机器学习问题中，如果我们能将数据可视化（前面的练习题中都是先将数据可视化再进行训练），我们便能寻找到一个更好的解决方案，降维可以帮助我们。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250805162016564.png" alt="image-20250805162016564"></p>
+<p>假使我们有有关于许多不同国家的数据，每一个特征向量都有 50 个特征（如 GDP，人均 GDP，平均寿命等）。如果要将这个 50 维的数据可视化是不可能的。使用降维的方法将其降至 2 维，我们便可以将其可视化了。假设将50个特征变为了两个特征z1、z2来描述。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250805162213089-1754382134100-1.png" alt="image-20250805162213089"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250805162458273.png" alt="image-20250805162458273"></p>
+<p>这样做的问题在于，降维的算法只负责减少维数，新产生的特征的意义就必须由我们自己去发现了。</p>
+<h2 id="主成分分析问题"><a href="#主成分分析问题" class="headerlink" title="主成分分析问题"></a>主成分分析问题</h2><p>主成分分析(PCA)是最常见的降维算法。</p>
+<p>在 PCA 中，我们要做的是找到一个方向向量（这个找到的方向向量不管是正的还是负的都没关系，因为这两个向量都定义了同一条直线），当我们把所有的数据都投射到该向量上时，我们希望投射平均均方误差能尽可能地小。方向向量是一个<strong>经过原点</strong>的向量，而投射误差是从特征向量向该方向向量<strong>作垂线</strong>的长度。<img src="../source/imgs/${fiilname}/image-20250805162911167.png" alt="image-20250805162911167" style="zoom:33%;" /></p>
+<p>主成分分析问题的描述：问题是要将𝑛维数据降至𝑘维，目标是找到向量𝑢(1),𝑢(2),…,𝑢(𝑘)使得总的投射误差最小。</p>
+<p>正式的说，PCA做的是将数据进行投影，寻找k个向量对数据进行投影，进而最小化投影距离（也就是数据点和投影之后点的距离）。在下面这个例子中，就是想将点投影到二维平面上，所以投影误差就是这个点和投影到二维平面上的点的距离。</p>
+<img src="../source/imgs/${fiilname}/image-20250805164427640.png" alt="image-20250805164427640" style="zoom:50%;" />
+
+<p>主成分分析与线性回归是两种不同的算法。主成分分析最小化的是<strong>投射误差</strong>，而线性回归尝试的是最小化<strong>预测误差</strong>。线性回归的目的是预测结果，而主成分分析不作任何预测。</p>
+<p>PCA 将𝑛个特征降维到𝑘个，可以用来进行数据压缩，但 PCA要保证降维后，还要保证数据的特性损失最小。</p>
+<p>PCA 技术的一大好处是对数据进行降维的处理。我们可以对新求出的“主元”向量的重要性进行排序（新特征按其所解释的原始数据方差大小<strong>从高到低排序</strong>（第一主成分包含最多信息）），根据需要取前面最重要的部分（通常满足累计方差贡献率&gt;85%），将后面的维数省去，可以达到降维从而简化模型或是对数据进行压缩的效果。同时最大程度的保持了原有数据的信息。</p>
+<ul>
+<li><strong>传统特征选择</strong>：直接删除部分原始特征列，可能丢失重要信息</li>
+<li><strong>PCA降维</strong>：用原特征<strong>线性组合</strong>构建信息更集中的新特征</li>
+</ul>
+<img src="../source/imgs/${fiilname}/image-20250805165259994.png" alt="image-20250805165259994" style="zoom:50%;" />
+
+<p>累计方差贡献率是PCA降维中选择主成分数量的核心依据，表示前k个主成分所携带的原始数据信息量占比。<br>$$<br>第 i 个主成分（PC_i）的方差贡献率 &#x3D;\frac{λ_i}{∑_{j&#x3D;1}^pλ_j}<br>$$</p>
+<ul>
+<li><em>λi</em>：PCA求解的第 <em>i</em> 个特征值（代表该主成分的方差）</li>
+<li><em>p</em>：原始特征维度总数</li>
+<li>意义：PCᵢ <strong>单独解释的原始数据变异比例</strong></li>
+</ul>
+<p>$$<br>累计方差贡献率是&#x3D;∑_{i&#x3D;1}^k\frac{λ_i}{∑_{j&#x3D;1}^pλ_j}<br>$$</p>
+<img src="../source/imgs/${fiilname}/image-20250805170349704.png" alt="image-20250805170349704" style="zoom:50%;" />
+
+<img src="../source/imgs/${fiilname}/image-20250805170413323.png" alt="image-20250805170413323" style="zoom:50%;" />
+
+<img src="../source/imgs/${fiilname}/image-20250805170433913.png" alt="image-20250805170433913" style="zoom:50%;" />
+
+<p>PCA 技术的一个很大的优点是，它是完全无参数限制的。在 PCA 的计算过程中完全不需要人为的设定参数或是根据任何经验模型对计算进行干预，最后的结果只与数据相关，与用户是独立的。</p>
+<p>但是，这一点同时也可以看作是缺点。如果用户对观测对象有一定的先验知识，掌握了数据的一些特征，却无法通过参数化等方法对处理过程进行干预，可能会得不到预期的效果，效率也不高。</p>
+<h2 id="主成分分析算法"><a href="#主成分分析算法" class="headerlink" title="主成分分析算法"></a>主成分分析算法</h2><p>PCA 减少𝑛维到𝑘维：</p>
+<p>第一步是均值归一化。我们需要计算出所有特征的均值<img src="../source/imgs/${fiilname}/image-20250805203858727.png" alt="image-20250805203858727" style="zoom:25%;" />，然后令<img src="../source/imgs/${fiilname}/image-20250805201849380.png" alt="image-20250805201849380" style="zoom:50%;" />（这将使每个特征的均值为0)。如果特征是在不同的数量级上，我们还需要将其除以标准差 ，也就是<img src="../source/imgs/${fiilname}/image-20250805204038114.png" alt="image-20250805204038114" style="zoom:25%;" />（这就相当于前面的特征缩放）。</p>
+<p>第二步是计算协方差矩阵 𝛴（大写希腊字母sigma）： ∑ <img src="../source/imgs/${fiilname}/image-20250805201918176.png" alt="image-20250805201918176" style="zoom:50%;" />，xi 是n×1矩阵</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">对于一个数据集，协方差矩阵 C 的目标是描述不同特征之间的关系。</span><br><span class="line">矩阵的对角线元素 C[i, i] 是第 i 个特征的方差。</span><br><span class="line">非对角线元素 C[i, j] 是第 i 个特征和第 j 个特征的协方差。</span><br><span class="line">因此，如果你的数据集有 n 个特征，那么协方差矩阵一定是一个 (n, n) 的方阵。</span><br><span class="line">X 是一个 (m, n) 矩阵，其中 m 是样本数，n 是特征数，所以计算协方差矩阵为X.T * X（X是矩阵）</span><br></pre></td></tr></table></figure>
+
+<p>第三步是计算协方差矩阵𝛴的特征向量：在 Octave 里我们可以利用奇异值分解来求解， [U, S, V]&#x3D; svd(sigma)。</p>
+<p>这会返回三个矩阵，而我们需要的只是第一个矩阵U。</p>
+<p>在python中则是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">U, S, V = np.linalg.svd(cov) # cov是协方差矩阵</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250805203105783-1754397066593-3.png" alt="image-20250805203105783"></p>
+<p>上式中的𝑈是一个具有与数据之间最小投射误差的方向向量构成的矩阵。如果我们希望将数据从𝑛维降至𝑘维，我们只需要从𝑈中选取前𝑘个向量，获得一个𝑛 × 𝑘维度的矩阵，我们用𝑈𝑟𝑒𝑑𝑢𝑐𝑒表示，然后通过如下计算获得要求的新特征向量𝑧(𝑖):<br>$$<br>z^{(i)}&#x3D;U_{reduce}^T*x^{(i)}<br>$$<br>其中𝑥是𝑛 × 1维的，因此结果为𝑘 × 1维度。</p>
+<p><strong>PCA要做的是尝试找到一个线或面，把数据投影到这个线或面上，以便最小化平方投影误差。</strong></p>
+<h2 id="选择主成分的数量"><a href="#选择主成分的数量" class="headerlink" title="选择主成分的数量"></a>选择主成分的数量</h2><p>PCA算法是将n维的变为k维的，这个k也叫做主成分的数字。</p>
+<p>主要成分分析是减少投射的平均均方误差：<img src="../source/imgs/${fiilname}/image-20250805210049481.png" alt="image-20250805210049481" style="zoom:40%;" /></p>
+<p>训练集的方差为：<img src="../source/imgs/${fiilname}/image-20250805210124059.png" alt="image-20250805210124059" style="zoom:50%;" />，所以<strong>总方差就是训练集中的平均长度</strong>，意思是，平均来说，我的训练样本距离全零向量的距离，或者说我的训练样本距离原点有多远。</p>
+<p>我们希望在平均均方误差与训练集方差的比例尽可能小的情况下选择尽可能小的𝑘值。</p>
+<p>如果我们希望这个比例小于 1%，就意味着原本数据的方差有 99%都保留下来了，如果我们选择保留 95%的方差，便能非常显著地降低模型中特征的维度了。</p>
+<img src="../source/imgs/${fiilname}/image-20250805210529939.png" alt="image-20250805210529939" style="zoom:50%;" />
+
+<p>可以先令𝑘 &#x3D; 1，然后进行主要成分分析，获得𝑈𝑟𝑒𝑑𝑢𝑐𝑒和𝑧，然后计算比例是否小于1%。如果不是的话再令𝑘 &#x3D; 2，如此类推，直到找到可以使得比例小于 1%的最小𝑘 值（原因是各个特征之间通常情况存在某种相关性）。<img src="../source/imgs/${fiilname}/image-20250805211027964.png" alt="image-20250805211027964" style="zoom:35%;" /></p>
+<p>这是一个比较低效的过程，吴恩达介绍的是用Octave简化这个过程，python的做法是</p>
+<h2 id="重建的压缩表示"><a href="#重建的压缩表示" class="headerlink" title="重建的压缩表示"></a>重建的压缩表示</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250805211643733.png" alt="image-20250805211643733"></p>
+<p>PCA 算法，我们可能有一个这样的样本。如图中样本𝑥(1),𝑥(2)。我们做的是，我们把这些样本投射到图中这个一维平面。给定一个点𝑧(1)，我们怎么能回去这个原始的二维空间呢？<br>$$<br>x为2维，z为1维，z&#x3D;U_{reduce}^T x，相反的方程为：x_{appox}&#x3D;U_{reduce}⋅z，x_{appox}≈x<br>$$<br><img src="/../source/imgs/$%7Bfiilname%7D/image-20250805211847056.png" alt="image-20250805211847056"></p>
+<p>这就是你从低维表示𝑧回到未压缩的表示𝑥，我们也把这个过程称为重建原始数据。</p>
+<p>为什么进行恢复原始数据的操作后，数据和原始数据不一样？</p>
+<p><strong>因为PCA是一种有损压缩技术。</strong> 在降维（投影）的过程中，我们为了用更少的维度来表示数据，主动地<strong>丢弃了一部分信息</strong>。因此，当我们试图从降维后的数据恢复时，这部分被丢弃的信息是无法找回的，所以恢复后的数据和原始数据不一样。</p>
+<h2 id="主成分分析法的应用建议"><a href="#主成分分析法的应用建议" class="headerlink" title="主成分分析法的应用建议"></a>主成分分析法的应用建议</h2><img src="../source/imgs/${fiilname}/image-20250805212102691.png" alt="image-20250805212102691" style="zoom:50%;" />
+
+<p>使用PCA来加速学习算法，可以将数据的维度减少5倍或者10倍，在保留较大方差的前提下，这样做几乎不影响性能、分类精度，而且通过较低的维度数据，算法会运行地很快。</p>
+<p>使用PCA去防止过拟合不是很推荐，这是一种非常糟糕的应用，虽然它的效果可能会很好，但这不是一种很好的方式去处理过拟合问题，最好应该使用规则化来防止过拟合。</p>
+<p>在使用PCA之前，应该考虑只使用原始数据去训练学习算法。</p>
+<h1 id="异常检测"><a href="#异常检测" class="headerlink" title="异常检测"></a>异常检测</h1><h2 id="问题的动机"><a href="#问题的动机" class="headerlink" title="问题的动机"></a>问题的动机</h2><p>这是机器学习算法的一个常见应用。这种算法的一个有趣之处在于：它虽然主要用于非监督学习问题，但从某些角度看，它又类似于一些监督学习问题。</p>
+<p>什么是异常检测？</p>
+<p>假想你是一个飞机引擎制造商，当你生产的飞机引擎从生产线上流出时，你需要进行QA(质量控制测试)，而作为这个测试的一部分，你测量了飞机引擎的一些特征变量，比如引擎运转时产生的热量，或者引擎的振动等等。  </p>
+<p>这样一来，你就有了一个数据集，从𝑥(1)到𝑥(𝑚)，如果你生产了𝑚个引擎的话，你将这些数据绘制成图表，图里的每个点、每个叉，都是你的无标签数据。这样，异常检测问题可以定义如下：假设后来有一天，你有一个新的飞机引擎从生产线上流出，而你的新飞机引擎有特征变量𝑥𝑡𝑒𝑠𝑡。所谓的异常检测问题就是：我们希望知道这个新的飞机引擎是否有某种异常。</p>
+<p>给定数据集<img src="../source/imgs/${fiilname}/image-20250809154247719.png" alt="image-20250809154247719" style="zoom:50%;" />，假使数据集是正常的，我们希望知道新的数据 𝑥𝑡𝑒𝑠𝑡是不是异常的，即这个测试数据不属于该组数据的几率。我们所构建的模型应该能根据该测试数据的位置告诉我们其属于一组数据的可能性 𝑝(𝑥)。</p>
+<img src="../source/imgs/${fiilname}/image-20250809154602440.png" alt="image-20250809154602440" style="zoom:50%;" />
+
+<p>上图中，在蓝色圈内的数据属于该组数据的可能性较高，而越是偏远的数据，其属于该组数据的可能性就越低。</p>
+<p>这种方法称为密度估计，表达如下：<img src="../source/imgs/${fiilname}/image-20250809154629373.png" alt="image-20250809154629373" style="zoom:50%;" /></p>
+<p>模型𝑝(𝑥) 为我们计算其属于一组数据的可能性， 通过𝑝(𝑥) &lt; 𝜀检测非正常用户。</p>
+<p>异常检测主要用来识别欺骗。可以根据这些特征构建一个模型，可以用这个模型来识别那些不符合该模式的用户或者物品啥的。</p>
+<h2 id="高斯分布"><a href="#高斯分布" class="headerlink" title="高斯分布"></a>高斯分布</h2><p>高斯分布，也称为正态分布。<br>$$<br>如果我们认为变量 x 符合高斯分布 x∼N(μ,σ^2)则其概率密度函数为： p(x,μ,σ^2)&#x3D;\frac{1}{\sqrt{2π }σ} exp(\frac{-(x-μ)^2}{2σ^2 })<br>$$</p>
+<p>$$<br>μ和σ^2的计算方法:μ&#x3D;\frac{1}{m} ∑_{i&#x3D;1}^mx^{(i)} ，σ^2&#x3D;\frac{1}{m} ∑_{i&#x3D;1}^m( x^{(i)}-μ)^2<br>$$</p>
+<p>样例：<img src="../source/imgs/${fiilname}/image-20250809155851001.png" alt="image-20250809155851001" style="zoom:50%;" /></p>
+<p>注：机器学习中对于方差我们通常只除以𝑚而非统计学中的(𝑚 - 1)。这里顺便提一下，在实际使用中，到底是选择使用1&#x2F;𝑚还是1&#x2F;(𝑚 - 1)其实区别很小，只要你有一个还算大的训练集，在机器学习领域大部分人更习惯使用1&#x2F;𝑚这个版本的公式。这两个版本的公式在理论特性和数学特性上稍有不同，但是在实际使用中，他们的区别甚小，几乎可以忽略不计。</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>应用高斯分布开发异常检测算法。</p>
+<p>对于给定的数据集 <img src="../source/imgs/${fiilname}/image-20250814163934252.png" alt="image-20250814163934252" style="zoom:50%;" />，我们要针对每一个特征计算 𝜇 和 𝜎2 的估计值。</p>
+<p>一旦我们获得了平均值和方差的估计值，给定新的一个训练实例，根据模型计算 𝑝(𝑥)：<br>$$<br>p(x)&#x3D;∏_{j&#x3D;1}^np(x_j;μ_j,σ_j^2)&#x3D;∏_{j&#x3D;1}^n \frac{1}{\sqrt{2π} σ_j} exp(\frac{-{(x_j-μ_j) }^2}{2σ_j^2 })<br>$$<br>选择一个𝜀，将𝑝(𝑥) &#x3D; 𝜀作为判定边界，当𝑝(𝑥) &gt; 𝜀时预测数据为正常数据，否则为异常。  </p>
+<p>下图是一个由两个特征的训练集，以及特征的分布情况：</p>
+<img src="../source/imgs/${fiilname}/image-20250809160601061.png" alt="image-20250809160601061" style="zoom:50%;" />
+
+<p>下面的三维图表表示的是密度估计函数， 𝑧轴为根据两个特征的值所估计𝑝(𝑥)值：<img src="../source/imgs/${fiilname}/image-20250809160636306.png" alt="image-20250809160636306" style="zoom:50%;" /></p>
+<h2 id="开发和评价一个异常检测系统"><a href="#开发和评价一个异常检测系统" class="headerlink" title="开发和评价一个异常检测系统"></a>开发和评价一个异常检测系统</h2><p>异常检测算法是一个非监督学习算法，意味着我们无法根据结果变量 𝑦 的值来告诉我们数据是否真的是异常的。</p>
+<p>但如果有一些带标签的数据能够指明哪些是异常样本，哪些是非异常样本，那么这就是我们要找的能够评价异常检测算法的标准算法。当我们开发一个异常检测系统时，我们从带标记（异常或正常）的数据着手，我们从其中选择一部分正常数据用于构建训练集，然后用剩下的正常数据和异常数据混合的数据构成交叉检验集和测试集。</p>
+<p>异常检测算法的推导和评价方法如下：</p>
+<p>例如：我们有 10000 台正常引擎的数据，有 20 台异常引擎（通常在20~50个）的数据。 我们这样分配数据：</p>
+<p>6000 台正常引擎（可能也有一些异常数据被分到训练集中，但没什么关系）的数据作为训练集</p>
+<p>2000 台正常引擎和 10 台异常引擎的数据作为交叉检验集</p>
+<p>2000 台正常引擎和 10 台异常引擎的数据作为测试集</p>
+<p>具体的评价方法如下：</p>
+<ol>
+<li><p>根据训练集数据，我们估计特征的平均值和方差并构建𝑝(𝑥)函数</p>
+</li>
+<li><p>对交叉检验集，我们尝试使用不同的𝜀值作为阀值，并预测数据是否异常，根据 F1 值或者查准率与查全率的比例来选择 𝜀</p>
+</li>
+<li><p>选出 𝜀 后，针对测试集进行预测，计算异常检验系统的𝐹1值，或者查准率与查全率之比。</p>
+</li>
+</ol>
+<h2 id="异常检测与监督学习对比"><a href="#异常检测与监督学习对比" class="headerlink" title="异常检测与监督学习对比"></a>异常检测与监督学习对比</h2><p>对于一些数据，我们知道它们哪些是异常，哪些是正常的，为什么我们不用监督学习算法，逻辑回归或者神经网络从我们带标签的数据中直接学习，并预测 y 的值是1还是0。</p>
+<p>下面的对比有助于选择采用监督学习还是异常检测：</p>
+<table>
+<thead>
+<tr>
+<th>异常检测</th>
+<th>监督学习</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>非常少量的正向类（异常数据 y&#x3D;1）, 大量的负向类（y&#x3D;0)  ，一般将这些正向类作为交叉验证集和测试集</td>
+<td>同时有大量的正向类和负向类</td>
+</tr>
+<tr>
+<td>许多不同种类的异常，非常难。根据非常  少量的正向类数据来训练算法。</td>
+<td>有足够多的正向类实例，足够用于训练  算法，未来遇到的正向类实例可能与训练集中的非常近似。</td>
+</tr>
+<tr>
+<td>未来遇到的异常可能与已掌握的异常、非常的不同。</td>
+<td></td>
+</tr>
+<tr>
+<td>例如： 欺诈行为检测 生产（例如飞机引擎）检测数据中心的计算机运行状况</td>
+<td>例如：邮件过滤器 天气预报 肿瘤分类</td>
+</tr>
+</tbody></table>
+<p>在异常检测算法中，正例的数量很少，以至于对于一个学习算法来说，它无法从正例中学习到足够的知识，所以，我们应该采用大量的反例让它学习，学习关于反例，关于 x 的模型 p ，然后保留小数量的正例用于评估我们的算法，这些正例要么用于交叉验证集要么用于测试集。</p>
+<p>另外，对于很多技术公司可能会遇到的一些问题，通常来说，<strong>正样本的数量很少</strong>，甚至有时候是 0，也就是说，出现了太多没见过的不同的异常类型（对于垃圾邮件问题，虽然垃圾邮件的类别很多，但数量同样很多，所以一般看作是监督学习问题），那么对于这些问题，通常应该使用的算法就是<strong>异常检测算法</strong>。</p>
+<h2 id="选择特征"><a href="#选择特征" class="headerlink" title="选择特征"></a>选择特征</h2><p>对于异常检测算法，我们使用的特征是至关重要的，下面谈谈如何选择特征：</p>
+<p>异常检测假设特征符合高斯分布，如果数据的分布不是高斯分布，异常检测算法也能够工作，但是最好还是将数据转换成高斯分布，例如使用对数函数： 𝑥 &#x3D; 𝑙𝑜𝑔(𝑥 + 𝑐)，其中 𝑐为非负常数； 或者<img src="../source/imgs/${fiilname}/image-20250811162044495.png" alt="image-20250811162044495" style="zoom:50%;" />， 𝑐为 0-1 之间的一个分数，等方法。</p>
+<p><strong>（在 python 中，通常用 np.log1p()函数， 𝑙𝑜𝑔1𝑝就是 𝑙𝑜𝑔(𝑥 + 1)，可以避免出现负数结果，反向函数就是 np.expm1()）</strong>这句还没搞懂怎么用。</p>
+<p>如果数据不是高斯分布的，通常需要使用一些转换算法来对数据进行处理，使数据更像高斯分布。</p>
+<img src="../source/imgs/${fiilname}/image-20250811162757802.png" alt="image-20250811162757802" style="zoom:80%;" />
+
+<p>这只是转换的一种方法，也有可能使log(x+1)或者使log(x+常数)或者x的n次方(0&lt;n&lt;1)等，目的是使数据分布更像高斯分布。</p>
+<p>如何得到异常检测算法的特征变量？通常通过<strong>误差分析</strong>步骤。这跟前面监督学习的误差分析步骤是差不多的，先完整地训练出一个学习算法，然后在一组交叉验证集上验证算法，然后找出那些出错的样本，然后看看能不能找到一些其它的特征变量来帮助学习算法让它在交叉预测集中判断出错的样本中表现得更好。</p>
+<p>在异常检测中，我们希望p(x)值对于正常样本来说是比较大的，而对异常样本来说值是很小的。</p>
+<p>误差分析：</p>
+<p>一个常见的问题是一些异常的数据可能也会有较高的𝑝(𝑥)值，因而被算法认为是正常的。这种情况下误差分析能够帮助我们，我们可以分析那些被算法错误预测为正常的数据，观察能否找出一些问题。我们可能能从问题中发现我们需要增加一些新的特征，增加这些新特征后获得的新算法能够帮助我们更好地进行异常检测。</p>
+<img src="../source/imgs/${fiilname}/image-20250811164443660.png" alt="image-20250811164443660" style="zoom:50%;" />
+
+<p>绿色的x是异常样本，在只有x1特征时可以看出它的p(x)的值很大，所以现在就要再找出一个特征使它能和正常样本分开。</p>
+<p>我们通常可以通过将一些相关的特征进行组合，来获得一些新的更好的特征（异常数据的该特征值异常地大或小）。</p>
+<h2 id="多元高斯分布（选修）"><a href="#多元高斯分布（选修）" class="headerlink" title="多元高斯分布（选修）"></a>多元高斯分布（选修）</h2><p>假使我们有两个相关的特征，而且这两个特征的值域范围比较宽，这种情况下，一般的高斯分布模型可能不能很好地识别异常数据。其原因在于，一般的高斯分布模型尝试的是去同时抓住两个特征的偏差，因此创造出一个比较大的判定边界。</p>
+<p>下图中是两个相关特征，洋红色的线（根据 ε 的不同其范围可大可小）是一般的高斯分布模型获得的判定边界，很明显绿色的 X 所代表的数据点很可能是异常值，但是其𝑝(𝑥)值却仍然在正常范围内。多元高斯分布将创建像图中蓝色曲线所示的判定边界。</p>
+<img src="../source/imgs/${fiilname}/image-20250811165630148.png" alt="image-20250811165630148" style="zoom:50%;" />
+
+
+
+
+
+<h2 id="使用多元高斯分布进行异常检测（-选修）"><a href="#使用多元高斯分布进行异常检测（-选修）" class="headerlink" title="使用多元高斯分布进行异常检测（ 选修）"></a>使用多元高斯分布进行异常检测（ 选修）</h2><h1 id="推荐系统"><a href="#推荐系统" class="headerlink" title="推荐系统"></a>推荐系统</h1><h2 id="问题形式化"><a href="#问题形式化" class="headerlink" title="问题形式化"></a>问题形式化</h2><p>从一个例子开始定义推荐系统的问题。</p>
+<p>假使我们是一个电影供应商，我们有 5 部电影和 4 个用户，我们要求用户为电影打分。</p>
+<img src="../source/imgs/${fiilname}/image-20250811180052523.png" alt="image-20250811180052523" style="zoom:67%;" />
+
+<p>我们希望构建一个算法来预测他们每个人可能会给他们没看过的电影打多少分，并以此作为推荐的依据。</p>
+<p>下面引入一些标记：</p>
+<p><img src="../source/imgs/${fiilname}/image-20250811180203188.png" alt="image-20250811180203188" style="zoom:50%;" />代表用户的数量</p>
+<p><img src="../source/imgs/${fiilname}/image-20250811180219413.png" alt="image-20250811180219413" style="zoom:50%;" />代表电影的数量</p>
+<p>𝑟(𝑖, 𝑗) 如果用户 𝑗 给电影 𝑖 评过分则 𝑟(𝑖, 𝑗) &#x3D; 1</p>
+<p><img src="../source/imgs/${fiilname}/image-20250811180235353.png" alt="image-20250811180235353" style="zoom:50%;" />代表用户 𝑗 给电影 𝑖 的评分</p>
+<p>𝑚𝑗代表用户 𝑗 评过分的电影的总数</p>
+<h2 id="基于内容的推荐系统"><a href="#基于内容的推荐系统" class="headerlink" title="基于内容的推荐系统"></a>基于内容的推荐系统</h2><p>在一个基于内容的推荐系统算法中，我们假设对于我们希望推荐的东西有一些数据，这些数据是有关这些东西的特征。</p>
+<p>在我们的例子中，我们可以假设每部电影都有两个特征，如𝑥1代表电影的浪漫程度， 𝑥2代表电影的动作程度。</p>
+<img src="../source/imgs/${fiilname}/image-20250811180843788.png" alt="image-20250811180843788" style="zoom:67%;" />
+
+<p>则每部电影都有一个特征向量，如𝑥(1)是第一部电影的特征向量为[0.9 0]。</p>
+<p>下面我们要基于这些特征来构建一个推荐系统算法。 假设我们采用线性回归模型，我们可以针对每一个用户都训练一个线性回归模型，如𝜃(1)是第一个用户的模型的参数。 于是，我们有：<br>$$<br>θ^{(j)}用户 j 的参数向量，x^{(i)}电影 i 的特征向量<br>$$</p>
+<p>$$<br>对于用户 j 和电影 i，我们预测评分为：(θ^{(j)} )^T x^{(i)}<br>$$</p>
+<p>代价函数：</p>
+<p>针对用户 𝑗，该线性回归模型的代价为预测误差的平方和，加上正则化项：<br>$$<br>\underset{θ(j)}{min} \frac{1}{2} \underset{i:r(i,j)&#x3D;1}{∑}((θ^{(j)} )^T x^{(i)}-y^{(i,j)} )^2 +\frac{λ}{2} ∑_{k&#x3D;1}^n(θ_k^{(j)} )^2<br>$$<br>其中 𝑖: 𝑟(𝑖, 𝑗)表示我们只计算那些用户 𝑗 评过分的电影。在一般的线性回归模型中，误差项和正则项应该都是乘以1&#x2F;2𝑚，在这里我们<strong>将𝑚去掉</strong>。并且我们<strong>不对方差项𝜃0进行正则化处理</strong>。</p>
+<p>上面的代价函数只是针对一个用户的，为了学习所有用户，我们将所有用户的代价函数求和：<br>$$<br>\underset{θ^{(1)},…,θ^{(n_u)} }{min}\frac{1}{2} ∑_{j&#x3D;1}^{n_u}\underset{i:r(i,j)&#x3D;1}{∑}((θ^{(j)} )^T x^{(i)}-y^{(i,j)} )^2 +\frac{λ}{2} ∑_{j&#x3D;1}^{n_u}∑_{k&#x3D;1}^n( θ_k^{(j)} )^2<br>$$<br>如果我们要用梯度下降法来求解最优解，我们计算代价函数的偏导数后得到梯度下降的更新公式为：<br>$$<br>θ_k^{(j)}:&#x3D;θ_k^{(j)}-α\underset{i:r(i,j)&#x3D;1}{∑}((θ^{(j)} )^T x^{(i)}-y^{(i,j)})x_k^{(i)} (for  k&#x3D;0)<br>$$</p>
+<p>$$<br>θ_k^{(j)}:&#x3D;θ_k^{(j)}-α(\underset{i:r(i,j)&#x3D;1}{∑}((θ^{(j)} )^T x^{(i)}-y^{(i,j)})x_k^{(i)}+λθ_k^{(j)}) (for  k≠0)<br>$$</p>
+<h2 id="协同过滤"><a href="#协同过滤" class="headerlink" title="协同过滤"></a>协同过滤</h2><p>这种方法能够自行学习所要使用的特征。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250811203319599.png" alt="image-20250811203319599"></p>
+<p>假设有一个数据集，部分数据如上图。我们可以知道假如要搜集像这样的数据，要让每一个人都看完每部电影再搜集他们觉得每部电影的浪漫指数或者动作指数啥的，很麻烦，而且通常还希望得到除了这两个特征之外的特征信息，那要怎么样才能得到这些特征信息。</p>
+<p>那就转换一下问题，假设我们有以下数据集，且我们可以从用户那边得到相关参数：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250811203855955.png" alt="image-20250811203855955"></p>
+<p>那我们根据这些参数理论上可以推出每部电影的x1和x2值。</p>
+<p>以第一部电影为例子，我们需要满足这些条件：<img src="../source/imgs/${fiilname}/image-20250811204416647.png" alt="image-20250811204416647" style="zoom:50%;" /></p>
+<p>所以可以推出第一部电影的特征为（包括x0）：<img src="../source/imgs/${fiilname}/image-20250811204452265.png" alt="image-20250811204452265" style="zoom:50%;" /></p>
+<p>将这一问题标准化到任意特征x(i)，相当于是x(i)变成了要求的参数，原本的参数变成了训练用的数据集：<br>$$<br>\underset{x^{(1)},…,x^{(n_m)} }{min}\frac{1}{2} ∑_{i&#x3D;1}^{n_m}\underset{j:r(i,j)&#x3D;1}{∑}((θ^{(j)} )^T x^{(i)}-y^{(i,j)} )^2+\frac{λ}{2} ∑_{i&#x3D;1}^{n_m}∑_{k&#x3D;1}^n( x_k^{(i)} )^2  <br>$$<br>但是如果我们既没有用户的参数，也没有电影的特征，这两种方法都不可行了。<strong>协同过滤算法</strong>可以<strong>同时学习这两者</strong>。</p>
+<p>我们的优化目标便改为同时针对<strong>𝑥和𝜃</strong>进行。<img src="../source/imgs/${fiilname}/image-20250811205604710.png" alt="image-20250811205604710" style="zoom:50%;" /></p>
+<p>从这个代价函数我们可以看出来，如果将x作为常量，那就详相当于<img src="../source/imgs/${fiilname}/image-20250812103124335.png" alt="image-20250812103124335" style="zoom:43%;" />，如果将theta作为常量，那就相当于<img src="../source/imgs/${fiilname}/image-20250812103222594.png" alt="image-20250812103222594" style="zoom:50%;" /></p>
+<p>优化问题的目标是：<img src="../source/imgs/${fiilname}/image-20250812103502485.png" alt="image-20250812103502485" style="zoom:67%;" /></p>
+<p>这个学习算法的<strong>前提</strong>是：<img src="../source/imgs/${fiilname}/image-20250812103714953.png" alt="image-20250812103714953" style="zoom:50%;" />，电影特征没有x0&#x3D;1，那用户的参数也就没有theta0（也就是截距）了，所以这个学习算法中所求得的特征和theta都是<strong>n维向量</strong>。<strong>为什么</strong>要这样设置呢？因为我们现在是在学习所有特征，所以没有必要去将这个等于1的特征值固定死，因为如果算法真的需要一个特征永远为1的话，那它可以选择靠自己去获得1这个数值，可以选择将x1设置为1，所以没必要将原本1这个特征固定住。</p>
+<p>对代价函数求偏导数的结果如下：<img src="../source/imgs/${fiilname}/image-20250811210654760.png" alt="image-20250811210654760" style="zoom:50%;" /></p>
+<p>由于前提的存在，所以这边要对所有的参数theta和特征x做正则化，不需要区分出k&#x3D;0的情况。</p>
+<p>注：在协同过滤从算法中，我们通常不使用方差项，如果需要的话，算法会自动学得。</p>
+<p>协同过滤算法使用步骤如下：</p>
+<ol>
+<li><p>初始 <img src="../source/imgs/${fiilname}/image-20250811211112036.png" alt="image-20250811211112036" style="zoom:50%;" />为一些随机小值</p>
+</li>
+<li><p>使用梯度下降算法最小化代价函数</p>
+</li>
+<li><p>在训练完算法后，我们预测<img src="../source/imgs/${fiilname}/image-20250811210947397.png" alt="image-20250811210947397" style="zoom:50%;" />为用户 𝑗 给电影 𝑖 的评分</p>
+</li>
+</ol>
+<p>通过这个学习过程获得的特征矩阵包含了有关电影的重要数据，这些数据不总是人能读懂的，但是我们可以用这些数据作为给用户推荐电影的依据。</p>
+<p>例如，如果一位用户正在观看电影 𝑥(𝑖)，我们可以寻找另一部电影𝑥(𝑗)，依据两部电影的特征向量之间的距离<img src="../source/imgs/${fiilname}/image-20250811211208218.png" alt="image-20250811211208218" style="zoom:50%;" />的大小。</p>
+<h2 id="向量化：低秩矩阵分解"><a href="#向量化：低秩矩阵分解" class="headerlink" title="向量化：低秩矩阵分解"></a>向量化：低秩矩阵分解</h2><p>有关该算法的向量化实现，以及有关该算法可以做的其他事情  。通过学习特征参数，来找到相关电影和产品。  </p>
+<p>举例子： 1.当给出一件产品时，你能否找到与之相关的其它产品。</p>
+<p>2.一位用户最近看上一件产品，有没有其它相关的产品，你可以推荐给他。我将要做的是：实现一种选择的方法，写出协同过滤算法的预测情况。</p>
+<p>我们有关于五部电影的数据集，我将要做的是，将这些用户的电影评分，进行分组并存到一个矩阵中。</p>
+<p>我们有五部电影，以及四位用户，那么 这个矩阵 𝑌 就是一个 5 行 4 列的矩阵，它将这些电影的用户评分数据都存在矩阵里：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250812111555349.png" alt="image-20250812111555349"></p>
+<p>评分：<img src="../source/imgs/${fiilname}/image-20250812111608091.png" alt="image-20250812111608091" style="zoom:67%;" /></p>
+<p>找到相关影片：<img src="../source/imgs/${fiilname}/image-20250812111631498.png" alt="image-20250812111631498" style="zoom:67%;" /></p>
+<p>依据的是两部电影的特征向量之间的距离<img src="../source/imgs/${fiilname}/image-20250811211208218.png" alt="image-20250811211208218" style="zoom:50%;" />的大小。</p>
+<p>因为已经对特征参数向量进行了学习，那么我们就可以来度量两部电影之间的相似性。例如说：电影 𝑖 有一个特征向量𝑥(𝑖)，你是否能找到一部不同的电影 𝑗，保证两部电影的<strong>特征向量之间的距离</strong>𝑥(𝑖)和𝑥(𝑗)很小，那就能很有力地表明电影𝑖和电影 𝑗 在某种程度上有相似。总结一下，当用户在看某部电影 𝑖 的时候，如果你想找 5 部与电影 i 非常相似的电影，为了能给用户推荐 5 部新电影，你需要做的是找出电影 𝑗，在这些不同的电影 j 中与我们要找的电影 𝑖 的距离最小，这样你就能给你的用户推荐几部不同的电影了。</p>
+<h2 id="推行工作上的细节：均值归一化"><a href="#推行工作上的细节：均值归一化" class="headerlink" title="推行工作上的细节：均值归一化"></a>推行工作上的细节：均值归一化</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250812112457099.png" alt="image-20250812112457099"></p>
+<p>如果我们新增一个用户 Eve，并且 Eve 没有为任何电影评分，那么我们以什么为依据为 Eve 推荐电影呢？</p>
+<p>假如不做任何处理按原数据来学习那会有以下结果：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250812112606974.png" alt="image-20250812112606974"></p>
+<p>由于Eve没有为任何一部电影评分，所以theta5作用于最后一个正则项<img src="../source/imgs/${fiilname}/image-20250812112840919.png" alt="image-20250812112840919" style="zoom:40%;" />，这边假设特征数量为2，由于我们希望选择theta5使得最终的正则化项越小越好，所以最后theta5&#x3D;[0 0]，那也就会导致Eve的电影评分<img src="../source/imgs/${fiilname}/image-20250812113044662.png" alt="image-20250812113044662" style="zoom:40%;" />都为0，而这个电影评分是没有意义的，这个评分也说明Eve对任何一部电影都不感兴趣，所以也无法为她推荐电影。但均值归一化可以解决这个问题。</p>
+<p>我们首先需要对结果 𝑌矩阵进行均值归一化处理，将每一个用户对某一部电影的评分减去所有用户对该电影评分的平均值：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250812113732314.png" alt="image-20250812113732314"></p>
+<p>然后我们利用这个新的 𝑌 矩阵来训练算法。 如果我们要用新训练出的算法来预测评分，则需要将平均值重新加回去，预测<img src="../source/imgs/${fiilname}/image-20250812113801950.png" alt="image-20250812113801950" style="zoom:50%;" />，对于 Eve，我们的新模型会认为她给每部电影的评分都是该电影的平均分，这样会更有意义一点。</p>
+<h1 id="大规模机器学习"><a href="#大规模机器学习" class="headerlink" title="大规模机器学习"></a>大规模机器学习</h1><h2 id="大型数据集的学习"><a href="#大型数据集的学习" class="headerlink" title="大型数据集的学习"></a>大型数据集的学习</h2><p>如果我们有一个低偏差的模型，增加数据集的规模可以帮助你获得更好的结果。</p>
+<p>以线性回归模型为例，每一次梯度下降迭代，我们都需要计算训练集的误差的平方和，如果我们的学习算法需要有 20 次迭代，这便已经是非常大的计算代价。</p>
+<p>首先应该做的事是去检查一个这么大规模的训练集是否真的必要，也许我们只用 1000个训练集也能获得较好的效果，我们可以绘制学习曲线来帮助判断。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250815205718086.png" alt="image-20250815205718086"></p>
+<h2 id="随机梯度下降法"><a href="#随机梯度下降法" class="headerlink" title="随机梯度下降法"></a>随机梯度下降法</h2><p>如果我们一定需要一个大规模的训练集，我们可以尝试使用随机梯度下降法（ SGD） 来代替批量梯度下降法。</p>
+<p>接下来的是以线性回归为例子，但随机梯度下降的思想也可以应用于其它学习算法，比如逻辑回归、神经网络或其它依靠梯度下降进行训练的算法。</p>
+<p>在随机梯度下降法中，我们定义代价函数为一个单一训练实例的代价：<br>$$<br>cost(θ,(x^{(i)},y^{(i)} ))&#x3D;\frac{1}{2} (h_θ (x^{(i)} )-y^{(i)} )^2<br>$$<br>随机梯度下降算法为：首先对训练集<strong>随机打乱</strong>（可以稍微快一点收敛），就是将所有m个训练样本重新排序，然后：</p>
+<p>通常训练一次就够了，最多到10次</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250815211106705.png" alt="image-20250815211106705"></p>
+<p>所以，随机梯度下降算法实际上就是扫描所有的训练样本，首先是第一组训练样本(x(1),y(1))，然后只根据这个训练样本对参数theta进行修改，完成上面的那个内层循环之后，转向第二个训练样本，然后对参数theta进行修改，……，以此类推直到完成所有训练样本。</p>
+<p>随机梯度下降算法在每一次计算之后便更新参数 𝜃 ，而不需要首先将所有的训练集求和。</p>
+<p>但是这样的算法存在的问题是，不是每一步都是朝着”正确”的方向迈出的。因此算法虽然会逐渐走向全局最小值的位置，但是可能无法站到那个最小值的那一点，而是<strong>在最小值点附近徘徊</strong>。一般使用随机梯度下降法也能得到一个很接近全局最小值的参数，对于实际应用的目的来说是足够用的。</p>
+<img src="../source/imgs/${fiilname}/image-20250815212032789.png" alt="image-20250815212032789" style="zoom:50%;" />
+
+<h2 id="小批量梯度下降"><a href="#小批量梯度下降" class="headerlink" title="小批量梯度下降"></a>小批量梯度下降</h2><p>小批量梯度下降算法是介于批量梯度下降算法和随机梯度下降算法之间的算法，<strong>每计算常数𝑏次</strong>训练实例，<strong>便更新一次</strong>参数 𝜃 。</p>
+<p>一次使用b个样本。感觉应该是while循环，或者是for循环加步长step</p>
+<img src="../source/imgs/${fiilname}/image-20250815212348946.png" alt="image-20250815212348946" style="zoom:50%;" />
+
+<p>下面是视频里的：<img src="../source/imgs/${fiilname}/image-20250815212819097.png" alt="image-20250815212819097" style="zoom:40%;" /></p>
+<p>通常令 𝑏 在 2-100 之间。这样做的好处在于，我们可以用<strong>向量化</strong>的方式来循环𝑏个训练实例。</p>
+<h2 id="随机梯度下降收敛"><a href="#随机梯度下降收敛" class="headerlink" title="随机梯度下降收敛"></a>随机梯度下降收敛</h2><p>在批量梯度下降中，我们可以令代价函数 𝐽 为迭代次数的函数，绘制图表，根据图表来判断梯度下降是否收敛。但是，在大规模的训练集的情况下，这是不现实的，因为计算代价太大了。</p>
+<p>在随机梯度下降中，我们在每一次更新 𝜃 <strong>之前</strong>都计算一次代价，然后<strong>每𝑥次迭代后</strong>，求出这<strong>𝑥次</strong>对训练实例计算<strong>代价的平均值</strong>，然后绘制这些平均值与𝑥次迭代的次数之间的函数图表。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250815213532214.png" alt="image-20250815213532214"></p>
+<p>当我们绘制这样的图表时，可能会得到一个颠簸不平但是不会明显减少的函数图像（如上面左下图中蓝线所示）。我们可以<strong>增加𝛼</strong>来使得函数<strong>更加平缓</strong>，也许便能看出下降的趋势了（如上面左下图中红线所示）；或者可能函数图表仍然是颠簸不平且不下降的（如洋红色线所示），那么我们的模型本身可能存在一些错误。</p>
+<p>如果我们得到的曲线如上面右下方所示，不断地上升，那么我们可能会需要选择一个较小的学习率𝛼。</p>
+<p>左上角的图可以很明显地看出来是在收敛，红色的线是采用了更小地学习率，因此可以看到它收敛的速度变慢了，但最后得到的效果可能更好。</p>
+<p>我们也可以令学习率随着迭代次数的增加而减小，例如令：<br>$$<br>α&#x3D;\frac{const1}{iterationNumber+const2}<br>$$<br>随着我们不断地靠近全局最小值，通过减小学习率，我们迫使算法收敛而非在最小值附近徘徊。 但是通常我们不需要这样做便能有非常好的效果了，对𝛼进行调整所耗费的计算通常不值得。</p>
+<p>这种方法不需要定时地扫描整个训练集，来算出整个样本集的代价函数，而是只需要每次对最新 1000 个，或者多少个样本，求一下平均值。</p>
+<h2 id="在线学习"><a href="#在线学习" class="headerlink" title="在线学习"></a>在线学习</h2><p>一种新的大规模的机器学习机制，叫做在线学习机制，在线学习机制让我们可以模型化问题。</p>
+<p>使用不同版本的在线学习机制算法，从大批的涌入又离开网站的用户身上进行学习。特别要提及的是，如果你有一个由连续的用户流引发的连续的数据流，进入你的网站，你能做的是使用一个在线学习机制，从数据流中学习用户的偏好，然后使用这些信息来优化一些关于网站的决策。</p>
+<p>在线学习算法指的是对<strong>数据流</strong>而非离线的静态数据集的学习。</p>
+<p>假使我们正在经营一家物流公司，每当一个用户询问从地点 A 至地点 B 的快递费用时，我们给用户一个报价，该用户可能选择接受（ 𝑦 &#x3D; 1）或不接受（ 𝑦 &#x3D; 0）。</p>
+<p>现在，我们希望构建一个模型，来预测用户接受报价使用我们的物流服务的可能性。因此报价 是我们的一个特征，其他特征为距离，起始地点，目标地点以及特定的用户数据。模型的输出是:𝑝(𝑦 &#x3D; 1)。</p>
+<p>在线学习的算法与随机梯度下降算法有些类似，我们对<strong>单一的实例</strong>进行学习，而非对一个提前定义的训练集进行循环。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Repeat forever (as long as the website is running) &#123;</span><br><span class="line">Get (𝑥, 𝑦) corresponding to the current user</span><br><span class="line">𝜃: = 𝜃𝑗 − 𝛼(ℎ𝜃(𝑥) − 𝑦)𝑥𝑗</span><br><span class="line">(for 𝑗 = 0: 𝑛)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一旦对一个数据的学习完成了，我们便可以丢弃该数据，不需要再存储它了。</p>
+<p>这种方式的好处在于，我们的算法可以很好的适应用户的倾向性，算法可以针对用户的当前行为不断地更新模型以适应该用户。</p>
+<p>每次交互事件<strong>并不只产生一个数据集</strong>，例如，我们一次给用户提供 3 个物流选项，用户选择 2 项，我们实际上可以获得 3 个新的训练实例，因而我们的算法可以一次从 3 个实例中学习并更新模型。  </p>
+<p>我们所使用的这个算法与随机梯度下降算法非常类似，唯一的区别的是，我们不会使用一个固定的数据集，我们会做的是获取一个用户样本，从那个样本中学习，然后丢弃那个样本并继续下去。</p>
+<p>在线学习的一个优点就是，如果你有一个<strong>变化</strong>的用户群，又或者你在尝试预测的事情，在缓慢<strong>变化</strong>，就像你的用户的品味在缓慢<strong>变化</strong>，这个在线学习算法，可以慢慢地调试你所学习到的假设，将其调节更新到最新的用户行为。</p>
+<h2 id="映射化简和数据并行"><a href="#映射化简和数据并行" class="headerlink" title="映射化简和数据并行"></a>映射化简和数据并行</h2><p>如果我们用批量梯度下降算法来求解大规模数据集的最优解，我们需要对整个训练集进行循环，计算偏导数和代价，再求和，计算代价非常大。如果我们能够将我们的数据集分配给不多台计算机，让每一台计算机处理数据集的一个子集，然后我们将计算的结果汇总在求和。这样的方法叫做<strong>映射简化</strong>。</p>
+<p>具体而言，如果任何学习算法能够表达为，对训练集的函数的求和，那么便能将这个任务分配给多台计算机（或者同一台计算机的不同 CPU 核心），以达到加速处理的目的。</p>
+<h1 id="应用实例：图片文字识别"><a href="#应用实例：图片文字识别" class="headerlink" title="应用实例：图片文字识别"></a>应用实例：图片文字识别</h1><h2 id="问题描述和流程图"><a href="#问题描述和流程图" class="headerlink" title="问题描述和流程图"></a>问题描述和流程图</h2><p>图像文字识别应用所作的事是，从一张给定的图片中识别文字。</p>
+<p>为了完成这样的工作，需要采取如下步骤：</p>
+<p>1.文字侦测（ Text detection） ——将图片上的文字与其他环境对象分离开来</p>
+<p>2.字符切分（ Character segmentation） ——将文字分割成一个个单一的字符</p>
+<p>3.字符分类（ Character classification） ——确定每一个字符是什么</p>
+<p>可以用任务流程图来表达这个问题，每一项任务可以由一个单独的小队来负责解决。</p>
+<h2 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h2><p>滑动窗口是一项用来从图像中抽取对象的技术。假使我们需要在一张图片中识别行人，首先要做的是用许多固定尺寸的图片来训练一个能够准确识别行人的模型。然后我们用之前训练识别行人的模型时所采用的图片尺寸在我们要进行行人识别的图片上进行剪裁，然后将剪裁得到的切片交给模型，让模型判断是否为行人，然后在图片上滑动剪裁区域重新进行剪裁，将新剪裁的切片也交给模型进行判断，如此循环直至将图片全部检测完。</p>
+<p>一旦完成后，我们按比例放大剪裁的区域，再以新的尺寸对图片进行剪裁，将新剪裁的切片按比例缩小至模型所采纳的尺寸，交给模型进行判断，如此循环。</p>
+<img src="../source/imgs/${fiilname}/image-20250817105612582.png" alt="image-20250817105612582" style="zoom:50%;" />
+
+<p>滑动窗口技术也被用于文字识别，首先训练模型能够区分字符与非字符，然后，运用滑动窗口技术识别字符。<img src="../source/imgs/${fiilname}/image-20250817110333378.png" alt="image-20250817110333378" style="zoom:67%;" /></p>
+<img src="../source/imgs/${fiilname}/image-20250817111412597.png" alt="image-20250817111412597" style="zoom:50%;" />
+
+<p>白色区域说明文本检测系统发现了文本。黑色区域说明没有文本。深浅不同不同的灰色区域对于分类器输出的概率，所以可以理解为它找到了文本但不大确定。</p>
+<p>一旦完成了字符的识别，我们将识别得出的区域进行一些扩展，然后将重叠的区域进行合并。接着我们以宽高比作为过滤条件，过滤掉高度比宽度更大的区域（认为单词的长度通常比高度要大）。下图中绿色的区域是经过这些步骤后被认为是文字的区域，而红色的区域是被忽略的。</p>
+<img src="../source/imgs/${fiilname}/image-20250817105700648.png" alt="image-20250817105700648" style="zoom:50%;" />
+
+<p>以上便是文字侦测阶段。 下一步是训练一个模型来完成将文字分割成一个个字符的任务，需要的训练集由单个字符的图片和两个相连字符之间的图片来训练模型。我们需要用有监督的学习学习算法，需要检查这些图像块并且尝试决定在图像块的中间是否存在两个字符的分割。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250817110406871.png" alt="image-20250817110406871"></p>
+<img src="../source/imgs/${fiilname}/image-20250817112216119.png" alt="image-20250817112216119" style="zoom:60%;" />
+
+
+
+<p>模型训练完后，我们仍然是使用滑动窗口技术来进行字符识别。</p>
+<p>以上便是字符切分阶段。 最后一个阶段是字符分类阶段，利用神经网络、支持向量机或者逻辑回归算法训练一个分类器即可。</p>
+<h2 id="获取大量数据和人工数据"><a href="#获取大量数据和人工数据" class="headerlink" title="获取大量数据和人工数据"></a>获取大量数据和人工数据</h2><p>以我们的文字识别应用为例，我们可以字体网站下载各种字体，然后利用这些不同的字体配上各种不同的随机背景图片创造出一些用于训练的实例，这让我们能够获得一个无限大的训练集。这是从零开始创造实例。</p>
+<p>另一种方法是，利用已有的数据，然后对其进行修改，例如将已有的字符图片进行一些扭曲、旋转、模糊处理。只要我们认为实际数据有可能和经过这样处理后的数据类似，我们便可以用这样的方法来创造大量的数据。有关获得更多数据的几种方法： </p>
+<p>1.人工数据合成</p>
+<p>2.手动收集、标记数据</p>
+<p>3.众包</p>
+<h2 id="上限分析：哪部分管道的接下去做"><a href="#上限分析：哪部分管道的接下去做" class="headerlink" title="上限分析：哪部分管道的接下去做"></a>上限分析：哪部分管道的接下去做</h2><p>在机器学习的应用中，我们通常需要通过几个步骤才能进行最终的预测，我们如何能够知道哪一部分最值得我们花时间和精力去改善呢？这个问题可以通过上限分析来回答。</p>
+<p>回到我们的文字识别应用中，我们的流程图如下：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250817112430003.png" alt="image-20250817112430003"></p>
+<p>流程图中每一部分的输出都是下一部分的输入，上限分析中，我们选取一部分，手工提供 100%正确的输出结果，然后看应用的整体效果提升了多少。假使我们的例子中总体效果为 72%的正确率。</p>
+<p>如果我们令文字侦测部分输出的结果 100%正确，发现系统的总体效果从 72%提高到了89%。这意味着我们很可能会希望投入时间精力来提高我们的文字侦测部分。</p>
+<p>接着我们手动选择数据，让字符切分输出的结果 100%正确，发现系统的总体效果只提升了 1%，这意味着，我们的字符切分部分可能已经足够好了。</p>
+<p>最后我们手工选择数据，让字符分类输出的结果 100%正确，系统的总体效果又提升了10%，这意味着我们可能也会应该投入更多的时间和精力来提高应用的总体表现。</p>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2025/07/08/python%E6%9A%91%E5%81%87/">python暑假</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/05/05/%E7%9C%9F%E9%A2%98%E6%8A%80%E5%B7%A7/">真题技巧</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Odegaard</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%95%E8%A8%80"><span class="toc-text">引言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">机器学习是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-text">监督学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-text">无监督学习</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-text">单变量线性回归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%A4%BA"><span class="toc-text">模型表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0"><span class="toc-text">代价函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0%E7%9A%84%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3"><span class="toc-text">代价函数的直观理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-text">梯度下降</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%9A%84%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3"><span class="toc-text">梯度下降的直观理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E7%9A%84%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-text">梯度下降的线性回归</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-text">多变量线性回归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%BB%B4%E7%89%B9%E5%BE%81"><span class="toc-text">多维特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%8F%98%E9%87%8F%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-text">多变量梯度下降</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E5%AE%9E%E8%B7%B5-1-%E7%89%B9%E5%BE%81%E7%BC%A9%E6%94%BE"><span class="toc-text">梯度下降法实践 1-特征缩放</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95%E5%AE%9E%E8%B7%B5-2-%E5%AD%A6%E4%B9%A0%E7%8E%87"><span class="toc-text">梯度下降法实践 2-学习率</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%92%8C%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%9B%9E%E5%BD%92"><span class="toc-text">特征和多项式回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B"><span class="toc-text">正规方程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92"><span class="toc-text">逻辑回归</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB%E9%97%AE%E9%A2%98"><span class="toc-text">分类问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%81%87%E8%AF%B4%E8%A1%A8%E7%A4%BA"><span class="toc-text">假说表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A4%E5%AE%9A%E8%BE%B9%E7%95%8C"><span class="toc-text">判定边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0-1"><span class="toc-text">代价函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E4%BC%98%E5%8C%96"><span class="toc-text">高级优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E5%86%B3%E7%AD%96%E8%BE%B9%E7%95%8C"><span class="toc-text">寻找决策边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9E%84%E9%80%A0%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%89%B9%E5%BE%81"><span class="toc-text">构造多项式特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%B1%BB%E5%88%AB%E5%88%86%E7%B1%BB%EF%BC%9A%E4%B8%80%E5%AF%B9%E5%A4%9A"><span class="toc-text">多类别分类：一对多</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96"><span class="toc-text">正则化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%87%E6%8B%9F%E5%90%88%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">过拟合的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0-2"><span class="toc-text">代价函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92"><span class="toc-text">正则化线性回归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96%E7%9A%84%E9%80%BB%E8%BE%91%E5%9B%9E%E5%BD%92%E6%A8%A1%E5%9E%8B"><span class="toc-text">正则化的逻辑回归模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%EF%BC%9A%E8%A1%A8%E8%BF%B0"><span class="toc-text">神经网络：表述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%9E%E7%BA%BF%E6%80%A7%E5%81%87%E8%AE%BE"><span class="toc-text">非线性假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E8%A1%A8%E7%A4%BA-1"><span class="toc-text">模型表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%89%B9%E5%BE%81%E5%92%8C%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3"><span class="toc-text">特征和直观理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%B1%BB%E5%88%86%E7%B1%BB"><span class="toc-text">多类分类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AD%A6%E4%B9%A0"><span class="toc-text">神经网络的学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E4%BB%B7%E5%87%BD%E6%95%B0-3"><span class="toc-text">代价函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95"><span class="toc-text">反向传播算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A2%AF%E5%BA%A6%E6%A3%80%E9%AA%8C"><span class="toc-text">梯度检验</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">随机初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%BC%E5%90%88"><span class="toc-text">综合</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%BB%BA%E8%AE%AE"><span class="toc-text">应用机器学习的建议</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E5%AE%9A%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-text">决定下一步做什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%84%E4%BC%B0%E4%B8%80%E4%B8%AA%E5%81%87%E8%AE%BE"><span class="toc-text">评估一个假设</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9%E5%92%8C%E4%BA%A4%E5%8F%89%E9%AA%8C%E8%AF%81%E9%9B%86"><span class="toc-text">模型选择和交叉验证集</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%8A%E6%96%AD%E5%81%8F%E5%B7%AE%E5%92%8C%E6%96%B9%E5%B7%AE"><span class="toc-text">诊断偏差和方差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A3%E5%88%99%E5%8C%96%E5%92%8C%E5%81%8F%E5%B7%AE-%E6%96%B9%E5%B7%AE"><span class="toc-text">正则化和偏差&#x2F;方差</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E6%9B%B2%E7%BA%BF"><span class="toc-text">学习曲线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%B3%E5%AE%9A%E4%B8%8B%E4%B8%80%E6%AD%A5%E5%81%9A%E4%BB%80%E4%B9%88-1"><span class="toc-text">决定下一步做什么</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-text">机器学习系统的设计</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AF%E5%B7%AE%E5%88%86%E6%9E%90"><span class="toc-text">误差分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B1%BB%E5%81%8F%E6%96%9C%E7%9A%84%E8%AF%AF%E5%B7%AE%E5%BA%A6%E9%87%8F"><span class="toc-text">类偏斜的误差度量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E5%87%86%E7%8E%87%E5%92%8C%E6%9F%A5%E5%85%A8%E7%8E%87%E4%B9%8B%E9%97%B4%E7%9A%84%E6%9D%83%E8%A1%A1"><span class="toc-text">查准率和查全率之间的权衡</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-text">支持向量机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%9B%AE%E6%A0%87"><span class="toc-text">优化目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E8%BE%B9%E7%95%8C%E7%9A%84%E7%9B%B4%E8%A7%82%E7%90%86%E8%A7%A3"><span class="toc-text">大边界的直观理解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E8%BE%B9%E7%95%8C%E5%88%86%E7%B1%BB%E8%83%8C%E5%90%8E%E7%9A%84%E6%95%B0%E5%AD%A6%EF%BC%88-%E9%80%89%E4%BF%AE%EF%BC%89"><span class="toc-text">大边界分类背后的数学（ 选修）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B8%E5%87%BD%E6%95%B0"><span class="toc-text">核函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA"><span class="toc-text">使用支持向量机</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%81%9A%E7%B1%BB"><span class="toc-text">聚类</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A0%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%EF%BC%9A%E7%AE%80%E4%BB%8B"><span class="toc-text">无监督学习：简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#K-%E5%9D%87%E5%80%BC%E7%AE%97%E6%B3%95"><span class="toc-text">K-均值算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E7%9B%AE%E6%A0%87-1"><span class="toc-text">优化目标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E5%88%9D%E5%A7%8B%E5%8C%96-1"><span class="toc-text">随机初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E8%81%9A%E7%B1%BB%E6%95%B0"><span class="toc-text">选择聚类数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99%EF%BC%9A%E7%9B%B8%E4%BC%BC%E5%BA%A6-%E8%B7%9D%E7%A6%BB%E8%AE%A1%E7%AE%97%EF%BC%8C%E8%A1%A1%E9%87%8F%E6%8C%87%E6%A0%87"><span class="toc-text">参考资料：相似度&#x2F;距离计算，衡量指标</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%8D%E7%BB%B4"><span class="toc-text">降维</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%9C%BA%E4%B8%80%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8E%8B%E7%BC%A9"><span class="toc-text">动机一：数据压缩</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%9C%BA%E4%BA%8C%EF%BC%9A%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="toc-text">动机二：数据可视化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E9%97%AE%E9%A2%98"><span class="toc-text">主成分分析问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95"><span class="toc-text">主成分分析算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E4%B8%BB%E6%88%90%E5%88%86%E7%9A%84%E6%95%B0%E9%87%8F"><span class="toc-text">选择主成分的数量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8D%E5%BB%BA%E7%9A%84%E5%8E%8B%E7%BC%A9%E8%A1%A8%E7%A4%BA"><span class="toc-text">重建的压缩表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%BB%E6%88%90%E5%88%86%E5%88%86%E6%9E%90%E6%B3%95%E7%9A%84%E5%BA%94%E7%94%A8%E5%BB%BA%E8%AE%AE"><span class="toc-text">主成分分析法的应用建议</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B"><span class="toc-text">异常检测</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E7%9A%84%E5%8A%A8%E6%9C%BA"><span class="toc-text">问题的动机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83"><span class="toc-text">高斯分布</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-text">算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E5%92%8C%E8%AF%84%E4%BB%B7%E4%B8%80%E4%B8%AA%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F"><span class="toc-text">开发和评价一个异常检测系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%E4%B8%8E%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0%E5%AF%B9%E6%AF%94"><span class="toc-text">异常检测与监督学习对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E7%89%B9%E5%BE%81"><span class="toc-text">选择特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%85%83%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83%EF%BC%88%E9%80%89%E4%BF%AE%EF%BC%89"><span class="toc-text">多元高斯分布（选修）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%A4%9A%E5%85%83%E9%AB%98%E6%96%AF%E5%88%86%E5%B8%83%E8%BF%9B%E8%A1%8C%E5%BC%82%E5%B8%B8%E6%A3%80%E6%B5%8B%EF%BC%88-%E9%80%89%E4%BF%AE%EF%BC%89"><span class="toc-text">使用多元高斯分布进行异常检测（ 选修）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F"><span class="toc-text">推荐系统</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E5%BD%A2%E5%BC%8F%E5%8C%96"><span class="toc-text">问题形式化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E7%9A%84%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F"><span class="toc-text">基于内容的推荐系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8F%E5%90%8C%E8%BF%87%E6%BB%A4"><span class="toc-text">协同过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%91%E9%87%8F%E5%8C%96%EF%BC%9A%E4%BD%8E%E7%A7%A9%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3"><span class="toc-text">向量化：低秩矩阵分解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E8%A1%8C%E5%B7%A5%E4%BD%9C%E4%B8%8A%E7%9A%84%E7%BB%86%E8%8A%82%EF%BC%9A%E5%9D%87%E5%80%BC%E5%BD%92%E4%B8%80%E5%8C%96"><span class="toc-text">推行工作上的细节：均值归一化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E8%A7%84%E6%A8%A1%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0"><span class="toc-text">大规模机器学习</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%A7%E5%9E%8B%E6%95%B0%E6%8D%AE%E9%9B%86%E7%9A%84%E5%AD%A6%E4%B9%A0"><span class="toc-text">大型数据集的学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%B3%95"><span class="toc-text">随机梯度下降法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E6%89%B9%E9%87%8F%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D"><span class="toc-text">小批量梯度下降</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%A2%AF%E5%BA%A6%E4%B8%8B%E9%99%8D%E6%94%B6%E6%95%9B"><span class="toc-text">随机梯度下降收敛</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8%E7%BA%BF%E5%AD%A6%E4%B9%A0"><span class="toc-text">在线学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%A0%E5%B0%84%E5%8C%96%E7%AE%80%E5%92%8C%E6%95%B0%E6%8D%AE%E5%B9%B6%E8%A1%8C"><span class="toc-text">映射化简和数据并行</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%AE%9E%E4%BE%8B%EF%BC%9A%E5%9B%BE%E7%89%87%E6%96%87%E5%AD%97%E8%AF%86%E5%88%AB"><span class="toc-text">应用实例：图片文字识别</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0%E5%92%8C%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-text">问题描述和流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-text">滑动窗口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%A4%A7%E9%87%8F%E6%95%B0%E6%8D%AE%E5%92%8C%E4%BA%BA%E5%B7%A5%E6%95%B0%E6%8D%AE"><span class="toc-text">获取大量数据和人工数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8A%E9%99%90%E5%88%86%E6%9E%90%EF%BC%9A%E5%93%AA%E9%83%A8%E5%88%86%E7%AE%A1%E9%81%93%E7%9A%84%E6%8E%A5%E4%B8%8B%E5%8E%BB%E5%81%9A"><span class="toc-text">上限分析：哪部分管道的接下去做</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.md-text img:not([class]), .md-text .image-container img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

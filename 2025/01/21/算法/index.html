@@ -1,0 +1,1739 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>算法 - coygOdegaard</title>
+
+  
+    <meta name="description" content="排序亦或运算无进位相加   （1）a ^ 0 &#x3D; a；(2)a ^ a &#x3D; 0；(3)a ^ b &#x3D; b ^ a；(4)a ^ b ^ c &#x3D; a ^ (b ^ c) 一个数组中存在两个出现奇数次的数a和b，其它数的出现次数均为偶数次，如何找出这两个数。  将这个数组全部亦或后得到的数是a ^ b的结果，假设这个结果二进制表达式的第八位为1，则说明a和b第八">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法">
+<meta property="og:url" content="http://example.com/2025/01/21/%E7%AE%97%E6%B3%95/">
+<meta property="og:site_name" content="coygOdegaard">
+<meta property="og:description" content="排序亦或运算无进位相加   （1）a ^ 0 &#x3D; a；(2)a ^ a &#x3D; 0；(3)a ^ b &#x3D; b ^ a；(4)a ^ b ^ c &#x3D; a ^ (b ^ c) 一个数组中存在两个出现奇数次的数a和b，其它数的出现次数均为偶数次，如何找出这两个数。  将这个数组全部亦或后得到的数是a ^ b的结果，假设这个结果二进制表达式的第八位为1，则说明a和b第八">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250121102046322.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250121102121598.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250121103410811.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250121104242181.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250121104036793.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250121104848202.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250121110412736.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250121110844760.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250121111005227.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122110946983.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122111006395.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122113611409.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122113116941.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122113053228.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122115832420.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122115910638.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122120541772.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122160100922.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122160408776.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122161020308.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122212616182.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122162955519.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122162644379.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122221624828.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122222952313.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250122223941451.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123103930682.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123110009882.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123110258347.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123153505599.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123152645655.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207112728884.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207112924210.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207113417142.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123154045390.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123154424680.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123155541734.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123155447433.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123161955771.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123162047429.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123162114296.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123162251124.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123162612579.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250123163530354.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250124102504931.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250124153307081.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250124153843684.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250124155118525.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250124155456379.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250124155618417.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250124155909911.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125204451739.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125205203087.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125205349416.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125205420484.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125205743374.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125210050670.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125210126810.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125205935571.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125210657997.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125210934708.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125210949582.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125211013836.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125211514620.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125211549630.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125211913381.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125212121169.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125212314914.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125212329218.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125214328196.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125215119599.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125215429577.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125220059752.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125222216146.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125220611061.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201163731660.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125221834579.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125222432566.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125222847462.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125223000824.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250125223039458.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250304154404400.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250304154939461.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250304155458873.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250304155530758.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250304161110159.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250304161541971.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250304162034615.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250309201821857.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250309201958788.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250309202055116.png">
+<meta property="og:image" content="http://example.com/2025/01/21/source/imgs/$%7Bfiilname%7D/image-20250905112304107.png">
+<meta property="og:image" content="http://example.com/2025/01/21/source/imgs/$%7Bfiilname%7D/image-20250905112318857.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250126102013983.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250126103755687.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250126104437731.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250126104743413.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201212725729.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201212120592.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201212406972.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201213141228.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201213714088.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201213736743.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201213938776.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201214305319.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201214555337.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201215025511.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201221547300.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250201222254105.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205101328312.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205101609023.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205102129465.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205102648015.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205103010078.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205103419376.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205105238893.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205104349168.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205104936441.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205105009181.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205105823219.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205110240515.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205110329291.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250312151425680.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250312151619772.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250312151822306.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250312152047419.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250312152458466.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250312152814154.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250312152943631.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250312153135052.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250312153251843.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250312153840675.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250312153923596.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250312153953736.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205154645472.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205160005296.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205160221533.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205160750851.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205162522620.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205162721097.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205163210261.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205163511706.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205164308959.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205194235740.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205194254868.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205194723351.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205195608460.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205200333256.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205200645174.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205200708659.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205201211647.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205201317105.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205201949955.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205203117741.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250205202450221.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207113608382.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207120032831.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207120636558.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207120835488.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250206164243423.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250206164415198.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250206164625577.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250206170956375.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250206170448725.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250206170849000.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250206202557603.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250206203539758.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250206203611969.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250206214257499.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207105407891.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207110318169.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207110747437.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207111054424.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207111700142.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207111718489.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207111848134.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207111805596.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250207111821149.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250212163204236.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250212163505085.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250212164039953.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250212164159420.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250212164438479.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250212164556767.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250212164902148.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250212165215833.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250213204306260.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250213204335614.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250213204500043.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250213205633376.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250213210541557.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250213214711193.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250213215324521.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250214101922905.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250214102158668.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250214102907223.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250214103001684.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250214103656088.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250309203353276.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250309203446223.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250309203703200.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250309204216080.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250309204403251.png">
+<meta property="og:image" content="http://example.com/2025/01/21/source/imgs/$%7Bfiilname%7D/image-20250323170141181.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250309213018590.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310194826414.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310200058872.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310200607912.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310201517882.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310201854862.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310202620879.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310204440628.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310205302627.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310205716520.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310211130867.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310211602778.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310211808183.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310212715770.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250310212728622.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311151600585.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311152208645.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311152747213.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311153028263.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311153615301.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311154138823.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311154856276.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311155235509.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311155516233.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311155754804.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311155924029.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311160137312.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311160424162.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311160814920.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250311161231131.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250315192832948.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250315155603835.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250315172556936.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250315172904350.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250315173522739.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250315192345996.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250315164647121.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250315171723965.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250315172125743.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250315172140201.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316153124352.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316161737199.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316155421451.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316155016868.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316155700668.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316155434507.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316162412677.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316162634484.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316162719991.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316162839500.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316163118981.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316163258604.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316164323567.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316164337649.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316171455162.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316171747948.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250418104103680.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316172545374.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316172854666.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316172946002.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316173137982.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316191213179.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316191347930.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250316191357222.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250213205633376.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250213210541557.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250317195638841.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250317195851551.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250317195912315.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250317200138150.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250317201030919.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250317201346961.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250317201635914.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250317201748150.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250317201851864.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250317202641268.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250317203127641.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250404202124343.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250404202349226.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250404202520453.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250404202707153.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250404203707191.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250404203733735.png">
+<meta property="article:published_time" content="2025-01-21T02:01:50.000Z">
+<meta property="article:modified_time" content="2025-09-05T08:05:29.672Z">
+<meta property="article:author" content="Odegaard">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20250121102046322.png">
+  
+  
+  
+  <meta name="keywords" content="算法">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Odegaard","sameAs":[]},"dateCreated":"2025-01-21T10:01:50+08:00","dateModified":"2025-09-05T16:05:29+08:00","datePublished":"2025-01-21T10:01:50+08:00","description":"","headline":"算法","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/01/21/%E7%AE%97%E6%B3%95/"},"publisher":{"@type":"Organization","name":"Odegaard","sameAs":[]},"url":"http://example.com/2025/01/21/%E7%AE%97%E6%B3%95/","keywords":"算法","image":[]}</script>
+  
+</head>
+<body>
+
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">coygOdegaard</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/09/29/test-p/"><span class="title">test p</span></a><a class="item title" href="/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/"><span class="title">深度学习入门</span></a><a class="item title" href="/2025/01/21/%E7%AE%97%E6%B3%95/"><span class="title">算法</span></a><a class="item title" href="/2024/10/05/%E5%AE%9E%E6%88%98%E9%A2%98%E7%9B%AE/"><span class="title">实战题目</span></a><a class="item title" href="/2025/05/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="title">机器学习</span></a><a class="item title" href="/2025/07/08/python%E6%9A%91%E5%81%87/"><span class="title">python暑假</span></a><a class="item title" href="/2025/05/05/%E7%9C%9F%E9%A2%98%E6%8A%80%E5%B7%A7/"><span class="title">真题技巧</span></a><a class="item title" href="/2024/10/05/python2/"><span class="title">python2</span></a><a class="item title" href="/2024/10/08/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/"><span class="title">数据清洗</span></a><a class="item title" href="/2024/10/05/Java-1/"><span class="title">Java</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-01-21T02:01:50.000Z">2025-01-21</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-09-05T08:05:29.672Z">2025-09-05</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>算法</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="亦或运算"><a href="#亦或运算" class="headerlink" title="亦或运算"></a>亦或运算</h2><p>无进位相加</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250121102046322.png" alt="image-20250121102046322"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250121102121598.png" alt="image-20250121102121598"></p>
+<p>（1）a ^ 0 &#x3D; a；(2)a ^ a &#x3D; 0；(3)a ^ b &#x3D; b ^ a；(4)a ^ b ^ c &#x3D; a ^ (b ^ c)</p>
+<p>一个数组中存在两个出现奇数次的数a和b，其它数的出现次数均为偶数次，如何找出这两个数。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250121103410811.png" alt="image-20250121103410811"></p>
+<p>将这个数组全部亦或后得到的数是a ^ b的结果，假设这个结果二进制表达式的第八位为1，则说明a和b第八位上的数不同，那么就可以将这些数分成第八位为0和第八位为1的，两组分别亦或后得到的两个数就是a和b。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250121104242181.png" alt="image-20250121104242181"></p>
+<p>上述代码存在错误，应该修改为：(cur &amp; rightone) &#x3D;&#x3D; 0。</p>
+<p>对24行代码进行解析。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250121104036793.png" alt="image-20250121104036793"></p>
+<p>~：取反，&amp;：与运算。</p>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>分成两部分，左边有序，右边无序，将右边无序的元素一个一个地插入有序的左边。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250121104848202.png" alt="image-20250121104848202"></p>
+<p>i 和 j 必须不同，排序结果是升序。</p>
+<h2 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h2><p>无序也可以二分。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250121110412736.png" alt="image-20250121110412736"></p>
+<p>（2）t值要更新</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250121110844760.png" alt="image-20250121110844760"></p>
+<p>（3）<img src="/../source/imgs/$%7Bfiilname%7D/image-20250121111005227.png" alt="image-20250121111005227"></p>
+<p>局部最小定义：0位置上的数比1位置的要小，n-1位置上的数比n-2位置上的数要小，i 位置上的数比 i-1和 i+1的要小。</p>
+<p>若不懂看视频1、的一小时48分左右。</p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>分成左右两部分进行排序，左边和右边分别排序完后合并在一起。递归算法。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122110946983.png" alt="image-20250122110946983"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122111006395.png" alt="image-20250122111006395"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122113611409.png" alt="image-20250122113611409"></p>
+<p>暴力解很容易。</p>
+<p>例子：1，3，4，2，5</p>
+<p>转换原理：求小和，1的右边有四个数比1大，所以加4个1，3的右边有两个数比3大，所以加2个3，以此类推，要加1个4，1个2，0个5，小和为16。和右边进行比对，和归并排序中的merge有相似之处，可以改变merge来解决这个问题。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122113116941.png" alt="image-20250122113116941"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122113053228.png" alt="image-20250122113053228"></p>
+<p>在归并排序的过程中利用merge方法进行小和计算。</p>
+<p>1和3：1&lt;3，所以小和有一个1；</p>
+<p>1，3和4：1，3&lt;4，所以小和加上一个1和一个3；</p>
+<p>2和5：2&lt;5，加上一个2；</p>
+<p>1，3，4和2，5：对1进行判断的时候，因为左右两边都是排好序的，所以1小于2时代表右边两个数都比1大，所以要加上2个1，这个可							  以根据右边的索引判断要加几个。</p>
+<p>为了实现根据索引判断要加几个，必须进行排序。这个方法和归并排序很大的不同在于<strong>两数相等时必须先拷贝右组</strong>。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122115832420.png" alt="image-20250122115832420"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122115910638.png" alt="image-20250122115910638"></p>
+<p>小和问题是求右边有多少个数比它大，逆序对问题是求右边有多少个数比它小。</p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122120541772.png" alt="image-20250122120541772"></p>
+<p>问题一：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122160100922.png" alt="image-20250122160100922"></p>
+<p>荷兰国旗问题：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122160408776.png" alt="image-20250122160408776"></p>
+<p><strong>快排1.0</strong>：以数组的最后一个数作为标志值，小于这个数的全放在左边，大于这个数的放在右边（从倒数第二个位置开始放），最后将该数组的最后一个数也就是标志值与大于区域的第一个数交换位置，那么这个数的位置就固定下来了。接下来就是左右两个区域分别取该部分的最后一个数作为标志值重复前面的过程。</p>
+<p>标志值为5，大于5的区域的第一个数是6，两数交换位置。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122161020308.png" alt="image-20250122161020308"></p>
+<p><strong>快排2.0</strong>：相比于上面，这边多划分一个区域就是等于区域，相当于是荷兰国旗问题的思路，原理和1.0差不多，最后将最后一个数也就是标志值和大于区域的第一个数交换，那中间的就全是相同的数了，一次性搞定一部分，比1.0快一点，大于和小于区域按照同样思路做递归。</p>
+<p><strong>快排3.0</strong>：不是取数组的最后一个数，而是在数组中<strong>随机</strong>取一个数作为标志值，然后将这个数和数组最右侧的数交换，接下来步骤和上面的一样。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122212616182.png" alt="image-20250122212616182"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122162955519.png" alt="image-20250122162955519"></p>
+<p>swap是自己写的交换函数。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122162644379.png" alt="image-20250122162644379"></p>
+<p>partition的功能就是返回两个数据，相等的值的左边界和右边界，存储在一个数组中返回，该数组的大小肯定是2。</p>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><h3 id="基础和移动"><a href="#基础和移动" class="headerlink" title="基础和移动"></a>基础和移动</h3><p>堆结构：形状是满二叉树，大根堆：每个节点的值都是以它为头结点的整棵树中的最大值，小根堆刚好相反。</p>
+<p>优先级队列结构就是堆结构。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122221624828.png" alt="image-20250122221624828"></p>
+<p><strong>原数组为空时不断存入数据如何形成大根堆</strong>：一个空数组，heapsize &#x3D; 0，存入一个数据，heapsize++，在存入一个数据时，将该数据和自己的父节点的数据进行比较，若小于父节点则不变，大于父节点就和父节点交换位置，然后和父节点的父节点比较，直到父节点大于该数据或者成为头结点也就是索引等于0时停止。后续继续存入数据则按照该规律进行排序，最后得出的数组就是大根堆。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122222952313.png" alt="image-20250122222952313"></p>
+<p><strong>原本是大根堆，去除最大的数也就是头结点后，如何保持大根堆</strong>：去掉头结点后，将数组中的最后一个数调到头结点，heapsize–，相当于最后一个位置不储存数据了，然后头结点的两个子节点取最大值，若最大值大于头结点则交换，否则结束。若有交换，交换后假设该值在头结点的左孩子上，则该孩子节点的两个子节点取最大值并和该节点比较，直到最大值小于该节点的值或者没有孩子后结束。</p>
+<p>下面代码可以表示去除任意一个节点，并将最后一个数据调到这个位置后进行的操作。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250122223941451.png" alt="image-20250122223941451"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">left + 1 &lt; heapSize &amp;&amp; arr[left + 1] &gt; arr[left]这句话是if的条件</span><br></pre></td></tr></table></figure>
+
+<p>用户随意挑选一个数据进行更改如何保持大根堆：先进行heapInsert，再进行heapify。</p>
+<h3 id="排序-1"><a href="#排序-1" class="headerlink" title="排序"></a>排序</h3><p><strong>堆排序1.0</strong>：假设原始数据是3，5，9，4，6，7，0；先将它变成大根堆，相当于是用户一个一个给你数据，然后开始堆排序，就是跟上面的<strong>往上移动</strong>一样，先3，后5，一直到0，最后大根堆是9，6，7，3，4，5，0，heapSize&#x3D;7。这个时候取出头结点，将堆的最后一个位置移到头结点，heapSize–，heapSize&#x3D;6说明将最后一个点剥离出去了，头结点此时值为0，heapify，重新变成大根堆。然后再取出头结点，将堆的最后一个移到头结点，heapSize–，重复之前的过程。当heapSize&#x3D;0时停止。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123103930682.png" alt="image-20250123103930682"></p>
+<p><strong>堆排序2.0</strong>：用户给原始数据，直接从最后一个开始往前进行heapify将其变为大根堆，这个方法在将数据变为大根堆时时间复杂度更小，但总体时间复杂度不变，不过运行速度会更快一点。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123110009882.png" alt="image-20250123110009882"></p>
+<h3 id="优先队列结构——默认小根堆"><a href="#优先队列结构——默认小根堆" class="headerlink" title="优先队列结构——默认小根堆"></a>优先队列结构——默认小根堆</h3><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123110258347.png" alt="image-20250123110258347"></p>
+<p>假设k&#x3D;6且是小根堆的话，说明最小值一定在前7个数中，因为每个数的移动距离不会超过6，所以将前7个数排序变为小根堆，头结点一定是最小值，将头结点取出，将第八个数放到头结点上，heapify使其重新变为小根堆，取出头结点，按这个规律一直取下去，最后完成排序。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123153505599.png" alt="image-20250123153505599"></p>
+<p>下面是优先队列结构的简单运用：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123152645655.png" alt="image-20250123152645655"></p>
+<p>不传任何东西，默认小根堆进行处理。</p>
+<p>输出结果为3，4，4，8，9，10</p>
+<p>poll()方法，弹出并移除数据。</p>
+<p><strong>当题目只要求输入一个数据再输出一个数据时使用优先队列结构，若有什么复杂的操作或者想要以较小的代价排序的话必须自己手写堆。</strong></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207112728884.png" alt="image-20250207112728884"></p>
+<p>大根堆和小根堆配合。</p>
+<p>第一个数直接进大根堆。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207112924210.png" alt="image-20250207112924210"></p>
+<p>第三条的意思是（较大size的根堆的大小 - 较小size的根堆的大小）大于等于2，则从较大根堆移动一个数到较小根堆。大根堆较大的话，就是大根堆堆顶弹出进小根堆；小根堆较大的话，就是小根堆的堆顶弹出进大根堆。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207113417142.png" alt="image-20250207113417142"></p>
+<p>偶数个，两数相加除以2；奇数个，两个根堆中的一个。</p>
+<h2 id="比较器"><a href="#比较器" class="headerlink" title="比较器"></a>比较器</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123154045390.png" alt="image-20250123154045390"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">o1.id - o2.id &lt; 0，第一个参数o1排前面；&gt;0时第二个参数o2排前面；=0无所谓前后。</span><br><span class="line">o2.id - o1.id &lt; 0，第一个参数o1排前面；&gt;0时第二个参数o2排前面；=0无所谓前后。</span><br></pre></td></tr></table></figure>
+
+<p>例子：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250123154424680.png" alt="image-20250123154424680"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">如果不提前写比较器的话，也可以选择匿名内部类的方法</span><br><span class="line">Arrays.sort(students,new Comparator()&#123;</span><br><span class="line">	@Override</span><br><span class="line">    public int compare(Object o1, Object o2) &#123;</span><br><span class="line">  		int i1 = (Integer) o1;</span><br><span class="line">        int i2 = (Integer) o2;</span><br><span class="line">        return i1 - i2;</span><br><span class="line">  	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>用于优先序列上：</strong></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123155541734.png" alt="image-20250123155541734"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123155447433.png" alt="image-20250123155447433"></p>
+<p>new AComp()是一个实现了Comparator的一个类。</p>
+<p>现在输出是从大到小的顺序。</p>
+<h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><p>不基于两数比较的排序。</p>
+<h3 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h3><p>在数比较小的时候用，比如计算员工年龄排序，创建一个大小为200的数组，几岁就在索引几++，最后输出排序结果的时候按数组里存储的数输出，比如17的数据时3，就输出三个17.</p>
+<h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><p>假设原始数据是17，13，25，100，72；首先最大是三位数，所以全部数据补成三位数为017，013，025，100，072。</p>
+<p>然后创建10个桶，名字分别为0，1，2，~，9。</p>
+<p>首先按照个位数将各个数据按照顺序扔到桶里再依次倒出。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123161955771.png" alt="image-20250123161955771"></p>
+<p>然后按照十位数将各个数据按照顺序扔到桶里再依次倒出。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123162047429.png" alt="image-20250123162047429"></p>
+<p>最后按照百位数将各个数据按照顺序扔到桶里再依次倒出。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123162114296.png" alt="image-20250123162114296"></p>
+<p>下面的代码是优化过的，比较抽象，可以打草稿</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123162251124.png" alt="image-20250123162251124"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123162612579.png" alt="image-20250123162612579"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250123163530354.png" alt="image-20250123163530354"></p>
+<p>digit表示最大的值有几个十进制位。</p>
+<p>蓝色的代表以10为基底，是不会变的。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250124102504931.png" alt="image-20250124102504931"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250124153307081.png" alt="image-20250124153307081"></p>
+<p>一般选择快排，能用快排就用快排，快排虽然空间复杂度高，但实际上它的常数项低，跑得最快。</p>
+<p>有空间限制，很容易就超出空间了，就使用堆排。</p>
+<p>需要用到稳定性的时候，使用归并。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250124153843684.png" alt="image-20250124153843684"></p>
+<h1 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h1><h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><p>hashSet，hashMap</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250124155118525.png" alt="image-20250124155118525"></p>
+<h2 id="有序表"><a href="#有序表" class="headerlink" title="有序表"></a>有序表</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250124155456379.png" alt="image-20250124155456379"></p>
+<p>性能比哈希表差一点。</p>
+<p>6、7不是哈希表是有序表，图里面写错了。</p>
+<p><strong>不是基础类型的必须提供比较器。</strong></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250124155618417.png" alt="image-20250124155618417"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250124155909911.png" alt="image-20250124155909911"></p>
+<h2 id="链表题"><a href="#链表题" class="headerlink" title="链表题"></a>链表题</h2><p>该种题目都要分成面试和笔试来做。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125204451739.png" alt="image-20250125204451739"></p>
+<h3 id="其他题"><a href="#其他题" class="headerlink" title="其他题"></a>其他题</h3><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125205203087.png" alt="image-20250125205203087"></p>
+<p>笔试：设计一个栈，将链表存进去，根据先进后出的特性和链表比对。</p>
+<p>面试：</p>
+<p><strong>快慢指针</strong>：两个指针，快指针一次走两步，慢指针一次走一步，当快指针到达最后一个时，慢指针刚好到一半。</p>
+<p>初始：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250125205349416.png" alt="image-20250125205349416"></p>
+<p>中：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250125205420484.png" alt="image-20250125205420484"></p>
+<p>当慢指针来到中点位置的时候，往下遍历，将后面的逆序，3指向空，头尾分别用一个指针记住，然后A和B一起往中间走，一步步比对，若全都一样则为回文数，如果有一个先到空，就停止。</p>
+<p>最后：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250125205743374.png" alt="image-20250125205743374"></p>
+<p>在返回最终结果true和false之前，将链表恢复，然后输出结果。（其实也可以不用管）</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125210050670.png" alt="image-20250125210050670"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125210126810.png" alt="image-20250125210126810"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125205935571.png" alt="image-20250125205935571"></p>
+<p>笔试：准备一个Node型的数组，将链表存进去，然后进行排序，排完序后按顺序串起来就可以了。</p>
+<p>面试：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250125210657997.png" alt="image-20250125210657997"></p>
+<p>六个变量：大于区域的头和尾：sH和sT；等于区域的头和尾：eH和eT；小于区域的头和尾：bH和bT。</p>
+<p>记得考虑<strong>空指针</strong>问题。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125210934708.png" alt="image-20250125210934708"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125210949582.png" alt="image-20250125210949582"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125211013836.png" alt="image-20250125211013836"></p>
+<p>若申请<strong>额外空间</strong>：</p>
+<p>第一步：使用哈希表，key对应老节点，value对应新节点，就直接将老结点copy过去就好了。</p>
+<p>第二步：利用map的get()方法创建连接方式</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125211514620.png" alt="image-20250125211514620"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125211549630.png" alt="image-20250125211549630"></p>
+<p>不使用哈希表：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125211913381.png" alt="image-20250125211913381"></p>
+<p>先创建克隆结点，将克隆结点直接串在原节点后面，克隆结点指向原结点的下一个结点，先不管rand。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125212121169.png" alt="image-20250125212121169"></p>
+<p>然后一对一对的遍历，根据原结点的rand的next填充克隆结点的rand。</p>
+<p>最后更改next，使得新老链表分离出来。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125212314914.png" alt="image-20250125212314914"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125212329218.png" alt="image-20250125212329218"></p>
+<h3 id="找相交结点"><a href="#找相交结点" class="headerlink" title="找相交结点"></a>找相交结点</h3><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125214328196.png" alt="image-20250125214328196"></p>
+<p>相交就是共用结点的意思，两个结点的内存地址一样。</p>
+<p>先思考一个函数如何实现一个可能有环的链表，有环的话返回第一个入环的结点，否则返回空的功能。</p>
+<p>创建一个Set用来存储Node结点，遇到一个Node时，先判断Set中是否包含该Node，没有的话就添加进Set，然后继续遍历下一个Node，如果Set中包含了该Node，说明这就是第一个入环的结点。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125215119599.png" alt="image-20250125215119599"></p>
+<p>快慢指针方法：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125215429577.png" alt="image-20250125215429577"></p>
+<p>刚开始快慢指针都在头结点，快指针走两步，慢指针走一步。</p>
+<p>如果有环的话，快指针和慢指针肯定会在环中相遇，且不会超过两圈（因为快指针的速度是慢指针的两倍）。</p>
+<p><strong>当相遇的时候，快指针回到开头，慢指针不动，接下来两个指针每次分别都只走一步，它俩最后一定会在入环第一个结点相遇。</strong></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125220059752.png" alt="image-20250125220059752"></p>
+<p>对于找<strong>公共交点</strong>的这道题目，给我们两个链表，这两个链表分别调用上面这个函数，就能找到这两个链表各自的第一个入环结点。</p>
+<p><strong>先用getLoopNode方法判断是否有环。</strong></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125222216146.png" alt="image-20250125222216146"></p>
+<p>loop1和loop2代表第一个链表和第二个链表的第一个入环结点。</p>
+<p>（1）若是两个无环链表，两个相交的话，后面的部分肯定是公共部分。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125220611061.png" alt="image-20250125220611061"></p>
+<p>先求各自的end结点和长度。</p>
+<p>先判断end1和end2是否相等，若不相等则说明没有相交。如果相等的话，它们是相交部分的最后一个结点，那相交部分的第一个结点怎么找？链表1长度为100，先走20步，然后链表2从头结点出发，跟着走，它俩一定会在第一个相交结点处相遇。（因为相交之后的公共部分长度一样，所以长的链表先走差值部，然后短链表再走，那它们就会在第一个相交结点处相遇）</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250201163731660.png" alt="image-20250201163731660"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125221834579.png" alt="image-20250125221834579"></p>
+<p>（2）不可能相交</p>
+<p>（3）都有环。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125222432566.png" alt="image-20250125222432566"></p>
+<p>第二种情况和无环情况解法是一样的。</p>
+<p>区分第一种和第三种：loop1继续往下，loop2不动，若loop1可以和loop2相遇，则是第三种，否则是第一种。若是第一种则无相交，返回null，若是第三种，则返回loop1和loop2都可以。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125222847462.png" alt="image-20250125222847462"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125223000824.png" alt="image-20250125223000824"></p>
+<p>上面都是方法函数，这道题的主函数如下：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250125223039458.png" alt="image-20250125223039458"></p>
+<h2 id="基础提升"><a href="#基础提升" class="headerlink" title="基础提升"></a>基础提升</h2><p>比如说输入40亿个数，要找出出现次数最多的那个数，要求空间小。可以使用哈希函数算出个个数的哈希码，然后%100，有一百个组，先进行分类，然后选出个数最多的那个组再进行查找，这样用的空间就少了。</p>
+<p>去看java中关于哈希函数的内容。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250304154404400.png" alt="image-20250304154404400"></p>
+<p>利用两张哈希表来解决，哈希表的操作的时间复杂度都是O(1)，不过是比较大的常数时间。</p>
+<p>一表：&lt;value,index&gt;，二表：&lt;index,value&gt;，假设输入26个字母</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250304154939461.png" alt="image-20250304154939461"></p>
+<p>假如删除的时候就直接删除，例如删除C，则两张表上面会出现空区域，那么当删除的数据很多的时候，空区域就会很多，那么随机返回任何一个key的时候可能就需要尝试很多次，所以不能直接删除，要将删除后的空洞填上。办法就是删除数据后拿最后一条记录补上这个空洞，然后删除最后一条记录，size–。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250304155458873.png" alt="image-20250304155458873"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250304155530758.png" alt="image-20250304155530758"></p>
+<h3 id="布隆过滤器"><a href="#布隆过滤器" class="headerlink" title="布隆过滤器"></a>布隆过滤器</h3><p>只有add、check功能，要求占用内存小。</p>
+<p>一般是用来做黑名单系统的，比如一个浏览器，将一部分假如黑名单中，那么这部分就不能被访问到，使用hashset记录的话，占用空间过大。可以使用bit类型的数组来记录，这样占用的空间就很少。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250304161110159.png" alt="image-20250304161110159"></p>
+<p>使用int数组来表示bit数组，一个int占8B，32个bit，所以按理来说arr[0]可以表示0<del>31的状态，arr[1]就可以表示32</del>63的状态。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250304161541971.png" alt="image-20250304161541971"></p>
+<p>numIndex是在int数组中的索引，bitIndex代表的是在arr[numIndex]的32位中是哪一位。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250304162034615.png" alt="image-20250304162034615"></p>
+<p>上面是思路，布隆过滤器就是，比如一个字符串，通过n个哈希函数分别算出值然后%m，根据最后的结果将值变为1，查询一个字符串是不是在里面的时候，也是利用这些哈希函数进行相同的操作最后取出n个值，这n个值中有一个值不是1那它就不在里面。</p>
+<p>布隆过滤器会存在错误，就是会将不应该进入黑名单中的人拉入黑名单，这是因为m有限，可能会发生冲突，然后恰好全都为1。</p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250309201821857.png" alt="image-20250309201821857"></p>
+<p>设计一个infect函数，作用就是碰到1将那一片1都变成2，几次infect就是几个岛。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250309201958788.png" alt="image-20250309201958788"></p>
+<p>N:宽，M:长，res:岛的数量。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250309202055116.png" alt="image-20250309202055116"></p>
+<h1 id="字典序排列算法"><a href="#字典序排列算法" class="headerlink" title="字典序排列算法"></a>字典序排列算法</h1><p>从小到大寻找下一个字典序排列：</p>
+<ul>
+<li>从右向左找到第一个 i，使得 P[i] &lt; P[i+1]。如果找不到这样的 i，说明当前排列已经是最大的，下一个排列就是最小的排列（或者说，没有更大的排列了）。</li>
+<li>从右向左找到第一个 j，使得 P[j] &gt; P[i]。</li>
+<li>交换 P[i] 和 P[j]。</li>
+<li>将 P[i+1] 到末尾的元素反转。</li>
+</ul>
+<img src="../source/imgs/${fiilname}/image-20250905112304107.png" alt="image-20250905112304107" style="zoom:50%;" />
+
+<img src="../source/imgs/${fiilname}/image-20250905112318857.png" alt="image-20250905112318857" style="zoom:50%;" />
+
+<p>对于上面这道题，它其实就是简单的排列组合，不要想复杂了，比如1 2 3 4 5 6 7 8 9 10，最大的数是10 9 8 7 6 5 4 3 2 1，而不是9开头的。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">def next_permutation(arr):</span><br><span class="line">    n = len(arr)</span><br><span class="line">    k = -1</span><br><span class="line">    for i in range(n - 2, -1, -1):</span><br><span class="line">        if int(arr[i]) &lt; int(arr[i + 1]):</span><br><span class="line">            k = i</span><br><span class="line">            break</span><br><span class="line">   # 下面这一步的含义是循环，就是当当前的数为最大数时，下一个需要出现的数就是最小数，在这题是不会出现这种情况的，不过可以了解一下</span><br><span class="line">    if k == -1:</span><br><span class="line">        arr.sort(key=lambda x: int(x))</span><br><span class="line">        return arr</span><br><span class="line"></span><br><span class="line">    l = -1</span><br><span class="line">    for i in range(n - 1, k, -1):</span><br><span class="line">        if int(arr[k]) &lt; int(arr[i]):</span><br><span class="line">            l = i</span><br><span class="line">            break</span><br><span class="line"></span><br><span class="line">    arr[k], arr[l] = arr[l], arr[k]</span><br><span class="line">    arr[k + 1:] = arr[k + 1:][::-1]</span><br><span class="line">    return arr</span><br><span class="line"></span><br><span class="line">n = int(input())</span><br><span class="line">m = int(input())</span><br><span class="line">initial = input().split()</span><br><span class="line">for _ in range(m):</span><br><span class="line">    initial = next_permutation(initial)</span><br><span class="line">print(&#x27; &#x27;.join(initial))</span><br></pre></td></tr></table></figure>
+
+<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250126102013983.png" alt="image-20250126102013983"></p>
+<p>和c语言中的不大一样，因为java中没有指针这个定义。</p>
+<p>把数据结构看一遍。</p>
+<p>使用递归和非递归方法实现二叉树的遍历，</p>
+<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>先序遍历：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250126103755687.png" alt="image-20250126103755687"></p>
+<p>Stack类继承自Vector类，上面的push(E e)是Stack类的专门方法，用于将元素压入栈顶，add(E e)是Vector的方法，在Stack中没有重写，不过可以达到和push相同的效果。</p>
+<p>后序遍历：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250126104437731.png" alt="image-20250126104437731"></p>
+<p>按照头右左的顺序将结点入栈，然后将弹出的结点压入另一个栈中，最后输出这个栈，结果就是左右头。</p>
+<p>中序遍历：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250126104743413.png" alt="image-20250126104743413"></p>
+<h2 id="二叉树相关概念及其实现判断"><a href="#二叉树相关概念及其实现判断" class="headerlink" title="二叉树相关概念及其实现判断"></a>二叉树相关概念及其实现判断</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250201212725729.png" alt="image-20250201212725729"></p>
+<p>1、搜索二叉树就是左子树的值小于根的值，右子树的值大于根的值。</p>
+<p>通过改写中序遍历来解决</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250201212120592.png" alt="image-20250201212120592"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250201212406972.png" alt="image-20250201212406972"></p>
+<p>2、<img src="/../source/imgs/$%7Bfiilname%7D/image-20250201213141228.png" alt="image-20250201213141228"></p>
+<p>这边解题的思路是利用宽度遍历来判断。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250201213714088.png" alt="image-20250201213714088"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250201213736743.png" alt="image-20250201213736743"></p>
+<p>3、较麻烦的做法就是先求最大深度和总结点数，然后根据这俩之间的数学关系判断。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250201213938776.png" alt="image-20250201213938776"></p>
+<h3 id="二叉树解题套路"><a href="#二叉树解题套路" class="headerlink" title="二叉树解题套路"></a>二叉树解题套路</h3><p>在<strong>可以向左子树要信息，可以向右子树要信息</strong>的情况下怎么解决题目。</p>
+<p><strong>这个套路可以解决一切树型DP（动态规划）的问题。</strong></p>
+<p>以第四题为例子。</p>
+<p>4、<img src="/../source/imgs/$%7Bfiilname%7D/image-20250201214305319.png" alt="image-20250201214305319"></p>
+<p>先列出可能性：一棵树是平衡二叉树说明它的左右子树都是平衡二叉树且第三个条件。</p>
+<p>可能性固定后，整理需要左右子树给你提供什么样的信息。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250201214555337.png" alt="image-20250201214555337"></p>
+<p>从上面可以看出左右子树所需要的信息是一样，都是是否是平衡二叉树以及高度是多少，递归套路。</p>
+<p>在写的时候总是默认左子树给你一个信息，然后右子树给你一个信息，接着继续写如何利用这两个信息（返回的这两个信息包含了子树需要返回给你的全部信息，把它们当作都是有实值的）。最后一步肯定是返回你需要的信息，那么获得左右子树提供的信息后要写的就是如何利用这两个信息来得到你需要返回的信息。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250201215025511.png" alt="image-20250201215025511"></p>
+<p>接下来以这个思路解决一下第一题。</p>
+<p>可能性：左子树是搜索二叉树，右子树是搜索二叉树，左子树的最大值小于该点的值，右子树的最小值大于该点的值。</p>
+<p>将这个可能性弄成一个全集。</p>
+<p>提供信息：左子树要提供是否是二叉树，以及它的最大值；右子树要提供是否是二叉树，以及它的最小值。</p>
+<p>现在要提供的信息不一样，但递归套路要求对每个结点的要求是一样的才叫递归，所以返回这棵树是否是二叉树以及它的最大最小值。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250201221547300.png" alt="image-20250201221547300"></p>
+<p>第三题</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250201222254105.png" alt="image-20250201222254105"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205101328312.png" alt="image-20250205101328312"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205101609023.png" alt="image-20250205101609023"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205102129465.png" alt="image-20250205102129465"></p>
+<p><code>while o2 set1</code>意思是接下来就是不断寻找o2的父节点并对比是否在set1中，如果存在那就是最低公共祖先。</p>
+<p>上面的方法好理解但时间和空间复杂度较高，下面的代码更好但较难理解。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205102648015.png" alt="image-20250205102648015"></p>
+<p>这道题目会有以下几种情况（LCA代表最低公共祖先）：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205103010078.png" alt="image-20250205103010078"></p>
+<p>第二种情况：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250205103419376.png" alt="image-20250205103419376"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205105238893.png" alt="image-20250205105238893"></p>
+<p>1）x有右树的时候，x的后继节点一定是右树的<strong>最左</strong>结点；</p>
+<p>2）<img src="/../source/imgs/$%7Bfiilname%7D/image-20250205104349168.png" alt="image-20250205104349168"></p>
+<p>x不断地往上找，当找到一个结点是它父亲的左孩子时，这个结点的父亲就是x的后继节点，因为在中序遍历时，x一定是左树上最后一个打印的结点。</p>
+<p><strong>但是在中序遍历中肯定会有一个结点它没有后继节点，就是在中序遍历时最后一个打印的结点，所以返回null。</strong></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205104936441.png" alt="image-20250205104936441"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205105009181.png" alt="image-20250205105009181"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205105823219.png" alt="image-20250205105823219"></p>
+<p>就是null用特殊字符表示，一个结点的结束用下划线就行。先序，中序，后序道理都一样。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205110240515.png" alt="image-20250205110240515"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205110329291.png" alt="image-20250205110329291"></p>
+<h2 id="树形dp套路（补充）"><a href="#树形dp套路（补充）" class="headerlink" title="树形dp套路（补充）"></a>树形dp套路（补充）</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250312151425680.png" alt="image-20250312151425680"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250312151619772.png" alt="image-20250312151619772"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250312151822306.png" alt="image-20250312151822306"></p>
+<p>d到c 的距离为4。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250312152047419.png" alt="image-20250312152047419"></p>
+<p>x是头结点。上图的最大距离在左树且不经过x。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250312152458466.png" alt="image-20250312152458466"></p>
+<p><strong>很多题目都是根据头结点参与不参与来分类的。</strong></p>
+<p>由上面的分类可以知道需要子树提供什么信息：子树的高和子树的最大距离。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250312152814154.png" alt="image-20250312152814154"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250312152943631.png" alt="image-20250312152943631"></p>
+<p><strong>二叉树的递归套路是建立在如果我可以向左树和右树获取信息的情况下，我该如何求解我的答案有哪些可能性。</strong></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250312153135052.png" alt="image-20250312153135052"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250312153251843.png" alt="image-20250312153251843"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250312153840675.png" alt="image-20250312153840675"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250312153923596.png" alt="image-20250312153923596"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250312153953736.png" alt="image-20250312153953736"></p>
+<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="表示模板"><a href="#表示模板" class="headerlink" title="表示模板"></a>表示模板</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205154645472.png" alt="image-20250205154645472"></p>
+<p>表示图的方法有很多，背好自己平时表达图的方式的算法模板，将遇到的新的图的表达方式转化为自己平时用的表达方式，再代入算法模板。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205160005296.png" alt="image-20250205160005296"></p>
+<p>Node是原本的点，包含这个点的所有消息，Integer存储的是点所对应的编号，nodes就是点集合，edges是边集合。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205160221533.png" alt="image-20250205160221533"></p>
+<p>value：自己的数据项（value前面的数据类型是具体情况具体分析）；in：入度；out：出度；nexts：代表由这个点发散出去的边所连接的点，它的直接邻居；edges：属于这个点的边有哪些。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205160750851.png" alt="image-20250205160750851"></p>
+<p>weight：权值</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p><strong>可以去看数据结构中图的相关算法。</strong></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205162522620.png" alt="image-20250205162522620"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205162721097.png" alt="image-20250205162721097"></p>
+<p>应该是深度优先遍历。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205163210261.png" alt="image-20250205163210261"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205163511706.png" alt="image-20250205163511706"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205164308959.png" alt="image-20250205164308959"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205194235740.png" alt="image-20250205194235740"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205194254868.png" alt="image-20250205194254868"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205194723351.png" alt="image-20250205194723351"></p>
+<p>从边的角度生成最小生成树。</p>
+<p>最好使用并查集来实现，效率高，下面算法没有使用并查集，感觉不如数据结构里实现得简单。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205195608460.png" alt="image-20250205195608460"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205200333256.png" alt="image-20250205200333256"></p>
+<p>利用上面得方法根据原理就可以得出具体实现了。</p>
+<p>下面的实现是并查集方法。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205200645174.png" alt="image-20250205200645174"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205200708659.png" alt="image-20250205200708659"></p>
+<p>从点的角度思考生成最小生成树。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205201211647.png" alt="image-20250205201211647"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205201317105.png" alt="image-20250205201317105"></p>
+<p>上面的代码会将一条边重复放进优先队列中去，但不会影响结果，因为这条边所连接的点已经放进Set中了，会被排掉，只会增加常数处理时间。</p>
+<p>for循环是为了解决出现森林的情况。若已经说明不会出现森林，则不需要for循环。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205201949955.png" alt="image-20250205201949955"></p>
+<p>寻找最短路径。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205203117741.png" alt="image-20250205203117741"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250205202450221.png" alt="image-20250205202450221"></p>
+<p><code>getMinDistanceAndUnselectedNode(distanceMap,selectedNodes)</code>代表的是要从distanceMap中挑选一个最小的记录，但这个最小记录不能是已经选过的，也就是这条记录不能在selectedNodes里。</p>
+<h1 id="N皇后问题"><a href="#N皇后问题" class="headerlink" title="N皇后问题"></a>N皇后问题</h1><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207113608382.png" alt="image-20250207113608382"></p>
+<p>按行来深度优先遍历。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207120032831.png" alt="image-20250207120032831"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207120636558.png" alt="image-20250207120636558"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207120835488.png" alt="image-20250207120835488"></p>
+<h1 id="前缀树"><a href="#前缀树" class="headerlink" title="前缀树"></a>前缀树</h1><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250206164243423.png" alt="image-20250206164243423"></p>
+<p>前缀树的结点定义：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250206164415198.png" alt="image-20250206164415198"></p>
+<p>pass代表经过这个点几次，end代表这个点作为结尾几次，前缀树以一个空结点开始。</p>
+<p>上面只准备了26条路，如果路径数量很多的话，可以用哈希表来表示，key代表有哪条路，value就代表通过这条路走向的结点。如果想要路径有序，那就使用有序表(TreeMap)。</p>
+<p>建立一个前缀树：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250206164625577.png" alt="image-20250206164625577"></p>
+<p>root代表根结点，根结点的p值代表有多少个字符串。或者理解成由多少个字符串以空作为前缀，而任何字符串都以空作为前缀。而如果加入空串的话，根结点的pass++，end++。</p>
+<p>删除功能：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250206170956375.png" alt="image-20250206170956375"></p>
+<p>在java中，只要让头结点为空，使得后面的数据无法被找到，那么jdk会自动帮你释放空间。</p>
+<p>查询功能：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250206170448725.png" alt="image-20250206170448725"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250206170849000.png" alt="image-20250206170849000"></p>
+<h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><p><strong>局部-&gt;整体</strong></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250206202557603.png" alt="image-20250206202557603"></p>
+<p>贪心算法的题目代码一般都不长。</p>
+<p>![屏幕截图 2025-02-06 202653](..&#x2F;source&#x2F;imgs&#x2F;${fiilname}&#x2F;屏幕截图 2025-02-06 202653.png) </p>
+<p>哪个会议结束时间早就先安排谁。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250206203539758.png" alt="image-20250206203539758"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250206203611969.png" alt="image-20250206203611969"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250206214257499.png" alt="image-20250206214257499"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207105407891.png" alt="image-20250207105407891"></p>
+<p><strong>堆和排序是最经常使用的技巧。</strong></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207110318169.png" alt="image-20250207110318169"></p>
+<p>哈夫曼树，easy。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207110747437.png" alt="image-20250207110747437"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207111054424.png" alt="image-20250207111054424"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207111700142.png" alt="image-20250207111700142"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207111718489.png" alt="image-20250207111718489"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207111848134.png" alt="image-20250207111848134"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207111805596.png" alt="image-20250207111805596"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250207111821149.png" alt="image-20250207111821149"></p>
+<p><code>peek()</code> 用于<strong>查看</strong>队列头部元素，不会移除。</p>
+<p>如果队列为空，<code>peek()</code> 返回 <code>null</code>。</p>
+<p><code>poll()</code> 用于<strong>取出</strong>队列头部元素，并将其从队列中移除。</p>
+<h1 id="暴力递归"><a href="#暴力递归" class="headerlink" title="暴力递归"></a>暴力递归</h1><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250212163204236.png" alt="image-20250212163204236"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250212163505085.png" alt="image-20250212163505085"></p>
+<p>数据结构书里递归那部分有讲过。</p>
+<p>将 i 个目标从from移动到to上面去。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250212164039953.png" alt="image-20250212164039953"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250212164159420.png" alt="image-20250212164159420"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250212164438479.png" alt="image-20250212164438479"></p>
+<p>每个字符都有两种可能，要或者不要。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250212164556767.png" alt="image-20250212164556767"></p>
+<p>最后一个是空。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250212164902148.png" alt="image-20250212164902148"></p>
+<p>printtList，打印当前列表。自己补充printList和copyList方法。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250212165215833.png" alt="image-20250212165215833"></p>
+<p>第一个：例：abc-&gt;abc,acb,bac,bca,cab,cba</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250213204306260.png" alt="image-20250213204306260"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250213204335614.png" alt="image-20250213204335614"></p>
+<p>解决第二个问题，排列里要求不重复，就是将上述代码中的注释部分去掉，变成：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250213204500043.png" alt="image-20250213204500043"></p>
+<p>visit代表某一个字符试没试过。就比如说abca，当在试的时候，交换第一个位置，第一个a使得visit[0]&#x3D;true，那么当来到最后一个a的时候，由于visit[0]&#x3D;true，所以就不会将它与第一个位置互换。</p>
+<p>如果不使用这个，直接对result进行去重，比如说变成set类型，也可以，但时间会比上面的代码长，因为上面的代码遇到重复字符就不试了，而set则是将字符存进result里才会去重。时间复杂度没有变化，但常数时间变了。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250213205633376.png" alt="image-20250213205633376"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250213210541557.png" alt="image-20250213210541557"></p>
+<p>f 代表先手拿牌，s 代表后手拿牌。为什么s 返回的是最小值，因为当你拿完牌后轮对手抓，对手一定会给你留接下来所有策略里值最小的，所以就返回最小值；当对手拿完牌后，对于剩下的牌你是先手，所以min里面是先手。</p>
+<p>为什么win1有一个后手拿牌：因为当你后手的时候，一定是别人取走了两个先手里最好的那个先手，所以你只能取两个先手中较差的那个，<strong>后手拿牌不一定输</strong>。</p>
+<p><strong>竟然后手已经比先手差了为什么还要比较，而不是win1直接返回先手。</strong>当数量为偶数个的时候，先手比&#x3D;必赢，但数量为奇数个的时候就不一定了，比如：1，3，1。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250213214711193.png" alt="image-20250213214711193"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250213215324521.png" alt="image-20250213215324521"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250214101922905.png" alt="image-20250214101922905"></p>
+<p>依旧是从左往右尝试。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250214102158668.png" alt="image-20250214102158668"></p>
+<p>分成这俩部分，前面是固定下来的。当i 位置为0时，它不能与任何的匹配，那就返回0；当i 不为0时，1）i 固定，i+1及后面的再判断；2）当i 上的数字是3~9，只能做一个决定就是i 固定；如果是1或2，那要么i 固定，当i 为1时，要么i 固定或者和i+1当作一个整体，当i 为2时，要么i 固定或者当 i+1 位置上的数小于7时可以一起看作一个整体。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250214102907223.png" alt="image-20250214102907223"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250214103001684.png" alt="image-20250214103001684"></p>
+<p>从左往右尝试，i 要或者i 不要。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250214103656088.png" alt="image-20250214103656088"></p>
+<h1 id="并查集"><a href="#并查集" class="headerlink" title="并查集"></a>并查集</h1><p>相当于一个图状结构，查找函数就是查找两个元素的根节点是不是同一个元素，是的话就在同一个集合，否则相反。</p>
+<p>两个函数：</p>
+<p>1、boolean 类型的，查找两个元素是不是在同一个类型；</p>
+<p>2、void 类型，将两个集合合并。元素少的集合挂在元素多的哪个集合下面。</p>
+<p>下面的并查集相关算法适合比较复杂的元素，而比较简单的元素适合可以数组来表示，这个可以去看天梯赛题目的那道题，关于城市沦陷的题目。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250309203353276.png" alt="image-20250309203353276"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250309203446223.png" alt="image-20250309203446223"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250309203703200.png" alt="image-20250309203703200"></p>
+<p>elementMap 相当于是自己一个元素对应这个元素自己的集合，就是每个元素当都建立一个自己的集合。</p>
+<p>fatherMap 就是每个元素的集合的父节点是谁。</p>
+<p>sizeMap 储存的是每个集合里面有多少个元素。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250309204216080.png" alt="image-20250309204216080"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250309204403251.png" alt="image-20250309204403251"></p>
+<p>这边的findHead方法最后会将这条路径上的所有结点都直接指向代表节点。</p>
+<h1 id="带权并查集"><a href="#带权并查集" class="headerlink" title="带权并查集"></a>带权并查集</h1><p>注意值的变化，在Find函数里面，要注意在更新父节点的时候也要更新权值。</p>
+<img src="../source/imgs/${fiilname}/image-20250323170141181.png" alt="image-20250323170141181" style="zoom:50%;" />
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">5 3 3</span><br><span class="line">1 5 15</span><br><span class="line">4 5 9</span><br><span class="line">2 3 5</span><br><span class="line">1 5</span><br><span class="line">1 3</span><br><span class="line">1 2</span><br><span class="line">输出：</span><br><span class="line">15</span><br><span class="line">6</span><br><span class="line">UNKNOWN</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.IOException;</span><br><span class="line">import java.io.InputStreamReader;</span><br><span class="line">import java.io.StreamTokenizer;</span><br><span class="line">//带权并查集</span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    public static int[] father;    //记录根节点</span><br><span class="line">    public static long[] value; //value[i]代表i到其根节点的路径长度</span><br><span class="line">    public static StreamTokenizer st=new StreamTokenizer(new BufferedReader(new InputStreamReader(System.in)));</span><br><span class="line">    public static void main(String[] args) throws IOException&#123;</span><br><span class="line">        int N=nextInt();    //数组长度</span><br><span class="line">        int M=nextInt();    //已知的部分和数量</span><br><span class="line">        int Q=nextInt();    //询问的部分和数量</span><br><span class="line">        father=new int[N+1];</span><br><span class="line">        value=new long[N+1];</span><br><span class="line">        init(N);</span><br><span class="line">        for(int i=0;i&lt;M;i++) &#123;</span><br><span class="line">            int left=nextInt();</span><br><span class="line">            int right=nextInt();</span><br><span class="line">            long s=nextLong();</span><br><span class="line">            left--;</span><br><span class="line">            union(left,right,s);</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i=0;i&lt;Q;i++) &#123;</span><br><span class="line">            int left=nextInt();</span><br><span class="line">            int right=nextInt();</span><br><span class="line">            left--;</span><br><span class="line">            int leftFather=find(left);</span><br><span class="line">            int rightFather=find(right);</span><br><span class="line">            if(leftFather==rightFather) &#123;</span><br><span class="line">                System.out.println(value[left]-value[right]);</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                System.out.println(&quot;UNKNOWN&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    public static void init(int n) &#123;</span><br><span class="line">        for(int i=0;i&lt;=n;i++) &#123;</span><br><span class="line">            father[i]=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //带权并查集得到查找操作</span><br><span class="line">    public static int find(int x) &#123;</span><br><span class="line">        if(father[x]==x) &#123;</span><br><span class="line">            return x;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            int tmp=father[x];</span><br><span class="line">            father[x]=find(father[x]);</span><br><span class="line">            value[x]+=value[tmp];</span><br><span class="line">            return father[x];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    //带权并查集合并操作</span><br><span class="line">    public static void union(int left,int right,long s) &#123;</span><br><span class="line">        int leftFather = find(left);</span><br><span class="line">        int rightFather=  find(right);</span><br><span class="line">        if(leftFather!=rightFather) &#123;</span><br><span class="line">            //让小根节点指向大根节点</span><br><span class="line">            int min=Math.min(leftFather,rightFather);</span><br><span class="line">            int max=Math.max(leftFather,rightFather);</span><br><span class="line">            father[min]=max;</span><br><span class="line">            value[min]=Math.abs(-value[left]+value[right]+s);</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">    public static int nextInt() throws IOException&#123;</span><br><span class="line">        st.nextToken();</span><br><span class="line">        return (int)st.nval;</span><br><span class="line">    &#125;</span><br><span class="line">    public static long nextLong() throws IOException&#123;</span><br><span class="line">        st.nextToken();</span><br><span class="line">        return (long) st.nval;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h1><p>我记得数据结构里有这个，可以去看一下。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250309213018590.png" alt="image-20250309213018590"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310194826414.png" alt="image-20250310194826414"></p>
+<p>i1是在str1中比对的位置，i2是在str2中比对的位置。</p>
+<p>求解next[]数组（next值的含义是从头开始的字符串和i 位置的前缀一样的最大字符个数）：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310200058872.png" alt="image-20250310200058872"></p>
+<p>求i 位置的next值为多少，那就看i-1位置的next值为多少，假设为n，接下来就看str2[n]是否等于str2[i -1]，如果等于的话，那么next[i]&#x3D;n+1；如果不相等的话：<img src="/../source/imgs/$%7Bfiilname%7D/image-20250310200607912.png" alt="image-20250310200607912"></p>
+<p>因为next[i-1]&#x3D;8，所以接下来跳转到str2[next[8]]，看它是否和i-1位置的相等，还不相等的话，根据上图跳转到str2[next[3]]，看是否相等，不相等的话因为已经到头了，所以next[i]&#x3D;0。如果哪一个等于的话，那next[i]&#x3D;那个位置的next值加一。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310201517882.png" alt="image-20250310201517882"></p>
+<p>cn是和i-1的字符比对的索引。</p>
+<h1 id="Manacher算法"><a href="#Manacher算法" class="headerlink" title="Manacher算法"></a>Manacher算法</h1><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310201854862.png" alt="image-20250310201854862"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310202620879.png" alt="image-20250310202620879"></p>
+<p>扩充原字符串：在原字符串的两侧和每个字符的中间都添加一个特殊字符（不要求是原字符串中没有出现的）。</p>
+<p>然后接下来在扩充字符串上面寻找最大回文子串的长度，就是以一个字符为中心向左右两边扩充比对，最后每个字符都可以得到以它为中心的回文子串的长度，最后将这个长度 &#x2F;2 得到的答案都是原字符串的回文子串的长度之一。这个方法不会漏掉原字符串中回文子串为偶数个时的答案。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310204440628.png" alt="image-20250310204440628"></p>
+<p>R是回文子串的最大右边界，R只会增大，初始值为-1；</p>
+<p>C是记录最大右边界时那个回文子串的中心索引。</p>
+<p>接下来优化寻找最大回文子串的过程：</p>
+<p>1）当作为中心的索引超过R时，没有任何优化，就直接往两边扩寻找回文子串，记得更新R和C；</p>
+<p>2）来到的点在最大回文右边界也就是R中时，</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310205302627.png" alt="image-20250310205302627"></p>
+<p>i’ 是i 关于C的对称点，L是以C为中心的回文区域的左边界。</p>
+<p>回文半径（该点的最大回文子串的长度&#x2F;2），回文区域（该点的回文子串索引区域）</p>
+<p>2）1、i’ 点的回文区域在[L,R]（没有压线情况）中时，i 点的回文半径就等于i’ 点的回文半径。</p>
+<p><strong>下面举例所用的字符串自己在脑海中加上特殊字符。</strong></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310205716520.png" alt="image-20250310205716520"></p>
+<p>2）2、i’ 的回文区域有一部分已经在[L,R]外面了，i 的回文区域就是[R’,R]，R’是R关于i 的对称点，L’是L关于i’ 的对称点。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310211130867.png" alt="image-20250310211130867"></p>
+<p>2）3、压线：i’的回文区域与L压线，这种情况有一部分是你不需要验证的，从R+1位置开始继续比对。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310211602778.png" alt="image-20250310211602778"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310211808183.png" alt="image-20250310211808183"></p>
+<p>循环中第一次求的pArr[i]是至少不用验证的区域半径。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310212715770.png" alt="image-20250310212715770"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250310212728622.png" alt="image-20250310212728622"></p>
+<p>max-1就是原字符串中最大回文字符串的长度，不用想为什么，证明出来的。</p>
+<p>这个方法不仅可以解决回文子串的问题，<strong>回文半径数组</strong>的信息可以帮你解决很多回文问题。</p>
+<h1 id="滑动窗口"><a href="#滑动窗口" class="headerlink" title="滑动窗口"></a>滑动窗口</h1><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311151600585.png" alt="image-20250311151600585"></p>
+<p>窗口：L和R是窗口的左右边界，刚开始的时候都在最左边，只能往右边移动，L不能超过R。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311152208645.png" alt="image-20250311152208645"></p>
+<p>创建一个双端队列，<strong>里面存储的是索引</strong>，里面是按大小排序的，头是最大值，尾是最小值。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311152747213.png" alt="image-20250311152747213"></p>
+<p>R移动：开始的时候R向右移动，依次存进3、2，接下来要存进4，因为这个双端队列的特殊性，4要排在头不能排在比它小的数后面，所以要依次弹出2、3，弹出的数不去找回，然后存进4。<strong>要严格保证单调性</strong></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311153028263.png" alt="image-20250311153028263"></p>
+<p>L移动：L向右移动时，要把L前面的数弹出队列，如下面的例子，L前面的索引是0，那就看队列的头存储的索引是不是小于等于0，是的话删除，检查下一个头，不是的话就不用弹出了。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311153615301.png" alt="image-20250311153615301"></p>
+<p>窗口存储的是在依次过期的情况下成为最大值的可能性，当你要存进去一个比队列的部分数要大的值时，说明这些值不可能成为最大值了，所以弹出。</p>
+<p>下面的例子，原本队列中有存储5，当你再存进去一个5时，要把前面的那个5弹出去，因为新加进去的5比前面那个5晚过期，前面那个5再也没机会成为最大值了，留一个5就够了。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311154138823.png" alt="image-20250311154138823"></p>
+<p>上面的方法复杂度为O(N)。</p>
+<p>上面讲得窗口时R和L随时前进任意值的情况，而这道题要求的是前进固定的值，更加简单。</p>
+<p>最小值同理，和上面的反过来。</p>
+<p>下面的是针对这道题实现的代码，作用是形成一个窗口。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311154856276.png" alt="image-20250311154856276"></p>
+<h1 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h1><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311155235509.png" alt="image-20250311155235509"></p>
+<p>下面讲得是，想要知道一个数组中的每个数，左边离它最近比它<strong>大</strong>的和右边离它最近比它<strong>大</strong>的数分别是谁。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311155516233.png" alt="image-20250311155516233"></p>
+<p>0-&gt;5：索引0上的5。栈中依旧只放下标。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311155754804.png" alt="image-20250311155754804"></p>
+<p>接下来要向栈中放入6，不能改变栈的单调性，所以要弹出数据。弹出数据的话，那么关于这个数的相关信息就开始生成了。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311155924029.png" alt="image-20250311155924029"></p>
+<p>首先弹出2，左边离它最近比它大的数就是它下面压着的数，右边离它最近比它大的数就是当前要存进栈中的数据。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311160137312.png" alt="image-20250311160137312"></p>
+<p>假如没有那个7（数，下面讲的都是索引），那么栈中最后会剩下3个数，进入清算阶段。依次弹出栈中的数据，例如，先弹出6，左边离它最近比它大的数是它下面压着的5，由于此时没有新入栈的，所以右边离它最近比它大的数就无。栈底的3，都是无。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311160424162.png" alt="image-20250311160424162"></p>
+<p>时间复杂度O(N)。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311160814920.png" alt="image-20250311160814920"></p>
+<p>这道题的数组是正数数组。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250311161231131.png" alt="image-20250311161231131"></p>
+<p>假设当前子数组必须包含当前数，且当前数必须是子数组中的最小值。</p>
+<p>步骤：1、以5为最小值，A最大的是5本身为1个数组；</p>
+<p>​			2、以3为最小值，此时有两个子数组[3]和[5,3]，A最大的是[5,3]；</p>
+<p>​			3、以1为最小值，最大的是整个数组……</p>
+<p>​			依次这样下去</p>
+<p>为什么说这道题是单调栈呢：因为每个数，它最左边离它最近比它小的数是它不能扩的位置，最右边离它最近比它小的数是它不能扩的位置，这就是单调栈的原理。</p>
+<p>5，3，2，1，6，7，8，4</p>
+<p>小-&gt;大</p>
+<p>进0</p>
+<p>0；进1，-&gt;0（-1，1）</p>
+<p>1；进2，-&gt;1(-1,2)</p>
+<p>2; 进3，-&gt;2(-1,3)</p>
+<p>3；进4，5，6</p>
+<p>3，4，5，6；进7，-&gt;6(5,7)，-&gt;5(4,7)，-&gt;4(3,7)</p>
+<p>3，7；清算：-&gt;7(3,8)，-&gt;3(-1,8)</p>
+<h1 id="大数据题目（资源限制类题目）"><a href="#大数据题目（资源限制类题目）" class="headerlink" title="大数据题目（资源限制类题目）"></a>大数据题目（资源限制类题目）</h1><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250315192832948.png" alt="image-20250315192832948"></p>
+<h2 id="范围内搜索（位图）"><a href="#范围内搜索（位图）" class="headerlink" title="范围内搜索（位图）"></a>范围内搜索（位图）</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250315155603835.png" alt="image-20250315155603835"></p>
+<p>1）布隆过滤器，也就是利用整型数组来存储数据，每一位代表一个数，一个int可以代表32个数。这个大概需要500多MB</p>
+<p>进阶题目：</p>
+<p>2）假如要求3KB呢。先将3KB变成整型数组，算下需要多少个int，那就是3000&#x2F;4&#x3D;750（4是一个int的大小），然后算2的多少次方最接近750，是2的9次方也就是512。由于需要算的范围是2的31次方减1，这个刚好可以被512整除，因为（2的32次方-1）有2的32次方个数&#x2F;2的9次方 可以整除，就是刚好可以被划分成大小相等的512份，每份的数为8388608个。接下来，就是以这个为划分，arr[0]代表0<del>8388608，arr[1]代表8388608</del>    ，将每个数除以8388608得到索引，然后arr[索引]++，全部遍历完后找到arr[]中没有达到8388608的数组，在它代表的范围中继续遍历。就是说有一个数组没有到达8388608，那么就在这个数组代表的范围上继续分成512份。然后继续遍历这40亿个数，不在这个范围上的就不要了，在这个范围上的就是这512个区间细分，继续寻找没有达标的那一个数组。然后按上面的方法继续寻找，随着范围越来越小，最后就会锁定没有出现的数。</p>
+<p>3）假如要求1KB，那就1000&#x2F;4，找最接近这个数的2的次方。然后按第二种方法来寻找。</p>
+<p>4）只能申请有限几个变量。先将些数据二分，如果满的话，那两边的数量应该都是2的31次方除以2，找到没有满的那一边继续二分，最后就可以找到这个数了。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250315172556936.png" alt="image-20250315172556936"></p>
+<p>普通：</p>
+<p>1）利用哈希函数做分流。</p>
+<p>2）位图的升级：用两位来表示一个数的状态。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250315172904350.png" alt="image-20250315172904350"></p>
+<p>补充：范围查找</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250315173522739.png" alt="image-20250315173522739"></p>
+<p>因为要寻找中位数，那从arr[0]加到arr[n]，当和等于20亿的时候，就找到中位数所在的范围了。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250315192345996.png" alt="image-20250315192345996"></p>
+<p>假如你加到499是18亿，加上500是23亿，超过了20亿，那么接下来就是在arr[500]上寻找第2亿个数就行了，将大块变成小块按前面的范围搜索方法继续查找，最后就可以找出来了。</p>
+<h2 id="二维堆"><a href="#二维堆" class="headerlink" title="二维堆"></a>二维堆</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250315164647121.png" alt="image-20250315164647121"></p>
+<p>普通问题：利用布隆过滤器或者算URL的哈希码来解决。</p>
+<p>补充：没听懂。但讲得方法是将原本的数据分成一个个小文件，利用大根堆给每个小文件的词汇搜索量进行排序，然后再建立一个大堆，将每个堆的第一个扔进大堆中，然后选大堆中的第一个弹出，找到这个元素原本是哪个堆的，将那个堆中的这个元素弹出，然后再将这个堆的第一个元素扔进大堆中进行排序，周而复始直到数量达标。由于是堆，所以调整代价低。</p>
+<p>这种方法叫作二维堆，是堆上堆的结构。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250315171723965.png" alt="image-20250315171723965"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250315172125743.png" alt="image-20250315172125743"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250315172140201.png" alt="image-20250315172140201"></p>
+<h1 id="暴力递归-动态规划"><a href="#暴力递归-动态规划" class="headerlink" title="暴力递归-&gt;动态规划"></a>暴力递归-&gt;动态规划</h1><p>整体脉络是要找尝试的方法。</p>
+<h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><p>优化：优化后时间复杂度会降低<img src="/../source/imgs/$%7Bfiilname%7D/image-20250316153124352.png" alt="image-20250316153124352"></p>
+<p>上面的下面用例子来解释。</p>
+<p>题目：有一个机器人在1~N的格子上移动，每次只能移动到附近的格子，不能超过1或者N，题目给出K步，和开始的位置S，结束的位置E，问经过K步移动到E共有几种方法。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316161737199.png" alt="image-20250316161737199"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316155421451.png" alt="image-20250316155421451"></p>
+<p>接下来要改进这个方法<img src="/../source/imgs/$%7Bfiilname%7D/image-20250316155016868.png" alt="image-20250316155016868"></p>
+<p>通过这张图可以发现f(2,2)的值跟它前面的情况没有关系，之前的决定不影响f(2,2)的结果，这样的情况就可以进行忆化搜索改进（不用考虑位置依赖关系），就是建立一个缓存存储各情况的最后结果，但碰到相同的情况时可以直接得到值。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316155700668.png" alt="image-20250316155700668"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316155434507.png" alt="image-20250316155434507"></p>
+<p>上面代码应该有问题，f2里面调用的函数应该不是f1而是f2。</p>
+<p>接下来进行严格表结构改进（考虑位置依赖）。</p>
+<p>先画一张二维表（cur为横轴，rest为竖轴），根据的是f1函数。这张二维表就是f1的所有可能情况。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316162412677.png" alt="image-20250316162412677"></p>
+<p>上述S&#x3D;2,E&#x3D;4,K&#x3D;4。</p>
+<p>由walkWays1得知我们需要的是4，2位置的值，由f1函数的basecase可以得知(0,4)位置的值为1，其它都为0.</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316162634484.png" alt="image-20250316162634484"></p>
+<p>不可能到达0列，所以全为叉。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316162719991.png" alt="image-20250316162719991"></p>
+<p>由f1的第二种和第三种情况可以知道1列的值依赖于它的右上角，就是等于右上角的值，而5列的值依赖于它的左上角。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316162839500.png" alt="image-20250316162839500"></p>
+<p>最后一种情况，由f1可知，它的值&#x3D;它的右上角加上左上角的值。</p>
+<p>所以根据上述规律可以得出(4,2)位置的值。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316163118981.png" alt="image-20250316163118981"></p>
+<p>下一题</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316163258604.png" alt="image-20250316163258604"></p>
+<p>一个数组，里面的都是每个硬币的面值，要找达到目标值所需的最少硬币数。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316164323567.png" alt="image-20250316164323567"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316164337649.png" alt="image-20250316164337649"></p>
+<p>忆化搜索改进：</p>
+<p>dp数组代表的是递归方法的所有可能性，-1代表无效解，0是一个答案，那就用-2来代表还没算过。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316171455162.png" alt="image-20250316171455162"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316171747948.png" alt="image-20250316171747948"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250418104103680.png" alt="image-20250418104103680"></p>
+<p>严格表结构改进：</p>
+<p>根据初级算法来画这个表。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316172545374.png" alt="image-20250316172545374"></p>
+<p>根据这个表先设置初始值。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316172854666.png" alt="image-20250316172854666"></p>
+<p>先这样子，中间空白位置还要填充。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316172946002.png" alt="image-20250316172946002"></p>
+<p>上面的意思是，现在位置在(5,2)已经拿了5块钱，现在在索引2的位置，如果要拿5块钱的话，接下来就会到达(0,3)位置，不拿的话就会处于(5,3)位置。<img src="/../source/imgs/$%7Bfiilname%7D/image-20250316173137982.png" alt="image-20250316173137982"></p>
+<p>从这个可以得知，位于中间的位置依赖的是它的左下方或者下方的位置，所以填的位置应该是从左往右，每个格子都依赖它的左下角，整体从下往上，这是计算动态规划表格子的顺序。</p>
+<p>每一个格子的逻辑和刚开始的那个初级递归函数是一样的，所以对于每个格子的处理可以将那个递归函数直接拷贝过来再进行一些处理就行。由于处理顺序是从下往上的，所以在计算这个格子的值时可以直接去下面那一行的值，将递归调用的过程变成动态规划表取值的过程，拷贝过去后注意边界和越界条件。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316191213179.png" alt="image-20250316191213179"></p>
+<p>完整代码为：</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316191347930.png" alt="image-20250316191347930"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250316191357222.png" alt="image-20250316191357222"></p>
+<p><strong>变成严格表位置依赖的方法</strong>：</p>
+<p>1、分析可变参数的变化范围，一个参数一维表，两个参数二维表，三个参数三维表；</p>
+<p>2、标出你要计算的终止位置；</p>
+<p>3、标出不要计算直接出答案的位置；</p>
+<p>4、推普遍的位置是如何依赖其它位置的；</p>
+<p>5、推出严格表是从哪些格子推到哪些格子，最终来到终止位置。</p>
+<p>顺序定了后，具体怎么求把递归所求的东西拷贝过去，递归改动态规划表求值的过程就结束了。</p>
+<h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250213205633376.png" alt="image-20250213205633376"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250213210541557.png" alt="image-20250213210541557"></p>
+<p>f 代表先手拿牌，s 代表后手拿牌。</p>
+<p>画出初始二维表</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250317195638841.png" alt="image-20250317195638841"></p>
+<p>这两个函数是相互套的，要算普遍位置的位置依赖的话就需要同时用到两张表。<img src="/../source/imgs/$%7Bfiilname%7D/image-20250317195851551.png" alt="image-20250317195851551"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250317195912315.png" alt="image-20250317195912315"></p>
+<p>f 的对角线可以帮助s 求1的那条对角线，s 的对角线可以帮助f 求1的那条对角线，这样互相求就可以得到最后答案了。看不懂就琢磨原函数。<img src="/../source/imgs/$%7Bfiilname%7D/image-20250317200138150.png" alt="image-20250317200138150"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250317201030919.png" alt="image-20250317201030919"></p>
+<p>题目是：给你一个正数数组，数组中没有重复值，假如这个数组中的数代表的是货币面值，每个货币有任意张，给你一个目标值，问组成这个目标值的方法数是多少。<img src="/../source/imgs/$%7Bfiilname%7D/image-20250317201346961.png" alt="image-20250317201346961"></p>
+<p>接下里画二维表<img src="/../source/imgs/$%7Bfiilname%7D/image-20250317201635914.png" alt="image-20250317201635914"></p>
+<p>画位置依赖，这个举例用的是一块钱的</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250317201748150.png" alt="image-20250317201748150"></p>
+<p>这个是5块的<img src="/../source/imgs/$%7Bfiilname%7D/image-20250317201851864.png" alt="image-20250317201851864"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250317202641268.png" alt="image-20250317202641268"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250317203127641.png" alt="image-20250317203127641"></p>
+<h2 id="状态DP-哈密顿路径"><a href="#状态DP-哈密顿路径" class="headerlink" title="状态DP(哈密顿路径)"></a>状态DP(哈密顿路径)</h2><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250404202124343.png" alt="image-20250404202124343"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    static boolean[][] gragh;</span><br><span class="line">    </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        solve();</span><br><span class="line">//        System.out.println(&quot;881012367360&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">    public static void solve()&#123;</span><br><span class="line">        gragh = new boolean[22][22];</span><br><span class="line">        for (int i = 1; i &lt;= 21; i++) &#123;</span><br><span class="line">            for (int j = 1; j &lt;= 21; j++) &#123;</span><br><span class="line">                if (gcd(i, j) == 1) &#123;</span><br><span class="line">                    gragh[i][j] = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        int tot = 1 &lt;&lt; 22;</span><br><span class="line">        long[][] dp = new long[tot][22];</span><br><span class="line">        dp[2][1] = 1;//从 1 出发、只访问了 1，最后停在 1，方案数是 1	</span><br><span class="line">        //状态转移部分</span><br><span class="line">        for (int S = 2; S &lt;= tot - 2; S++) &#123;//枚举所有可能的访问状态 S，S 是一个整数，二进制表示哪些点被访问过。</span><br><span class="line">            for (int i = 2; i &lt;= 21; i++) &#123;//从第二个点开始算，因为第一个点已经访问了，</span><br><span class="line">//            	这个代表的是j-&gt;i的路线数=到达i的路线总数，而我们从1出发，所以算的话从2开始</span><br><span class="line">                if (((S &gt;&gt; i) &amp; 1) == 1) &#123;//枚举状态 S 的倒数第二个点（上一步是哪个点 j 到了 i）</span><br><span class="line">                    for (int j = 1; j &lt;= 21; j++) &#123;</span><br><span class="line">                        if (gragh[i][j] &amp;&amp; (((S ^ (1 &lt;&lt; i)) &gt;&gt; j) &amp; 1) == 1) &#123;</span><br><span class="line">                            dp[S][i] += dp[S ^ (1 &lt;&lt; i)][j];</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        long ans = 0;</span><br><span class="line">        for (int i = 2; i &lt;= 21; i++) &#123;</span><br><span class="line">            ans += dp[tot - 2][i];</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(ans);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static int gcd(int num1, int num2) &#123;</span><br><span class="line">        if (num2 == 0) &#123;</span><br><span class="line">            return num1;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return gcd(num2, num1 % num2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这段代码是一个 <strong>状态压缩动态规划（DP）</strong> 的实现，用于统计从节点 <code>1</code> 出发，经过所有 21 个互不相同、两两互质的节点的一种路径总数（即在互质图中求<strong>哈密顿路径</strong>数量）。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250404202349226.png" alt="image-20250404202349226"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250404202520453.png" alt="image-20250404202520453"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250404202707153.png" alt="image-20250404202707153"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250404203707191.png" alt="image-20250404203707191"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20250404203733735.png" alt="image-20250404203733735"></p>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2025/05/05/%E7%9C%9F%E9%A2%98%E6%8A%80%E5%B7%A7/">真题技巧</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2025/01/15/%E5%AF%92%E5%81%87%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/">寒假字节青训营</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Odegaard</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F"><span class="toc-text">排序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%A6%E6%88%96%E8%BF%90%E7%AE%97"><span class="toc-text">亦或运算</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F"><span class="toc-text">插入排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%88%86%E6%B3%95"><span class="toc-text">二分法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">归并排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F"><span class="toc-text">快速排序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A0%86%E6%8E%92%E5%BA%8F"><span class="toc-text">堆排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%92%8C%E7%A7%BB%E5%8A%A8"><span class="toc-text">基础和移动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%92%E5%BA%8F-1"><span class="toc-text">排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97%E7%BB%93%E6%9E%84%E2%80%94%E2%80%94%E9%BB%98%E8%AE%A4%E5%B0%8F%E6%A0%B9%E5%A0%86"><span class="toc-text">优先队列结构——默认小根堆</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E5%99%A8"><span class="toc-text">比较器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A1%B6%E6%8E%92%E5%BA%8F"><span class="toc-text">桶排序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="toc-text">计数排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F"><span class="toc-text">基数排序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8"><span class="toc-text">链表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="toc-text">哈希表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E5%BA%8F%E8%A1%A8"><span class="toc-text">有序表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E9%A2%98"><span class="toc-text">链表题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E9%A2%98"><span class="toc-text">其他题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E7%9B%B8%E4%BA%A4%E7%BB%93%E7%82%B9"><span class="toc-text">找相交结点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E6%8F%90%E5%8D%87"><span class="toc-text">基础提升</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-text">布隆过滤器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-text">题目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E5%BA%8F%E6%8E%92%E5%88%97%E7%AE%97%E6%B3%95"><span class="toc-text">字典序排列算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-text">二叉树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%88"><span class="toc-text">栈</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5%E5%8F%8A%E5%85%B6%E5%AE%9E%E7%8E%B0%E5%88%A4%E6%96%AD"><span class="toc-text">二叉树相关概念及其实现判断</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E8%A7%A3%E9%A2%98%E5%A5%97%E8%B7%AF"><span class="toc-text">二叉树解题套路</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E5%BD%A2dp%E5%A5%97%E8%B7%AF%EF%BC%88%E8%A1%A5%E5%85%85%EF%BC%89"><span class="toc-text">树形dp套路（补充）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%A8%E7%A4%BA%E6%A8%A1%E6%9D%BF"><span class="toc-text">表示模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%97%E6%B3%95"><span class="toc-text">算法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#N%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98"><span class="toc-text">N皇后问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%BC%80%E6%A0%91"><span class="toc-text">前缀树</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95"><span class="toc-text">贪心算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E9%80%92%E5%BD%92"><span class="toc-text">暴力递归</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-text">并查集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%A6%E6%9D%83%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="toc-text">带权并查集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="toc-text">KMP算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Manacher%E7%AE%97%E6%B3%95"><span class="toc-text">Manacher算法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3"><span class="toc-text">滑动窗口</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="toc-text">单调栈</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%A2%98%E7%9B%AE%EF%BC%88%E8%B5%84%E6%BA%90%E9%99%90%E5%88%B6%E7%B1%BB%E9%A2%98%E7%9B%AE%EF%BC%89"><span class="toc-text">大数据题目（资源限制类题目）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8C%83%E5%9B%B4%E5%86%85%E6%90%9C%E7%B4%A2%EF%BC%88%E4%BD%8D%E5%9B%BE%EF%BC%89"><span class="toc-text">范围内搜索（位图）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E5%A0%86"><span class="toc-text">二维堆</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E9%80%92%E5%BD%92-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-text">暴力递归-&gt;动态规划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC"><span class="toc-text">基本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81DP-%E5%93%88%E5%AF%86%E9%A1%BF%E8%B7%AF%E5%BE%84"><span class="toc-text">状态DP(哈密顿路径)</span></a></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.md-text img:not([class]), .md-text .image-container img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>

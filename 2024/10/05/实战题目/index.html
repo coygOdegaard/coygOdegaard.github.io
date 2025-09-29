@@ -1,0 +1,1231 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>实战题目 - coygOdegaard</title>
+
+  
+    <meta name="description" content="寻找两数之和（运用哈希表）1234567891011121314151617181920212223import java.util.HashMap;import java.util.Map;class Solution &#123;    public int[] twoSum(int[] nums, int target) &#123;        &#x2F;&#x2F; 创建一个哈希表，用于存储数组中的值及">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实战题目">
+<meta property="og:url" content="http://example.com/2024/10/05/%E5%AE%9E%E6%88%98%E9%A2%98%E7%9B%AE/">
+<meta property="og:site_name" content="coygOdegaard">
+<meta property="og:description" content="寻找两数之和（运用哈希表）1234567891011121314151617181920212223import java.util.HashMap;import java.util.Map;class Solution &#123;    public int[] twoSum(int[] nums, int target) &#123;        &#x2F;&#x2F; 创建一个哈希表，用于存储数组中的值及">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20240727111651630.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20240727111716345.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20240727111753320.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20240819211720021-1728122090345-711.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20240819211739407-1728122090345-712.png">
+<meta property="og:image" content="http://example.com/2024/10/05/source/imgs/$%7Bfiilname%7D/image-20250610104456586.png">
+<meta property="og:image" content="http://example.com/2024/10/05/source/imgs/$%7Bfiilname%7D/image-20250610104602438.png">
+<meta property="og:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20240819212557410.png">
+<meta property="article:published_time" content="2024-10-05T09:54:39.000Z">
+<meta property="article:modified_time" content="2025-09-04T09:26:41.947Z">
+<meta property="article:author" content="Odegaard">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/source/imgs/$%7Bfiilname%7D/image-20240727111651630.png">
+  
+  
+  
+  <meta name="keywords" content="算法">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Odegaard","sameAs":[]},"dateCreated":"2024-10-05T17:54:39+08:00","dateModified":"2025-09-04T17:26:41+08:00","datePublished":"2024-10-05T17:54:39+08:00","description":"","headline":"实战题目","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2024/10/05/%E5%AE%9E%E6%88%98%E9%A2%98%E7%9B%AE/"},"publisher":{"@type":"Organization","name":"Odegaard","sameAs":[]},"url":"http://example.com/2024/10/05/%E5%AE%9E%E6%88%98%E9%A2%98%E7%9B%AE/","keywords":"算法","image":[]}</script>
+  
+</head>
+<body>
+
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">coygOdegaard</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/2025/09/29/test-p/"><span class="title">test p</span></a><a class="item title" href="/2025/09/11/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8/"><span class="title">深度学习入门</span></a><a class="item title" href="/2025/01/21/%E7%AE%97%E6%B3%95/"><span class="title">算法</span></a><a class="item title" href="/2024/10/05/%E5%AE%9E%E6%88%98%E9%A2%98%E7%9B%AE/"><span class="title">实战题目</span></a><a class="item title" href="/2025/05/08/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"><span class="title">机器学习</span></a><a class="item title" href="/2025/07/08/python%E6%9A%91%E5%81%87/"><span class="title">python暑假</span></a><a class="item title" href="/2025/05/05/%E7%9C%9F%E9%A2%98%E6%8A%80%E5%B7%A7/"><span class="title">真题技巧</span></a><a class="item title" href="/2024/10/05/python2/"><span class="title">python2</span></a><a class="item title" href="/2024/10/08/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/"><span class="title">数据清洗</span></a><a class="item title" href="/2024/10/05/Java-1/"><span class="title">Java</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-10-05T09:54:39.000Z">2024-10-05</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-09-04T09:26:41.947Z">2025-09-04</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>实战题目</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="寻找两数之和（运用哈希表）"><a href="#寻找两数之和（运用哈希表）" class="headerlink" title="寻找两数之和（运用哈希表）"></a>寻找两数之和（运用哈希表）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">        // 创建一个哈希表，用于存储数组中的值及其对应的索引</span><br><span class="line">        Map&lt;Integer, Integer&gt; hashtable = new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line"></span><br><span class="line">        // 遍历数组 nums</span><br><span class="line">        for (int i = 0; i &lt; nums.length; ++i) &#123;</span><br><span class="line">            // 检查哈希表中是否存在一个数，使其与当前数的和等于目标值</span><br><span class="line">            if (hashtable.containsKey(target - nums[i])) &#123;</span><br><span class="line">                // 如果存在，返回这个数的索引和当前数的索引</span><br><span class="line">                return new int[]&#123;hashtable.get(target - nums[i]), i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            // 如果不存在，将当前数及其索引存入哈希表</span><br><span class="line">            hashtable.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 如果没有找到满足条件的两个数，返回一个空数组</span><br><span class="line">        return new int[0];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1、 <code>Map&lt;Integer, Integer&gt; hashtable = new HashMap&lt;Integer, Integer&gt;();</code></p>
+<p>声明了一个叫作<code>hashtable</code>的变量，它的类型是<code>Map&lt;Integer, Integer&gt;</code>。<code>Map</code>是一个接口，它定义了键值对的集合，其中每个键最多只能映射到一个值。这意味着<code>hashtable</code>将引用一个<code>Map</code>对象，并且这个<code>Map</code>键和值都是<code>Integer</code>类型（存储整数类型的键和值），同时创建了一个新的<code>HashMap</code>对象，并将其赋值给<code>hashtable</code>变量。<code>new HashMap&lt;Integer, Integer&gt;()</code>调用了<code>HashMap</code>类的无参数构造函数，创建了一个空的<code>HashMap</code>对象，其中<code>Integer</code>指定了键和值的类型。</p>
+<p>2、<code>hashtable.containsKey(target - nums[i])</code>，检查哈希表中是否存在一个数（查找的是特征值）。</p>
+<p>3、<code>hashtable.get(target - nums[i])</code>，返回这个数的索引（返回存储的内容）。</p>
+<p>4、<code>hashtable.put(nums[i], i);</code>，将当前数及其索引存入哈希表，<code>nums[i]</code>应该是特征值，数据结构书里有讲，i 是存储的值。</p>
+<h1 id="基本数据类型和String之间的转化"><a href="#基本数据类型和String之间的转化" class="headerlink" title="基本数据类型和String之间的转化"></a>基本数据类型和String之间的转化</h1><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20240727111651630.png" alt="image-20240727111651630"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20240727111716345.png" alt="image-20240727111716345"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String string = &quot;faogaig&quot;;</span><br><span class="line">string.length();</span><br></pre></td></tr></table></figure>
+
+<p><code>string.length()</code>就是这个字符串的长度。</p>
+<p>要提取这个字符串里的字符的话就用<code>string.charAt(int num)</code>。</p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20240727111753320.png" alt="image-20240727111753320"></p>
+<h1 id="进制转化"><a href="#进制转化" class="headerlink" title="进制转化"></a>进制转化</h1><p><img src="/../source/imgs/$%7Bfiilname%7D/image-20240819211720021-1728122090345-711.png" alt="image-20240819211720021"></p>
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20240819211739407-1728122090345-712.png" alt="image-20240819211739407"></p>
+<p>方法三：递归</p>
+<p><strong>将String类型的数（比如说二进制，四进制等）转化为Long类型的数怎么转化</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">long decimalValue = Long.parseLong(aStr, base);//base代表的是此时atr的进制，aStr是要转化的字符串，如10111001011</span><br></pre></td></tr></table></figure>
+
+<p><img src="../source/imgs/${fiilname}/image-20250610104456586.png" alt="image-20250610104456586" style="zoom:50%;" /><img src="../source/imgs/${fiilname}/image-20250610104602438.png" alt="image-20250610104602438" style="zoom:50%;" /></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main1 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner scanner = new Scanner(System.in);</span><br><span class="line">        int n = scanner.nextInt(); // n &lt;= 1000</span><br><span class="line"></span><br><span class="line">        int[] bases = &#123;2, 4, 8, 16&#125;;</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            // A_i 的长度可能达到 30</span><br><span class="line">            String aStr = scanner.next();</span><br><span class="line">            // B_i &lt;= 10^9, 使用 long 是一种安全的做法</span><br><span class="line">            long bVal = scanner.nextLong();</span><br><span class="line"></span><br><span class="line">            List&lt;Long&gt; solutions = new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            for (int base : bases) &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    // 关键点：</span><br><span class="line">                    // 1. Long.parseLong 可以处理长达63位的二进制数，对于本题足够。</span><br><span class="line">                    // 2. 如果 aStr 包含对当前 base 无效的字符 (如 &quot;A&quot; in base 8), 会抛出 NumberFormatException。</span><br><span class="line">                    // 3. 如果转换后的数值超过 Long.MAX_VALUE (约 9*10^18), 也会抛出 NumberFormatException。</span><br><span class="line">                    //    由于任何解都必须 &lt;= 10^9, 这种溢出的情况自然被排除，正是我们想要的。</span><br><span class="line">                    long decimalValue = Long.parseLong(aStr, base);</span><br><span class="line"></span><br><span class="line">                    // 检查转换后的值是否满足 &lt;= B_i 的约束</span><br><span class="line">                    if (decimalValue &lt;= bVal) &#123;</span><br><span class="line">                        solutions.add(decimalValue);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; catch (NumberFormatException e) &#123;</span><br><span class="line">                    // 捕捉所有转换异常，静默处理，继续尝试下一个进制。</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            // 根据解的数量进行判断</span><br><span class="line">            if (solutions.size() == 1) &#123;</span><br><span class="line">                System.out.println(solutions.get(0));</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                // 0个解或多于1个解，都输出-1</span><br><span class="line">                System.out.println(-1);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="随机数（seed）"><a href="#随机数（seed）" class="headerlink" title="随机数（seed）"></a>随机数（seed）</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">题目的主要信息：</span><br><span class="line">每次运行程序时，输入一个随机种子，产生一个[1,6]之间的随机整数</span><br><span class="line">具体做法：</span><br><span class="line">输入的随机种子不是随机数，但是会用该随机种子进行算法。因此在Random类中seed是一个参数，用于生成伪随机数，因为范围是1-6，但是伪随机数生成是0~n-1，因此末尾需要再加1.</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../source/imgs/$%7Bfiilname%7D/image-20240819212557410.png" alt="image-20240819212557410"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Random;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"> </span><br><span class="line">public class Main &#123;</span><br><span class="line"> </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner scanner = new Scanner(System.in);</span><br><span class="line">        while (scanner.hasNextInt()) &#123;</span><br><span class="line">            int seed = scanner.nextInt(); //输入随机数种子</span><br><span class="line">            Random random = new Random(seed); //用随机种子进行随机算法</span><br><span class="line">            System.out.println(random.nextInt(6) + 1); //随机生成1-6地数字</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="最短路径，dijkstra-优先队列"><a href="#最短路径，dijkstra-优先队列" class="headerlink" title="最短路径，dijkstra+优先队列"></a>最短路径，dijkstra+优先队列</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">public class c &#123;</span><br><span class="line"></span><br><span class="line">    static class Edge &#123;</span><br><span class="line">        int to; // 目标城市</span><br><span class="line">        int length; // 路径长度</span><br><span class="line"></span><br><span class="line">        Edge(int to, int length) &#123;</span><br><span class="line">            this.to = to;</span><br><span class="line">            this.length = length;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static class State &#123;</span><br><span class="line">        int city; // 当前城市</span><br><span class="line">        int totalRescue; // 当前能召集的救援队数量</span><br><span class="line">        int pathLength; // 当前路径长度</span><br><span class="line"></span><br><span class="line">        State(int city, int totalRescue, int pathLength) &#123;</span><br><span class="line">            this.city = city;</span><br><span class="line">            this.totalRescue = totalRescue;</span><br><span class="line">            this.pathLength = pathLength;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner scanner = new Scanner(System.in);</span><br><span class="line"></span><br><span class="line">        // 读取输入</span><br><span class="line">        int N = scanner.nextInt(); // 城市个数</span><br><span class="line">        int M = scanner.nextInt(); // 快速道路的条数</span><br><span class="line">        int S = scanner.nextInt(); // 出发地</span><br><span class="line">        int D = scanner.nextInt(); // 目的地</span><br><span class="line"></span><br><span class="line">        int[] rescueTeams = new int[N]; // 各城市的救援队数</span><br><span class="line">        for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">            rescueTeams[i] = scanner.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 构建图</span><br><span class="line">        List&lt;List&lt;Edge&gt;&gt; graph = new ArrayList&lt;&gt;();</span><br><span class="line">        for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">            graph.add(new ArrayList&lt;&gt;());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; M; i++) &#123;</span><br><span class="line">            int u = scanner.nextInt();</span><br><span class="line">            int v = scanner.nextInt();</span><br><span class="line">            int length = scanner.nextInt();</span><br><span class="line">            graph.get(u).add(new Edge(v, length));</span><br><span class="line">            graph.get(v).add(new Edge(u, length)); // 因为是双向道路</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 调用 Dijkstra 算法</span><br><span class="line">        dijkstra(S, D, rescueTeams, graph);</span><br><span class="line"></span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static void dijkstra(int start, int end, int[] rescueTeams, List&lt;List&lt;Edge&gt;&gt; graph) &#123;</span><br><span class="line">        int N = graph.size();</span><br><span class="line">        int[] minDist = new int[N]; // 记录到各城市的最短路径长度</span><br><span class="line">        Arrays.fill(minDist, Integer.MAX_VALUE);</span><br><span class="line">        minDist[start] = 0;</span><br><span class="line"></span><br><span class="line">        // 记录从起点到各点的救援队数量</span><br><span class="line">        int[] maxRescue = new int[N];</span><br><span class="line">        maxRescue[start] = rescueTeams[start];</span><br><span class="line"></span><br><span class="line">        // 记录路径</span><br><span class="line">        int[] previous = new int[N];</span><br><span class="line">        Arrays.fill(previous, -1);</span><br><span class="line"></span><br><span class="line">        // 使用优先队列</span><br><span class="line">        PriorityQueue&lt;State&gt; pq = new PriorityQueue&lt;&gt;(Comparator.comparingInt(a -&gt; a.pathLength));</span><br><span class="line">        pq.add(new State(start, rescueTeams[start], 0));</span><br><span class="line"></span><br><span class="line">        while (!pq.isEmpty()) &#123;</span><br><span class="line">            State current = pq.poll();</span><br><span class="line"></span><br><span class="line">            // 如果当前城市是目的地，结束</span><br><span class="line">            if (current.city == end) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            for (Edge edge : graph.get(current.city)) &#123;</span><br><span class="line">                int nextCity = edge.to;</span><br><span class="line">                int newDist = current.pathLength + edge.length;</span><br><span class="line">                int newRescue = current.totalRescue + rescueTeams[nextCity];</span><br><span class="line"></span><br><span class="line">                // 更新最短路径和救援队数量</span><br><span class="line">                if (newDist &lt; minDist[nextCity] || (newDist == minDist[nextCity] &amp;&amp; newRescue &gt; maxRescue[nextCity])) &#123;</span><br><span class="line">                    minDist[nextCity] = newDist;</span><br><span class="line">                    maxRescue[nextCity] = newRescue;</span><br><span class="line">                    previous[nextCity] = current.city;</span><br><span class="line">                    pq.add(new State(nextCity, newRescue, newDist));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 输出结果</span><br><span class="line">        System.out.println(minDist[end] + &quot; &quot; + maxRescue[end]);</span><br><span class="line"></span><br><span class="line">        // 输出路径</span><br><span class="line">        List&lt;Integer&gt; path = new ArrayList&lt;&gt;();</span><br><span class="line">        for (int at = end; at != -1; at = previous[at]) &#123;</span><br><span class="line">            path.add(at);</span><br><span class="line">        &#125;</span><br><span class="line">        Collections.reverse(path); // 反转路径</span><br><span class="line"></span><br><span class="line">        // 打印路径</span><br><span class="line">        for (int city : path) &#123;</span><br><span class="line">            System.out.print(city + &quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><code>PriorityQueue&lt;State&gt; pq = new PriorityQueue&lt;&gt;(Comparator.comparingInt(a -&gt; a.pathLength));</code>这句话什么意思</p>
+<p>这句话的意思是创建一个优先队列 <code>pq</code>，该队列将按照元素的路径长度进行排序。以下是详细解释：</p>
+<p><strong>具体含义</strong></p>
+<ol>
+<li>**<code>PriorityQueue&lt;State&gt;</code>**：这部分表示我们在创建一个优先队列，队列中的元素类型是 <code>State</code>。<code>State</code> 是一个自定义的类，通常包含一些信息，比如当前城市、可召集的救援队数量和当前路径长度。</li>
+<li>**<code>new PriorityQueue&lt;&gt;(...)</code>**：这是 Java 中用于创建一个优先队列的构造函数。</li>
+<li>**<code>Comparator.comparingInt(a -&gt; a.pathLength)</code>**：<ul>
+<li><strong><code>Comparator.comparingInt(...)</code></strong> 是一个静态方法，用于生成一个比较器，这个比较器用于比较两个整数值。</li>
+<li><strong><code>a -&gt; a.pathLength</code></strong> 是一个 lambda 表达式，它表示从 <code>State</code> 对象 <code>a</code> 中提取 <code>pathLength</code> 属性进行比较。</li>
+</ul>
+</li>
+</ol>
+<p><strong>整体作用</strong></p>
+<p>结合起来，这行代码的作用是创建一个优先队列 <code>pq</code>，并定义了该队列的排序规则为：当我们从队列中取出元素时，优先取出路径长度最短的 <code>State</code> 对象。</p>
+<p><strong>例子</strong></p>
+<p>假设有多个 <code>State</code> 对象，它们的 <code>pathLength</code> 分别是 5、3 和 8。当我们将这些对象加入优先队列后，优先队列将会保证在取出元素时，首先取出的将是 <code>pathLength</code> 最小的对象（即 <code>pathLength</code> 为 3 的对象）。</p>
+<hr>
+<p>pq.poll()有什么用</p>
+<p><code>pq.poll()</code> 的作用是从优先队列 <code>pq</code> 中获取并移除优先级最高的元素（在这里是路径长度最短的 <code>State</code> 对象）。具体来说：</p>
+<p><strong>详细说明</strong></p>
+<ol>
+<li><strong>获取元素</strong>：<code>poll()</code> 方法返回队列中优先级最高的元素。如果队列为空，则返回 <code>null</code>。</li>
+<li><strong>移除元素</strong>：与 <code>peek()</code> 方法不同，<code>poll()</code> 不仅返回这个元素，还会将其从队列中移除。这意味着之后再调用 <code>poll()</code> 时，将不会再得到这个元素。</li>
+<li><strong>优先队列的特点</strong>：在优先队列中，元素的顺序是根据它们的优先级来决定的。在 Dijkstra 算法中，优先级通常是路径长度，路径长度越短的元素优先级越高。</li>
+</ol>
+<p><strong>应用场景</strong></p>
+<p>在 Dijkstra 算法中，使用 <code>pq.poll()</code> 来获取当前已知的最短路径的节点（即离起点最近的节点），并继续探索从这个节点出发的其他可能的路径。通过这种方式，算法能逐步找到从起点到各个节点的最短路径。</p>
+<p><strong>示例</strong></p>
+<p>假设优先队列中有以下 <code>State</code> 对象：</p>
+<ul>
+<li>State(城市 1, 路径长度 3)</li>
+<li>State(城市 2, 路径长度 1)</li>
+<li>State(城市 3, 路径长度 5)</li>
+</ul>
+<p>调用 <code>pq.poll()</code> 将返回路径长度为 1 的对象（城市 2），同时将其从队列中移除。下次调用 <code>poll()</code> 时，将返回路径长度为 3 的对象（城市 1）。</p>
+<p>容易理解的：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class Main&#123;</span><br><span class="line">    private static int[] dis,w,pre,num,weight;</span><br><span class="line">    private static boolean[] vis;</span><br><span class="line">    private static int n,m,s,d;</span><br><span class="line">    private static int[][] G;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner sc = new Scanner(System.in);</span><br><span class="line">        n = sc.nextInt();m = sc.nextInt();</span><br><span class="line">        s = sc.nextInt();d = sc.nextInt();</span><br><span class="line">        dis = new int[n];vis = new boolean[n];w=new int[n];pre=new int[n];num=new int[n];</span><br><span class="line">        weight = new int[n];</span><br><span class="line">        G = new int[n][n];//邻接矩阵</span><br><span class="line">        for(int i = 0; i&lt;n; i++)&#123;</span><br><span class="line">            weight[i] = sc.nextInt();</span><br><span class="line">            dis[i] = 1000;//设起点到达各点的最短距离</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = 0; i&lt;n; i++)&#123;</span><br><span class="line">            for(int j = 0; j&lt;n; j++)&#123;</span><br><span class="line">                if(i != j)</span><br><span class="line">                    G[i][j] = 1000;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i = 0; i&lt;m; i++)&#123;</span><br><span class="line">            int a = sc.nextInt();int b = sc.nextInt();int c = sc.nextInt();</span><br><span class="line">            G[a][b] = c;</span><br><span class="line">            G[b][a] = c;</span><br><span class="line">        &#125;</span><br><span class="line">        Dijkstra(s);</span><br><span class="line">        System.out.println( num[d]+&quot; &quot;+w[d]);</span><br><span class="line">        dfs(s,d);</span><br><span class="line">        System.out.println();</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">    private static void dfs(int s,int v)&#123;</span><br><span class="line">        if(s == v)&#123;</span><br><span class="line">            System.out.print(s);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(s,pre[v]);</span><br><span class="line">        System.out.print(&quot; &quot;+v);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    private static void Dijkstra(int s) &#123;</span><br><span class="line">        dis[s] = 0;//将起点到达自身的距离修改为0；</span><br><span class="line">        num[s] = 1;//最短路径条数初始化为1；</span><br><span class="line">        w[s] = weight[s];//救援队数目修改为起点城市的救援队数目</span><br><span class="line">        for (int i = 0; i&lt;n; i++)&#123;</span><br><span class="line">            int u = -1,min = 1000;</span><br><span class="line">            for(int j = 0; j&lt;n; j++)&#123;</span><br><span class="line">                if(!vis[j] &amp;&amp; dis[j] &lt; min)&#123;</span><br><span class="line">                    min = dis[j];</span><br><span class="line">                    u = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            if(u == -1)return;</span><br><span class="line">            vis[u] = true;</span><br><span class="line">            for(int v = 0; v&lt;n; v++)&#123;</span><br><span class="line">                if(!vis[v] &amp;&amp; G[u][v] != 1000 &amp;&amp; dis[u] + G[u][v] &lt; dis[v])&#123;</span><br><span class="line">                    dis[v] = dis[u] + G[u][v];</span><br><span class="line">                    w[v] = w[u]+weight[v];</span><br><span class="line">                    num[v] = num[u];</span><br><span class="line">                    pre[v] = u;</span><br><span class="line">                &#125;else if(!vis[v] &amp;&amp; G[u][v] != 1000 &amp;&amp;dis[u] + G[u][v] == dis[v])&#123;</span><br><span class="line">                    num[v] += num[u];//最短距离相同时路径条数累加</span><br><span class="line">                    if(w[v] &lt; w[u]+weight[v])&#123;</span><br><span class="line">                        w[v] = w[u]+weight[v];</span><br><span class="line">                        pre[v] = u;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面两种方法结合起来的答案，通过的测试最多：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line"></span><br><span class="line">    static class Edge &#123;</span><br><span class="line">        int now; // 目前所在的城市</span><br><span class="line">        int length; // 路径长度</span><br><span class="line"></span><br><span class="line">        Edge(int now, int length) &#123;</span><br><span class="line">            this.now = now;</span><br><span class="line">            this.length = length;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static int[] previous ;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Scanner scanner = new Scanner(System.in);</span><br><span class="line"></span><br><span class="line">        // 读取输入</span><br><span class="line">        int N = scanner.nextInt(); // 城市个数</span><br><span class="line">        int M = scanner.nextInt(); // 快速道路的条数</span><br><span class="line">        int S = scanner.nextInt(); // 出发地</span><br><span class="line">        int D = scanner.nextInt(); // 目的地</span><br><span class="line"></span><br><span class="line">        int[] rescueTeams = new int[N]; // 各城市的救援队数</span><br><span class="line">        // 记录路径</span><br><span class="line">        previous = new int[N];</span><br><span class="line">        Arrays.fill(previous, -1);</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; N; i++) &#123;</span><br><span class="line">            rescueTeams[i] = scanner.nextInt();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 构建图</span><br><span class="line">        int[][] graph = new int[N][N];</span><br><span class="line">        for(int i = 0;i &lt; N;i ++)</span><br><span class="line">            Arrays.fill(graph[i],Integer.MAX_VALUE);</span><br><span class="line"></span><br><span class="line">        for (int i = 0; i &lt; M; i++) &#123;</span><br><span class="line">            int u = scanner.nextInt();</span><br><span class="line">            int v = scanner.nextInt();</span><br><span class="line">            int length = scanner.nextInt();</span><br><span class="line">            graph[u][v] = length;</span><br><span class="line">            graph[v][u] = length; // 因为是双向道路</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 调用 Dijkstra 算法</span><br><span class="line">        dijkstra(S, D, rescueTeams, graph);</span><br><span class="line">        dfs(S,D);</span><br><span class="line">    &#125;</span><br><span class="line">    private static void dfs(int s,int v)&#123;</span><br><span class="line">        if(s == v)&#123;</span><br><span class="line">            System.out.print(s);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        dfs(s,previous[v]);</span><br><span class="line">        System.out.print(&quot; &quot;+v);</span><br><span class="line">    &#125;</span><br><span class="line">    private static void dijkstra(int start, int end, int[] rescueTeams, int[][] graph) &#123;</span><br><span class="line">        int N = graph.length;</span><br><span class="line">        int[] min = new int[N]; // 记录到各城市的最短路径长度</span><br><span class="line">        int[] nums = new int[N];//记录最短路径数量，初始值设为1</span><br><span class="line">        Arrays.fill(nums,1);</span><br><span class="line">        boolean[] visit = new boolean[N];</span><br><span class="line"></span><br><span class="line">        Arrays.fill(min, Integer.MAX_VALUE);</span><br><span class="line">        min[start] = 0;</span><br><span class="line"></span><br><span class="line">        // 记录从起点到各点的救援队数量</span><br><span class="line">        int[] maxRescue = new int[N];</span><br><span class="line">        maxRescue[start] = rescueTeams[start];</span><br><span class="line"></span><br><span class="line">        // 使用优先队列</span><br><span class="line">        PriorityQueue&lt;Edge&gt; minDist = new PriorityQueue&lt;&gt;(Comparator.comparingInt(a -&gt; a.length));</span><br><span class="line">        minDist.add(new Edge(start,0));</span><br><span class="line"></span><br><span class="line">        while (!minDist.isEmpty()) &#123;</span><br><span class="line">            Edge current = minDist.poll();</span><br><span class="line"></span><br><span class="line">            // 如果当前城市是目的地，结束</span><br><span class="line">            if (current.now == end) &#123;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">            int now = current.now;</span><br><span class="line">            visit[now] = true;</span><br><span class="line">            for (int v = 0;v &lt; N;v ++) &#123;</span><br><span class="line"></span><br><span class="line">                // 更新最短路径和救援队数量</span><br><span class="line">                if(!visit[v] &amp;&amp; graph[now][v] != Integer.MAX_VALUE &amp;&amp; graph[now][v] + min[now] &lt; min[v])&#123;</span><br><span class="line">                    min[v] = graph[now][v] + min[now];</span><br><span class="line">                    maxRescue[v] = maxRescue[now] + rescueTeams[v];</span><br><span class="line">                    previous[v] = now;</span><br><span class="line">                    minDist.add(new Edge(v,min[v]));</span><br><span class="line">                    nums[v] = nums[now];</span><br><span class="line">                &#125;else if(!visit[v] &amp;&amp; graph[now][v] != Integer.MAX_VALUE &amp;&amp; graph[now][v] + min[now] == min[v])&#123;</span><br><span class="line">                    nums[v] += nums[now];</span><br><span class="line">                    if(maxRescue[now] + rescueTeams[v] &gt; maxRescue[v])&#123;</span><br><span class="line">                        maxRescue[v] = maxRescue[now] + rescueTeams[v];</span><br><span class="line">                        previous[v] = now;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // 输出结果</span><br><span class="line">        System.out.println(nums[end] + &quot; &quot; + maxRescue[end]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h1><h2 id="1、范围"><a href="#1、范围" class="headerlink" title="1、范围"></a>1、范围</h2><p>小明正在设计一台打点计数器，该计数器可以接受多个递增的数字范围，并对这些范围内的每个唯一数字打点。如果多个范围之间有重叠，计数器将合并这些范围并只对每个唯一数字打一次点。小明需要你帮助他计算，在给定的多组数字范围内，计数器会打多少个点。 例如，给定三个数字范围 [1, 4], [7, 10], 和 [3, 5]，计数器首先将这些范围合并，变成 [1, 5] 和 [7, 10]，然后计算这两个范围内共有多少个唯一数字，即从 1 到 5 有 5 个数字，从 7 到 10 有 4 个数字，共打 9 个点。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">import java.util.*;</span><br><span class="line"></span><br><span class="line">public class Main &#123;</span><br><span class="line">    public static int solution(int[][] inputArray) &#123;</span><br><span class="line">        // Step 1: 按范围起点排序</span><br><span class="line">        Arrays.sort(inputArray, Comparator.comparingInt(a -&gt; a[0]));</span><br><span class="line"></span><br><span class="line">        // Step 2: 合并范围</span><br><span class="line">        List&lt;int[]&gt; mergedRanges = new ArrayList&lt;&gt;();</span><br><span class="line">        int[] currentRange = inputArray[0];</span><br><span class="line">    </span><br><span class="line">        for (int i = 1; i &lt; inputArray.length; i++) &#123;</span><br><span class="line">            int[] nextRange = inputArray[i];</span><br><span class="line">            // 如果当前范围与下一个范围有重叠或相邻</span><br><span class="line">            if (currentRange[1] &gt;= nextRange[0] - 1) &#123;</span><br><span class="line">                // 更新当前范围的终点为两者较大的终点</span><br><span class="line">                currentRange[1] = Math.max(currentRange[1], nextRange[1]);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                // 否则，当前范围结束，加入结果</span><br><span class="line">                mergedRanges.add(currentRange);</span><br><span class="line">                currentRange = nextRange;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // 添加最后一个范围</span><br><span class="line">        mergedRanges.add(currentRange);</span><br><span class="line">    </span><br><span class="line">        // Step 3: 计算合并后范围内的总数字数量</span><br><span class="line">        int totalPoints = 0;</span><br><span class="line">        for (int[] range : mergedRanges) &#123;</span><br><span class="line">            totalPoints += range[1] - range[0] + 1;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        return totalPoints;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        // 测试用例</span><br><span class="line">        int[][] testArray1 = &#123;&#123;1, 4&#125;, &#123;7, 10&#125;, &#123;3, 5&#125;&#125;;</span><br><span class="line">        int[][] testArray2 = &#123;&#123;1, 2&#125;, &#123;6, 10&#125;, &#123;11, 15&#125;&#125;;</span><br><span class="line">        int[][] testArray3 = &#123;&#123;1, 3&#125;, &#123;2, 5&#125;, &#123;4, 8&#125;&#125;;</span><br><span class="line">        </span><br><span class="line">        System.out.println(solution(testArray1) == 9); // [1, 5], [7, 10] =&gt; 5 + 4 = 9</span><br><span class="line">        System.out.println(solution(testArray2) == 12); // [1, 2], [6, 10], [11, 15] =&gt; 2 + 5 + 5 = 12</span><br><span class="line">        System.out.println(solution(testArray3) == 8); // [1, 8] =&gt; 8</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>里面的<code>Comparator.comparingInt(a -&gt; a[0])</code> 是 Java 中用于创建比较器的一种简洁方式，用于比较对象（如数组、对象等）的某个整数字段或属性。</p>
+<ul>
+<li><code>Comparator.comparingInt()</code> 是 Java 8 引入的一种简洁创建比较器的方式，用于比较整数值。</li>
+<li><code>a -&gt; a[0]</code> 是一个 <strong>Lambda 表达式</strong>，表示取 <code>a</code> 的第一个元素（索引为 <code>0</code>）作为比较的依据。</li>
+</ul>
+<p>完整功能是：<strong>按数组的第一个元素升序排序</strong>。</p>
+<p><code>Comparator.comparingInt(a -&gt; a[0])</code> 的功能等价于：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">list.sort(new Comparator&lt;int[]&gt;() &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public int compare(int[] o1, int[] o2) &#123;</span><br><span class="line">        return Integer.compare(o1[0], o2[0]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h2><ul>
+<li><em><strong>*一个元素有多个属性就想到构造类*</strong></em></li>
+<li><em><strong>*构造类用来存相应的属性可以重新定义一下排序的方法即compareTo()方法*</strong></em></li>
+</ul>
+<h2 id="3、StringBuilder"><a href="#3、StringBuilder" class="headerlink" title="3、StringBuilder"></a>3、StringBuilder</h2><p>当 <code>List</code> 或其他集合（如 <code>Set</code>）中存储的是 <code>StringBuilder</code> 对象时，可能会出现错误判断，这是因为 <code>StringBuilder</code> 的 <strong>默认比较机制</strong> 并不基于内容，而是基于对象引用。</p>
+<p><strong><code>StringBuilder</code> 的比较机制</strong></p>
+<ul>
+<li><code>StringBuilder</code> 类没有重写 <code>equals()</code> 方法和 <code>hashCode()</code> 方法。</li>
+<li>其默认实现继承自 <code>Object</code>，比较的是对象的内存地址，而不是内容。</li>
+</ul>
+<p><strong>错误场景</strong></p>
+<p>当你将 <code>StringBuilder</code> 添加到集合（如 <code>List</code> 或 <code>Set</code>）中，集合内部会使用 <code>equals()</code> 方法来判断元素是否相等。如果两个 <code>StringBuilder</code> 的内容相同，但它们是不同的对象引用，则会被认为是不同的元素。</p>
+<h1 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h1><h2 id="StreamTokenizer"><a href="#StreamTokenizer" class="headerlink" title="StreamTokenizer"></a>StreamTokenizer</h2><p><strong>不能和Scanner混合使用。</strong></p>
+<p><code>StreamTokenizer</code> 是 Java 中的一个类，专门用于解析输入流，将其分割为“标记”（<code>token</code>）。这些标记可以是数字、单词（字符串）或单个字符。<code>StreamTokenizer</code> 将空白字符（如空格、制表符、换行符）作为分隔符，不会返回它们。</p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>1、创建 <code>StreamTokenizer</code> 对象，传入 <code>Reader</code> 类型的输入源（通常使用 <code>BufferedReader</code>）。</p>
+<p>2、使用 <code>StreamTokenizer.nextToken()</code> 来获取下一个标记（<code>token</code>）。</p>
+<p>3、根据标记类型（数字、字符串或其他）处理数据。</p>
+<h3 id="主要方法和字段"><a href="#主要方法和字段" class="headerlink" title="主要方法和字段"></a><strong>主要方法和字段</strong></h3><p><strong>方法</strong></p>
+<ol>
+<li><pre><code>nextToken()
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   - 解析输入流中的下一个标记。</span><br><span class="line">   - 返回标记的类型，并将其存储在 `ttype` 字段中。</span><br><span class="line"></span><br><span class="line">2. ```</span><br><span class="line">   pushBack()</span><br></pre></td></tr></table></figure>
+
+- 将最近解析的标记退回到流中，供后续重新处理。
+</code></pre>
+</li>
+</ol>
+<p><strong>字段</strong></p>
+<ol>
+<li><pre><code>ttype
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   - 表示当前标记的类型：</span><br><span class="line">     - `StreamTokenizer.TT_NUMBER`：标记是数字。</span><br><span class="line">     - `StreamTokenizer.TT_WORD`：标记是单词（字符串）。</span><br><span class="line">     - 单个字符的 ASCII 值：标记是符号或单字符。</span><br><span class="line">     - `StreamTokenizer.TT_EOF`：到达输入流的末尾。</span><br><span class="line"></span><br><span class="line">2. ```</span><br><span class="line">   nval</span><br></pre></td></tr></table></figure>
+
+- 当 `ttype` 为 `TT_NUMBER` 时，`nval` 保存解析的数字值（`double` 类型）。
+</code></pre>
+</li>
+<li><pre><code>sval
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   - 当 `ttype` 为 `TT_WORD` 时，`sval` 保存解析的字符串。</span><br><span class="line"></span><br><span class="line">**数据得先解析，才能取出来，就是得先nextToken()，才能通过nval和sval取出。**</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+StreamTokenizer tokenizer = new StreamTokenizer(reader);
+tokenizer.nextToken();
+int n = tokenizer.nval; # 假设输入的是数字
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**记得`throws IOException`**</span><br><span class="line"></span><br><span class="line">### 示例</span><br><span class="line"></span><br><span class="line">1、简单的数字和单词解析</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+import java.io.*;
+</code></pre>
+</li>
+</ol>
+<p>public class Main {<br>    public static void main(String[] args) throws IOException {<br>        BufferedReader reader &#x3D; new BufferedReader(new InputStreamReader(System.in));<br>        StreamTokenizer tokenizer &#x3D; new StreamTokenizer(reader);</p>
+<pre><code>    System.out.println(&quot;请输入内容（例如：123 Hello 456）：&quot;);
+
+    while (tokenizer.nextToken() != StreamTokenizer.TT_EOF) &#123;
+        if (tokenizer.ttype == StreamTokenizer.TT_NUMBER) &#123;
+            System.out.println(&quot;数字: &quot; + tokenizer.nval);
+        &#125; else if (tokenizer.ttype == StreamTokenizer.TT_WORD) &#123;
+            System.out.println(&quot;单词: &quot; + tokenizer.sval);
+        &#125; else &#123;
+            System.out.println(&quot;字符: &quot; + (char) tokenizer.ttype);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2：解析一组整数和操作符</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>import java.io.*;</p>
+<p>public class Main {<br>    public static void main(String[] args) throws IOException {<br>        BufferedReader reader &#x3D; new BufferedReader(new InputStreamReader(System.in));<br>        StreamTokenizer tokenizer &#x3D; new StreamTokenizer(reader);</p>
+<pre><code>    System.out.println(&quot;请输入表达式（例如：1 + 2 - 3）：&quot;);
+
+    while (tokenizer.nextToken() != StreamTokenizer.TT_EOF) &#123;
+        if (tokenizer.ttype == StreamTokenizer.TT_NUMBER) &#123;
+            System.out.print((int) tokenizer.nval + &quot; &quot;);
+        &#125; else if (tokenizer.ttype == &#39;+&#39; || tokenizer.ttype == &#39;-&#39;) &#123;
+            System.out.print((char) tokenizer.ttype + &quot; &quot;);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">3：解析带换行符的多行输入</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>import java.io.*;</p>
+<p>public class Main {<br>    public static void main(String[] args) throws IOException {<br>        BufferedReader reader &#x3D; new BufferedReader(new InputStreamReader(System.in));<br>        StreamTokenizer tokenizer &#x3D; new StreamTokenizer(reader);</p>
+<pre><code>    System.out.println(&quot;请输入多行内容（输入END结束）：&quot;);
+
+    while (true) &#123;
+        tokenizer.nextToken();
+        if (tokenizer.ttype == StreamTokenizer.TT_WORD &amp;&amp; &quot;END&quot;.equals(tokenizer.sval)) &#123;
+            break;
+        &#125; else if (tokenizer.ttype == StreamTokenizer.TT_NUMBER) &#123;
+            System.out.println(&quot;数字: &quot; + tokenizer.nval);
+        &#125; else if (tokenizer.ttype == StreamTokenizer.TT_WORD) &#123;
+            System.out.println(&quot;单词: &quot; + tokenizer.sval);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## BufferedReader</span><br><span class="line"></span><br><span class="line">`BufferedReader.readLine()` 会直接读取一整行**字符串**，直到遇到换行符 (`\n`) 或回车换行符 (`\r\n`)。</span><br><span class="line"></span><br><span class="line">换行符本身不会包含在读取的结果中，因此返回的字符串已经是干净的数据。</span><br><span class="line"></span><br><span class="line">换行符自动被跳过，不需要显式处理，不像**nextLine()**方法。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>BufferedReader ins &#x3D; new BufferedReader(new InputStreamReader(System.in));<br>String str &#x3D; ins.readLine();</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 建立二叉树</span><br><span class="line"></span><br><span class="line">根据中序遍历（b）和后序遍历（f）建立二叉树。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>import java.io.*;<br>import java.util.HashMap;</p>
+<p>public class Main{<br>    public static class Node{<br>        int value;<br>        Node left;<br>        Node right;<br>        public Node(int value){<br>            this.value &#x3D; value;<br>        }<br>    }<br>    public static Node buildTree(int[] f,int[] b,int fStart,int fEnd,int bStart,int bEnd,HashMap&lt;Integer,Integer&gt; hm){<br>        if(fStart &gt; fEnd || bStart &gt; bEnd) return null;<br>        int num &#x3D; f[fEnd];<br>        Node root &#x3D; new Node(num);<br>        int bIndex &#x3D; hm.get(num);<br>        int left &#x3D; bIndex - bStart;<br>        root.left &#x3D; buildTree(f,b,fStart,fStart + left - 1,bStart,bIndex - 1,hm);<br>        root.right &#x3D; buildTree(f,b,fStart + left, fEnd - 1,bIndex + 1,bEnd,hm);<br>        return root;<br>    }<br>    public static void main(String[] args) throws IOException{<br>        BufferedReader bfr &#x3D; new BufferedReader(new InputStreamReader(System.in));<br>        StreamTokenizer st &#x3D; new StreamTokenizer(bfr);<br>        st.nextToken();<br>        int n &#x3D; (int)st.nval;<br>        int[] f &#x3D; new int[n];<br>        int[] b &#x3D; new int[n];<br>        for(int i &#x3D; 0;i &lt; n;i ++) {<br>            st.nextToken();<br>            f[i] &#x3D; (int) st.nval;<br>        }<br>        for(int i &#x3D; 0;i &lt; n;i ++) {<br>            st.nextToken();<br>            b[i] &#x3D; (int) st.nval;<br>        }<br>        HashMap&lt;Integer,Integer&gt; hm &#x3D; new HashMap&lt;&gt;();<br>        int order &#x3D; 0;<br>        for(int i : b) {<br>            hm.put(i, order);<br>            order ++;<br>        }<br>        Node root &#x3D; buildTree(f,b,0,f.length - 1,0,b.length - 1,hm);<br>    }<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 中心扩展法查找最长对称子串长度</span><br><span class="line"></span><br><span class="line">对给定的字符串，本题要求你输出最长对称子串的长度。例如，给定`Is PAT&amp;TAP symmetric?`，最长对称子串为`s PAT&amp;TAP s`，于是你应该输出11。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>import java.util.Scanner;</p>
+<p>public class Main {<br>    &#x2F;&#x2F; 中心扩展法查找最长对称子串长度<br>    public static int longestSymmetricSubstring(char[] chars) {<br>        int maxLength &#x3D; 0;<br>        for (int i &#x3D; 0; i &lt; chars.length; i++) {<br>            &#x2F;&#x2F; 以单个字符为中心扩展<br>            maxLength &#x3D; Math.max(maxLength, expandAroundCenter(chars, i, i));<br>            &#x2F;&#x2F; 以两个相邻字符为中心扩展<br>            maxLength &#x3D; Math.max(maxLength, expandAroundCenter(chars, i, i + 1));<br>        }<br>        return maxLength;<br>    }</p>
+<pre><code>// 中心扩展方法
+private static int expandAroundCenter(char[] chars, int left, int right) &#123;
+    while (left &gt;= 0 &amp;&amp; right &lt; chars.length &amp;&amp; chars[left] == chars[right]) &#123;
+        left--;
+        right++;
+    &#125;
+    // 返回扩展后的回文子串长度
+    return right - left - 1;
+&#125;
+
+public static void main(String[] args) &#123;
+    Scanner input = new Scanner(System.in);
+    String str = input.nextLine();
+    char[] chars = str.toCharArray();
+    int maxLength = longestSymmetricSubstring(chars);
+    System.out.println(maxLength);
+&#125;
+</code></pre>
+<p>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 判断两个字符串（可以循环比对）的最大公共子串的长度</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>public class Main {<br>    public static int maxPublic(StringBuilder sb1,StringBuilder sb2,int m) {<br>        int maxL &#x3D; 0;<br>        int[][] lens &#x3D; new int[m + 1][m + 1];<br>        for(int i &#x3D; 1;i &lt;&#x3D; m;i ++) {<br>            for(int j &#x3D; 1;j &lt;&#x3D; m;j ++) {<br>                if(sb1.charAt(i - 1) &#x3D;&#x3D; sb2.charAt(j - 1)) lens[i][j] &#x3D; lens[i - 1][j - 1] + 1;<br>                &#x2F;&#x2F;lens[i][j] 表示：sb1 前 i 个字符 和 sb2 前 j 个字符 所能形成的最长公共子串的长度。<br>                &#x2F;&#x2F;如果 sb1[i-1] &#x3D;&#x3D; sb2[j-1]（即当前字符匹配）：lens[i][j]&#x3D;lens[i−1][j−1]+1<br>                &#x2F;&#x2F;继承前一个位置的状态 lens[i-1][j-1]，然后 +1。<br>                else lens[i][j] &#x3D; 0;<br>                maxL &#x3D; Math.max(maxL,lens[i][j]);<br>                if(maxL &gt;&#x3D; m &#x2F; 2) return m &#x2F; 2;<br>            }<br>        }<br>        return maxL;<br>    }<br>    public static void main(String[] args) {<br>         Scanner input &#x3D; new Scanner(System.in);<br>         int n &#x3D; input.nextInt();&#x2F;&#x2F;字符串数量<br>         int m &#x3D; input.nextInt();&#x2F;&#x2F;每个字符串的长度<br>         input.nextLine();&#x2F;&#x2F;消除换行符<br>         String[] strs &#x3D; new String[n];<br>         for(int i &#x3D; 0;i &lt; n;i ++)<br>        	 strs[i] &#x3D; input.nextLine();<br>         for(int i &#x3D; 0;i &lt; n;i ++) {<br>        	 StringBuilder sb1 &#x3D; new StringBuilder(strs[i]);<br>        	 sb1.append(sb1);<br>        	 for(int j &#x3D; i + 1;j &lt; n;j ++) {<br>        		 StringBuilder sb2 &#x3D; new StringBuilder(strs[j]);<br>        		 sb2.append(sb2);<br>        		 &#x2F;&#x2F;maxPublic(sb1, sb2, 2 * m)<br>        	 }<br>         }<br>    }<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 在java中如何快速判断两个List集合中是否有相同的元素</span><br><span class="line"></span><br><span class="line">速度上并没有提升多少，只是写的简单。</span><br><span class="line"></span><br><span class="line">**方法 1：使用 `retainAll` 方法**</span><br><span class="line"></span><br><span class="line">`retainAll` 是 `Collection` 接口中的方法，它会保留集合中与另一个集合相同的元素。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>import java.util.ArrayList;<br>import java.util.List;</p>
+<p>public class Main {<br>    public static void main(String[] args) {<br>        List<String> list1 &#x3D; new ArrayList&lt;&gt;();<br>        list1.add(“A”);<br>        list1.add(“B”);<br>        list1.add(“C”);</p>
+<pre><code>    List&lt;String&gt; list2 = new ArrayList&lt;&gt;();
+    list2.add(&quot;C&quot;);
+    list2.add(&quot;D&quot;);
+    list2.add(&quot;E&quot;);
+
+    // 复制 list1，避免修改原始数据
+    List&lt;String&gt; tempList = new ArrayList&lt;&gt;(list1);
+    tempList.retainAll(list2);
+
+    if (!tempList.isEmpty()) &#123;
+        System.out.println(&quot;两个 List 有相同的元素&quot;);
+    &#125; else &#123;
+        System.out.println(&quot;两个 List 没有相同的元素&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**方法 2：使用 `Collections.disjoint` 方法**</span><br><span class="line"></span><br><span class="line">`Collections.disjoint` 方法直接判断两个集合是否没有共同的元素。如果返回 `true`，表示没有共同元素；否则有。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>import java.util.*;</p>
+<p>public class Main {<br>    public static void main(String[] args) {<br>        List<String> list1 &#x3D; Arrays.asList(“A”, “B”, “C”);<br>        List<String> list2 &#x3D; Arrays.asList(“C”, “D”, “E”);</p>
+<pre><code>    if (!Collections.disjoint(list1, list2)) &#123;
+        System.out.println(&quot;两个 List 有相同的元素&quot;);
+    &#125; else &#123;
+        System.out.println(&quot;两个 List 没有相同的元素&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 图，割点</span><br><span class="line"></span><br><span class="line">战争中保持各个城市间的连通性非常重要。本题要求你编写一个报警程序，当失去一个城市导致国家被分裂为多个无法连通的区域时，就发出红色警报。注意：若该国本来就不完全连通，是分裂的k个区域，而失去一个城市并不改变其他城市之间的连通性，则不要发出警报。 输入格式： 输入在第一行给出两个整数N（0 &lt; N ≤ 500）和M（≤ 5000），分别为城市个数（于是默认城市从0到N-1编号）和连接两城市的通路条数。随后M行，每行给出一条通路所连接的两个城市的编号，其间以1个空格分隔。在城市信息之后给出被攻占的信息，即一个正整数K和随后的K个被攻占的城市的编号。 注意：输入保证给出的被攻占的城市编号都是合法的且无重复，但并不保证给出的通路没有重复。 输出格式： 对每个被攻占的城市，如果它会改变整个国家的连通性，则输出Red Alert: City k is lost!，其中k是该城市的编号；否则只输出City k is lost.即可。如果该国失去了最后一个城市，则增加一行输出Game Over.。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>import java.util.Scanner;</p>
+<p>public class Main {<br>    static int N,M,K ;<br>    static int[][] Maps;&#x2F;&#x2F;统计初始联通数量<br>    static int[] f;&#x2F;&#x2F;重置根节点数组<br>    static int[] falg;&#x2F;&#x2F;判断城市是否被攻占<br>    public static void init() {<br>        for (int i &#x3D; 0; i &lt; f.length; i++) {<br>            f[i] &#x3D; i;<br>        }<br>    }</p>
+<pre><code>public static int find(int x) &#123;
+    if(x!=f[x]) &#123;
+        f[x] = find(f[x]);
+    &#125;
+    return f[x];
+&#125;
+
+public static void unite(int a,int b) &#123;
+    int x = find(a);
+    int y = find(b);
+    if(x!=y) f[x] = y;
+&#125;
+
+public static void main(String[] args) &#123;
+    // TODO Auto-generated method stub
+    Scanner scan = new Scanner(System.in);
+    int N = scan.nextInt();
+    int M = scan.nextInt();
+    Maps = new int[M][2];
+    f = new int[N];
+    falg = new int[N];
+    init();
+    for (int i = 0; i &lt; M; i++) &#123;
+        Maps[i][0] = scan.nextInt();
+        Maps[i][1] = scan.nextInt();
+        unite(Maps[i][0],Maps[i][1]);
+    &#125;
+    int count = 0;//统计攻占前的联通城市数量
+    for (int i = 0; i &lt; f.length; i++) &#123;
+        if(f[i]==i) &#123;
+            count++;
+        &#125;
+    &#125;
+    K = scan.nextInt();
+    int n = K;
+    while(K--&gt;0) &#123;
+        init();
+        int k = scan.nextInt();
+        falg[k] = 1;
+        for (int i = 0; i &lt; M; i++) &#123;
+            int a = Maps[i][0];
+            int b = Maps[i][1];
+            if(falg[a]==1 || falg[b]==1)continue;
+            if(k!=a&amp;&amp;k!=b)unite(a, b);
+        &#125;
+        int sum = 0;
+        for (int i = 0; i &lt; N; i++) &#123;
+            if(f[i]==i)sum++;
+        &#125;
+
+        //因为删掉该城市 这个城市也是一个单独的连通块 所以当前连通块&gt;之前连通块+这个城市 说明删掉该城市 会改变图的连通性
+        if(sum&gt;count+1) System.out.printf(&quot;Red Alert: City %d is lost!\n&quot;,k);
+        else System.out.printf(&quot;City %d is lost.\n&quot;,k);
+        count=sum;//更新连通块
+    &#125;
+    if(N==n)System.out.printf(&quot;Game Over.&quot;);
+
+&#125;
+</code></pre>
+<p>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 阶乘</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;../source/imgs/$&#123;fiilname&#125;/image-20250323154250243.png&quot; alt=&quot;image-20250323154250243&quot; style=&quot;zoom:50%;&quot; /&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>import java.util.Scanner;</p>
+<p>public class Main {<br>    public static void main(String[] args) {<br>        &#x2F;&#x2F; 下面举例说明为什么要将nums[]中最小的元素作为因子初始值<br>        &#x2F;&#x2F; 3！ 6<br>        &#x2F;&#x2F; 4！ 24<br>        &#x2F;&#x2F; 5！ 120<br>        &#x2F;&#x2F; 和为150 必是 3！的倍数！ 因为 4！5！都是3！的倍数，所以加起来肯定也是 (min) 3！的倍数<br>        &#x2F;&#x2F; 所以应该找出数组最小值作为初始的sum，再一个一个往上找<br>        &#x2F;&#x2F; 比如上面这个例子，需要有 4个3！才能进化为 4！，由于只有一个 3！所以不能往上找了，break退出，答案就是3<br>        Scanner sc &#x3D; new Scanner(System.in);<br>        int n &#x3D; sc.nextInt();<br>        long[] nums &#x3D; new long[n];<br>        long min &#x3D; Long.MAX_VALUE;<br>        for (int i &#x3D; 0; i &lt; nums.length; i++) {<br>            nums[i] &#x3D; sc.nextLong();<br>            min &#x3D; Math.min(min, nums[i]);<br>        }<br>        long sum &#x3D; min;  &#x2F;&#x2F; sum为nums[]中的最小值<br>        long num &#x3D; 0;    &#x2F;&#x2F; num为nums[]中值为sum的数量<br>        while (true) {<br>            &#x2F;&#x2F; 如下文注释：num在上个循环中是18，sum 在上个循环中 8更新为9<br>            &#x2F;&#x2F; 根据 18 * 8！ &#x3D; 2 * 9 * 8！ &#x3D; 2 * 9！可知此次循环的 num 要更新为 18 &#x2F; 9 &#x3D; 2<br>            num &#x3D; num &#x2F; sum;<br>            for (int i &#x3D; 0; i &lt; nums.length; i++) {<br>                if (nums[i] &#x3D;&#x3D; sum) {<br>                    num++;<br>                }<br>            }<br>            &#x2F;&#x2F; 如果sum的数量（num）等于sum+1的倍数，则可以将其逻辑上将这num个sum合成为（sum+1）的阶乘。<br>            &#x2F;&#x2F; 形象化： sum &#x3D; 2  num &#x3D; 3  3个2 &#x3D; 2+2+2    sum+1 &#x3D; 3  3 &#x3D; 3的倍数， 3个2合成为3的阶乘<br>            &#x2F;&#x2F; 18(num)个8！(sum) &#x3D; 18 * 8！ &#x3D; 2 * 9 * 8！ &#x3D; 2 * 9！  sum的数量18 &#x3D; sum+1&#x3D;9 的倍数<br>            if (num % (sum + 1) &#x3D;&#x3D; 0 &amp;&amp; num !&#x3D; 0) {<br>                sum++;<br>            } else break;<br>        }<br>        System.out.println(sum);<br>    }<br>}</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 数学</span><br><span class="line"></span><br><span class="line">![image-20250404103236386](../source/imgs/$&#123;fiilname&#125;/image-20250404103236386.png)</span><br><span class="line"></span><br><span class="line">用这种方式求斜率k和截距b可以避免小数精度的影响，特别是截距b，如果就直接用k来求的话，会因为精度问题导致原本应该相同的b而不同。这种求b的方式叫做点斜式。</span><br><span class="line"></span><br><span class="line">![image-20250406213554281](../source/imgs/$&#123;fiilname&#125;/image-20250406213554281.png)</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;../source/imgs/$&#123;fiilname&#125;/uid1525433-20240412-1712919046696.png&quot; alt=&quot;图片描述&quot; style=&quot;zoom:67%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">![image-20250406214405360](../source/imgs/$&#123;fiilname&#125;/image-20250406214405360.png)</span><br><span class="line"></span><br><span class="line">寻找条件减少暴力的数量。</span><br><span class="line"></span><br><span class="line">![image-20250406215602462](../source/imgs/$&#123;fiilname&#125;/image-20250406215602462.png)</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line"></span><br><span class="line">有一个 *n*×*m* 方格的棋盘，矩形的总数量为&lt;img src=&quot;../source/imgs/$&#123;fiilname&#125;/image-20250904172413877.png&quot; alt=&quot;image-20250904172413877&quot; style=&quot;zoom:20%;&quot; /&gt;.</span><br><span class="line"></span><br><span class="line">原因：</span><br><span class="line"></span><br><span class="line">- 棋盘有 n 行，因此有 n+1 条水平线（包括上边界和下边界）。选择两条不同的水平线的方式是组合数&lt;img src=&quot;../source/imgs/$&#123;fiilname&#125;/image-20250904172510512.png&quot; alt=&quot;image-20250904172510512&quot; style=&quot;zoom:50%;&quot; /&gt;</span><br><span class="line">- 棋盘有 m 列，因此有 m+1 条垂直线（包括左边界和右边界）。选择两条不同的垂直线的方式是组合数&lt;img src=&quot;../source/imgs/$&#123;fiilname&#125;/image-20250904172545506.png&quot; alt=&quot;image-20250904172545506&quot; style=&quot;zoom:50%;&quot; /&gt;</span><br><span class="line">- 每个矩形由一对水平线和一对垂直线唯一确定，因此总矩形个数是水平线选择数和垂直线选择数的乘积：&lt;img src=&quot;../source/imgs/$&#123;fiilname&#125;/image-20250904172609188.png&quot; alt=&quot;image-20250904172609188&quot; style=&quot;zoom:50%;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">**矩形数**=**正方形数**+**长方形数**</span><br><span class="line"></span><br><span class="line"># 快速幂和高精度乘法</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="初始化全局变量，Python中不需要固定大小的数组，列表可以动态扩展"><a href="#初始化全局变量，Python中不需要固定大小的数组，列表可以动态扩展" class="headerlink" title="初始化全局变量，Python中不需要固定大小的数组，列表可以动态扩展"></a>初始化全局变量，Python中不需要固定大小的数组，列表可以动态扩展</h1><p>n &#x3D; 0<br>a &#x3D; [0] * 1010  # 模拟数组，存储每个位上的数字<br>res &#x3D; [0] * 1010 # 模拟数组，存储每个位上的数字<br>cnt &#x3D; 0 # Python中不常用这种方式来记录长度，通常直接用 len() 或保持一个实际的长度变量</p>
+<h1 id="设置一个最大处理的位数，Python实际上可以处理任意长度"><a href="#设置一个最大处理的位数，Python实际上可以处理任意长度" class="headerlink" title="设置一个最大处理的位数，Python实际上可以处理任意长度"></a>设置一个最大处理的位数，Python实际上可以处理任意长度</h1><p>MAX_DIGITS &#x3D; 500</p>
+<p>def multiply1(): # 高精度乘法模板1 (res &#x3D; res * a)<br>    “””<br>    实现高精度乘法 res &#x3D; res * a。<br>    res 存储第一个乘数，a 存储第二个乘数。结果存储回 res。<br>    “””<br>    tmp &#x3D; [0] * (MAX_DIGITS * 2) # 乘积的位数可能翻倍，所以需要更大的临时空间</p>
+<pre><code># 执行小学乘法，每一位与每一位相乘
+for i in range(MAX_DIGITS):
+    if res[i] == 0 and i &gt; 0 and all(x == 0 for x in res[i:]):
+        # 优化：如果res的当前位及其之后都是0，则不再需要计算
+        break
+    for j in range(MAX_DIGITS):
+        if a[j] == 0 and j &gt; 0 and all(x == 0 for x in a[j:]):
+            # 优化：如果a的当前位及其之后都是0，则不再需要计算
+            break
+        tmp[i + j] += res[i] * a[j]
+
+# 处理进位
+t = 0
+for i in range(len(tmp)): # 遍历tmp的有效长度
+    tmp[i] += t
+    res[i] = tmp[i] % 10 # 当前位取余
+    t = tmp[i] // 10    # 进位
+
+# 更新 res 的实际长度，如果需要的话
+# Python中通常不需要手动管理长度，因为可以动态获取 len()
+</code></pre>
+<p>def multiply2(): # 高精度乘法模板2 (a &#x3D; a * a)<br>    “””<br>    实现高精度乘法 a &#x3D; a * a。<br>    a 存储第一个乘数和第二个乘数。结果存储回 a。<br>    “””<br>    tmp &#x3D; [0] * (MAX_DIGITS * 2) # 乘积的位数可能翻倍，所以需要更大的临时空间</p>
+<pre><code># 执行小学乘法，每一位与每一位相乘
+for i in range(MAX_DIGITS):
+    if a[i] == 0 and i &gt; 0 and all(x == 0 for x in a[i:]):
+        break
+    for j in range(MAX_DIGITS):
+        if a[j] == 0 and j &gt; 0 and all(x == 0 for x in a[j:]):
+            break
+        tmp[i + j] += a[i] * a[j]
+
+# 处理进位
+t = 0
+for i in range(len(tmp)): # 遍历tmp的有效长度
+    tmp[i] += t
+    a[i] = tmp[i] % 10 # 当前位取余
+    t = tmp[i] // 10    # 进位
+
+# 更新 a 的实际长度，如果需要的话
+</code></pre>
+<p>def quick_pow(p): # 快速幂<br>    “””<br>    实现快速幂算法，计算 2^p。<br>    结果存储在全局变量 res 中。<br>    “””<br>    global res, a # 声明将修改全局变量</p>
+<pre><code># 初始化：res = 1 (最终结果)，a = 2 (底数)
+# Python中列表的反转，res[0]是最低位
+res = [0] * (MAX_DIGITS + 1) # 增加一位以防溢出
+a = [0] * (MAX_DIGITS + 1)  # 增加一位以防溢出
+res[0] = 1
+a[0] = 2
+
+# 快速幂主循环
+while p &gt; 0:
+    if p &amp; 1: # 如果 p 的当前最低位是 1 (p % 2 == 1)
+        multiply1() # res = res * a (将当前的 a 乘到结果中)
+    multiply2() # a = a * a (a 自乘，准备下一轮迭代)
+    p &gt;&gt;= 1     # p 右移一位 (p = p // 2)
+
+# 调整 res 的长度，去掉高位的0
+global cnt
+cnt = len(res) - 1
+while cnt &gt;= 0 and res[cnt] == 0:
+    cnt -= 1
+cnt += 1 # 实际的位数
+
+# 打印结果 (逆序打印，因为最低位在前面)
+# print(&quot;2^&quot;, original_p, &quot; = &quot;, end=&quot;&quot;)
+# if cnt == 0: # 如果结果是0，例如 2^负数 这种情况，虽然快速幂没有考虑负数
+#     print(&quot;0&quot;)
+# else:
+#     for i in range(cnt - 1, -1, -1):
+#         print(res[i], end=&quot;&quot;)
+# print()
+</code></pre>
+<h1 id="示例调用"><a href="#示例调用" class="headerlink" title="示例调用"></a>示例调用</h1><h1 id="quick-pow-10-计算-2-10"><a href="#quick-pow-10-计算-2-10" class="headerlink" title="quick_pow(10) # 计算 2^10"></a>quick_pow(10) # 计算 2^10</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**高精度乘法解释**</span><br><span class="line"></span><br><span class="line">**什么是高精度乘法？**</span><br><span class="line">高精度乘法是指当两个数字非常大，以至于它们的乘积超出了标准数据类型（如 int, long long 等）所能表示的范围时，我们需要一种方法来精确计算它们的乘积。通常，我们会将大数存储在数组或列表中，每个元素代表大数的一个位。</span><br><span class="line"></span><br><span class="line">**实现原理 (以 multiply1 为例，res = res \* a)：**</span><br><span class="line"></span><br><span class="line">1. **存储方式：** 在C++和Python代码中，大数被存储在数组（或列表）中。res[0] 和 a[0] 存储的是个位，res[1] 和 a[1] 存储的是十位，以此类推。这种“低位在前”的存储方式方便进行乘法计算和进位处理。</span><br><span class="line">   - 例如，数字 123 存储为 [3, 2, 1]。</span><br><span class="line">2. **初始化临时结果：** 创建一个足够大的临时数组 tmp（乘积的位数最多是两个乘数位数之和），并初始化为0。</span><br><span class="line">3. **逐位相乘 (模拟小学乘法)：**</span><br><span class="line">   - 我们遍历 res 的每一位 res[i] 和 a 的每一位 a[j]。</span><br><span class="line">   - 将 res[i] * a[j] 的结果加到 tmp[i + j] 上。</span><br><span class="line">   - **为什么是 tmp[i + j]？** 因为当个位 res[0] 乘以个位 a[0] 时，结果是 tmp[0]（个位）；当 res[1]（十位）乘以 a[0]（个位）时，结果是 tmp[1]（十位）；当 res[1]（十位）乘以 a[1]（十位）时，结果是 tmp[2]（百位）。这与我们手算乘法时错位相加的原理是完全一致的。</span><br><span class="line">4. **处理进位：**</span><br><span class="line">   - 在完成所有逐位相乘后，tmp 数组的每个位置上可能存储了不止一位的数字（例如，3 * 4 = 12，tmp[0] 可能是 12）。</span><br><span class="line">   - 从 tmp[0] 开始遍历，将当前位 tmp[i] 加上前一位的进位 t。</span><br><span class="line">   - res[i] = (tmp[i] + t) % 10：当前位的结果是 tmp[i] 和进位之和的个位。</span><br><span class="line">   - t = (tmp[i] + t) // 10：计算新的进位，用于下一位的处理。</span><br><span class="line">   - 这个过程确保了每一位都只存储一个数字，并将多余的进位传递给下一位。</span><br><span class="line"></span><br><span class="line">**优化：** 在Python代码中，我增加了一些 if res[i] == 0 ... 的判断。如果一个数的当前位以及所有更高位都是0，那么再往后乘就没有意义了，可以提前退出循环，提高效率。这在C++的数组操作中也常见，但Python列表的 all() 操作可能会有额外的开销，主要为了语义上的清晰。</span><br><span class="line"></span><br><span class="line">**快速幂解释**</span><br><span class="line"></span><br><span class="line">**什么是快速幂？**</span><br><span class="line">快速幂是一种在 O(log n) 时间复杂度内计算 a^b 的算法，而不是传统的 O(n) 时间复杂度。它利用了指数的二进制表示来显著减少乘法操作的次数。</span><br><span class="line"></span><br><span class="line">**实现原理 (以计算 2^p 为例)：**</span><br><span class="line"></span><br><span class="line">1. **二进制分解：** 任何一个正整数 p 都可以被表示成二进制形式。例如，p = 10（十进制）是 1010（二进制）。</span><br><span class="line">   这意味着 10 = 8 + 2。</span><br><span class="line">   所以 2^10 = 2^(8 + 2) = 2^8 * 2^2。</span><br><span class="line">2. **迭代过程：**</span><br><span class="line">   - **初始化：**</span><br><span class="line">     - res (result) 初始化为 1 (任何数的 0 次方都是 1)。</span><br><span class="line">     - a (base) 初始化为我们要计算的底数，这里是 2。</span><br><span class="line">     - p 是指数。</span><br><span class="line">   - **循环判断 p 的最低位：**</span><br><span class="line">     - while p &gt; 0:：循环直到指数 p 变为 0。</span><br><span class="line">     - if p &amp; 1:：这是一个位运算，等价于 if p % 2 == 1，判断 p 的当前最低位是否为 1。</span><br><span class="line">       - 如果为 1，说明当前这一项 a^(2^k) 存在于 2^p 的分解中，所以我们需要将当前的 a 乘到结果 res 中。在代码中就是 multiply1() (即 res = res * a)。</span><br><span class="line">     - multiply2()：无论 p 的最低位是 0 还是 1，我们都需要将底数 a 自乘（即 a = a * a）。这是因为在下一次循环中，a 将代表 a 的平方（如果当前 a 是 2^1，下次就是 2^2；如果当前 a 是 2^2，下次就是 2^4，以此类推）。</span><br><span class="line">     - p &gt;&gt;= 1:：这是一个位运算，等价于 p = p // 2，将 p 右移一位，相当于除以 2，以便检查下一位。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">快速幂思想运用在矩阵乘法上：可以看《真题技巧》的“斐波那契套路”。上面的高精度乘法有两个模板是给下面的快速幂服务的，其实思路都一样。</span><br><span class="line"></span><br><span class="line">&lt;img src=&quot;../source/imgs/$&#123;fiilname&#125;/image-20250903190737136.png&quot; alt=&quot;image-20250903190737136&quot; style=&quot;zoom:50%;&quot; /&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>import math</p>
+<p>def multiply1(res, a):<br>    temp &#x3D; [0] * 1010<br>    for i in range(500):<br>        for j in range(500):<br>            temp[i + j] +&#x3D; res[i] * a[j]<br>    t &#x3D; 0<br>    for i in range(500):<br>        temp[i] +&#x3D; t<br>        res[i] &#x3D; temp[i] % 10<br>        t &#x3D; temp[i] &#x2F;&#x2F; 10<br>    return res</p>
+<p>def multiply2(a):<br>    temp &#x3D; [0] * 1010<br>    for i in range(500):<br>        for j in range(500):<br>            temp[i + j] +&#x3D; a[i] * a[j]<br>    t &#x3D; 0<br>    for i in range(500):<br>        temp[i] +&#x3D; t<br>        a[i] &#x3D; temp[i] % 10<br>        t &#x3D; temp[i] &#x2F;&#x2F; 10<br>    return a</p>
+<p>def quick_pow(p):<br>    res &#x3D; [0] * 501<br>    a &#x3D; [0] * 501<br>    res[0] &#x3D; 1<br>    a[0] &#x3D; 2<br>    while p !&#x3D; 0:<br>        if p &amp; 1:<br>            res &#x3D; multiply1(res, a)<br>        a &#x3D; multiply2(a)<br>        p &gt;&gt;&#x3D; 1<br>    return res</p>
+<p>n &#x3D; int(input())<br>length &#x3D; int(n * math.log10(2) + 1)<br>print(length)</p>
+<p>result_array &#x3D; quick_pow(n)</p>
+<p>result_array[0] -&#x3D; 1</p>
+<p>cnt &#x3D; 0<br>for i in range(499, -1, -1):<br>    if cnt &#x3D;&#x3D; 50:<br>        print()<br>        cnt &#x3D; 0<br>    print(result_array[i], end&#x3D;””)<br>    cnt +&#x3D; 1<br>print()</p>
+<pre><code>
+</code></pre>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/2024/10/08/%E6%95%B0%E6%8D%AE%E6%B8%85%E6%B4%97/">数据清洗</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/2024/10/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%841/">数据结构1</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Odegaard</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AF%BB%E6%89%BE%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%88%E8%BF%90%E7%94%A8%E5%93%88%E5%B8%8C%E8%A1%A8%EF%BC%89"><span class="toc-text">寻找两数之和（运用哈希表）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8CString%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E5%8C%96"><span class="toc-text">基本数据类型和String之间的转化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8C%96"><span class="toc-text">进制转化</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0%EF%BC%88seed%EF%BC%89"><span class="toc-text">随机数（seed）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%EF%BC%8Cdijkstra-%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97"><span class="toc-text">最短路径，dijkstra+优先队列</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%94%E8%BE%83"><span class="toc-text">比较</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%E3%80%81%E8%8C%83%E5%9B%B4"><span class="toc-text">1、范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%E3%80%81"><span class="toc-text">2、</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%E3%80%81StringBuilder"><span class="toc-text">3、StringBuilder</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BE%93%E5%85%A5"><span class="toc-text">输入</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#StreamTokenizer"><span class="toc-text">StreamTokenizer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="toc-text">基本用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%96%B9%E6%B3%95%E5%92%8C%E5%AD%97%E6%AE%B5"><span class="toc-text">主要方法和字段</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%EF%BC%8CPython%E4%B8%AD%E4%B8%8D%E9%9C%80%E8%A6%81%E5%9B%BA%E5%AE%9A%E5%A4%A7%E5%B0%8F%E7%9A%84%E6%95%B0%E7%BB%84%EF%BC%8C%E5%88%97%E8%A1%A8%E5%8F%AF%E4%BB%A5%E5%8A%A8%E6%80%81%E6%89%A9%E5%B1%95"><span class="toc-text">初始化全局变量，Python中不需要固定大小的数组，列表可以动态扩展</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%A4%84%E7%90%86%E7%9A%84%E4%BD%8D%E6%95%B0%EF%BC%8CPython%E5%AE%9E%E9%99%85%E4%B8%8A%E5%8F%AF%E4%BB%A5%E5%A4%84%E7%90%86%E4%BB%BB%E6%84%8F%E9%95%BF%E5%BA%A6"><span class="toc-text">设置一个最大处理的位数，Python实际上可以处理任意长度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E8%B0%83%E7%94%A8"><span class="toc-text">示例调用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#quick-pow-10-%E8%AE%A1%E7%AE%97-2-10"><span class="toc-text">quick_pow(10) # 计算 2^10</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.md-text img:not([class]), .md-text .image-container img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
